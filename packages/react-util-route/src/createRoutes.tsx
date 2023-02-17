@@ -12,14 +12,19 @@ interface FunctionalImportType {
 
 type ReactElementType = JSX.Element
 
-type RoutesItemType = RouteObject & {
-  path?: string
-  redirect?: string
-  component?: FunctionalImportType
-  meta?: MetaType
-  children?: RoutesItemType[]
-  element?: JSX.Element | React.ReactNode | null
-}
+type Merge<T, U, X = Pick<U, Exclude<keyof U, keyof T & keyof U>>> = Pick<T & X, keyof T | keyof X>
+
+type RoutesItemType = Merge<
+  {
+    path?: string
+    redirect?: string
+    component?: FunctionalImportType
+    meta?: MetaType
+    children?: RoutesItemType[]
+    element?: JSX.Element | React.ReactNode | null
+  },
+  RouteObject
+>
 
 type RoutesType = RoutesItemType[]
 
@@ -53,6 +58,7 @@ export type {
   OnRouteBeforeType,
   RouterPropsType,
   RouterType,
+  Merge,
 }
 
 export { RouterUtil }
