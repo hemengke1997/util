@@ -30,7 +30,7 @@ import { joinTimestamp } from './utils'
 
 export * from './AxiosPro'
 
-const defaultTransform: AxiosTransform = {
+export const defaultTransform: AxiosTransform = {
   transformResponseHook: (res: AxiosResponse<OriginResult>, options: RequestOptions) => {
     const { isTransformResponse, isReturnNativeResponse } = options
     if (isReturnNativeResponse) {
@@ -135,7 +135,7 @@ const defaultTransform: AxiosTransform = {
   },
 }
 
-const defaultOptions: CreateAxiosOptions = {
+export const defaultOptions: CreateAxiosOptions = {
   timeout: 30 * 1000,
   headers: { 'Content-Type': ContentTypeEnum.JSON },
   transform: defaultTransform,
@@ -151,5 +151,3 @@ const defaultOptions: CreateAxiosOptions = {
     serialize: (params) => querystring.stringify(params, { arrayFormat: 'bracket' }),
   },
 }
-
-export { defaultOptions }
