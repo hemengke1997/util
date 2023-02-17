@@ -1,6 +1,6 @@
 # react-utils
 
-> react utils in one (includes hooks, methods, etc.)
+> utils in one (includes hooks, methods, etc.)
 
 Package |
 ---------|
