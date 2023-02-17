@@ -4,9 +4,9 @@
 
 Package |
 ---------|
- react-util-hook
- react-util-route
- axios-pro
+ @minko-fe/react-util-hook
+ @minko-fe/react-util-route
+ @minko-fe/axios-pro
 
 ## License
 
