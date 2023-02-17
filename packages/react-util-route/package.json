@@ -41,6 +41,7 @@
     "react-router-dom": ">=6.0.0"
   },
   "dependencies": {
-    "@minko-fe/react-util-hook": "workspace:*"
+    "@minko-fe/react-util-hook": "workspace:*",
+    "react-router-dom": "^6.8.1"
   }
 }
