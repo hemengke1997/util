@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/util-monorepo",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "util monorepo",
   "author": "hemengke <https://github.com/hemengke1997>",
