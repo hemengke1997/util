@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/util-monorepo",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "util monorepo",
   "author": "hemengke <https://github.com/hemengke1997>",
@@ -21,7 +21,7 @@
     "changelog": "pnpm -r --parallel run changelog",
     "lint": "eslint .",
     "upgrade:deps": "pnpm update --i --L",
-    "bump": "pnpm changelog && bumpp packages/*/package.json package.json CHANGELOG.md --commit --push --tag -all"
+    "bump": "pnpm changelog && bumpp packages/*/CHANGELOG.md packages/*/package.json package.json CHANGELOG.md --commit --push --tag -all"
   },
   "dependencies": {
     "lodash-es": "^4.17.21"
