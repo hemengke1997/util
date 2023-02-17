@@ -29,6 +29,8 @@ import { ContentTypeEnum, RequestEnum } from './AxiosPro'
 import { joinTimestamp } from './utils'
 
 export * from './AxiosPro'
+export * from './utils'
+export * from './axiosCancel'
 
 export const defaultTransform: AxiosTransform = {
   transformResponseHook: (res: AxiosResponse<OriginResult>, options: RequestOptions) => {
