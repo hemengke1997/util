@@ -1,4 +1,13 @@
-## [0.0.3](https://github.com/hemengke1997/util/compare/v0.0.1...v0.0.3) (2023-02-17)
+## [0.0.4](https://github.com/hemengke1997/util/compare/v0.0.2...v0.0.4) (2023-02-17)
+
+
+### Bug Fixes
+
+* axios ([bb0f48d](https://github.com/hemengke1997/util/commit/bb0f48d04123c71abda0f3cfb05063935cb5f94a))
+
+
+
+## [0.0.2](https://github.com/hemengke1997/util/compare/v0.0.1...v0.0.2) (2023-02-17)
 
 
 ### Bug Fixes
