@@ -69,7 +69,7 @@ function CreateRoutes({ routes, onRouteBefore, onRouteMount, suspense }: RouterP
 
   const elements = useRoutes(reactRoutes)
 
-  return { elements }
+  return <>{elements}</>
 }
 
 export { CreateRoutes }
