@@ -55,7 +55,7 @@ export class RouterUtil {
     delete r.component
     delete r.meta
 
-    return r
+    return r as RouteObject
   }
 
   private lazyLoad(importFn: FunctionalImportType, meta: MetaType) {
