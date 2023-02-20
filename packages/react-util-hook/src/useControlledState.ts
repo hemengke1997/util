@@ -1,6 +1,6 @@
-import { useMemoizedFn, useUpdate } from 'ahooks'
 import { isFunction } from 'lodash-es'
 import { useMemo, useRef } from 'react'
+import { useMemoizedFn, useUpdate } from '.'
 
 function useControlledState<T, R = T>(option: {
   defaultValue?: T | (() => T)

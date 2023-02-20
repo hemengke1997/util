@@ -1,4 +1,4 @@
-# react-utils
+# @minko-fe/utils
 
 > utils in one (includes hooks, methods, etc.)
 

@@ -1,8 +1,9 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { cloneDeep, isFunction } from 'lodash-es'
+import { cloneDeep, isFunction, isString } from 'lodash-es'
 import querystring from 'query-string'
 import { AxiosCanceler } from './axiosCancel'
+import { deepMerge, joinTimestamp } from './utils'
 
 export interface RequestOptions {
   isTransformResponse?: boolean
@@ -60,9 +61,18 @@ export abstract class AxiosTransform<T = any> {
   responseInterceptorsCatch?: (error: ResponseErrorType) => void
 }
 export enum ContentTypeEnum {
+  /**
+   * json
+   */
   JSON = 'application/json;charset=UTF-8',
+  /**
+   * 表单
+   */
   FORM_URLENCODED = 'application/x-www-form-urlencoded;charset=UTF-8',
-  FORM_DATA = 'multipart/form-data;charset=UTF-8',
+  /**
+   * 文件上传
+   */
+  FORM_DATA = 'multipart/form-data;charset=UTF-8', // 文件
 }
 
 export enum RequestEnum {
@@ -70,14 +80,139 @@ export enum RequestEnum {
   POST = 'POST',
   PUT = 'PUT',
   DELETE = 'DELETE',
+  PATCH = 'PATCH',
 }
+
+export const defaultTransform: AxiosTransform = {
+  transformResponseHook: (res: AxiosResponse<OriginResult>, options: RequestOptions) => {
+    const { isTransformResponse, isReturnNativeResponse } = options
+    if (isReturnNativeResponse) {
+      return res
+    }
+
+    if (!isTransformResponse) {
+      return res.data
+    }
+
+    const { data } = res
+
+    if (!data) {
+      return {
+        success: false,
+        result: null,
+      }
+    }
+
+    const isSuccess = res.status === 200
+
+    if (isSuccess) {
+      return {
+        success: true,
+        result: data,
+      }
+    }
+
+    return {
+      success: false,
+      result: data,
+    }
+  },
+
+  beforeRequestHook: (config, options) => {
+    const { apiUrl, joinUrlPrefix, joinTime = '', urlPrefix } = options
+
+    if (joinUrlPrefix) {
+      config.url = `${urlPrefix}${config.url}`
+    }
+
+    if (apiUrl && isString(apiUrl)) {
+      config.url = `${apiUrl}${config.url}`
+    }
+
+    const params = config.params || {}
+
+    const data = config.data || false
+    if (config.method?.toUpperCase() === RequestEnum.GET) {
+      if (!isString(params)) {
+        config.params = Object.assign(params || {}, joinTimestamp(joinTime, false))
+      } else {
+        config.url = `${config.url + params}${joinTimestamp(joinTime, true)}`
+        config.params = undefined
+      }
+    } else {
+      if (
+        config.method?.toUpperCase() === RequestEnum.POST &&
+        !config.headers?.['Content-Type'] &&
+        !config.headers?.['content-type']
+      ) {
+        config.headers = {
+          ...config.headers,
+          'Content-Type': ContentTypeEnum.FORM_URLENCODED,
+        }
+      }
+      if (!isString(params)) {
+        if (Reflect.has(config, 'data') && config.data && Object.keys(config.data).length > 0) {
+          config.data = data
+          config.params = params
+        } else {
+          config.data = params
+          config.params = undefined
+        }
+      } else {
+        config.url = config.url + params
+        config.params = undefined
+      }
+    }
+    return config
+  },
+
+  requestInterceptors: (config) => {
+    config.headers = Object.assign({}, config.headers)
+
+    return config
+  },
+  responseInterceptors: (res: AxiosResponse<any>) => {
+    return res
+  },
+
+  responseInterceptorsCatch: (error) => {
+    return Promise.reject(error)
+  },
+
+  requestCatchHook: (error) => {
+    const { response } = error || {}
+    return {
+      success: false,
+      result: response?.data || null,
+    }
+  },
+}
+
+export const defaultOptions: CreateAxiosOptions = {
+  timeout: 30 * 1000,
+  headers: { 'Content-Type': ContentTypeEnum.JSON },
+  transform: defaultTransform,
+  requestOptions: {
+    joinUrlPrefix: true,
+    isReturnNativeResponse: false,
+    isTransformResponse: true,
+    apiUrl: '',
+    urlPrefix: '',
+    joinTime: '',
+  },
+  paramsSerializer: {
+    serialize: (params) => querystring.stringify(params, { arrayFormat: 'bracket' }),
+  },
+}
+
+export { deepMerge as mergeOptions } from './utils'
 
 export class AxiosPro {
   private axiosInstance: AxiosInstance
   readonly options: CreateAxiosOptions
 
   constructor(options: CreateAxiosOptions) {
-    this.options = options
+    this.options = deepMerge(defaultOptions, options)
     this.axiosInstance = axios.create(options)
 
     this.setupInterceptors()
@@ -200,6 +335,10 @@ export class AxiosPro {
 
   delete<T = Result>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
     return this.request({ ...config, method: 'DELETE' }, options)
+  }
+
+  patch<T = Result>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
+    return this.request({ ...config, method: 'PATCH' }, options)
   }
 
   request<T = Result>(config: AxiosRequestConfig, options?: RequestOptions) {

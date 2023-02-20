@@ -1,8 +1,12 @@
 import { useRef } from 'react'
 import { useControlledState } from './useControlledState'
-const REPLACE_REGEXP = /[^0-9]/g // default treat input as `Number`
 
-function useStrictInput(v: string | undefined, onVChange: (v: string) => void, strictRegExp = REPLACE_REGEXP) {
+function useStrictInput(
+  v: string | undefined,
+  onVChange: (v: string) => void,
+  // default treat input as `Number`
+  strictRegExp = /[^0-9]/g,
+) {
   const [value, setValue] = useControlledState({
     defaultValue: v,
     value: v,

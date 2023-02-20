@@ -37,9 +37,12 @@
     "bump": "pnpm changelog && bumpp package.json CHANGELOG.md --commit --push --tag -all"
   },
   "peerDependencies": {
+    "lodash-es": ">=4.17.0",
     "react": ">=17.0.0"
   },
   "dependencies": {
-    "ahooks": "^3.7.4"
+    "@ahooksjs/use-url-state": "^3.5.1",
+    "ahooks": "^3.7.4",
+    "react-use": "^17.4.0"
   }
 }

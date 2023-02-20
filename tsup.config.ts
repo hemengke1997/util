@@ -34,7 +34,7 @@ export const tsup = defineConfig(async (option) => ({
   target: 'es6',
   sourcemap: !!option.watch,
   tsconfig: option.watch ? './tsconfig.dev.json' : './tsconfig.json',
-  external: ['react'],
+  external: ['react', 'lodash-es'],
   splitting: false,
   treeshake: true,
   bundle: true,
