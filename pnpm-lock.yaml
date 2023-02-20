@@ -14,7 +14,7 @@ importers:
       conventional-changelog-cli: ^2.2.2
       eslint: ^8.34.0
       get-tsconfig: ^4.4.0
-      lodash-es: ^4.17.21
+      lodash-es: '>=4.17.0'
       react: ^18.2.0
       tiny-glob: ^0.2.9
       tsup: ^6.6.3

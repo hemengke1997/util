@@ -23,8 +23,11 @@
     "upgrade:deps": "pnpm update --i --L",
     "bump": "pnpm changelog && bumpp packages/*/CHANGELOG.md packages/*/package.json package.json CHANGELOG.md --commit --push --tag -all"
   },
-  "dependencies": {
+  "peerDependencies": {
     "lodash-es": "^4.17.21"
+  },
+  "dependencies": {
+    "lodash-es": ">=4.17.0"
   },
   "devDependencies": {
     "@minko-fe/eslint-config": "^1.2.18",
