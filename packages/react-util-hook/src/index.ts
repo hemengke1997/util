@@ -78,9 +78,7 @@ export {
   useResetState,
   useMutationObserver,
 } from 'ahooks'
-export { default as useUrlState } from '@ahooksjs/use-url-state'
-export * from './useControlledState'
-export * from './useStrictInput'
+
 export {
   useAsync,
   useAsyncFn,
@@ -90,7 +88,6 @@ export {
   useCss,
   useCustomCompareEffect,
   useDefault,
-  useEffectOnce,
   useEvent,
   useError,
   useGetSet,
@@ -116,3 +113,8 @@ export {
   useFirstMountState,
   useHash,
 } from 'react-use'
+
+export { default as useUrlState } from '@ahooksjs/use-url-state'
+export * from './useControlledState'
+export * from './useStrictInput'
+export * from './useEffectOnce'
