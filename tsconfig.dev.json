@@ -4,6 +4,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noImplicitAny": false,
-    "noEmit": true
+    "noEmit": true,
+    "isolatedModules": false
   }
 }

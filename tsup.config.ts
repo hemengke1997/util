@@ -10,7 +10,7 @@ function stripDir(pathStr: string, len: number) {
   return join(...pathComponents.slice(len))
 }
 
-const entries = await glob('./src/**/index.ts{,x}')
+const entries = await glob('./src/index.ts{,x}')
 
 function rmExt(path: string) {
   return path.split(extname(path))[0]
@@ -21,6 +21,7 @@ function getEntry() {
   entries.forEach((e) => {
     entry[rmExt(stripDir(e, 1))] = e
   })
+
   return entry
 }
 
@@ -30,7 +31,7 @@ export const tsup = defineConfig(async (option) => ({
   clean: false,
   format: ['esm'],
   minify: false,
-  platform: 'browser',
+  platform: 'node',
   target: 'es6',
   sourcemap: !!option.watch,
   tsconfig: option.watch ? './tsconfig.dev.json' : './tsconfig.json',
