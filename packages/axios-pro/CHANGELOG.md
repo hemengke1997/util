@@ -1,4 +1,13 @@
-## [0.0.5](https://github.com/hemengke1997/util/compare/v0.0.3...v0.0.5) (2023-02-17)
+## [0.0.6](https://github.com/hemengke1997/util/compare/v0.0.4...v0.0.6) (2023-02-17)
+
+
+### Bug Fixes
+
+* route types ([e4ff016](https://github.com/hemengke1997/util/commit/e4ff016f619137e3123a73d83fc5574eec9d3ca7))
+
+
+
+## [0.0.4](https://github.com/hemengke1997/util/compare/v0.0.3...v0.0.4) (2023-02-17)
 
 
 ### Bug Fixes
