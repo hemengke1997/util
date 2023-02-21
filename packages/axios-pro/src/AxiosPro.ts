@@ -1,6 +1,6 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { cloneDeep, isFunction, isString } from 'lodash-es'
+import { cloneDeep, isFunction, isString } from '@minko-fe/lodash-pro'
 import querystring from 'query-string'
 import { AxiosCanceler } from './axiosCancel'
 import { deepMerge, joinTimestamp } from './utils'

@@ -14,11 +14,12 @@
   ],
   "exports": {
     ".": {
-      "default": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
     }
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -27,7 +28,7 @@
     "README.md"
   ],
   "scripts": {
-    "dev": "tsup --watch",
+    "dev": "tsx scripts/dev",
     "build": "tsup",
     "release": "pnpm run build && pnpm publish --access public",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",

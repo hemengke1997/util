@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@minko-fe/axios-pro": "workspace:*",
+    "@minko-fe/lodash-pro": "workspace:*",
+    "@minko-fe/react-component": "workspace:*",
     "@minko-fe/react-util-hook": "workspace:*",
     "@minko-fe/react-util-route": "workspace:*",
     "react": "^18.2.0",

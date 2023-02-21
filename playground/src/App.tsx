@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useStrictInput } from '@minko-fe/react-util-hook'
+import { isBoolean } from '@minko-fe/lodash-pro'
+import { A } from '@minko-fe/react-component'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
@@ -8,10 +10,13 @@ function App() {
 
   const a = useStrictInput('', () => {})
 
+  console.log(isBoolean(false))
+
   console.log(a, 'a')
 
   return (
     <div className='App'>
+      <A />
       <div>
         <a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
           <img src='/vite.svg' className='logo' alt='Vite logo' />

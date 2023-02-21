@@ -1,11 +1,11 @@
 import type { AxiosRequestConfig, Canceler } from 'axios'
 import axios from 'axios'
-import { isFunction, omit } from 'lodash-es'
+import { isFunction } from '@minko-fe/lodash-pro'
 
 let pendingMap = new Map<string, Canceler>()
 
 export const getPendingUrl = (config: AxiosRequestConfig) => {
-  return [config.method, config.url, JSON.stringify(omit(config.params)), JSON.stringify(config.data)].join('&')
+  return [config.method, config.url, JSON.stringify(config.params), JSON.stringify(config.data)].join('&')
 }
 
 export class AxiosCanceler {

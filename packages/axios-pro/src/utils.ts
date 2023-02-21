@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash-es'
+import { cloneDeep } from '@minko-fe/lodash-pro'
 
 function is(val: unknown, type: string) {
   return toString.call(val) === `[object ${type}]`

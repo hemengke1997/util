@@ -1,5 +1,6 @@
 import { extname, join, normalize, sep } from 'path'
 import glob from 'tiny-glob'
+import type { Options } from 'tsup'
 import { defineConfig } from 'tsup'
 
 function stripDir(pathStr: string, len: number) {
@@ -25,18 +26,22 @@ function getEntry() {
   return entry
 }
 
-export const tsup = defineConfig(async (option) => ({
+export const defaultConfig: Options = {
   entry: getEntry(),
-  dts: true,
-  clean: false,
-  format: ['esm'],
-  minify: false,
-  platform: 'node',
-  target: 'es6',
-  sourcemap: !!option.watch,
-  tsconfig: option.watch ? './tsconfig.dev.json' : './tsconfig.json',
-  external: ['react', 'react-router-dom', 'lodash-es'],
   splitting: false,
+  watch: false,
   treeshake: true,
   bundle: true,
+  target: 'es6',
+  minify: false,
+  dts: true,
+  clean: false,
+  platform: 'node',
+  format: ['esm', 'cjs'],
+  external: ['react', 'react-router-dom'],
+}
+
+export default defineConfig(async (option) => ({
+  ...defaultConfig,
+  sourcemap: !!option.watch,
 }))

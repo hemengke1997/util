@@ -1,4 +1,4 @@
-import { isFunction } from 'lodash-es'
+import { isFunction } from '@minko-fe/lodash-pro'
 import { useMemo, useRef } from 'react'
 import { useMemoizedFn, useUpdate } from '.'
 

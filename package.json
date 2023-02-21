@@ -14,35 +14,30 @@
     "util"
   ],
   "scripts": {
-    "dev": "pnpm -r --parallel run dev",
-    "build": "pnpm -r --parallel run build",
-    "test": "pnpm -r --parallel run test",
+    "dev": "pnpm -r --parallel --filter ./packages/* run dev",
+    "build": "pnpm -r --parallel --filter ./packages/* run build",
+    "test": "pnpm -r --parallel --filter ./packages/* run test",
+    "changelog": "pnpm -r --parallel --filter ./packages/* run changelog",
     "preinstall": "npx only-allow pnpm",
-    "changelog": "pnpm -r --parallel run changelog",
     "lint": "eslint .",
     "upgrade:deps": "pnpm update --i --L",
     "bump": "pnpm changelog && bumpp packages/*/CHANGELOG.md packages/*/package.json package.json CHANGELOG.md --commit --push --tag -all"
-  },
-  "peerDependencies": {
-    "lodash-es": "^4.17.21"
-  },
-  "dependencies": {
-    "lodash-es": ">=4.17.0"
   },
   "devDependencies": {
     "@minko-fe/eslint-config": "^1.2.18",
     "@minko-fe/tsconfig": "^1.2.18",
     "@testing-library/react": "^14.0.0",
-    "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.13.0",
     "@types/react": "^18.0.28",
     "bumpp": "^8.2.1",
+    "chokidar": "^3.5.3",
     "conventional-changelog-cli": "^2.2.2",
     "eslint": "^8.34.0",
     "get-tsconfig": "^4.4.0",
     "react": "^18.2.0",
     "tiny-glob": "^0.2.9",
     "tsup": "^6.6.3",
+    "tsx": "^3.12.3",
     "typescript": "^4.9.5",
     "vitest": "^0.28.5"
   }
