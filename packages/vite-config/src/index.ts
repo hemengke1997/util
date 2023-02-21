@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import { injectEnv, setupPlugins } from './utils'
