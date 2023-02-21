@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@minko-fe/eslint-config': ^1.2.18
+      '@minko-fe/lodash-pro': workspace:^0.0.8
       '@minko-fe/tsconfig': ^1.2.18
       '@testing-library/react': ^14.0.0
       '@types/node': ^18.13.0
@@ -22,6 +23,7 @@ importers:
       vitest: ^0.28.5
     devDependencies:
       '@minko-fe/eslint-config': 1.2.18_eslint@8.34.0
+      '@minko-fe/lodash-pro': link:packages/lodash-pro
       '@minko-fe/tsconfig': 1.2.18_typescript@4.9.5
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@types/node': 18.13.0

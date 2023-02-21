@@ -2,6 +2,7 @@ import path from 'path'
 import type { WatchOptions } from 'chokidar'
 import { watch } from 'chokidar'
 import type { Options } from 'tsup'
+import { defaultConfig } from '../tsup.config'
 import { build } from './build'
 
 function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions {
@@ -23,10 +24,10 @@ function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions
   return resolvedWatchOptions
 }
 
-interface DevOptions {
+type DevOptions = Partial<{
   tsup: Options
   chokidar: WatchOptions
-}
+}>
 
 export async function dev(options?: DevOptions) {
   const root = process.cwd()
@@ -39,7 +40,10 @@ export async function dev(options?: DevOptions) {
 
   const watcher = watch(path.resolve(path.join(root, 'src')), resolvedWatchOptions)
 
-  await build(tsup)
+  await build({
+    ...defaultConfig,
+    ...tsup,
+  })
 
   watcher.on('change', () => {
     build()

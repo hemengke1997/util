@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@minko-fe/eslint-config": "^1.2.18",
+    "@minko-fe/lodash-pro": "workspace:*",
     "@minko-fe/tsconfig": "^1.2.18",
     "@testing-library/react": "^14.0.0",
     "@types/node": "^18.13.0",

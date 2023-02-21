@@ -1,13 +1,12 @@
-/* eslint-disable unused-imports/no-unused-vars */
 import { isNil } from '@minko-fe/lodash-pro'
 import { createRef, forwardRef, useImperativeHandle, useRef, useState } from 'react'
-import { callInterceptor } from 'react-component/utils/interceptor'
-import { createNamespace } from 'react-component/utils/createNamespace'
-import { withStopPropagation } from 'react-component/utils/dom/event'
 import { CSSTransition } from 'react-transition-group'
 import { useEventListener, useIsomorphicLayoutEffect, useLockScroll } from '@minko-fe/react-util-hook'
-import { renderToContainer } from 'react-component/utils/dom/renderToContainer'
 import classNames from 'classnames'
+import { renderToContainer } from '../utils/dom/renderToContainer'
+import { withStopPropagation } from '../utils/dom/event'
+import { createNamespace } from '../utils/createNamespace'
+import { callInterceptor } from '../utils/interceptor'
 import type { PopupInstanceType, PopupProps } from './PropsTypes'
 import { PopupContext } from './PopupContext'
 
