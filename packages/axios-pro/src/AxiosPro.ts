@@ -6,8 +6,6 @@ import { AxiosCanceler } from './axiosCancel'
 import { deepMerge, joinTimestamp } from './utils'
 
 export interface RequestOptions {
-  isTransformResponse?: boolean
-  isReturnNativeResponse?: boolean
   joinUrlPrefix?: boolean
   apiUrl?: string
   urlPrefix?: string
@@ -15,18 +13,11 @@ export interface RequestOptions {
   ignoreRepeatRequest?: boolean
 }
 
-export interface OriginResult {
-  status?: number
-  success?: boolean
-  [key: string]: any
-}
-
 export interface Result<T = any> {
   success: boolean
   result: T
+  nativeResponse?: AxiosResponse<Result<T> | unknown>
 }
-
-export type ResultType<T = any> = Result<T> | OriginResult | AxiosResponse<Result<T>>
 
 export interface UploadFileParams {
   data?: Record<string, any>
@@ -48,9 +39,9 @@ export type ResponseErrorType = AxiosError & {
 export abstract class AxiosTransform<T = any> {
   beforeRequestHook?: (config: AxiosRequestConfig, options: RequestOptions) => AxiosRequestConfig
 
-  transformResponseHook?: (res: AxiosResponse<OriginResult>, options: RequestOptions) => ResultType<T>
+  transformResponseHook?: (res: AxiosResponse<Result>) => Result<T>
 
-  requestCatchHook?: (e: ResponseErrorType, options: RequestOptions) => ResultType<T>
+  requestCatchHook?: (e: ResponseErrorType, options: RequestOptions) => Result<T>
 
   requestInterceptors?: (config: AxiosRequestConfig, options: CreateAxiosOptions) => AxiosRequestConfig
 
@@ -84,22 +75,14 @@ export enum RequestEnum {
 }
 
 export const defaultTransform: AxiosTransform = {
-  transformResponseHook: (res: AxiosResponse<OriginResult>, options: RequestOptions) => {
-    const { isTransformResponse, isReturnNativeResponse } = options
-    if (isReturnNativeResponse) {
-      return res
-    }
-
-    if (!isTransformResponse) {
-      return res.data
-    }
-
+  transformResponseHook: (res: AxiosResponse<Result>) => {
     const { data } = res
 
     if (!data) {
       return {
         success: false,
         result: null,
+        nativeResponse: res,
       }
     }
 
@@ -109,12 +92,14 @@ export const defaultTransform: AxiosTransform = {
       return {
         success: true,
         result: data,
+        nativeResponse: res,
       }
     }
 
     return {
       success: false,
       result: data,
+      nativeResponse: res,
     }
   },
 
@@ -184,6 +169,7 @@ export const defaultTransform: AxiosTransform = {
     return {
       success: false,
       result: response?.data || null,
+      nativeResponse: response,
     }
   },
 }
@@ -194,8 +180,6 @@ export const defaultOptions: CreateAxiosOptions = {
   transform: defaultTransform,
   requestOptions: {
     joinUrlPrefix: true,
-    isReturnNativeResponse: false,
-    isTransformResponse: true,
     apiUrl: '',
     urlPrefix: '',
     joinTime: '',
@@ -364,7 +348,7 @@ export class AxiosPro {
         .then((res: AxiosResponse<Result>) => {
           if (transformResponseHook && isFunction(transformResponseHook)) {
             try {
-              const ret = transformResponseHook(res, opt) as unknown as T
+              const ret = transformResponseHook(res) as unknown as T
               resolve(ret)
             } catch (err) {
               reject(err || new Error('request error!'))
