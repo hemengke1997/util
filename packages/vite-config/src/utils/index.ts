@@ -1,5 +1,3 @@
-import type { PluginOption } from 'vite'
-
 export function injectEnv(envConf: Record<string, any>): ImportMetaEnv {
   const ret: any = {}
 
@@ -16,23 +14,4 @@ export function injectEnv(envConf: Record<string, any>): ImportMetaEnv {
   }
 
   return ret
-}
-
-export async function setupPlugins() {
-  const vitePlugins: PluginOption[] = [
-    // react(),
-    // publicTypescript({
-    //   esbuildOptions: {
-    //     target: 'es2015',
-    //   },
-    // }),
-    // splitVendorChunkPlugin(),
-    // progress(),
-  ]
-
-  const x = await import('@vitejs/plugin-react')
-  if (x) {
-    console.log(x, 'x')
-  }
-  return vitePlugins
 }

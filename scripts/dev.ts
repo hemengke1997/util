@@ -38,7 +38,7 @@ export async function dev(options?: DevOptions) {
     ...chokidar,
   })
 
-  const watcher = watch(path.resolve(path.join(root, 'src')), resolvedWatchOptions)
+  const watcher = watch(path.join(root, 'src'), resolvedWatchOptions)
 
   async function bundle() {
     await build({

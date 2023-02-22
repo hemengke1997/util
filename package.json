@@ -14,8 +14,9 @@
     "util"
   ],
   "scripts": {
-    "dev": "pnpm -r --parallel --filter ./packages/* run dev",
+    "dev": "pnpm -r --parallel --filter ./packages/* run dev && pnpm run watch",
     "build": "pnpm -r --parallel --filter ./packages/* run build",
+    "watch": "tsx scripts/watch",
     "test": "pnpm -r --parallel --filter ./packages/* run test",
     "changelog": "pnpm -r --parallel --filter ./packages/* run changelog",
     "preinstall": "npx only-allow pnpm",
@@ -36,6 +37,7 @@
     "conventional-changelog-cli": "^2.2.2",
     "eslint": "^8.34.0",
     "get-tsconfig": "^4.4.0",
+    "picocolors": "^1.0.0",
     "react": "^18.2.0",
     "tiny-glob": "^0.2.9",
     "tsup": "^6.6.3",

@@ -1,17 +1,15 @@
 /// <reference types="vite/client" />
 
 import path from 'path'
-import { defineConfig, loadEnv } from 'vite'
-import { injectEnv, setupPlugins } from './utils'
+import { defineConfig, loadEnv, mergeConfig } from 'vite'
+import { injectEnv } from './utils'
 
-const viteConfig = defineConfig(async ({ mode }) => {
+const defaultConfig = defineConfig(async ({ mode }) => {
   const root = process.cwd()
 
   const __APP_INFO__ = {
     lastBuildTime: new Date().toLocaleString(),
   }
-
-  // const _isBuild = command === 'build'
 
   const env = loadEnv(mode, root) as ImportMetaEnv
 
@@ -21,7 +19,6 @@ const viteConfig = defineConfig(async ({ mode }) => {
     base: '/',
     root,
     mode,
-    plugins: await setupPlugins(),
     resolve: {
       alias: {
         '@': path.resolve(root, 'src'),
@@ -44,4 +41,4 @@ const viteConfig = defineConfig(async ({ mode }) => {
   }
 })
 
-export { viteConfig }
+export { defaultConfig, mergeConfig }
