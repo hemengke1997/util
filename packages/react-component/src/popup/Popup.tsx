@@ -7,7 +7,7 @@ import { renderToContainer } from '../utils/dom/renderToContainer'
 import { withStopPropagation } from '../utils/dom/event'
 import { createNamespace } from '../utils/createNamespace'
 import { callInterceptor } from '../utils/interceptor'
-import type { PopupInstanceType, PopupProps } from './PropsTypes'
+import type { PopupInstanceType, PopupProps } from './PropsType'
 import { PopupContext } from './PopupContext'
 
 const [bem] = createNamespace('popup')
@@ -18,81 +18,92 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   const {
     round,
     // closeable,
-    duration = 300,
+    className,
     // overlay = true,
     // lockScroll = true,
     // closeOnClickOverlay = true,
-    // stopPropagation = ['click'],
-    // teleport = () => document.body,
+    stopPropagation = ['click'],
+    teleport = () => document.body,
     // title,
     // description,
     children,
     // closeIcon,
     position = 'center',
+    safeAreaInsetBottom,
+    // closeOnClickOverlay,
+    lockScroll,
+    onOpen,
+    beforeClose,
+    onClose,
+    onClick,
+    closeOnPopstate,
+    duration: propDuration,
+    style: propStyle,
     // closeIconPosition = 'top-right',
+    zIndex: propZIndex,
+    visible: propVisible,
+    // onClickOverlay: propOnClickOverlay,
+    // onClickCloseIcon: propOnClickCloseIcon,
   } = props
-  const opened = useRef(false)
-  const zIndex = useRef<number>(props.zIndex ?? globalZIndex)
-  const popupRef = createRef<HTMLDivElement>()
 
-  const [visible, setVisible] = useState(props.visible)
+  const opened = useRef(false)
+  const zIndex = useRef<number>(propZIndex ?? globalZIndex)
+  const popupRef = createRef<HTMLDivElement>()
+  const [visible, setVisible] = useState(propVisible)
   const [animatedVisible, setAnimatedVisible] = useState(visible)
 
   const style = () => {
     const initStyle = {
       zIndex: zIndex.current,
-      ...props.style,
+      ...propStyle,
     }
 
-    if (!isNil(props.duration)) {
-      const key = props.position === 'center' ? 'animationDuration' : 'transitionDuration'
-      initStyle[key] = `${props.duration}ms`
+    if (!isNil(propDuration)) {
+      const key = position === 'center' ? 'animationDuration' : 'transitionDuration'
+      initStyle[key] = `${propDuration}ms`
     }
     return initStyle
   }
 
   const open = () => {
-    if (props.zIndex !== undefined) {
-      zIndex.current = +props.zIndex
+    if (propZIndex !== undefined) {
+      zIndex.current = +propZIndex
     } else {
       zIndex.current = globalZIndex++
     }
 
     opened.current = true
-    props.onOpen?.()
+    onOpen?.()
   }
 
   const close = () => {
     callInterceptor({
-      interceptor: props.beforeClose,
+      interceptor: beforeClose,
       args: ['close'],
       done: () => {
         opened.current = false
-        props.onClose?.()
+        onClose?.()
       },
     })
   }
 
-  const onClickOverlay = (e: React.MouseEvent) => {
-    props.onClickOverlay?.(e)
+  // const onClickOverlay = (e: React.MouseEvent) => {
+  //   propOnClickOverlay?.(e)
 
-    if (props.closeOnClickOverlay) {
-      close()
-    }
-  }
+  //   if (closeOnClickOverlay) {
+  //     close()
+  //   }
+  // }
 
-  const onClickCloseIcon = (e: React.MouseEvent) => {
-    if (props.onClickCloseIcon) {
-      props.onClickCloseIcon(e)
-    }
-    close()
-  }
+  // const onClickCloseIcon = (e: React.MouseEvent) => {
+  //   propOnClickCloseIcon?.(e)
+  //   close()
+  // }
 
   const renderPopup = () => {
-    const { safeAreaInsetBottom } = props
-    if (props.stopPropagation) {
+    if (stopPropagation) {
       return withStopPropagation(
-        props.stopPropagation,
+        stopPropagation,
         <div
           ref={popupRef}
           style={{
@@ -102,12 +113,12 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
           className={classNames(
             bem({
               round,
-              [position!]: position,
+              [position]: position,
             }),
             { 'rc-safe-area-bottom': safeAreaInsetBottom },
-            props.className,
+            className,
           )}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           {children}
         </div>,
@@ -116,7 +127,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   }
 
   const renderTransition = () => {
-    const { transition, destroyOnClose, forceRender } = props
+    const { transition, destroyOnClose, forceRender, onOpened, onClosed } = props
     const name = position === 'center' ? 'rc-fade' : `rc-popup-slide-${position}`
 
     return (
@@ -126,15 +137,15 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
          * https://github.com/reactjs/react-transition-group/pull/559
          */
         nodeRef={popupRef}
-        timeout={duration!}
+        timeout={propDuration || 300}
         classNames={transition || name}
         mountOnEnter={!forceRender}
         unmountOnExit={destroyOnClose}
         onEnter={open}
-        onEntered={props.onOpened}
+        onEntered={onOpened}
         onExited={() => {
           setAnimatedVisible(false)
-          props.onClosed?.()
+          onClosed?.()
         }}
       >
         {renderPopup()}
@@ -143,7 +154,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   }
 
   useEventListener('popstate', () => {
-    if (props.closeOnPopstate) {
+    if (closeOnPopstate) {
       close()
     }
   })
@@ -155,17 +166,17 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   }, [visible])
 
   useIsomorphicLayoutEffect(() => {
-    setVisible(props.visible)
-  }, [props.visible])
+    setVisible(propVisible)
+  }, [propVisible])
 
-  useLockScroll(popupRef, visible && props.lockScroll)
+  useLockScroll(popupRef, visible && lockScroll)
 
   useImperativeHandle(ref, () => ({
     popupRef,
   }))
 
   return renderToContainer(
-    props.teleport!,
+    teleport,
     <PopupContext.Provider value={{ visible }}>{renderTransition()}</PopupContext.Provider>,
   )
 })

@@ -1,0 +1,7 @@
+:root {
+  --rc-animation-duration-fast: theme(transitionDuration.fast);
+  --rc-animation-duration-base: theme(transitionDuration.default);
+  --rc-animation-duration-slow: theme(transitionDuration.slow);
+  --rc-animation-timing-function-leave: theme(transitionTimingFunction.in);
+  --rc-animation-timing-function-enter: theme(transitionTimingFunction.out);
+}

@@ -11,13 +11,12 @@ function stripDir(pathStr: string, len: number) {
   return join(...pathComponents.slice(len))
 }
 
-const entries = await glob('./src/index.ts{,x}')
-
 function rmExt(path: string) {
   return path.split(extname(path))[0]
 }
 
-function getEntry() {
+export async function getEntry(entryGlob = './src/index.ts{,x}') {
+  const entries = await glob(entryGlob)
   const entry: Record<string, string> = {}
   entries.forEach((e) => {
     entry[rmExt(stripDir(e, 1))] = e
@@ -27,21 +26,19 @@ function getEntry() {
 }
 
 export const defaultConfig: Options = {
-  entry: getEntry(),
+  entry: await getEntry(),
   splitting: false,
   watch: false,
   treeshake: true,
-  bundle: true,
   target: 'es6',
   minify: false,
   dts: true,
-  clean: false,
+  clean: true,
   platform: 'node',
   format: ['esm', 'cjs'],
   external: ['react', 'react-router-dom'],
 }
 
-export default defineConfig(async (option) => ({
+export default defineConfig(async () => ({
   ...defaultConfig,
-  sourcemap: !!option.watch,
 }))

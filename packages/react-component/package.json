@@ -15,12 +15,12 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "require": "./dist/index.js",
+      "import": "./dist/esm/index.js"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
@@ -29,7 +29,7 @@
   ],
   "scripts": {
     "dev": "rimraf dist && tsx scripts/dev",
-    "build": "tsup",
+    "build": "rimraf dist && tsx scripts/build",
     "release": "pnpm run build && pnpm publish --access public",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "vitest",
@@ -51,8 +51,11 @@
   "devDependencies": {
     "@types/react-transition-group": "^4.4.5",
     "postcss": "^8.4.21",
-    "postcss-nesting": "^11.2.1",
+    "postcss-import": "^15.1.0",
+    "postcss-nested": "^6.0.1",
+    "postcss-simple-vars": "^7.0.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.2.7"
   }
 }

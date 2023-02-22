@@ -40,20 +40,24 @@ export async function dev(options?: DevOptions) {
 
   const watcher = watch(path.resolve(path.join(root, 'src')), resolvedWatchOptions)
 
-  await build({
-    ...defaultConfig,
-    ...tsup,
+  async function bundle() {
+    await build({
+      ...defaultConfig,
+      ...tsup,
+    })
+  }
+
+  bundle()
+
+  watcher.on('change', async () => {
+    await bundle()
   })
 
-  watcher.on('change', () => {
-    build()
+  watcher.on('add', async () => {
+    await bundle()
   })
 
-  watcher.on('add', () => {
-    build()
-  })
-
-  watcher.on('unlink', () => {
-    build()
+  watcher.on('unlink', async () => {
+    await bundle()
   })
 }

@@ -1,0 +1,72 @@
+@import '../../style/index.css';
+
+:root {
+  --rc-toast-default-width: auto;
+  --rc-toast-max-width: 70%;
+  --rc-toast-default-min-height: 36px;
+  --rc-toast-default-padding: 16px 24px;
+  --rc-toast-text-color: theme(colors.white);
+  --rc-toast-font-size: 1rem;
+  --rc-toast-background-color: theme(colors.black / 70%);
+  --rc-toast-border-radius: theme(borderRadius.default);
+  --rc-toast-text-min-width: auto;
+  --rc-toast-text-padding: 0;
+  --rc-toast-position-top-distance: 20%;
+  --rc-toast-position-bottom-distance: 20%;
+}
+
+.rc-toast {
+  &.rc-popup {
+    @apply flex flex-col items-center box-border whitespace-pre-wrap break-all text-center;
+    width: var(--rc-toast-default-width);
+    max-width: var(--rc-toast-max-width);
+    min-height: var(--rc-toast-default-min-height);
+    padding: var(--rc-toast-default-padding);
+    color: var(--rc-toast-text-color);
+    font-size: var(--rc-toast-font-size);
+    background-color: var(--rc-toast-background-color);
+    border-radius: var(--rc-toast-border-radius);
+    transition: all var(--rc-animation-duration-fast);
+  }
+
+  &&--unclickable {
+    @apply overflow-hidden cursor-not-allowed;
+
+    * {
+      @apply pointer-events-none;
+    }
+  }
+
+  &&--info,
+  &&--html {
+    @apply w-fit min-h-0;
+    min-width: var(--rc-toast-text-min-width);
+    padding: var(--rc-toast-text-padding);
+
+    .rc-toast__info {
+      @apply mt-0;
+    }
+  }
+
+  &&--top {
+    top: var(--rc-toast-position-top-distance);
+  }
+
+  &&--bottom {
+    @apply top-auto;
+    bottom: var(--rc-toast-position-bottom-distance);
+  }
+
+  &__icon {
+    font-size: var(--rc-toast-icon-size);
+  }
+
+  &__loading {
+    padding: var(--rc-padding-base);
+    color: var(--rc-toast-loading-icon-color);
+  }
+
+  &__info {
+    margin-top: var(--rc-padding-xs);
+  }
+}

@@ -1,3 +1,4 @@
+/** @type {import('postcss')} */
 module.exports = {
-  plugins: [require('postcss-nesting')],
+  plugins: [require('postcss-import'), require('tailwindcss/nesting'), require('tailwindcss')],
 }

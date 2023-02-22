@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useStrictInput } from '@minko-fe/react-util-hook'
 import { isBoolean } from '@minko-fe/lodash-pro'
-import { A } from '@minko-fe/react-component'
+import { Toast } from '@minko-fe/react-component'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
@@ -16,12 +16,13 @@ function App() {
 
   return (
     <div className='App'>
-      <A />
+      <div onClick={() => Toast({ message: <div>'this is toast'</div> })}>show toast</div>
+      <div onClick={() => Toast.clear()}>hide toast</div>
       <div>
-        <a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
+        <a target='_blank' rel='noreferrer'>
           <img src='/vite.svg' className='logo' alt='Vite logo' />
         </a>
-        <a href='https://reactjs.org' target='_blank' rel='noreferrer'>
+        <a target='_blank' rel='noreferrer'>
           <img src={reactLogo} className='logo react' alt='React logo' />
         </a>
       </div>

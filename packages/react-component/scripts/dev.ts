@@ -1,9 +1,12 @@
 import { dev } from '../../../scripts/dev'
 
-dev({
-  tsup: {
-    entry: ['src/**/*.{ts,tsx,css}'],
-    bundle: false,
-    format: ['esm'],
-  },
-})
+try {
+  dev({
+    tsup: {
+      entry: ['src/**/*.{ts,tsx,css}'],
+      bundle: false,
+      format: ['esm'],
+      dts: false,
+    },
+  })
+} catch {}
