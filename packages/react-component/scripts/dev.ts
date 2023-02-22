@@ -7,6 +7,7 @@ try {
       bundle: false,
       format: ['esm'],
       dts: false,
+      legacyOutput: true,
     },
   })
 } catch {}
