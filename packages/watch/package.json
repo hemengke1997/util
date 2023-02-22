@@ -2,7 +2,7 @@
   "name": "@minko-fe/watch",
   "type": "module",
   "version": "0.0.8",
-  "description": "watch object like for change",
+  "description": "watch",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
   "repository": {
@@ -10,7 +10,7 @@
     "url": "git+https://github.com/hemengke1997/util.git"
   },
   "keywords": [
-    "watch change"
+    "watch"
   ],
   "exports": {
     ".": {

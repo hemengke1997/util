@@ -1,8 +1,7 @@
 {
   "name": "@minko-fe/template",
   "type": "module",
-  "version": "0.0.8",
-  "private": true,
+  "version": "0.0.0",
   "description": "template",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
