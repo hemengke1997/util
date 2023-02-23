@@ -1,3 +1,6 @@
+import path from 'path'
+import { getTsconfig } from 'get-tsconfig'
+
 export function injectEnv(envConf: Record<string, any>): ImportMetaEnv {
   const ret: any = {}
 
@@ -14,4 +17,42 @@ export function injectEnv(envConf: Record<string, any>): ImportMetaEnv {
   }
 
   return ret
+}
+
+interface PathMapping {
+  find: RegExp
+  replacement: string
+}
+
+export function pathsMapToAlias() {
+  const tsconfig = getTsconfig(process.cwd())
+
+  const compilerOptions = tsconfig?.config.compilerOptions
+
+  function resolvePathMappings(paths: Record<string, string[]>, base: string) {
+    const sortedPatterns = Object.keys(paths).sort((a: string, b: string) => getPrefixLength(b) - getPrefixLength(a))
+    const resolved: PathMapping[] = []
+    for (let pattern of sortedPatterns) {
+      const relativePaths = paths[pattern]
+      if (relativePaths.length > 1) {
+        continue
+      }
+      pattern = escapeStringRegexp(pattern).replace(/\/\*/g, '')
+      resolved.push({
+        find: new RegExp(`^${pattern}`),
+        replacement: path.resolve(base, relativePaths[0].replace(/\/\*/g, '')),
+      })
+    }
+    return resolved
+  }
+  function getPrefixLength(pattern: string): number {
+    const prefixLength = pattern.indexOf('*')
+    return pattern.substring(0, prefixLength).length
+  }
+
+  function escapeStringRegexp(string: string) {
+    return string.replace(/[|\\{}()[\]^$+?.]/g, '\\$&').replace(/-/g, '\\x2d')
+  }
+
+  return resolvePathMappings(compilerOptions?.paths || {}, compilerOptions?.baseUrl || '.')
 }

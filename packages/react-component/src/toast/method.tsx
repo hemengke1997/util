@@ -1,4 +1,5 @@
 import { extend, isBrowser, isObject } from '@minko-fe/lodash-pro'
+import { useLatest } from '@minko-fe/react-util-hook'
 import { useEffect, useState } from 'react'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render, unmount } from '../utils/dom/render'
@@ -14,6 +15,7 @@ const defaultOptions: ToastProps = {
   forbidClick: false,
   duration: 2000,
   teleport: () => document.body,
+  keepOnHover: true,
 }
 
 const toastArray: (() => void)[] = []
@@ -61,6 +63,7 @@ const ToastObj = (props: ToastProps) => {
   const TempToast = () => {
     const options = {
       duration: 2000,
+      ...currentOptions,
       ...props,
     } as ToastProps
     const [visible, setVisible] = useState(false)
@@ -88,13 +91,33 @@ const ToastObj = (props: ToastProps) => {
       )
     }
 
+    const [_, setIsHovering] = useState(false)
+
+    const isHovering = useLatest(_)
+    const latestState = useLatest(state)
+
+    function beforeDestory() {
+      if (isHovering.current && latestState.current.keepOnHover) {
+        delayClear()
+      } else {
+        destroy()
+      }
+    }
+
+    function delayClear() {
+      timer && clearTimeout(timer)
+      timer = window.setTimeout(() => {
+        beforeDestory()
+      }, +state.duration!)
+    }
+
     useEffect(() => {
       setVisible(true)
       if (!allowMultiple) syncClear()
       toastArray.push(internalOnClosed)
 
       if (state.duration !== 0 && 'duration' in state) {
-        timer = window.setTimeout(destroy, +state.duration!)
+        delayClear()
       }
 
       return () => {
@@ -110,6 +133,7 @@ const ToastObj = (props: ToastProps) => {
         visible={visible}
         teleport={() => container}
         onClose={destroy}
+        onHoverStateChange={setIsHovering}
         onClosed={internalOnClosed}
       />
     )
@@ -120,15 +144,16 @@ const ToastObj = (props: ToastProps) => {
   return update
 }
 
-const createMethod = (type) => (options) =>
-  ToastObj({
+const createMethod = (type: ToastType) => (options) => {
+  return ToastObj({
     ...currentOptions,
     ...defaultOptionsMap.get(type),
     ...parseOptions(options),
     type,
   })
+}
 
-;['info', 'loading', 'success', 'fail'].forEach((method) => {
+;(['info', 'loading', 'success', 'fail'] as const).forEach((method) => {
   ToastObj[method] = createMethod(method)
 })
 

@@ -1,7 +1,7 @@
 import { isDef, isUndefined } from '@minko-fe/lodash-pro'
 import classNames from 'classnames'
 import type { FC } from 'react'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Popup from '../popup'
 import { createNamespace } from '../utils/createNamespace'
 import { lockClick } from './lock-click'
@@ -12,6 +12,7 @@ const [bem] = createNamespace('toast')
 const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props) => {
   let clickable = false
   const {
+    popupClassName,
     visible,
     closeOnClick,
     onClose,
@@ -21,7 +22,7 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
     icon,
     className,
     overlay = false,
-    transition = 'rc-fade',
+    transition = 'rc-zoom',
     overlayClass,
     overlayStyle,
     closeOnClickOverlay,
@@ -29,7 +30,9 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
     onOpened,
     teleport,
     duration = 2000,
+    onHoverStateChange,
   } = props
+
   const toggleClickable = () => {
     const newValue = visible && forbidClick
     if (clickable !== newValue && !isUndefined(newValue)) {
@@ -70,9 +73,15 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
     return null
   }
 
+  const [isHovering, setIsHovering] = useState(false)
+
+  useEffect(() => {
+    onHoverStateChange?.(isHovering)
+  }, [isHovering])
+
   return (
     <Popup
-      className={classNames([bem([position, { [type]: icon }]), className])}
+      className={popupClassName}
       visible={visible}
       overlay={overlay}
       transition={transition}
@@ -87,8 +96,14 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
       teleport={teleport}
       duration={duration}
     >
-      {renderIcon()}
-      {renderMessage()}
+      <div
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        className={classNames([bem([position, { [type]: icon }]), className])}
+      >
+        {renderIcon()}
+        {renderMessage()}
+      </div>
     </Popup>
   )
 }

@@ -1,7 +1,6 @@
 @import '../../style/index.css';
 
 :root {
-  --rc-popup-background-color: theme(colors.white);
   --rc-popup-transition: transform theme(transitionDuration.default);
   --rc-popup-round-border-radius: theme(borderRadius.default)
   --rc-popup-close-icon-z-index: 1;
@@ -22,7 +21,6 @@
 
   &-popup {
     @apply fixed max-h-full overflow-y-auto;
-    background-color: var(--rc-popup-background-color);
     transition: var(--rc-popup-transition);
     -webkit-overflow-scrolling: touch;
 

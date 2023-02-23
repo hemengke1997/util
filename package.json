@@ -25,12 +25,12 @@
     "bump": "pnpm changelog && bumpp packages/*/CHANGELOG.md packages/*/package.json package.json CHANGELOG.md --commit --push --tag -all"
   },
   "devDependencies": {
-    "@minko-fe/eslint-config": "^1.2.18",
+    "@minko-fe/eslint-config": "^1.2.20",
     "@minko-fe/lodash-pro": "workspace:*",
-    "@minko-fe/tsconfig": "^1.2.18",
+    "@minko-fe/tsconfig": "^1.2.20",
     "@testing-library/react": "^14.0.0",
     "@types/fs-extra": "^11.0.1",
-    "@types/node": "^18.13.0",
+    "@types/node": "^18.14.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "bumpp": "^8.2.1",

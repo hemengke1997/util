@@ -16,17 +16,17 @@
 }
 
 .rc-toast {
+  @apply flex flex-col items-center box-border whitespace-pre-wrap break-all text-center origin-center;
+  width: var(--rc-toast-default-width);
+  min-height: var(--rc-toast-default-min-height);
+  padding: var(--rc-toast-default-padding);
+  color: var(--rc-toast-text-color);
+  font-size: var(--rc-toast-font-size);
+  background-color: var(--rc-toast-background-color);
+  border-radius: var(--rc-toast-border-radius);
+  transition: all var(--rc-animation-duration-fast);
   &.rc-popup {
-    @apply flex flex-col items-center box-border whitespace-pre-wrap break-all text-center;
-    width: var(--rc-toast-default-width);
-    max-width: var(--rc-toast-max-width);
-    min-height: var(--rc-toast-default-min-height);
-    padding: var(--rc-toast-default-padding);
-    color: var(--rc-toast-text-color);
-    font-size: var(--rc-toast-font-size);
-    background-color: var(--rc-toast-background-color);
-    border-radius: var(--rc-toast-border-radius);
-    transition: all var(--rc-animation-duration-fast);
+  
   }
 
   &&--unclickable {

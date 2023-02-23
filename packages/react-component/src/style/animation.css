@@ -102,6 +102,30 @@
   }
 }
 
+@keyframes rc-center-zoom-in {
+  from {
+    transform: scale(0.8) translate3d(-50%, -50%, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translate3d(-50%, -50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes rc-center-zoom-out {
+  from {
+    transform: scale(1) translate3d(-50%, -50%, 0);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(0.8) translate3d(-50%, -50%, 0);
+    opacity: 0;
+  }
+}
+
 @keyframes rc-rotate {
   from {
     transform: rotate(0deg);
@@ -114,70 +138,70 @@
 
 .rc-fade {
   &-enter-active {
-    animation: var(--rc-animation-duration-base) rc-fade-in both
-      var(--rc-animation-timing-function-enter);
+    animation: var(--rc-animation-duration-base) rc-fade-in both var(--rc-animation-timing-function-enter);
   }
+
   &-exit-active {
-    animation: var(--rc-animation-duration-base) rc-fade-out both
-      var(--rc-animation-timing-function-leave);
+    animation: var(--rc-animation-duration-base) rc-fade-out both var(--rc-animation-timing-function-leave);
   }
 }
 
 .rc-slide-up {
   &-enter-active {
-    animation: var(--rc-animation-duration-base) rc-slide-up-enter both
-      var(--rc-animation-timing-function-enter);
+    animation: var(--rc-animation-duration-base) rc-slide-up-enter both var(--rc-animation-timing-function-enter);
   }
 
   &-exit-active {
-    animation: var(--rc-animation-duration-base) rc-slide-up-leave both
-      var(--rc-animation-timing-function-leave);
+    animation: var(--rc-animation-duration-base) rc-slide-up-leave both var(--rc-animation-timing-function-leave);
   }
 }
 
 .rc-slide-down {
   &-enter-active {
-    animation: rc-slide-down-enter var(--rc-animation-duration-base) both
-      var(--rc-animation-timing-function-enter);
+    animation: rc-slide-down-enter var(--rc-animation-duration-base) both var(--rc-animation-timing-function-enter);
   }
 
   &-exit-active {
-    animation: rc-slide-down-leave var(--rc-animation-duration-base) both
-      var(--rc-animation-timing-function-leave);
+    animation: rc-slide-down-leave var(--rc-animation-duration-base) both var(--rc-animation-timing-function-leave);
   }
 }
 
 .rc-slide-left {
   &-enter-active {
-    animation: rc-slide-left-enter var(--rc-animation-duration-base) both
-      var(--rc-animation-timing-function-enter);
+    animation: rc-slide-left-enter var(--rc-animation-duration-base) both var(--rc-animation-timing-function-enter);
   }
 
   &-exit-active {
-    animation: rc-slide-left-leave var(--rc-animation-duration-base) both
-      var(--rc-animation-timing-function-leave);
+    animation: rc-slide-left-leave var(--rc-animation-duration-base) both var(--rc-animation-timing-function-leave);
   }
 }
 
 .rc-slide-right {
   &-enter-active {
-    animation: rc-slide-right-enter var(--rc-animation-duration-base) both
-      var(--rc-animation-timing-function-enter);
+    animation: rc-slide-right-enter var(--rc-animation-duration-base) both var(--rc-animation-timing-function-enter);
   }
 
   &-exit-active {
-    animation: rc-slide-right-leave var(--rc-animation-duration-base) both
-      var(--rc-animation-timing-function-leave);
+    animation: rc-slide-right-leave var(--rc-animation-duration-base) both var(--rc-animation-timing-function-leave);
   }
 }
 
 .rc-zoom {
   &-enter-active {
-    animation: var(--rc-animation-duration-base) rc-zoom-in both
-      var(--rc-animation-timing-function-enter);
+    animation: var(--rc-animation-duration-base) rc-zoom-in both var(--rc-animation-timing-function-enter);
   }
+
   &-exit-active {
-    animation: var(--rc-animation-duration-base) rc-zoom-out both
-      var(--rc-animation-timing-function-leave);
+    animation: var(--rc-animation-duration-base) rc-zoom-out both var(--rc-animation-timing-function-leave);
+  }
+}
+
+.rc-center-zoom {
+  &-enter-active {
+    animation: var(--rc-animation-duration-base) rc-center-zoom-in both var(--rc-animation-timing-function-enter);
+  }
+
+  &-exit-active {
+    animation: var(--rc-animation-duration-base) rc-center-zoom-out both var(--rc-animation-timing-function-leave);
   }
 }

@@ -1,28 +1,15 @@
 /// <reference types="vite/client" />
 
-import path from 'path'
-import { defineConfig, loadEnv, mergeConfig } from 'vite'
-import { injectEnv } from './utils'
+import { loadEnv, mergeConfig as viteMergeConfig } from 'vite'
+import type { ConfigEnv, UserConfig } from 'vite'
+import { injectEnv, pathsMapToAlias } from './utils'
 
-const defaultConfig = defineConfig(async ({ mode }) => {
-  const root = process.cwd()
-
-  const __APP_INFO__ = {
-    lastBuildTime: new Date().toLocaleString(),
-  }
-
-  const env = loadEnv(mode, root) as ImportMetaEnv
-
-  injectEnv(env)
-
+const getDefaultConfig = ({ root }: { root: string }) => {
+  const alias = pathsMapToAlias()
   return {
-    base: '/',
     root,
-    mode,
     resolve: {
-      alias: {
-        '@': path.resolve(root, 'src'),
-      },
+      alias,
     },
     css: {
       modules: {
@@ -30,15 +17,22 @@ const defaultConfig = defineConfig(async ({ mode }) => {
         generateScopedName: '[local]-[hash:base64:5]',
       },
     },
+    server: {},
     build: {
       minify: 'esbuild',
       chunkSizeWarningLimit: 2048,
       sourcemap: false,
     },
-    define: {
-      __APP_INFO__: JSON.stringify(__APP_INFO__),
-    },
-  }
-})
+  } satisfies UserConfig
+}
 
-export { defaultConfig, mergeConfig }
+const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig) => {
+  const { mode } = configEnv
+  const root = userConfig.root || process.cwd()
+  const config = viteMergeConfig(getDefaultConfig({ root }), userConfig)
+  const env = loadEnv(mode, root) as ImportMetaEnv
+  injectEnv(env)
+  return config
+}
+
+export { getDefaultConfig, overrideConfig, injectEnv }

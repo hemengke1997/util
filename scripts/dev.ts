@@ -43,6 +43,7 @@ export async function dev(options?: DevOptions) {
   async function bundle() {
     await build({
       ...defaultConfig,
+      dts: false,
       ...tsup,
     })
   }

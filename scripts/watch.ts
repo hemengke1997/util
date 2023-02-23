@@ -25,7 +25,7 @@ async function dev_watch() {
     const targetDir = `../packages/${dirName}`
     fs.copySync(join('../template'), join(targetDir))
     const currentVersion = fs.readJSONSync(join('../package.json')).version
-    // rename `template` in package.json
+    // rename `template` with folder name in package.json
     const pkgStr = fs.readFileSync(join('../template/package.json'), 'utf-8')
     const pkg = JSON.parse(pkgStr.replaceAll('template', dirName))
     pkg.version = currentVersion

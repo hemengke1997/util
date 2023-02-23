@@ -5,6 +5,10 @@ export type ToastType = 'loading' | 'success' | 'fail' | 'info'
 
 export type ToastPosition = 'top' | 'middle' | 'bottom'
 export interface ToastProps extends BaseTypeProps {
+  /** popup className */
+  popupClassName?: string
+  /** hover时不隐藏 */
+  keepOnHover?: boolean
   /** 提示类型 */
   type?: ToastType
   /** 内容 */
@@ -33,6 +37,7 @@ export interface ToastProps extends BaseTypeProps {
   onClose?: () => void
   /** 完全展示后的回调函数	 */
   onOpened?: () => void
+  onHoverStateChange?: (h: boolean) => void
 }
 
 export interface ToastPrivateProps {
@@ -72,3 +77,5 @@ export interface ToastInstance {
   /** 关闭提示	 */
   clear(): void
 }
+
+export type ToastInstanceType = HTMLDivElement

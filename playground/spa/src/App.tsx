@@ -3,6 +3,7 @@ import { useStrictInput } from '@minko-fe/react-util-hook'
 import { isBoolean } from '@minko-fe/lodash-pro'
 import { Toast } from '@minko-fe/react-component'
 import reactLogo from './assets/react.svg'
+import { A } from '#/A'
 import './App.css'
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
 
   return (
     <div className='App'>
-      <div onClick={() => Toast({ message: <div>'this is toast'</div> })}>show toast</div>
+      <A />
+      <div onClick={() => Toast({ message: <div>'this is toast'</div>, duration: 1000 })}>show toast</div>
       <div onClick={() => Toast.clear()}>hide toast</div>
       <div>
         <a target='_blank' rel='noreferrer'>

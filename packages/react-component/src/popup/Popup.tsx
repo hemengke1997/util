@@ -1,5 +1,6 @@
 import { isNil } from '@minko-fe/lodash-pro'
-import { createRef, forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import type { Ref } from 'react'
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { useEventListener, useIsomorphicLayoutEffect, useLockScroll } from '@minko-fe/react-util-hook'
 import classNames from 'classnames'
@@ -48,7 +49,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
 
   const opened = useRef(false)
   const zIndex = useRef<number>(propZIndex ?? globalZIndex)
-  const popupRef = createRef<HTMLDivElement>()
+  const popupRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(propVisible)
   const [animatedVisible, setAnimatedVisible] = useState(visible)
 
@@ -105,11 +106,6 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
       return withStopPropagation(
         stopPropagation,
         <div
-          ref={popupRef}
-          style={{
-            ...style,
-            display: !visible && !animatedVisible ? 'none' : undefined,
-          }}
           className={classNames(
             bem({
               round,
@@ -118,9 +114,17 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
             { 'rc-safe-area-bottom': safeAreaInsetBottom },
             className,
           )}
-          onClick={onClick}
         >
-          {children}
+          <div
+            ref={popupRef as Ref<HTMLDivElement>}
+            style={{
+              ...style,
+              display: !visible && !animatedVisible ? 'none' : undefined,
+            }}
+            onClick={onClick}
+          >
+            {children}
+          </div>
         </div>,
       )
     }
