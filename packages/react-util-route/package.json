@@ -38,7 +38,7 @@
     "bump": "pnpm changelog && bumpp package.json CHANGELOG.md --commit --push --tag -all"
   },
   "peerDependencies": {
-    "@minko-fe/lodash-pro": "*",
+    "@minko-fe/lodash-pro": "workspace:*",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0",
     "react-router-dom": ">=6.0.0"
@@ -47,6 +47,7 @@
     "@minko-fe/react-util-hook": "workspace:*"
   },
   "devDependencies": {
+    "@minko-fe/lodash-pro": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1"
