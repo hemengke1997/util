@@ -7,15 +7,17 @@ on:
 
 jobs:
   wip:
-    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+
     steps:
       - uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
-          registry-url: https://registry.npmjs.org/
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2.0.1
@@ -23,4 +25,4 @@ jobs:
           version: 6.31.0
 
       - name: Build
-        run: pnpm -r --parallel build --filter "./packages/*"
+        run: pnpm -r --parallel --filter "./packages/* build"
