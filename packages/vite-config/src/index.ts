@@ -4,8 +4,8 @@ import { loadEnv, mergeConfig as viteMergeConfig } from 'vite'
 import type { ConfigEnv, UserConfig } from 'vite'
 import { injectEnv, pathsMapToAlias } from './utils'
 
-const getDefaultConfig = ({ root }: { root: string }) => {
-  const alias = pathsMapToAlias()
+const getDefaultConfig = ({ root }: { root: string }): UserConfig => {
+  const alias = pathsMapToAlias(root)
   return {
     root,
     resolve: {
@@ -23,7 +23,7 @@ const getDefaultConfig = ({ root }: { root: string }) => {
       chunkSizeWarningLimit: 2048,
       sourcemap: false,
     },
-  } satisfies UserConfig
+  }
 }
 
 const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig) => {

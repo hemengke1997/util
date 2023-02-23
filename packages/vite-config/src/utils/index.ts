@@ -19,13 +19,13 @@ export function injectEnv(envConf: Record<string, any>): ImportMetaEnv {
   return ret
 }
 
-interface PathMapping {
+export interface PathMapping {
   find: RegExp
   replacement: string
 }
 
-export function pathsMapToAlias() {
-  const tsconfig = getTsconfig(process.cwd())
+export function pathsMapToAlias(root: string) {
+  const tsconfig = getTsconfig(root)
 
   const compilerOptions = tsconfig?.config.compilerOptions
 
