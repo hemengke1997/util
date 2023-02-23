@@ -23,13 +23,13 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.31.0
+          version: 7.27.1
 
       - name: Install Dependencies
         run: pnpm install --no-frozen-lockfile
 
       - name: Build
-        run: pnpm run build
+        run: pnpm -r --parallel --filter "./packages/*" build
 
       - name: Publish to NPM
         run: pnpm -r publish --access public --no-git-checks
