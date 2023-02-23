@@ -2,12 +2,12 @@ import { useRef } from 'react'
 import { useControlledState } from './useControlledState'
 
 function useStrictInput(
-  v: string | undefined,
+  v: string,
   onVChange: (v: string) => void,
   // default treat input as `Number`
   strictRegExp = /[^0-9]/g,
 ) {
-  const [value, setValue] = useControlledState({
+  const [value, setValue] = useControlledState(v, {
     defaultValue: v,
     value: v,
     onChange: onVChange,

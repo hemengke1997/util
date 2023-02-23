@@ -1,52 +1,58 @@
-import { isFunction } from '@minko-fe/lodash-pro'
-import { useMemo, useRef } from 'react'
-import { useMemoizedFn, useUpdate } from 'ahooks'
+import { useEvent } from './useEvent'
+import { useLayoutUpdateEffect } from './useLayoutUpdateEffect'
+import { useSafeState } from '.'
 
-function useControlledState<T, R = T>(option: {
-  defaultValue?: T | (() => T)
-  value?: T
-  onChange?: (value: T, prevValue: T) => void
-  postValue?: (value: T) => T
-}): [R, (value: T | ((prevState: T) => T)) => void] {
-  const { defaultValue, value, onChange, postValue } = option
+type Updater<T> = (updater: T | ((origin: T) => T)) => void
 
-  const isControlled = Object.prototype.hasOwnProperty.call(option, 'value') && typeof value !== 'undefined'
-
-  const initialValue = useMemo(() => {
-    if (isControlled) {
-      return value
-    }
-    if (defaultValue !== undefined) {
-      return isFunction(defaultValue) ? (defaultValue as Function)() : defaultValue
-    }
-  }, [])
-
-  const stateRef = useRef(initialValue)
-
-  if (isControlled) {
-    stateRef.current = value
-  }
-
-  if (postValue) {
-    stateRef.current = postValue(stateRef.current)
-  }
-
-  const update = useUpdate()
-
-  function triggerChange(newValue: T | ((prevState: T) => T)) {
-    const r = isFunction(newValue) ? newValue(stateRef.current) : newValue
-    if (!isControlled) {
-      stateRef.current = r
-
-      update()
-    }
-
-    if (stateRef.current !== r && onChange) {
-      onChange(r, stateRef.current)
-    }
-  }
-
-  return [stateRef.current, useMemoizedFn(triggerChange)]
+function hasValue(value: any) {
+  return value !== undefined
 }
 
-export { useControlledState }
+export function useControlledState<T, R = T>(
+  defaultStateValue: T | (() => T),
+  option?: {
+    defaultValue?: T | (() => T)
+    value?: T
+    onChange?: (value: T, prevValue: T) => void
+    postState?: (value: T) => T
+  },
+): [R, Updater<T>] {
+  const { defaultValue, value, onChange, postState } = option || {}
+
+  const [innerValue, setInnerValue] = useSafeState<T>(() => {
+    if (hasValue(value)) {
+      return value
+    } else if (hasValue(defaultValue)) {
+      return typeof defaultValue === 'function' ? (defaultValue as any)() : defaultValue
+    } else {
+      return typeof defaultStateValue === 'function' ? (defaultStateValue as any)() : defaultStateValue
+    }
+  })
+
+  const mergedValue = value !== undefined ? value : innerValue
+  const postMergedValue = postState ? postState(mergedValue) : mergedValue
+
+  const onChangeFn = useEvent(onChange!)
+
+  const [prevValue, setPrevValue] = useSafeState<[T]>([mergedValue])
+
+  useLayoutUpdateEffect(() => {
+    const prev = prevValue[0]
+    if (innerValue !== prev) {
+      onChangeFn(innerValue, prev)
+    }
+  }, [prevValue])
+
+  useLayoutUpdateEffect(() => {
+    if (!hasValue(value)) {
+      setInnerValue(value!)
+    }
+  }, [value])
+
+  const triggerChange: Updater<T> = useEvent((updater) => {
+    setInnerValue(updater)
+    setPrevValue([mergedValue])
+  })
+
+  return [postMergedValue as unknown as R, triggerChange]
+}
