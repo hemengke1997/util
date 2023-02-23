@@ -102,30 +102,6 @@
   }
 }
 
-@keyframes rc-center-zoom-in {
-  from {
-    transform: scale(0.8) translate3d(-50%, -50%, 0);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1) translate3d(-50%, -50%, 0);
-    opacity: 1;
-  }
-}
-
-@keyframes rc-center-zoom-out {
-  from {
-    transform: scale(1) translate3d(-50%, -50%, 0);
-    opacity: 1;
-  }
-
-  to {
-    transform: scale(0.8) translate3d(-50%, -50%, 0);
-    opacity: 0;
-  }
-}
-
 @keyframes rc-rotate {
   from {
     transform: rotate(0deg);
@@ -193,15 +169,5 @@
 
   &-exit-active {
     animation: var(--rc-animation-duration-base) rc-zoom-out both var(--rc-animation-timing-function-leave);
-  }
-}
-
-.rc-center-zoom {
-  &-enter-active {
-    animation: var(--rc-animation-duration-base) rc-center-zoom-in both var(--rc-animation-timing-function-enter);
-  }
-
-  &-exit-active {
-    animation: var(--rc-animation-duration-base) rc-center-zoom-out both var(--rc-animation-timing-function-leave);
   }
 }

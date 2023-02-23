@@ -40,7 +40,7 @@ function nextTickClear() {
   setTimeout(syncClear)
 }
 
-function parseOptions(message) {
+function parseOptions(message: ToastProps) {
   if (isObject(message)) {
     return message
   }
@@ -144,7 +144,7 @@ const ToastObj = (props: ToastProps) => {
   return update
 }
 
-const createMethod = (type: ToastType) => (options) => {
+const createMethod = (type: ToastType) => (options: ToastProps) => {
   return ToastObj({
     ...currentOptions,
     ...defaultOptionsMap.get(type),

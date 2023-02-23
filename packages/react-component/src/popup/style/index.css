@@ -1,5 +1,3 @@
-@import '../../style/index.css';
-
 :root {
   --rc-popup-transition: transform theme(transitionDuration.default);
   --rc-popup-round-border-radius: theme(borderRadius.default)

@@ -6,6 +6,11 @@ import reactLogo from './assets/react.svg'
 import { A } from '#/A'
 import './App.css'
 
+Toast.setDefaultOptions({
+  duration: 1000,
+  keepOnHover: false,
+})
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -18,7 +23,7 @@ function App() {
   return (
     <div className='App'>
       <A />
-      <div onClick={() => Toast({ message: <div>'this is toast'</div>, duration: 1000 })}>show toast</div>
+      <div onClick={() => Toast({ message: <div>'this is toast'</div> })}>show toast</div>
       <div onClick={() => Toast.clear()}>hide toast</div>
       <div>
         <a target='_blank' rel='noreferrer'>
