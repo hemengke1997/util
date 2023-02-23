@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "dev": "pnpm -r --parallel --filter ./packages/* run dev && pnpm run watch",
-    "build": "pnpm -r --parallel --filter ./packages/* run build",
+    "build": "pnpm -r --parallel run build",
     "watch": "tsx scripts/watch",
     "test": "pnpm -r --parallel --filter './packages/*' run test",
     "changelog": "pnpm -r --parallel --filter './packages/*' run changelog",
