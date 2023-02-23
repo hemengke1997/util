@@ -1,4 +1,13 @@
-## [0.0.10](https://github.com/hemengke1997/util/compare/v0.0.8...v0.0.10) (2023-02-23)
+## [0.0.11](https://github.com/hemengke1997/util/compare/v0.0.9...v0.0.11) (2023-02-23)
+
+
+### Bug Fixes
+
+* **vite-config:** dts ([44179ba](https://github.com/hemengke1997/util/commit/44179bac377bb42d77c47a4521dcf29d731e51e1))
+
+
+
+## [0.0.9](https://github.com/hemengke1997/util/compare/v0.0.8...v0.0.9) (2023-02-23)
 
 
 ### Bug Fixes
