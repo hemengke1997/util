@@ -14,11 +14,11 @@
     "util"
   ],
   "scripts": {
-    "dev": "pnpm -r --parallel --filter ./packages/* run dev && pnpm run watch",
-    "build": "pnpm -r --parallel --filter \"{../packages/**}\" run build",
+    "dev": "pnpm -r --parallel --filter=./packages/* dev && pnpm run watch",
+    "build": "pnpm -r --parallel --filter=./packages/* build",
     "watch": "tsx scripts/watch",
-    "test": "pnpm -r --parallel --filter './packages/*' run test",
-    "changelog": "pnpm -r --parallel --filter './packages/*' run changelog",
+    "test": "pnpm -r --parallel --filter=./packages/* test",
+    "changelog": "pnpm -r --parallel --filter=./packages/* changelog",
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint .",
     "upgrade:deps": "pnpm update --i --L",
