@@ -25,4 +25,4 @@ jobs:
           version: 7.27.1
 
       - name: Build
-        run: pnpm -r --parallel --filter "./packages/* build"
+        run: pnpm -r --parallel --filter "./packages/*" build
