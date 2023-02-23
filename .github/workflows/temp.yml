@@ -23,4 +23,4 @@ jobs:
           version: 6.31.0
 
       - name: Build
-        run: pnpm run build
+        run: pnpm -r --parallel build --filter "./packages/*"
