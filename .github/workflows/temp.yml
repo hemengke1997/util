@@ -9,7 +9,7 @@ jobs:
   wip:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -21,9 +21,6 @@ jobs:
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.31.0
-
-      - name: Install Dependencies
-        run: pnpm install --no-frozen-lockfile
 
       - name: Build
         run: pnpm run build
