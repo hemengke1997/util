@@ -22,7 +22,7 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
     icon,
     className,
     overlay = false,
-    transition = 'rc-zoom',
+    transition = 'rc-bounce',
     overlayClass,
     overlayStyle,
     closeOnClickOverlay,

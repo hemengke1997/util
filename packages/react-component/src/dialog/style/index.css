@@ -1,0 +1,42 @@
+:root {
+  --rc-dialog-top: 45%;
+  --rc-dialog-font-size: 16px;
+  --rc-dialog-background-color: theme(colors.black / 0.7);
+  --rc-dialog-border-radius: theme(borderRadius.default);
+  --rc-dialog-transition: theme(transitionDuration.default);
+  --rc-dialog-content-padding: 16px 24px;
+}
+
+.rc-dialog {
+  &.rc-popup {
+    top: var(--rc-dialog-top);
+    left: 50%;
+    overflow: hidden;
+    font-size: var(--rc-dialog-font-size);
+    background-color: var(--rc-dialog-background-color);
+    border-radius: var(--rc-dialog-border-radius);
+    backface-visibility: hidden;
+    transition-duration: var(--rc-dialog-transition);
+    transition-property: transform, opacity;
+  }
+
+  &__content {
+    padding: var(--rc-dialog-content-padding);
+  }
+
+  &&-bounce {
+    &-enter-active {
+      transform: translate3d(-50%, -50%, 0) scale(0.7);
+      opacity: 1;
+    }
+
+    &-exit-active {
+      transform: translate3d(-50%, -50%, 0) scale(0.7);
+      opacity: 0;
+    }
+    &-enter {
+      transform: translate3d(-50%, -50%, 0);
+      opacity: 0;
+    }
+  }
+}

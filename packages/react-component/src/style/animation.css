@@ -171,3 +171,24 @@
     animation: var(--rc-animation-duration-base) rc-zoom-out both var(--rc-animation-timing-function-leave);
   }
 }
+
+.rc-bounce {
+  &-enter {
+    transform: translate3d(-50%, -50%, 0) scale(0.7);
+    transition: opacity var(--rc-animation-duration-base), transform var(--rc-animation-duration-base);
+    opacity: 0;
+  }
+
+  &-exit-active {
+    transform: translate3d(-50%, -50%, 0) scale(0.9);
+    transition: opacity var(--rc-animation-duration-base), transform var(--rc-animation-duration-base);
+    opacity: 0;
+  }
+
+  &-enter-active,
+  &-leave-exit {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+    transition: opacity var(--rc-animation-duration-base), transform var(--rc-animation-duration-base);
+    opacity: 1;
+  }
+}

@@ -1,8 +1,5 @@
-import { useState } from 'react'
-import { useStrictInput } from '@minko-fe/react-util-hook'
-import { isBoolean } from '@minko-fe/lodash-pro'
-import { Toast } from '@minko-fe/react-component'
-import reactLogo from './assets/react.svg'
+import { useRef } from 'react'
+import { Dialog, Popup, Toast } from '@minko-fe/react-component'
 import { A } from '#/A'
 import './App.css'
 
@@ -12,35 +9,37 @@ Toast.setDefaultOptions({
 })
 
 function App() {
-  const [count, setCount] = useState(0)
+  const destory = useRef<() => void>()
 
-  const a = useStrictInput('', () => {})
-
-  console.log(isBoolean(false))
-
-  console.log(a, 'a')
+  const x = () => {
+    destory.current = Dialog.show({
+      children: <A />,
+      onClose: () => {
+        console.log('onClose!~')
+      },
+      overlay: false,
+    })
+  }
 
   return (
     <div className='App'>
-      <A />
-      <div onClick={() => Toast({ message: <div>'this is toast'</div> })}>show toast</div>
+      <Popup>hello world</Popup>
+      <div onClick={() => Toast({ message: <div>'this is toast'</div>, duration: 0 })}>show toast</div>
       <div onClick={() => Toast.clear()}>hide toast</div>
-      <div>
-        <a target='_blank' rel='noreferrer'>
-          <img src='/vite.svg' className='logo' alt='Vite logo' />
-        </a>
-        <a target='_blank' rel='noreferrer'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
+      <div
+        onClick={() => {
+          x()
+        }}
+      >
+        show dialog
       </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div
+        onClick={() => {
+          destory.current?.()
+        }}
+      >
+        hide dialog
       </div>
-      <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
     </div>
   )
 }

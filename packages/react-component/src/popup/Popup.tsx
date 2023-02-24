@@ -1,6 +1,6 @@
-import { isNil } from '@minko-fe/lodash-pro'
+import { KeyCode, isNil } from '@minko-fe/lodash-pro'
 import type { Ref } from 'react'
-import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { useEventListener, useIsomorphicLayoutEffect, useLockScroll } from '@minko-fe/react-util-hook'
 import classNames from 'classnames'
@@ -8,6 +8,8 @@ import { renderToContainer } from '../utils/dom/renderToContainer'
 import { withStopPropagation } from '../utils/dom/event'
 import { createNamespace } from '../utils/createNamespace'
 import { callInterceptor } from '../utils/interceptor'
+import Overlay from '../overlay'
+import { Cross } from '../icon/Cross'
 import type { PopupInstanceType, PopupProps } from './PropsType'
 import { PopupContext } from './PopupContext'
 
@@ -17,22 +19,18 @@ let globalZIndex = 2000
 
 const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   const {
-    round,
-    // closeable,
+    closeable = false,
     className,
-    // overlay = true,
-    // lockScroll = true,
-    // closeOnClickOverlay = true,
+    overlay = true,
+    lockScroll = true,
+    closeOnClickOverlay = true,
+    keyboard = closeOnClickOverlay,
     stopPropagation = ['click'],
     teleport = () => document.body,
-    // title,
-    // description,
     children,
-    // closeIcon,
+    closeIcon = <Cross />,
     position = 'center',
     safeAreaInsetBottom,
-    // closeOnClickOverlay,
-    lockScroll,
     onOpen,
     beforeClose,
     onClose,
@@ -40,17 +38,20 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     closeOnPopstate,
     duration: propDuration,
     style: propStyle,
-    // closeIconPosition = 'top-right',
+    closeIconPosition = 'top-right',
     zIndex: propZIndex,
     visible: propVisible,
-    // onClickOverlay: propOnClickOverlay,
-    // onClickCloseIcon: propOnClickCloseIcon,
+    onClickOverlay: propOnClickOverlay,
+    onClickCloseIcon: propOnClickCloseIcon,
   } = props
 
   const opened = useRef(false)
   const zIndex = useRef<number>(propZIndex ?? globalZIndex)
+
   const popupRef = useRef<HTMLDivElement>(null)
+
   const [visible, setVisible] = useState(propVisible)
+
   const [animatedVisible, setAnimatedVisible] = useState(visible)
 
   const style = () => {
@@ -60,8 +61,8 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     }
 
     if (!isNil(propDuration)) {
-      const key = position === 'center' ? 'animationDuration' : 'transitionDuration'
-      initStyle[key] = `${propDuration}ms`
+      initStyle.animationDuration = `${propDuration}ms`
+      initStyle.transitionDuration = `${propDuration}ms`
     }
     return initStyle
   }
@@ -88,43 +89,79 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     })
   }
 
-  // const onClickOverlay = (e: React.MouseEvent) => {
-  //   propOnClickOverlay?.(e)
+  const renderOverlay = () => {
+    if (overlay) {
+      return (
+        <Overlay
+          visible={visible}
+          className={props.overlayClass}
+          customStyle={props.overlayStyle}
+          zIndex={zIndex.current}
+          duration={propDuration}
+          onClick={onClickOverlay}
+        />
+      )
+    }
+    return null
+  }
 
-  //   if (closeOnClickOverlay) {
-  //     close()
-  //   }
-  // }
+  const onClickOverlay = (e: React.MouseEvent) => {
+    propOnClickOverlay?.(e)
 
-  // const onClickCloseIcon = (e: React.MouseEvent) => {
-  //   propOnClickCloseIcon?.(e)
-  //   close()
-  // }
+    if (closeOnClickOverlay) {
+      close()
+    }
+  }
+
+  useEventListener('keydown', onWrapperKeyDown, { target: document.documentElement })
+
+  function onWrapperKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (keyboard && e.keyCode === KeyCode.ESC) {
+      e.stopPropagation()
+      close()
+    }
+  }
+
+  const renderCloseIcon = () => {
+    if (closeable) {
+      if (closeIcon) {
+        return (
+          <div className={classNames(bem('close-icon', closeIconPosition))} onClick={onClickCloseIcon}>
+            {closeIcon}
+          </div>
+        )
+      }
+      return null
+    }
+    return null
+  }
+
+  const onClickCloseIcon = (e: React.MouseEvent) => {
+    propOnClickCloseIcon?.(e)
+    close()
+  }
 
   const renderPopup = () => {
     if (stopPropagation) {
       return withStopPropagation(
         stopPropagation,
         <div
+          ref={popupRef as Ref<HTMLDivElement>}
           className={classNames(
             bem({
-              round,
               [position]: position,
             }),
             { 'rc-safe-area-bottom': safeAreaInsetBottom },
             className,
           )}
+          style={{
+            ...style(),
+            display: !visible && !animatedVisible ? 'none' : undefined,
+          }}
+          onClick={onClick}
         >
-          <div
-            ref={popupRef as Ref<HTMLDivElement>}
-            style={{
-              ...style,
-              display: !visible && !animatedVisible ? 'none' : undefined,
-            }}
-            onClick={onClick}
-          >
-            {children}
-          </div>
+          {children}
+          {renderCloseIcon()}
         </div>,
       )
     }
@@ -173,6 +210,12 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     setVisible(propVisible)
   }, [propVisible])
 
+  useEffect(() => {
+    if (visible === false) {
+      close()
+    }
+  }, [visible])
+
   useLockScroll(popupRef, visible && lockScroll)
 
   useImperativeHandle(ref, () => ({
@@ -181,7 +224,10 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
 
   return renderToContainer(
     teleport,
-    <PopupContext.Provider value={{ visible }}>{renderTransition()}</PopupContext.Provider>,
+    <PopupContext.Provider value={{ visible }}>
+      {renderOverlay()}
+      {renderTransition()}
+    </PopupContext.Provider>,
   )
 })
 

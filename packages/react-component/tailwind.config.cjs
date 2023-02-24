@@ -5,6 +5,7 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     borderRadius: {
+      sm: '4px',
       default: '8px',
     },
     transitionDuration: {

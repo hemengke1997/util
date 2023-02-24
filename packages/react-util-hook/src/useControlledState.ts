@@ -8,15 +8,12 @@ function hasValue(value: any) {
   return value !== undefined
 }
 
-export function useControlledState<T, R = T>(
-  defaultStateValue: T | (() => T),
-  option?: {
-    defaultValue?: T | (() => T)
-    value?: T
-    onChange?: (value: T, prevValue: T) => void
-    postState?: (value: T) => T
-  },
-): [R, Updater<T>] {
+export function useControlledState<T, R = T>(option: {
+  defaultValue?: T | (() => T)
+  value?: T
+  onChange?: (value: T, prevValue: T) => void
+  postState?: (value: T) => T
+}): [R, Updater<T>] {
   const { defaultValue, value, onChange, postState } = option || {}
 
   const [innerValue, setInnerValue] = useSafeState<T>(() => {
@@ -24,8 +21,6 @@ export function useControlledState<T, R = T>(
       return value
     } else if (hasValue(defaultValue)) {
       return typeof defaultValue === 'function' ? (defaultValue as any)() : defaultValue
-    } else {
-      return typeof defaultStateValue === 'function' ? (defaultStateValue as any)() : defaultStateValue
     }
   })
 

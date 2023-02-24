@@ -1,6 +1,21 @@
 import type { ReactElement } from 'react'
 import React from 'react'
 
+export function stopPropagation(event): void {
+  event.stopPropagation()
+}
+
+export function preventDefault(event: TouchEvent | Event, isStopPropagation?: boolean): void {
+  /* istanbul ignore else */
+  if (typeof event.cancelable !== 'boolean' || event.cancelable) {
+    event.preventDefault()
+  }
+
+  if (isStopPropagation) {
+    stopPropagation(event as Event)
+  }
+}
+
 export type PropagationEvent = 'click'
 // https://github.com/ant-design/ant-design-mobile/blob/master/src/utils/with-stop-propagation.tsx
 const eventToPropRecord: Record<PropagationEvent, string> = {

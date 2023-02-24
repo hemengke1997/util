@@ -8,13 +8,13 @@ export type PopupCloseIconPosition = 'top-left' | 'top-right' | 'bottom-left' | 
 export type Position = 'center' | 'top' | 'bottom' | 'right' | 'left'
 
 export interface SharedPopupProps {
-  /** 是否显示圆角 */
-  round?: boolean
+  /** 是否支持键盘 */
+  keyboard?: boolean
   /** css z-index值 */
   zIndex?: number
   /** 是否显示关闭图标	 */
   closeable?: boolean
-  /**  是否显示遮罩层	 */
+  /** 是否显示遮罩层	 */
   overlay?: boolean
   /** 自定义遮罩层类名 */
   overlayClass?: string
@@ -54,10 +54,6 @@ export interface SharedPopupProps {
 }
 
 export interface PopupProps extends BaseTypeProps, SharedPopupProps {
-  /** 自定义标题 */
-  title?: string | React.ReactNode
-  /** 自定义描述 */
-  description?: string | React.ReactNode
   /** 是否显示弹出层	 */
   visible?: boolean
   /** 关闭图标 */

@@ -1,11 +1,12 @@
 :root {
   --rc-popup-transition: transform theme(transitionDuration.default);
-  --rc-popup-round-border-radius: theme(borderRadius.default)
+  --rc-popup-round-border-radius: theme(borderRadius.default);
   --rc-popup-close-icon-z-index: 1;
-  --rc-popup-close-icon-color: theme(colors.gray.500)
-  --rc-popup-close-icon-active-color: theme(colors.gray.600)
-  --rc-popup-close-icon-size: 24px;
-  --rc-popup-close-icon-margin: 16px;
+  --rc-popup-close-icon-color: theme(colors.gray.500);
+  --rc-popup-close-icon-active-color: theme(colors.gray.600);
+  --rc-popup-close-icon-border-radius: theme(borderRadius.sm);
+  --rc-popup-close-icon-size: 16px;
+  --rc-popup-close-icon-margin: 8px;
   --rc-popup-title-color: 'inherit';
   --rc-popup-title-font-size: 16px;
   --rc-popup-description-color: theme(colors.gray.600);
@@ -34,8 +35,7 @@
       @apply left-0 top-0 w-full;
 
       &.rc-popup--round {
-        border-radius: 0 0 var(--rc-popup-round-border-radius)
-          var(--rc-popup-round-border-radius);
+        border-radius: 0 0 var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius);
       }
     }
 
@@ -43,8 +43,7 @@
       @apply top-0 right-0;
 
       &.rc-popup--round {
-        border-radius: var(--rc-popup-round-border-radius) 0 0
-          var(--rc-popup-round-border-radius);
+        border-radius: var(--rc-popup-round-border-radius) 0 0 var(--rc-popup-round-border-radius);
       }
     }
 
@@ -52,8 +51,7 @@
       @apply bottom-0 left-0 w-full;
 
       &.rc-popup--round {
-        border-radius: var(--rc-popup-round-border-radius)
-          var(--rc-popup-round-border-radius) 0 0;
+        border-radius: var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius) 0 0;
       }
     }
 
@@ -61,8 +59,7 @@
       @apply top-0 left-0;
 
       &.rc-popup--round {
-        border-radius: 0 var(--rc-popup-round-border-radius)
-          var(--rc-popup-round-border-radius) 0;
+        border-radius: 0 var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius) 0;
       }
     }
 
@@ -106,8 +103,19 @@
       position: absolute;
       z-index: var(--rc-popup-close-icon-z-index);
       color: var(--rc-popup-close-icon-color);
-      font-size: var(--rc-popup-close-icon-size);
+      width: var(--rc-popup-close-icon-size);
+      height: var(--rc-popup-close-icon-size);
+      border-radius: var(--rc-popup-close-icon-border-radius);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
+      @apply transition-all;
+      
+      &:hover {
+        @apply transition-all;
+        background-color: theme(colors.gray.800);
+      }
 
       &:active {
         color: var(--rc-popup-close-icon-active-color);

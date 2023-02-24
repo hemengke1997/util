@@ -41,11 +41,12 @@ export async function dev(options?: DevOptions) {
   const watcher = watch(path.join(root, 'src'), resolvedWatchOptions)
 
   async function bundle() {
-    await build({
-      ...defaultConfig,
-      dts: false,
-      ...tsup,
-    })
+    try {
+      await build({
+        ...defaultConfig,
+        ...tsup,
+      })
+    } catch {}
   }
 
   bundle()

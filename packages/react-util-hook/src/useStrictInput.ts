@@ -7,7 +7,7 @@ function useStrictInput(
   // default treat input as `Number`
   strictRegExp = /[^0-9]/g,
 ) {
-  const [value, setValue] = useControlledState(v, {
+  const [value, setValue] = useControlledState({
     defaultValue: v,
     value: v,
     onChange: onVChange,
