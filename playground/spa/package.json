@@ -15,7 +15,8 @@
     "@minko-fe/react-util-hook": "workspace:*",
     "@minko-fe/react-util-route": "workspace:*",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
     "@minko-fe/vite-config": "workspace:*",
