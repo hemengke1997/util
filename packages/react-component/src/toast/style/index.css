@@ -14,17 +14,16 @@
 }
 
 .rc-toast {
-  @apply flex flex-col items-center box-border whitespace-pre-wrap break-all text-center origin-center;
-  width: var(--rc-toast-default-width);
-  min-height: var(--rc-toast-default-min-height);
-  padding: var(--rc-toast-default-padding);
-  color: var(--rc-toast-text-color);
-  font-size: var(--rc-toast-font-size);
-  background-color: var(--rc-toast-background-color);
-  border-radius: var(--rc-toast-border-radius);
-  transition: all var(--rc-animation-duration-fast);
   &.rc-popup {
-  
+    @apply flex flex-col items-center box-border whitespace-pre-wrap break-all text-center origin-center;
+    width: var(--rc-toast-default-width);
+    min-height: var(--rc-toast-default-min-height);
+    padding: var(--rc-toast-default-padding);
+    color: var(--rc-toast-text-color);
+    font-size: var(--rc-toast-font-size);
+    background-color: var(--rc-toast-background-color);
+    border-radius: var(--rc-toast-border-radius);
+    transition: all var(--rc-animation-duration-fast);
   }
 
   &&--unclickable {
@@ -66,5 +65,39 @@
 
   &__info {
     margin-top: var(--rc-padding-xs);
+  }
+  
+  &&-bounce {
+    @keyframes rc-toast-bounce-in {
+      from {
+        opacity: 0;
+        transform: translate3d(-50%, -50%, 0) scale(0.5);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate3d(-50%, -50%, 0) scale(1);
+      }
+    }
+
+    @keyframes rc-toast-bounce-out {
+      from {
+        opacity: 1;
+        transform: translate3d(-50%, -50%, 0) scale(1);
+      }
+
+      to {
+        opacity: 0;
+        transform: translate3d(-50%, -50%, 0) scale(0.5);
+      }
+    }
+
+    &-enter-active {
+      animation: var(--rc-animation-duration-base) rc-toast-bounce-in both var(--rc-animation-timing-function-enter);
+    }
+
+    &-exit-active {
+      animation: var(--rc-animation-duration-base) rc-toast-bounce-out both var(--rc-animation-timing-function-leave);
+    }
   }
 }

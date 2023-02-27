@@ -14,7 +14,6 @@ const defaultOptions: DialogProps = {
   closeIcon: <Cross />,
   transition: 'rc-dialog-bounce',
   closeOnClickOverlay: false,
-  duration: 4000,
 }
 
 let commonOptions = extend({}, defaultOptions)
@@ -36,11 +35,11 @@ Dialog.show = (props: DialogProps): (() => void) => {
   const TempDialog = (dialogProps: DialogProps) => {
     const { onClosed, onClose, ...rest } = dialogProps
 
-    const [visible, setVisible] = useState(dialogProps.visible)
+    const [visible, setVisible] = useState<boolean>(false)
 
     useEffect(() => {
-      setVisible(dialogProps.visible)
-    }, [dialogProps.visible])
+      setVisible(true)
+    }, [])
 
     const _afterClose = () => {
       if (onClosed) {

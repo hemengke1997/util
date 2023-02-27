@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Dialog, Popup, Toast } from '@minko-fe/react-component'
 import { A } from '#/A'
 import './App.css'
@@ -21,11 +21,12 @@ function App() {
     })
   }
 
+  const [visible, setVisible] = useState(false)
+
   return (
     <div className='App'>
       <Popup>hello world</Popup>
-      <div onClick={() => Toast({ message: <div>'this is toast'</div>, duration: 0 })}>show toast</div>
-      <div onClick={() => Toast.clear()}>hide toast</div>
+      <div onClick={() => Toast({ message: <div>'this is toast'</div>, duration: 500 })}>show toast</div>
       <div
         onClick={() => {
           x()
@@ -33,13 +34,18 @@ function App() {
       >
         show dialog
       </div>
-      <div
+      {/* <div
         onClick={() => {
           destory.current?.()
         }}
       >
         hide dialog
-      </div>
+      </div> */}
+      <Dialog visible={visible} overlay={false}>
+        <div onClick={() => setVisible(false)}>12312321</div>
+      </Dialog>
+      <div onClick={() => setVisible(true)}>open dialog</div>
+      <div onClick={() => Toast.clear()}>hide toast</div>
     </div>
   )
 }

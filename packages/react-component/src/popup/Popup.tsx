@@ -1,8 +1,8 @@
-import { KeyCode, isNil } from '@minko-fe/lodash-pro'
+import { KeyCode } from '@minko-fe/lodash-pro'
 import type { Ref } from 'react'
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { useEventListener, useIsomorphicLayoutEffect, useLockScroll } from '@minko-fe/react-util-hook'
+import { useEventListener, useIsomorphicLayoutEffect, useLockScroll, useUpdateEffect } from '@minko-fe/react-util-hook'
 import classNames from 'classnames'
 import { renderToContainer } from '../utils/dom/renderToContainer'
 import { withStopPropagation } from '../utils/dom/event'
@@ -60,10 +60,10 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
       ...propStyle,
     }
 
-    if (!isNil(propDuration)) {
-      initStyle.animationDuration = `${propDuration}ms`
-      initStyle.transitionDuration = `${propDuration}ms`
-    }
+    const _duration = propDuration || 300
+    initStyle.animationDuration = `${_duration}ms`
+    initStyle.transitionDuration = `${_duration}ms`
+
     return initStyle
   }
 
@@ -147,6 +147,10 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
         stopPropagation,
         <div
           ref={popupRef as Ref<HTMLDivElement>}
+          style={{
+            ...style(),
+            display: !visible && !animatedVisible ? 'none' : undefined,
+          }}
           className={classNames(
             bem({
               [position]: position,
@@ -154,10 +158,6 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
             { 'rc-safe-area-bottom': safeAreaInsetBottom },
             className,
           )}
-          style={{
-            ...style(),
-            display: !visible && !animatedVisible ? 'none' : undefined,
-          }}
           onClick={onClick}
         >
           {children}
@@ -210,7 +210,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     setVisible(propVisible)
   }, [propVisible])
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     if (visible === false) {
       close()
     }

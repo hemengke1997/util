@@ -16,6 +16,7 @@ const defaultOptions: ToastProps = {
   duration: 2000,
   teleport: () => document.body,
   keepOnHover: true,
+  transition: 'rc-toast-bounce',
 }
 
 const toastArray: (() => void)[] = []

@@ -12,7 +12,6 @@ const [bem] = createNamespace('toast')
 const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props) => {
   let clickable = false
   const {
-    popupClassName,
     visible,
     closeOnClick,
     onClose,
@@ -22,7 +21,7 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
     icon,
     className,
     overlay = false,
-    transition = 'rc-bounce',
+    transition = 'rc-toast-bounce',
     overlayClass,
     overlayStyle,
     closeOnClickOverlay,
@@ -81,7 +80,6 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
 
   return (
     <Popup
-      className={popupClassName}
       visible={visible}
       overlay={overlay}
       transition={transition}
@@ -95,12 +93,9 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
       onOpened={onOpened}
       teleport={teleport}
       duration={duration}
+      className={classNames([bem([position, { [type]: icon }]), className])}
     >
-      <div
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-        className={classNames([bem([position, { [type]: icon }]), className])}
-      >
+      <div onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
         {renderIcon()}
         {renderMessage()}
       </div>

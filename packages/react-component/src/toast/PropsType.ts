@@ -5,8 +5,6 @@ export type ToastType = 'loading' | 'success' | 'fail' | 'info'
 
 export type ToastPosition = 'top' | 'middle' | 'bottom'
 export interface ToastProps extends BaseTypeProps {
-  /** popup className */
-  popupClassName?: string
   /** hover时不隐藏 */
   keepOnHover?: boolean
   /** 提示类型 */
