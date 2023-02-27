@@ -1,4 +1,13 @@
-## [0.0.14](https://github.com/hemengke1997/util/compare/v0.0.12...v0.0.14) (2023-02-27)
+## [0.0.15](https://github.com/hemengke1997/util/compare/v0.0.13...v0.0.15) (2023-02-27)
+
+
+### Bug Fixes
+
+* **lodash-pro:** types ([f80e176](https://github.com/hemengke1997/util/commit/f80e176a1e851e8a70e93f7d2cef04f33326ce23))
+
+
+
+## [0.0.13](https://github.com/hemengke1997/util/compare/v0.0.12...v0.0.13) (2023-02-27)
 
 
 ### Bug Fixes
