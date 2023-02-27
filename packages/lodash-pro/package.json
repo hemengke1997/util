@@ -38,9 +38,7 @@
     "bump": "pnpm changelog && bumpp package.json CHANGELOG.md --commit --push --tag -all"
   },
   "dependencies": {
+    "@types/lodash-es": "^4.17.6",
     "lodash-es": "^4.17.21"
-  },
-  "devDependencies": {
-    "@types/lodash-es": "^4.17.6"
   }
 }
