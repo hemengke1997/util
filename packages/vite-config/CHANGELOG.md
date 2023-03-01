@@ -1,4 +1,13 @@
-## [0.0.18](https://github.com/hemengke1997/util/compare/v0.0.16...v0.0.18) (2023-03-01)
+## [0.0.19](https://github.com/hemengke1997/util/compare/v0.0.17...v0.0.19) (2023-03-01)
+
+
+### Features
+
+* **vite-config:** add more vite plugin ([51addeb](https://github.com/hemengke1997/util/commit/51addeb01aaf26a755efd0dd782845f30d7547cd))
+
+
+
+## [0.0.17](https://github.com/hemengke1997/util/compare/v0.0.16...v0.0.17) (2023-03-01)
 
 
 
