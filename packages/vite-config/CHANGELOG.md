@@ -1,4 +1,13 @@
-## [0.0.16](https://github.com/hemengke1997/util/compare/v0.0.14...v0.0.16) (2023-02-27)
+## [0.0.17](https://github.com/hemengke1997/util/compare/v0.0.15...v0.0.17) (2023-03-01)
+
+
+### Features
+
+* **vite-config:** improve vite-config ([16050c2](https://github.com/hemengke1997/util/commit/16050c280dfd39c38424228ba52829ec754cd912))
+
+
+
+## [0.0.15](https://github.com/hemengke1997/util/compare/v0.0.14...v0.0.15) (2023-02-27)
 
 
 ### Bug Fixes
