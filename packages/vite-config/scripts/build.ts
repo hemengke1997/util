@@ -4,4 +4,5 @@ build({
   dts: {
     banner: '/// <reference types="vite/client" />',
   },
+  target: 'esnext',
 })

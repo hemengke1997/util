@@ -1,6 +1,5 @@
-import { useEvent } from './useEvent'
 import { useLayoutUpdateEffect } from './useLayoutUpdateEffect'
-import { useSafeState } from '.'
+import { useMemoizedFn, useSafeState } from '.'
 
 type Updater<T> = (updater: T | ((origin: T) => T)) => void
 
@@ -27,7 +26,7 @@ export function useControlledState<T, R = T>(option: {
   const mergedValue = value !== undefined ? value : innerValue
   const postMergedValue = postState ? postState(mergedValue) : mergedValue
 
-  const onChangeFn = useEvent(onChange!)
+  const onChangeFn = useMemoizedFn(onChange!)
 
   const [prevValue, setPrevValue] = useSafeState<[T]>([mergedValue])
 
@@ -44,7 +43,7 @@ export function useControlledState<T, R = T>(option: {
     }
   }, [value])
 
-  const triggerChange: Updater<T> = useEvent((updater) => {
+  const triggerChange: Updater<T> = useMemoizedFn((updater) => {
     setInnerValue(updater)
     setPrevValue([mergedValue])
   })

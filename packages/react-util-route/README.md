@@ -1,6 +1,6 @@
 # Usage
 
-```tsx
+```jsx
 import { BrowserRouter } from 'react-router-dom'
 import { CreateRoutes } from '@minko-fe/react-util-route'
 import type { RoutesItemType } from '@minko-fe/react-util-route'

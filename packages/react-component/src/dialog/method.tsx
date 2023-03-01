@@ -4,9 +4,7 @@ import { Cross } from '../icon'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount } from '../utils/dom/render'
 import { Dialog as BaseDialog } from './Dialog'
-import type { DialogProps } from './PropsType'
-
-const Dialog = BaseDialog
+import type { DialogProps, DialogStatic } from './PropsType'
 
 const defaultOptions: DialogProps = {
   overlay: true,
@@ -20,8 +18,10 @@ let commonOptions = extend({}, defaultOptions)
 
 const destroyFns: Array<() => void> = []
 
+const DialogObj: DialogStatic = BaseDialog
+
 // 可返回用于销毁此弹窗的方法
-Dialog.show = (props: DialogProps): (() => void) => {
+DialogObj.show = (props: DialogProps): (() => void) => {
   if (!isBrowser()) return () => {}
 
   let timeoutId: NodeJS.Timeout
@@ -38,8 +38,8 @@ Dialog.show = (props: DialogProps): (() => void) => {
     const [visible, setVisible] = useState<boolean>(false)
 
     useEffect(() => {
-      setVisible(true)
-    }, [])
+      setVisible(dialogProps.visible || false)
+    }, [dialogProps.visible])
 
     const _afterClose = () => {
       if (onClosed) {
@@ -74,9 +74,7 @@ Dialog.show = (props: DialogProps): (() => void) => {
         break
       }
     }
-    Promise.resolve().then(() => {
-      unmount(container)
-    })
+    unmount(container)
   }
 
   function render(config: DialogProps) {
@@ -112,10 +110,12 @@ function setDefaultOptions(options?: DialogProps) {
   extend(commonOptions, options)
 }
 
-Dialog.setDefaultOptions = setDefaultOptions
+DialogObj.setDefaultOptions = setDefaultOptions
 
-Dialog.resetDefaultOptions = () => {
+DialogObj.resetDefaultOptions = () => {
   commonOptions = extend({}, defaultOptions)
 }
+
+const Dialog = DialogObj as DialogStatic
 
 export { Dialog }

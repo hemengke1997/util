@@ -1,10 +1,10 @@
-import { extend, isBrowser, isObject } from '@minko-fe/lodash-pro'
+import { extend, isBrowser } from '@minko-fe/lodash-pro'
 import { useLatest } from '@minko-fe/react-util-hook'
 import { useEffect, useState } from 'react'
 import { resolveContainer } from '../utils/dom/getContainer'
-import { render, unmount } from '../utils/dom/render'
+import { render as ReactRender, unmount } from '../utils/dom/render'
 import { lockClick } from './lock-click'
-import type { ToastInstance, ToastProps, ToastReturnType, ToastType } from './PropsType'
+import type { ConfigUpdate, ToastInstance, ToastProps, ToastType } from './PropsType'
 import { Toast as BaseToast } from './Toast'
 
 const defaultOptions: ToastProps = {
@@ -14,25 +14,27 @@ const defaultOptions: ToastProps = {
   position: 'middle',
   forbidClick: false,
   duration: 2000,
+  transitionTime: 200,
   teleport: () => document.body,
   keepOnHover: true,
   transition: 'rc-toast-bounce',
+  keyboard: false,
 }
 
-const toastArray: (() => void)[] = []
+const destroyFns: (() => void)[] = []
 
 let allowMultiple = false
-let currentOptions = extend({}, defaultOptions)
+let commonOptions = extend({}, defaultOptions)
 
 // default options of specific type
 const defaultOptionsMap = new Map<string, ToastProps>()
 
 // 同步的销毁
 function syncClear() {
-  let fn = toastArray.pop()
+  let fn = destroyFns.pop()
   while (fn) {
     fn()
-    fn = toastArray.pop()
+    fn = destroyFns.pop()
   }
 }
 
@@ -41,67 +43,39 @@ function nextTickClear() {
   setTimeout(syncClear)
 }
 
-function parseOptions(message: ToastProps) {
-  if (isObject(message)) {
-    return message
-  }
-  return { message }
-}
+const ToastObj = {} as ToastInstance
 
 // 可返回用于销毁此弹窗的方法
-const ToastObj = (props: ToastProps) => {
+ToastObj.show = (props: ToastProps) => {
   if (!isBrowser()) return null
-  const update: ToastReturnType = {
-    config: () => {},
-    clear: () => null,
-  }
-  let timer = 0
-  const { onClose, teleport } = props
+
+  let timeoutId: NodeJS.Timeout
+  const { teleport } = props
   const container = document.createElement('div')
   const bodyContainer = resolveContainer(teleport)
   bodyContainer.appendChild(container)
 
-  const TempToast = () => {
-    const options = {
-      duration: 2000,
-      ...currentOptions,
-      ...props,
-    } as ToastProps
+  let currentConfig: ToastProps = { ...commonOptions, ...props, visible: true }
+
+  const TempToast = (toastProps: ToastProps) => {
+    let timer = 0
+
     const [visible, setVisible] = useState(false)
-    const [state, setState] = useState<ToastProps>({ ...options })
-    const internalOnClosed = () => {
-      if (state.forbidClick) {
-        lockClick(false)
-      }
-      const unmountResult = unmount(container)
-      if (unmountResult && container.parentNode) {
-        container.parentNode.removeChild(container)
-      }
-    }
-    // close with animation
-    const destroy = () => {
+
+    const internalDestroy = () => {
       setVisible(false)
-      onClose?.()
     }
 
-    update.clear = internalOnClosed
+    const [isHovering, setIsHovering] = useState(false)
 
-    update.config = (nextState) => {
-      setState((prev) =>
-        typeof nextState === 'function' ? { ...prev, ...nextState(prev) } : { ...prev, ...nextState },
-      )
-    }
-
-    const [_, setIsHovering] = useState(false)
-
-    const isHovering = useLatest(_)
-    const latestState = useLatest(state)
+    const latestIsHovering = useLatest(isHovering)
+    const latestState = useLatest(toastProps)
 
     function beforeDestory() {
-      if (isHovering.current && latestState.current.keepOnHover) {
+      if (latestIsHovering.current && latestState.current.keepOnHover) {
         delayClear()
       } else {
-        destroy()
+        internalDestroy()
       }
     }
 
@@ -109,15 +83,11 @@ const ToastObj = (props: ToastProps) => {
       timer && clearTimeout(timer)
       timer = window.setTimeout(() => {
         beforeDestory()
-      }, +state.duration!)
+      }, +toastProps.duration!)
     }
 
     useEffect(() => {
-      setVisible(true)
-      if (!allowMultiple) syncClear()
-      toastArray.push(internalOnClosed)
-
-      if (state.duration !== 0 && 'duration' in state) {
+      if (toastProps.duration !== 0 && 'duration' in toastProps) {
         delayClear()
       }
 
@@ -128,35 +98,90 @@ const ToastObj = (props: ToastProps) => {
       }
     }, [])
 
+    useEffect(() => {
+      setVisible(toastProps.visible || false)
+    }, [toastProps.visible])
+
     return (
       <BaseToast
-        {...state}
+        {...toastProps}
         visible={visible}
         teleport={() => container}
-        onClose={destroy}
+        onClose={internalDestroy}
+        onClosed={() => {
+          props.onClosed?.()
+          destroy()
+        }}
         onHoverStateChange={setIsHovering}
-        onClosed={internalOnClosed}
       />
     )
   }
 
-  render(<TempToast />, container)
+  function destroy() {
+    for (let i = 0; i < destroyFns.length; i++) {
+      const fn = destroyFns[i]
+      if (fn === close) {
+        destroyFns.splice(i, 1)
+        break
+      }
+    }
 
-  return update
+    const unmountResult = unmount(container)
+    if (unmountResult && container.parentNode) {
+      container.parentNode.removeChild(container)
+    }
+  }
+
+  function close() {
+    currentConfig = {
+      ...currentConfig,
+      visible: false,
+      onClosed: () => {
+        if (typeof props.onClosed === 'function') {
+          props.onClosed()
+        }
+        destroy()
+      },
+    }
+    if (currentConfig.forbidClick) {
+      lockClick(false)
+    }
+    render(currentConfig)
+  }
+
+  function render(config: ToastProps) {
+    clearTimeout(timeoutId)
+
+    timeoutId = setTimeout(() => {
+      ReactRender(<TempToast {...config} />, container)
+    })
+  }
+
+  function update(configUpdate: ConfigUpdate) {
+    if (typeof configUpdate === 'function') {
+      currentConfig = configUpdate(currentConfig)
+    } else {
+      currentConfig = {
+        ...currentConfig,
+        ...configUpdate,
+      }
+    }
+    render(currentConfig)
+  }
+
+  render(currentConfig)
+
+  if (!allowMultiple && destroyFns.length) {
+    syncClear()
+  }
+
+  destroyFns.push(close)
+
+  return {
+    destory: close,
+    update,
+  }
 }
-
-const createMethod = (type: ToastType) => (options: ToastProps) => {
-  return ToastObj({
-    ...currentOptions,
-    ...defaultOptionsMap.get(type),
-    ...parseOptions(options),
-    type,
-  })
-}
-
-;(['info', 'loading', 'success', 'fail'] as const).forEach((method) => {
-  ToastObj[method] = createMethod(method)
-})
 
 ToastObj.allowMultiple = (value = true) => {
   allowMultiple = value
@@ -168,7 +193,7 @@ function setDefaultOptions(type: ToastType | ToastProps, options?: ToastProps) {
   if (typeof type === 'string') {
     defaultOptionsMap.set(type, options || {})
   } else {
-    extend(currentOptions, type)
+    extend(commonOptions, type)
   }
 }
 
@@ -178,7 +203,7 @@ ToastObj.resetDefaultOptions = (type?: ToastType) => {
   if (typeof type === 'string') {
     defaultOptionsMap.delete(type)
   } else {
-    currentOptions = extend({}, defaultOptions)
+    commonOptions = extend({}, defaultOptions)
     defaultOptionsMap.clear()
   }
 }

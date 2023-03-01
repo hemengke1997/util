@@ -47,9 +47,9 @@ export abstract class AxiosTransform<T = any> {
 
   responseInterceptors?: (res: AxiosResponse<any>) => AxiosResponse<any>
 
-  requestInterceptorsCatch?: (error: Error) => void
+  requestInterceptorsCatch?: (error: Error) => Promise<never>
 
-  responseInterceptorsCatch?: (error: ResponseErrorType) => void
+  responseInterceptorsCatch?: (error: ResponseErrorType) => Promise<never>
 }
 export enum ContentTypeEnum {
   /**
@@ -76,7 +76,7 @@ export enum RequestEnum {
 
 export const defaultTransform: AxiosTransform = {
   transformResponseHook: (res: AxiosResponse<Result>) => {
-    const { data } = res
+    const { data } = res || {}
 
     if (!data) {
       return {

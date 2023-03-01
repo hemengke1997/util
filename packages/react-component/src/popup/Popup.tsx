@@ -1,4 +1,4 @@
-import { KeyCode } from '@minko-fe/lodash-pro'
+import { KeyCode, isDef } from '@minko-fe/lodash-pro'
 import type { Ref } from 'react'
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
@@ -36,13 +36,14 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     onClose,
     onClick,
     closeOnPopstate,
-    duration: propDuration,
+    duration: propDuration = 300,
     style: propStyle,
     closeIconPosition = 'top-right',
     zIndex: propZIndex,
     visible: propVisible,
     onClickOverlay: propOnClickOverlay,
     onClickCloseIcon: propOnClickCloseIcon,
+    onHoverStateChange,
   } = props
 
   const opened = useRef(false)
@@ -60,9 +61,11 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
       ...propStyle,
     }
 
-    const _duration = propDuration || 300
-    initStyle.animationDuration = `${_duration}ms`
-    initStyle.transitionDuration = `${_duration}ms`
+    if (isDef(propDuration)) {
+      const _duration = propDuration
+      initStyle.animationDuration = `${_duration}ms`
+      initStyle.transitionDuration = `${_duration}ms`
+    }
 
     return initStyle
   }
@@ -90,19 +93,20 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   }
 
   const renderOverlay = () => {
-    if (overlay) {
-      return (
-        <Overlay
-          visible={visible}
-          className={props.overlayClass}
-          customStyle={props.overlayStyle}
-          zIndex={zIndex.current}
-          duration={propDuration}
-          onClick={onClickOverlay}
-        />
-      )
+    if (!overlay) {
+      return null
     }
-    return null
+    return (
+      <Overlay
+        visible={visible}
+        style={style}
+        className={props.overlayClass}
+        customStyle={props.overlayStyle}
+        zIndex={zIndex.current}
+        duration={propDuration}
+        onClick={onClickOverlay}
+      />
+    )
   }
 
   const onClickOverlay = (e: React.MouseEvent) => {
@@ -178,7 +182,10 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
          * https://github.com/reactjs/react-transition-group/pull/559
          */
         nodeRef={popupRef}
-        timeout={propDuration || 300}
+        /**
+         * ensure same with css transition time
+         */
+        timeout={propDuration}
         classNames={transition || name}
         mountOnEnter={!forceRender}
         unmountOnExit={destroyOnClose}
@@ -225,8 +232,10 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   return renderToContainer(
     teleport,
     <PopupContext.Provider value={{ visible }}>
-      {renderOverlay()}
-      {renderTransition()}
+      <div onMouseEnter={() => onHoverStateChange?.(true)} onMouseLeave={() => onHoverStateChange?.(false)}>
+        {renderOverlay()}
+        {renderTransition()}
+      </div>
     </PopupContext.Provider>,
   )
 })

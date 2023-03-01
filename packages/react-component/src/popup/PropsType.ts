@@ -67,6 +67,7 @@ export interface PopupProps extends BaseTypeProps, SharedPopupProps {
   /** 点击关闭图标时触发	 */
   onClickCloseIcon?: (e: React.MouseEvent) => void
   children?: React.ReactNode
+  onHoverStateChange?: (h: boolean) => void
 }
 
 export interface PopupInstanceType {

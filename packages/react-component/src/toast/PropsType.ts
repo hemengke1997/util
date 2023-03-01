@@ -4,7 +4,12 @@ import type { BaseTypeProps } from '../utils/interface'
 export type ToastType = 'loading' | 'success' | 'fail' | 'info'
 
 export type ToastPosition = 'top' | 'middle' | 'bottom'
+
 export interface ToastProps extends BaseTypeProps {
+  /** 是否支持键盘 */
+  keyboard?: boolean
+  /** 显隐 */
+  visible?: boolean
   /** hover时不隐藏 */
   keepOnHover?: boolean
   /** 提示类型 */
@@ -13,6 +18,11 @@ export interface ToastProps extends BaseTypeProps {
   message?: React.ReactNode
   /** 展示时长(ms)，值为 0 时，toast 不会消失	 */
   duration?: number
+  /**
+   * @name 动画时长
+   * @description Toast新增属性，请勿与duration混淆。跟CSS动画时间保持一致。
+   */
+  transitionTime?: number
   /** 自定义图标 */
   icon?: React.ReactNode
   /** 是否显示背景遮罩层	 */
@@ -36,30 +46,22 @@ export interface ToastProps extends BaseTypeProps {
   /** 完全展示后的回调函数	 */
   onOpened?: () => void
   onHoverStateChange?: (h: boolean) => void
-}
-
-export interface ToastPrivateProps {
   onClosed?: () => void
 }
 
 export type ToastOptions = Omit<ToastProps, 'type'> | string
 
-export interface ToastReturnType {
+export type ConfigUpdate = ToastProps | ((prevConfig: ToastProps) => ToastProps)
+
+export type ToastReturnType = {
   /** 动态更新方法 */
-  config: React.Dispatch<React.SetStateAction<ToastProps>>
+  update(configUpdate: ConfigUpdate): void
   /** 清除单例toast */
-  clear: () => void
-}
+  destory: () => void
+} | null
+
 export interface ToastInstance {
-  (opts: ToastProps | string): ToastReturnType
-  /** 文本提示	 */
-  info(opts: ToastOptions): ToastReturnType
-  /** 展示加载提示	 */
-  loading(opts: ToastOptions): ToastReturnType
-  /** 展示成功提示	 */
-  success(opts: ToastOptions): ToastReturnType
-  /** 展示失败提示	 */
-  fail(opts: ToastOptions): ToastReturnType
+  show: (props: ToastProps) => ToastReturnType
   /**
    * 修改默认配置，对所有 Toast 生效。
    * 传入 type 可以修改指定类型的默认配置

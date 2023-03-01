@@ -1,15 +1,16 @@
 import { isDef, isUndefined } from '@minko-fe/lodash-pro'
 import classNames from 'classnames'
 import type { FC } from 'react'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Popup from '../popup'
+import type { PopupInstanceType } from '../popup/PropsType'
 import { createNamespace } from '../utils/createNamespace'
 import { lockClick } from './lock-click'
-import type { ToastPrivateProps, ToastProps } from './PropsType'
+import type { ToastProps } from './PropsType'
 
 const [bem] = createNamespace('toast')
 
-const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props) => {
+const Toast: FC<ToastProps> = (props) => {
   let clickable = false
   const {
     visible,
@@ -28,8 +29,9 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
     onClosed,
     onOpened,
     teleport,
-    duration = 2000,
     onHoverStateChange,
+    transitionTime,
+    keyboard,
   } = props
 
   const toggleClickable = () => {
@@ -72,18 +74,16 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
     return null
   }
 
-  const [isHovering, setIsHovering] = useState(false)
-
-  useEffect(() => {
-    onHoverStateChange?.(isHovering)
-  }, [isHovering])
+  const popupRef = useRef<PopupInstanceType>(null)
 
   return (
     <Popup
+      ref={popupRef}
       visible={visible}
       overlay={overlay}
       transition={transition}
       overlayClass={overlayClass}
+      destroyOnClose
       overlayStyle={overlayStyle}
       closeOnClickOverlay={closeOnClickOverlay}
       lockScroll={false}
@@ -92,10 +92,12 @@ const Toast: FC<ToastProps & ToastPrivateProps & { visible?: boolean }> = (props
       onClosed={onClosed}
       onOpened={onOpened}
       teleport={teleport}
-      duration={duration}
       className={classNames([bem([position, { [type]: icon }]), className])}
+      onHoverStateChange={onHoverStateChange}
+      duration={transitionTime}
+      keyboard={keyboard}
     >
-      <div onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+      <div>
         {renderIcon()}
         {renderMessage()}
       </div>
