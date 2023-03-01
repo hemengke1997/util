@@ -1,3 +1,7 @@
 import { dev } from '../../../scripts/dev'
 
-dev()
+dev({
+  tsup: {
+    external: ['react', 'react-router', 'react-router-dom'],
+  },
+})

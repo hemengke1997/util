@@ -45,13 +45,13 @@
   "dependencies": {
     "@ahooksjs/use-url-state": "^3.5.1",
     "@minko-fe/lodash-pro": "workspace:^*",
-    "ahooks": "^3.7.4",
+    "ahooks": "^3.7.5",
+    "react-router": "^6.8.2",
     "react-use": "^17.4.0"
   },
   "devDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router": "^6.8.1",
-    "react-router-dom": "^6.8.1"
+    "react-router-dom": "^6.8.2"
   }
 }
