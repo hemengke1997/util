@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/util-monorepo",
   "type": "module",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "private": true,
   "packageManager": "pnpm@7.27.1",
   "description": "util monorepo",
@@ -33,7 +33,7 @@
     "@types/node": "^18.14.2",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "bumpp": "^8.2.1",
+    "bumpp": "^9.0.0",
     "chokidar": "^3.5.3",
     "conventional-changelog-cli": "^2.2.2",
     "eslint": "^8.35.0",
@@ -46,6 +46,6 @@
     "tsup": "^6.6.3",
     "tsx": "^3.12.3",
     "typescript": "^4.9.5",
-    "vitest": "^0.28.5"
+    "vitest": "^0.29.2"
   }
 }
