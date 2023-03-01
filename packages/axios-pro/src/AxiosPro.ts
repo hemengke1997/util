@@ -1,9 +1,9 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { cloneDeep, isFunction, isString } from '@minko-fe/lodash-pro'
+import { cloneDeep, deepMerge, isFunction, isString } from '@minko-fe/lodash-pro'
 import querystring from 'query-string'
 import { AxiosCanceler } from './axiosCancel'
-import { deepMerge, joinTimestamp } from './utils'
+import { joinTimestamp } from './utils'
 
 export interface RequestOptions {
   joinUrlPrefix?: boolean
@@ -189,7 +189,7 @@ export const defaultOptions: CreateAxiosOptions = {
   },
 }
 
-export { deepMerge as mergeOptions } from './utils'
+export { deepMerge as mergeOptions } from '@minko-fe/lodash-pro'
 
 export class AxiosPro {
   private axiosInstance: AxiosInstance

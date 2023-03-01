@@ -4,7 +4,15 @@ import { overrideConfig } from '@minko-fe/vite-config'
 
 // https://vitejs.dev/config/
 export default defineConfig((env) => {
-  return overrideConfig(env, {
-    plugins: [react()],
-  })
+  return overrideConfig(
+    env,
+    {
+      plugins: [react()],
+    },
+    {
+      compressOpts: {
+        compress: 'none',
+      },
+    },
+  )
 })
