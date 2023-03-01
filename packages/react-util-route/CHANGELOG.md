@@ -1,4 +1,13 @@
-## [0.0.15](https://github.com/hemengke1997/util/compare/v0.0.13...v0.0.15) (2023-02-27)
+## [0.0.16](https://github.com/hemengke1997/util/compare/v0.0.14...v0.0.16) (2023-02-27)
+
+
+### Bug Fixes
+
+* **useUrlState:** deps ([a96526d](https://github.com/hemengke1997/util/commit/a96526d50d9669d166de0adac39ad66f1a3d1aaf))
+
+
+
+## [0.0.14](https://github.com/hemengke1997/util/compare/v0.0.13...v0.0.14) (2023-02-27)
 
 
 ### Bug Fixes
