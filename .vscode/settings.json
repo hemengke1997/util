@@ -3,5 +3,5 @@
     "**/template/**/*": "plaintext"
   },
   "typescript.preferences.importModuleSpecifier": "relative",
-  "conventionalCommits.scopes": ["vite-config"]
+  "conventionalCommits.scopes": ["vite-config", "react-util-hook"]
 }

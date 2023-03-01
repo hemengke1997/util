@@ -114,7 +114,6 @@ export {
   useHash,
 } from 'react-use'
 
-export { default as useUrlState } from '@ahooksjs/use-url-state'
 export * from './useControlledState'
 export * from './useStrictInput'
 export * from './useEffectOnce'
@@ -122,3 +121,4 @@ export * from './useTouch'
 export * from './useLockScroll'
 export * from './useScrollParent'
 export * from './useLayoutUpdateEffect'
+export * from './useUrlState'
