@@ -20,7 +20,7 @@ export function injectEnv(envConf: Record<string, any>): ImportMetaEnv {
 }
 
 export interface PathMapping {
-  find: RegExp
+  find: RegExp | string
   replacement: string
 }
 
@@ -39,10 +39,11 @@ export function pathsMapToAlias(root: string) {
       }
       pattern = escapeStringRegexp(pattern).replace(/\/\*/g, '')
       resolved.push({
-        find: new RegExp(`^${pattern}`),
+        find: pattern,
         replacement: path.resolve(base, relativePaths[0].replace(/\/\*/g, '')),
       })
     }
+
     return resolved
   }
   function getPrefixLength(pattern: string): number {
