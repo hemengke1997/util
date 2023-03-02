@@ -12,6 +12,7 @@ const defaultOptions: DialogProps = {
   closeIcon: <CloseOutlined />,
   transition: 'rc-dialog-bounce',
   closeOnClickOverlay: false,
+  duration: 150,
 }
 
 let commonOptions = extend({}, defaultOptions)

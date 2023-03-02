@@ -4,12 +4,17 @@ import { BrowserRouter } from 'react-router-dom'
 import { useControlledState } from '@minko-fe/react-util-hook'
 import { AccountBookFilled } from '@minko-fe/react-component/icons'
 import { A } from '#/A'
-import './App.css'
 
 // Toast.setDefaultOptions({
 //   keepOnHover: true,
 //   // duration: 2000,
 // })
+Dialog.setDefaultOptions({
+  overlay: true,
+  overlayStyle: {
+    backgroundColor: 'transparent',
+  },
+})
 
 function App() {
   const destory = useRef<() => void>()
@@ -21,7 +26,6 @@ function App() {
       onClose: () => {
         // console.log('onClose!~')
       },
-      overlay: false,
     })
   }
 

@@ -1,19 +1,43 @@
+const { isObject } = require('@minko-fe/lodash-pro')
 const plugin = require('tailwindcss/plugin')
+const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+function extendsColors() {
+  const keys = Object.keys(colors)
+  const c = {}
+  keys.forEach((k) => {
+    if (isObject(colors[k])) {
+      c[k] = {
+        light: colors[k][500],
+        default: colors[k][600],
+        dark: colors[k][700],
+      }
+    }
+  })
+  return c
+}
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    borderRadius: {
-      sm: '4px',
-      default: '8px',
-    },
-    transitionDuration: {
-      fast: '0.2s',
-      default: '0.3s',
-      slow: '0.4s',
+    extend: {
+      colors: {
+        ...extendsColors(),
+      },
+      borderRadius: {
+        sm: '4px',
+        default: '8px',
+      },
+      transitionDuration: {
+        fast: defaultTheme.transitionDuration[150],
+        default: defaultTheme.transitionDuration[200],
+        slow: defaultTheme.transitionDuration[300],
+      },
     },
   },
+
   corePlugins: {
     preflight: false,
   },
