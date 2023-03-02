@@ -1,7 +1,7 @@
 import type { Options } from 'tsup'
 import { build as tsupBuild } from 'tsup'
-import { isObject } from '@minko-fe/lodash-pro'
 import { getTsconfig } from 'get-tsconfig'
+import { isObject } from '../packages/lodash-pro/src' // TODO: replace with npm link
 import { defaultConfig } from '../tsup.config'
 
 async function build(opts: Options = {}) {
@@ -14,6 +14,7 @@ async function build(opts: Options = {}) {
       ...dts,
       compilerOptions: {
         ...tsconfig?.config.compilerOptions,
+        ...dts.compilerOptions,
       },
     }
   }
