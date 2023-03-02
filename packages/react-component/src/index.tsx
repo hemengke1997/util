@@ -24,7 +24,6 @@ SOFTWARE.
 
 import './style'
 
-export * from '@ant-design/icons'
 export * from './popup'
 export * from './toast'
 export * from './overlay'

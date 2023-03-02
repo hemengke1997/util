@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Dialog, toast } from '@minko-fe/react-component'
 import { BrowserRouter } from 'react-router-dom'
 import { useControlledState } from '@minko-fe/react-util-hook'
+import { AccountBookFilled } from '@minko-fe/react-component/icons'
 import { A } from '#/A'
 import './App.css'
 
@@ -36,6 +37,7 @@ function App() {
   return (
     <div>
       <div onClick={() => toast.show({ content: <div>{Math.random()}</div>, type: 'info' })}>show toast</div>
+      <AccountBookFilled />
       <div className='App'>
         <div onClick={() => setV(2)}>setV</div>
         <BrowserRouter>
