@@ -14,22 +14,33 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "types": "./dist/node/index.d.ts",
+      "require": "./dist/node/index.cjs",
+      "import": "./dist/node/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/node/index.cjs",
+  "module": "./dist/node/index.js",
+  "types": "./dist/node/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "client": [
+        "./dist/client/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "dist",
     "CHANGELOG.md",
     "README.md"
   ],
   "scripts": {
-    "dev": "tsx scripts/dev",
-    "build": "tsx scripts/build",
+    "dev": "rimraf dist && tsx scripts/dev",
+    "build": "rimraf dist && tsx scripts/build",
     "release": "pnpm run build && pnpm publish --access public",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "vitest",

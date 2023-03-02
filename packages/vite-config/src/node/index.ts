@@ -82,5 +82,4 @@ const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig, opti
 }
 
 export * from './utils/rollupOptions'
-export * from './utils/env'
 export { getDefaultConfig, overrideConfig, injectEnv }
