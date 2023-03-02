@@ -1,4 +1,13 @@
-## [0.0.24](https://github.com/hemengke1997/util/compare/v0.0.22...v0.0.24) (2023-03-02)
+## [0.0.25](https://github.com/hemengke1997/util/compare/v0.0.23...v0.0.25) (2023-03-02)
+
+
+### Bug Fixes
+
+* **react-util-hook:** useControlledState onChange is undefined ([463046a](https://github.com/hemengke1997/util/commit/463046a1c560031b645370645d5d3b22ac7326e6))
+
+
+
+## [0.0.23](https://github.com/hemengke1997/util/compare/v0.0.22...v0.0.23) (2023-03-02)
 
 
 ### Features
