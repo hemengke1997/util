@@ -1,4 +1,13 @@
-## [0.0.23](https://github.com/hemengke1997/util/compare/v0.0.21...v0.0.23) (2023-03-02)
+## [0.0.24](https://github.com/hemengke1997/util/compare/v0.0.22...v0.0.24) (2023-03-02)
+
+
+### Features
+
+* **lodash-pro:** add `strategyPattern` ([0e6723e](https://github.com/hemengke1997/util/commit/0e6723e784099f8b5dd2b820a323e97487f1681d))
+
+
+
+## [0.0.22](https://github.com/hemengke1997/util/compare/v0.0.21...v0.0.22) (2023-03-02)
 
 
 ### Features
