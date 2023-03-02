@@ -1,4 +1,13 @@
-## [0.0.22](https://github.com/hemengke1997/util/compare/v0.0.20...v0.0.22) (2023-03-02)
+## [0.0.22](https://github.com/hemengke1997/util/compare/v0.0.21...v0.0.22) (2023-03-02)
+
+
+### Features
+
+* **vite-config:** splite vite config to client and node ([0fc317b](https://github.com/hemengke1997/util/commit/0fc317bc7eb09a379372e4d0b3650788bfe8b36e))
+
+
+
+## [0.0.21](https://github.com/hemengke1997/util/compare/v0.0.20...v0.0.21) (2023-03-02)
 
 
 ### Features
