@@ -14,7 +14,7 @@ const defaultOptions: ToastProps = {
   position: 'middle',
   forbidClick: false,
   duration: 2000,
-  transitionTime: 200,
+  transitionTime: 150,
   teleport: () => document.body,
   keepOnHover: true,
   transition: 'rc-toast-bounce',
@@ -64,6 +64,7 @@ toastObj.show = (props: ToastProps) => {
 
     const internalDestroy = () => {
       setVisible(false)
+      props.onClose?.()
     }
 
     const [isHovering, setIsHovering] = useState(false)
@@ -100,6 +101,9 @@ toastObj.show = (props: ToastProps) => {
 
     useEffect(() => {
       setVisible(toastProps.visible || false)
+      if (toastProps.visible === false) {
+        destroy()
+      }
     }, [toastProps.visible])
 
     return (
@@ -136,12 +140,6 @@ toastObj.show = (props: ToastProps) => {
     currentConfig = {
       ...currentConfig,
       visible: false,
-      onClosed: () => {
-        if (typeof props.onClosed === 'function') {
-          props.onClosed()
-        }
-        destroy()
-      },
     }
     if (currentConfig.forbidClick) {
       lockClick(false)

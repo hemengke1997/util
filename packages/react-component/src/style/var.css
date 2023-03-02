@@ -1,7 +1,7 @@
 :root {
   /* ------------------ colors ------------------ */
-  --rc-error-color: theme(colors.red.500);
-  --rc-success-color: theme(colors.green.500);
+  --rc-error-color: theme(colors.red.default);
+  --rc-success-color: theme(colors.green.default);
 
   /* ----------------- animation ---------------- */
   --rc-animation-duration-fast: theme(transitionDuration.fast);

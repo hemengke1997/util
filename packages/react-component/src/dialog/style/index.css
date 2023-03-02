@@ -16,11 +16,11 @@
     background-color: var(--rc-dialog-background-color);
     border-radius: var(--rc-dialog-border-radius);
     backface-visibility: hidden;
-    transition-duration: var(--rc-dialog-transition);
     transition-property: transform, opacity;
   }
-
+  
   &__content {
+    color: theme(colors.white);
     padding: var(--rc-dialog-content-padding);
   }
 
@@ -50,11 +50,11 @@
     }
 
     &-enter-active {
-      animation: var(--rc-animation-duration-base) rc-dialog-bounce-in both var(--rc-animation-timing-function-enter);
+      animation: var(--rc-animation-duration-fast) rc-dialog-bounce-in both var(--rc-animation-timing-function-enter);
     }
 
     &-exit-active {
-      animation: var(--rc-animation-duration-base) rc-dialog-bounce-out both var(--rc-animation-timing-function-leave);
+      animation: var(--rc-animation-duration-fast) rc-dialog-bounce-out both var(--rc-animation-timing-function-leave);
     }
   }
 }

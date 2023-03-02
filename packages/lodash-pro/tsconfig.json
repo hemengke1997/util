@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.base",
   "compilerOptions": {
-    "baseUrl": ".",
-    "types": ["lodash-es"]
+    "baseUrl": "."
   }
 }

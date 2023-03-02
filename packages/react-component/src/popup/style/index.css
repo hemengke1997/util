@@ -2,14 +2,15 @@
   --rc-popup-transition: transform theme(transitionDuration.default);
   --rc-popup-round-border-radius: theme(borderRadius.default);
   --rc-popup-close-icon-z-index: 1;
-  --rc-popup-close-icon-color: theme(colors.gray.500);
-  --rc-popup-close-icon-active-color: theme(colors.gray.600);
+  --rc-popup-close-icon-color: theme(colors.neutral.200);
+  --rc-popup-close-icon-active-color: theme(colors.neutral.300);
   --rc-popup-close-icon-border-radius: theme(borderRadius.sm);
-  --rc-popup-close-icon-size: 16px;
-  --rc-popup-close-icon-margin: 8px;
+  --rc-popup-close-icon-size: 14px;
+  --rc-popup-close-icon-margin: 6px;
+  --rc-popup-close-icon-padding: 2px;
   --rc-popup-title-color: 'inherit';
   --rc-popup-title-font-size: 16px;
-  --rc-popup-description-color: theme(colors.gray.600);
+  --rc-popup-description-color: theme(colors.white);
   --rc-popup-description-font-size: 14px;
 }
 
@@ -103,18 +104,17 @@
       position: absolute;
       z-index: var(--rc-popup-close-icon-z-index);
       color: var(--rc-popup-close-icon-color);
-      width: var(--rc-popup-close-icon-size);
-      height: var(--rc-popup-close-icon-size);
+      font-size: var(--rc-popup-close-icon-size);
       border-radius: var(--rc-popup-close-icon-border-radius);
+      padding: var(--rc-popup-close-icon-padding);
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      @apply transition-all;
+      @apply transition;
       
       &:hover {
-        @apply transition-all;
-        background-color: theme(colors.gray.800);
+        background: theme(colors.neutral.light);
       }
 
       &:active {

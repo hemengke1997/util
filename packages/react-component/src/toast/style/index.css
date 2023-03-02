@@ -5,7 +5,7 @@
   --rc-toast-default-padding: 16px 24px;
   --rc-toast-text-color: theme(colors.white);
   --rc-toast-font-size: 1rem;
-  --rc-toast-background-color: theme(colors.black / 90%);
+  --rc-toast-background-color: theme(colors.black / 70%);
   --rc-toast-border-radius: theme(borderRadius.default);
   --rc-toast-text-min-width: auto;
   --rc-toast-text-padding: 0;
@@ -103,7 +103,7 @@
 
       to {
         opacity: 0;
-        transform: translate3d(-50%, -50%, 0) scale(0.2);
+        transform: translate3d(-50%, -50%, 0) scale(0.8);
       }
     }
 
