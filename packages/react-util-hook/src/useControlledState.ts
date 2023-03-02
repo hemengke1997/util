@@ -36,7 +36,7 @@ export function useControlledState<T, R = T>(option: {
 
   useLayoutUpdateEffect(() => {
     if (isUndefined(value)) {
-      setInnerValue(value!)
+      setInnerValue(value as T)
     }
   }, [value])
 

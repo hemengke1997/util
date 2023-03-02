@@ -32,7 +32,6 @@ export const defaultConfig: Options = {
   treeshake: true,
   target: 'es6',
   minify: false,
-  dts: true,
   clean: false,
   config: false,
   platform: 'node',

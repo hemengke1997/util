@@ -5,7 +5,7 @@ build({
   external: ['react-router'],
   dts: {
     compilerOptions: {
-      strict: false,
+      strict: false, // TODO: figure out what cause github action building failed
     },
   },
 })
