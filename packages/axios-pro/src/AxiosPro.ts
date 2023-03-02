@@ -47,9 +47,9 @@ export abstract class AxiosTransform<T = any> {
 
   responseInterceptors?: (res: AxiosResponse<any>) => AxiosResponse<any>
 
-  requestInterceptorsCatch?: (error: Error) => Promise<never>
+  requestInterceptorsCatch?: (error: Error) => Promise<never> | undefined
 
-  responseInterceptorsCatch?: (error: ResponseErrorType) => Promise<never>
+  responseInterceptorsCatch?: (error: ResponseErrorType) => Promise<never> | undefined
 }
 export enum ContentTypeEnum {
   /**
