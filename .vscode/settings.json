@@ -3,10 +3,5 @@
     "**/template/**/*": "plaintext"
   },
   "typescript.preferences.importModuleSpecifier": "relative",
-  "conventionalCommits.scopes": [
-    "vite-config",
-    "react-util-hook",
-    "html-transform",
-    "lodash-pro"
-  ]
+  "conventionalCommits.scopes": ["vite-config", "react-util-hook", "html-transform", "lodash-pro"]
 }
