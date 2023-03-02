@@ -1,11 +1,9 @@
 import { dev } from '../../../scripts/dev'
 
 dev({
-  tsup: {
-    entry: ['src/**/*.{ts,tsx,css}'],
-    bundle: false,
-    format: ['esm'],
-    dts: false,
-    legacyOutput: true,
-  },
+  entry: ['src/**/*.{ts,tsx,css}'],
+  bundle: false,
+  format: ['esm'],
+  dts: false,
+  legacyOutput: true,
 })

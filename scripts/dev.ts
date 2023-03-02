@@ -23,14 +23,8 @@ function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions
   return resolvedWatchOptions
 }
 
-type DevOptions = Partial<{
-  tsup: Options
-  chokidar: WatchOptions
-}>
-
-export async function dev(options?: DevOptions) {
+export async function dev(tsup?: Options, chokidar?: WatchOptions) {
   const root = process.cwd()
-  const { chokidar, tsup } = options || {}
 
   const resolvedWatchOptions = resolveChokidarOptions({
     disableGlobbing: true,

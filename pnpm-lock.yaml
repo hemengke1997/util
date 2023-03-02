@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@minko-fe/eslint-config': ^1.2.20
+      '@minko-fe/lodash-pro': latest
       '@minko-fe/tsconfig': ^1.2.20
       '@testing-library/react': ^14.0.0
       '@types/fs-extra': ^11.0.1
@@ -28,6 +29,7 @@ importers:
       vitest: ^0.29.2
     devDependencies:
       '@minko-fe/eslint-config': 1.2.20_eslint@8.35.0
+      '@minko-fe/lodash-pro': 0.0.24
       '@minko-fe/tsconfig': 1.2.20_typescript@4.9.5
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@types/fs-extra': 11.0.1
@@ -1937,6 +1939,13 @@ packages:
       - supports-color
     dev: true
 
+  /@minko-fe/lodash-pro/0.0.24:
+    resolution: {integrity: sha512-boYEosG24xBjFL8Qy1N4ApNjDHmy9UE9Cg792dmXrxtKm3Qx7hKQrhoPoTp/7DXyukfQpPsVmrsuQWhERJNvoQ==}
+    dependencies:
+      '@types/lodash-es': 4.17.6
+      lodash-es: 4.17.21
+    dev: true
+
   /@minko-fe/prettier-config/1.2.20_prettier@2.8.4:
     resolution: {integrity: sha512-cEMOmmZ+knpsTnK0+5naW6IqvpY6N4i0Vaeolq4qOuWuVuZBEa79CKGDIHbjAU3y6q0cyMuVGFeBcyR2wK5sdQ==}
     peerDependencies:
@@ -2197,11 +2206,9 @@ packages:
     resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
     dependencies:
       '@types/lodash': 4.14.191
-    dev: false
 
   /@types/lodash/4.14.191:
     resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
-    dev: false
 
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
@@ -4929,7 +4936,6 @@ packages:
 
   /lodash-es/4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: false
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
