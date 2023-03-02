@@ -1,8 +1,8 @@
 {
-  "name": "@minko-fe/vite-config",
+  "name": "@minko-fe/html-transform",
   "type": "module",
   "version": "0.0.20",
-  "description": "common vite config",
+  "description": "html-transform",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
   "repository": {
@@ -10,7 +10,7 @@
     "url": "git+https://github.com/hemengke1997/util.git"
   },
   "keywords": [
-    "vite config"
+    "html-transform"
   ],
   "exports": {
     ".": {
@@ -37,28 +37,7 @@
     "upgrade:deps": "pnpm update --i --L",
     "bump": "pnpm changelog && bumpp package.json CHANGELOG.md --commit --push --tag -all"
   },
-  "peerDependencies": {
-    "vite": ">=4.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@vitejs/plugin-react": {
-      "optional": true
-    }
-  },
-  "dependencies": {
-    "@minko-fe/lodash-pro": "workspace:*",
-    "@vitejs/plugin-legacy": "^4.0.1",
-    "get-tsconfig": "^4.4.0",
-    "globrex": "^0.1.2",
-    "rollup-plugin-visualizer": "^5.9.0",
-    "terser": "^5.16.5",
-    "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-public-typescript": "^1.2.4",
-    "vite-plugin-svgr": "^2.4.0"
-  },
   "devDependencies": {
-    "@types/globrex": "^0.1.2",
-    "rollup": "^3.17.3",
-    "vite": "^4.1.3"
+    "acorn": "^8.8.2"
   }
 }

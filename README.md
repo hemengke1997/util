@@ -5,6 +5,7 @@
 Package |
 ---------|
  @minko-fe/axios-pro
+ @minko-fe/html-transform
  @minko-fe/lodash-pro
  @minko-fe/react-component
  @minko-fe/react-util-hook
