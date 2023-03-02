@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { Dialog, Toast } from '@minko-fe/react-component'
 import { BrowserRouter } from 'react-router-dom'
+import { useControlledState } from '@minko-fe/react-util-hook'
 import { A } from '#/A'
 import './App.css'
 
@@ -23,12 +24,20 @@ function App() {
     })
   }
 
+  const [v, setV] = useControlledState({
+    defaultValue: 1,
+    onChange: undefined,
+  })
+
+  console.log(v, 'v')
+
   const [_visible, setVisible] = useState(false)
 
   return (
     <div>
       <div onClick={() => Toast.show({ message: <div>{Math.random()}</div> })}>show toast</div>
       <div className='App'>
+        <div onClick={() => setV(2)}>setV</div>
         <BrowserRouter>
           <A />
           {/* <Popup>hello world</Popup> */}
