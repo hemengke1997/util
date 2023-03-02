@@ -2,7 +2,6 @@ import path from 'path'
 import type { WatchOptions } from 'chokidar'
 import { watch } from 'chokidar'
 import type { Options } from 'tsup'
-import { defaultConfig } from '../tsup.config'
 import { build } from './build'
 
 function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions {
@@ -43,7 +42,6 @@ export async function dev(options?: DevOptions) {
   async function bundle() {
     try {
       await build({
-        ...defaultConfig,
         ...tsup,
       })
     } catch {}

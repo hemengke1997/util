@@ -6,8 +6,7 @@ async function build(opts: Options = {}) {
   await tsupBuild({
     ...defaultConfig,
     ...opts,
-    clean: false,
-    config: false,
+    external: [...(defaultConfig.external || []), ...(opts.external || [])],
   })
 }
 
