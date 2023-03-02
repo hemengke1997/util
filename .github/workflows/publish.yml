@@ -8,7 +8,7 @@ on:
 jobs:
   publish-npm:
     if: "contains(github.event.head_commit.message, 'release')"
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout
@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           registry-url: https://registry.npmjs.org/
 
       - name: Install pnpm
