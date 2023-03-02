@@ -1,4 +1,4 @@
-## [0.0.22](https://github.com/hemengke1997/util/compare/v0.0.21...v0.0.22) (2023-03-02)
+## [0.0.23](https://github.com/hemengke1997/util/compare/v0.0.21...v0.0.23) (2023-03-02)
 
 
 ### Features
