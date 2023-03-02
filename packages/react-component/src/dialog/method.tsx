@@ -1,6 +1,6 @@
+import { CloseOutlined } from '@ant-design/icons'
 import { extend, isBrowser } from '@minko-fe/lodash-pro'
 import { useEffect, useState } from 'react'
-import { Cross } from '../icon'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount } from '../utils/dom/render'
 import { Dialog as BaseDialog } from './Dialog'
@@ -9,7 +9,7 @@ import type { DialogProps, DialogStatic } from './PropsType'
 const defaultOptions: DialogProps = {
   overlay: true,
   closeable: true,
-  closeIcon: <Cross />,
+  closeIcon: <CloseOutlined />,
   transition: 'rc-dialog-bounce',
   closeOnClickOverlay: false,
 }

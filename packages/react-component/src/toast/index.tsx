@@ -1,6 +1,6 @@
 import './style/index.css'
-import { Toast } from './method'
+import { toast } from './method'
 
-export default Toast
-export { Toast }
+export default toast
+export { toast }
 export type { ToastType, ToastPosition, ToastOptions } from './PropsType'

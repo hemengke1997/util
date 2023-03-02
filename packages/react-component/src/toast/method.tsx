@@ -8,7 +8,7 @@ import type { ConfigUpdate, ToastInstance, ToastProps, ToastType } from './Props
 import { Toast as BaseToast } from './Toast'
 
 const defaultOptions: ToastProps = {
-  message: '',
+  content: '',
   className: '',
   type: 'info',
   position: 'middle',
@@ -43,10 +43,10 @@ function nextTickClear() {
   setTimeout(syncClear)
 }
 
-const ToastObj = {} as ToastInstance
+const toastObj = {} as ToastInstance
 
 // 可返回用于销毁此弹窗的方法
-ToastObj.show = (props: ToastProps) => {
+toastObj.show = (props: ToastProps) => {
   if (!isBrowser()) return null
 
   let timeoutId: NodeJS.Timeout
@@ -183,11 +183,11 @@ ToastObj.show = (props: ToastProps) => {
   }
 }
 
-ToastObj.allowMultiple = (value = true) => {
+toastObj.allowMultiple = (value = true) => {
   allowMultiple = value
 }
 
-ToastObj.clear = nextTickClear
+toastObj.clear = nextTickClear
 
 function setDefaultOptions(type: ToastType | ToastProps, options?: ToastProps) {
   if (typeof type === 'string') {
@@ -197,9 +197,9 @@ function setDefaultOptions(type: ToastType | ToastProps, options?: ToastProps) {
   }
 }
 
-ToastObj.setDefaultOptions = setDefaultOptions
+toastObj.setDefaultOptions = setDefaultOptions
 
-ToastObj.resetDefaultOptions = (type?: ToastType) => {
+toastObj.resetDefaultOptions = (type?: ToastType) => {
   if (typeof type === 'string') {
     defaultOptionsMap.delete(type)
   } else {
@@ -208,5 +208,5 @@ ToastObj.resetDefaultOptions = (type?: ToastType) => {
   }
 }
 
-const Toast = ToastObj as ToastInstance
-export { Toast }
+const toast = toastObj as ToastInstance
+export { toast }

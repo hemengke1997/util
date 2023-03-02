@@ -11,6 +11,8 @@
   --rc-toast-text-padding: 0;
   --rc-toast-position-top-distance: 20%;
   --rc-toast-position-bottom-distance: 20%;
+  --rc-toast-icon-margin: 0 8px 0 0;
+  --rc-toast-icon-size: 16px;
 }
 
 .rc-toast {
@@ -54,8 +56,13 @@
     bottom: var(--rc-toast-position-bottom-distance);
   }
 
+  &__content {
+    @apply flex items-center;
+  }
+
   &__icon {
     font-size: var(--rc-toast-icon-size);
+    margin: var(--rc-toast-icon-margin);
   }
 
   &__loading {
@@ -66,7 +73,15 @@
   &__info {
     margin-top: var(--rc-padding-xs);
   }
-  
+
+  &__error {
+    color: var(--rc-error-color);
+  }
+
+  &__success {
+    color: var(--rc-success-color)
+  }
+
   &&-bounce {
     @keyframes rc-toast-bounce-in {
       from {

@@ -1,3 +1,4 @@
+import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons'
 import { isDef, isUndefined } from '@minko-fe/lodash-pro'
 import classNames from 'classnames'
 import type { FC } from 'react'
@@ -6,9 +7,15 @@ import Popup from '../popup'
 import type { PopupInstanceType } from '../popup/PropsType'
 import { createNamespace } from '../utils/createNamespace'
 import { lockClick } from './lock-click'
-import type { ToastProps } from './PropsType'
+import type { ToastProps, ToastType } from './PropsType'
 
 const [bem] = createNamespace('toast')
+
+const builtinIcons: Record<ToastType, React.ReactNode> = {
+  info: null,
+  error: <CloseCircleFilled />,
+  success: <CheckCircleFilled />,
+}
 
 const Toast: FC<ToastProps> = (props) => {
   let clickable = false
@@ -57,19 +64,21 @@ const Toast: FC<ToastProps> = (props) => {
 
   const renderIcon = () => {
     const { icon } = props
-    if (icon) {
-      return React.cloneElement(icon as React.ReactElement, {
-        className: classNames(bem('icon')),
+
+    const hasIcon = icon || type === 'success' || type === 'error'
+    if (hasIcon) {
+      return React.cloneElement((icon || builtinIcons[type]) as React.ReactElement, {
+        className: classNames(bem('icon'), bem(type)),
       })
     }
 
     return null
   }
 
-  const renderMessage = () => {
-    const { message } = props
-    if (isDef(message) && message !== '') {
-      return <div className={classNames(bem('info'))}>{message}</div>
+  const renderContent = () => {
+    const { content } = props
+    if (isDef(content) && content !== '') {
+      return <div className={classNames(bem('info'))}>{content}</div>
     }
     return null
   }
@@ -97,9 +106,9 @@ const Toast: FC<ToastProps> = (props) => {
       duration={transitionTime}
       keyboard={keyboard}
     >
-      <div>
+      <div className={classNames(bem('content'))}>
         {renderIcon()}
-        {renderMessage()}
+        {renderContent()}
       </div>
     </Popup>
   )

@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { Dialog, Toast } from '@minko-fe/react-component'
+import { Dialog, toast } from '@minko-fe/react-component'
 import { BrowserRouter } from 'react-router-dom'
 import { useControlledState } from '@minko-fe/react-util-hook'
 import { A } from '#/A'
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div>
-      <div onClick={() => Toast.show({ message: <div>{Math.random()}</div> })}>show toast</div>
+      <div onClick={() => toast.show({ content: <div>{Math.random()}</div>, type: 'info' })}>show toast</div>
       <div className='App'>
         <div onClick={() => setV(2)}>setV</div>
         <BrowserRouter>

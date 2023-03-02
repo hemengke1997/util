@@ -4,12 +4,12 @@ import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { useEventListener, useIsomorphicLayoutEffect, useLockScroll, useUpdateEffect } from '@minko-fe/react-util-hook'
 import classNames from 'classnames'
+import { CloseOutlined } from '@ant-design/icons'
 import { renderToContainer } from '../utils/dom/renderToContainer'
 import { withStopPropagation } from '../utils/dom/event'
 import { createNamespace } from '../utils/createNamespace'
 import { callInterceptor } from '../utils/interceptor'
 import Overlay from '../overlay'
-import { Cross } from '../icon/Cross'
 import type { PopupInstanceType, PopupProps } from './PropsType'
 import { PopupContext } from './PopupContext'
 
@@ -28,7 +28,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     stopPropagation = ['click'],
     teleport = () => document.body,
     children,
-    closeIcon = <Cross />,
+    closeIcon = <CloseOutlined />,
     position = 'center',
     safeAreaInsetBottom,
     onOpen,

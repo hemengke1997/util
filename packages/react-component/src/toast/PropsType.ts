@@ -1,7 +1,7 @@
 import type React from 'react'
 import type { BaseTypeProps } from '../utils/interface'
 
-export type ToastType = 'loading' | 'success' | 'fail' | 'info'
+export type ToastType = 'success' | 'error' | 'info'
 
 export type ToastPosition = 'top' | 'middle' | 'bottom'
 
@@ -15,7 +15,7 @@ export interface ToastProps extends BaseTypeProps {
   /** 提示类型 */
   type?: ToastType
   /** 内容 */
-  message?: React.ReactNode
+  content?: React.ReactNode
   /** 展示时长(ms)，值为 0 时，toast 不会消失	 */
   duration?: number
   /**
