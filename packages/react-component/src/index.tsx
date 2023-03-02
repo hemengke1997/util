@@ -23,8 +23,8 @@ SOFTWARE.
  */
 
 import './style'
-export * from './icon'
 
+export * from '@ant-design/icons'
 export * from './popup'
 export * from './toast'
 export * from './overlay'

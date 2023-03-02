@@ -2,4 +2,4 @@
 
 - [ ] tests
 - [ ] monorepo changeset
-- [ ] splite publish
+- [ ] split publish
