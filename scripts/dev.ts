@@ -2,6 +2,7 @@ import path from 'path'
 import type { WatchOptions } from 'chokidar'
 import { watch } from 'chokidar'
 import type { Options } from 'tsup'
+import picocolors from 'picocolors'
 import { build } from './build'
 
 function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions {
@@ -13,6 +14,9 @@ function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions
       '**/dist/**',
       '**/node_modules/**',
       '**/CHANGELOG.md',
+      '**/__tests__/**',
+      '**/*.spec.*',
+      '**/*.test.*',
       ...(Array.isArray(ignored) ? ignored : [ignored]),
     ],
     ignoreInitial: true,
@@ -33,25 +37,45 @@ export async function dev(tsup?: Options, chokidar?: WatchOptions) {
 
   const watcher = watch(path.join(root, 'src'), resolvedWatchOptions)
 
-  async function bundle() {
+  async function bundle(opts?: Options) {
     try {
       await build({
         ...tsup,
+        ...opts,
       })
     } catch {}
   }
 
-  bundle()
-
-  watcher.on('change', async () => {
-    await bundle()
+  bundle({
+    async onSuccess() {
+      console.log(picocolors.blue('build success 👍'))
+    },
   })
 
-  watcher.on('add', async () => {
-    await bundle()
+  watcher.on('change', async (f) => {
+    await bundle({
+      silent: true,
+      async onSuccess() {
+        console.log(picocolors.blue('file changed ==>'), picocolors.cyan(f))
+      },
+    })
   })
 
-  watcher.on('unlink', async () => {
-    await bundle()
+  watcher.on('add', async (f) => {
+    await bundle({
+      silent: true,
+      async onSuccess() {
+        console.log(picocolors.blue('file added ==>'), picocolors.cyan(f))
+      },
+    })
+  })
+
+  watcher.on('unlink', async (f) => {
+    await bundle({
+      silent: true,
+      async onSuccess() {
+        console.log(picocolors.blue('file unlinked ==>'), picocolors.cyan(f))
+      },
+    })
   })
 }
