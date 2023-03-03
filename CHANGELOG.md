@@ -1,4 +1,13 @@
-## [0.0.25](https://github.com/hemengke1997/util/compare/v0.0.23...v0.0.25) (2023-03-02)
+## [0.0.26](https://github.com/hemengke1997/util/compare/v0.0.24...v0.0.26) (2023-03-02)
+
+
+### Features
+
+* **react-component:** toast support builtin icons ([add149a](https://github.com/hemengke1997/util/commit/add149ae9c9f53418f50f84026a45eb66a564c9c))
+
+
+
+## [0.0.24](https://github.com/hemengke1997/util/compare/v0.0.23...v0.0.24) (2023-03-02)
 
 
 ### Bug Fixes
