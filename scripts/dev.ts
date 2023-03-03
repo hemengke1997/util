@@ -27,6 +27,12 @@ function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions
   return resolvedWatchOptions
 }
 
+function logInfo(filePath: string) {
+  console.log(
+    `${picocolors.dim(new Date().toLocaleTimeString())} ${picocolors.blue('update =>')} ${picocolors.cyan(filePath)}`,
+  )
+}
+
 export async function dev(tsup?: Options, chokidar?: WatchOptions) {
   const root = process.cwd()
 
@@ -52,30 +58,24 @@ export async function dev(tsup?: Options, chokidar?: WatchOptions) {
     },
   })
 
-  watcher.on('change', async (f) => {
+  async function onBundle(f: string) {
     await bundle({
       silent: true,
       async onSuccess() {
-        console.log(picocolors.blue('file changed ==>'), picocolors.cyan(f))
+        logInfo(f)
       },
     })
+  }
+
+  watcher.on('change', async (f) => {
+    await onBundle(f)
   })
 
   watcher.on('add', async (f) => {
-    await bundle({
-      silent: true,
-      async onSuccess() {
-        console.log(picocolors.blue('file added ==>'), picocolors.cyan(f))
-      },
-    })
+    await onBundle(f)
   })
 
   watcher.on('unlink', async (f) => {
-    await bundle({
-      silent: true,
-      async onSuccess() {
-        console.log(picocolors.blue('file unlinked ==>'), picocolors.cyan(f))
-      },
-    })
+    await onBundle(f)
   })
 }
