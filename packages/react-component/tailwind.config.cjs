@@ -1,11 +1,13 @@
-const { isObject } = require('@minko-fe/lodash-pro')
+const { isObject, difference } = require('@minko-fe/lodash-pro')
 const plugin = require('tailwindcss/plugin')
 const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 function extendsColors() {
-  const keys = Object.keys(colors)
+  let keys = Object.keys(colors)
   const c = {}
+  const warnings = ['lightBlue', 'warmGray', 'trueGray', 'coolGray', 'blueGray']
+  keys = difference(keys, warnings)
   keys.forEach((k) => {
     if (isObject(colors[k])) {
       c[k] = {

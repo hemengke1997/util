@@ -9,5 +9,4 @@ build({
     entry: await getEntry('src/**/*.{ts,tsx}'),
   },
   legacyOutput: true,
-  treeshake: false,
 })
