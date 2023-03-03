@@ -4,9 +4,22 @@
   --rc-success-color: theme(colors.green.default);
 
   /* ----------------- animation ---------------- */
+
+  /* ----------------- duration ----------------- */
   --rc-animation-duration-fast: theme(transitionDuration.fast);
   --rc-animation-duration-base: theme(transitionDuration.default);
   --rc-animation-duration-slow: theme(transitionDuration.slow);
-  --rc-animation-timing-function-leave: theme(transitionTimingFunction.in);
-  --rc-animation-timing-function-enter: theme(transitionTimingFunction.out);
+
+  /* -------------- timing-function ------------- */
+  --rc-animation-timing-function-leave: theme(transitionTimingFunction.motionEaseOut);
+  --rc-animation-timing-function-enter: theme(transitionTimingFunction.motionEaseInOut);
+  --rc-animation-timing-function-ease-out-circ: theme(transitionTimingFunction.motionEaseOutCirc);
+  --rc-animation-timing-function-ease-in-out-circ: theme(transitionTimingFunction.motionEaseInOutCirc);
+  --rc-animation-timing-function-ease-out: theme(transitionTimingFunction.motionEaseOut);
+  --rc-animation-timing-function-ease-in-out: theme(transitionTimingFunction.motionEaseInOut);
+  --rc-animation-timing-function-ease-out-back: theme(transitionTimingFunction.motionEaseOutBack);
+  --rc-animation-timing-function-in-back: theme(transitionTimingFunction.motionEaseInBack);
+  --rc-animation-timing-function-in-quint: theme(transitionTimingFunction.motionEaseInQuint);
+  --rc-animation-timing-function-out-quint: theme(transitionTimingFunction.motionEaseOutQuint);
+
 }

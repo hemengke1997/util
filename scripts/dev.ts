@@ -1,4 +1,5 @@
 import path from 'path'
+import readline from 'readline'
 import type { WatchOptions } from 'chokidar'
 import { watch } from 'chokidar'
 import type { Options } from 'tsup'
@@ -33,6 +34,14 @@ function logInfo(filePath: string) {
   )
 }
 
+function clearScreen() {
+  const repeatCount = process.stdout.rows - 2
+  const blank = repeatCount > 0 ? '\n'.repeat(repeatCount) : ''
+  console.log(blank)
+  readline.cursorTo(process.stdout, 0, 0)
+  readline.clearScreenDown(process.stdout)
+}
+
 export async function dev(tsup?: Options, chokidar?: WatchOptions) {
   const root = process.cwd()
 
@@ -54,7 +63,8 @@ export async function dev(tsup?: Options, chokidar?: WatchOptions) {
 
   bundle({
     async onSuccess() {
-      console.log(picocolors.blue('build success 👍'))
+      clearScreen()
+      console.log(picocolors.blue('Build Success 👍'))
     },
   })
 

@@ -4,6 +4,7 @@
   --rc-popup-close-icon-z-index: 1;
   --rc-popup-close-icon-color: theme(colors.neutral.200);
   --rc-popup-close-icon-active-color: theme(colors.neutral.300);
+  --rc-popup-close-icon-hover-color: theme(colors.neutral.dark);
   --rc-popup-close-icon-border-radius: theme(borderRadius.sm);
   --rc-popup-close-icon-size: 14px;
   --rc-popup-close-icon-margin: 6px;
@@ -111,10 +112,11 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      @apply transition;
+      @apply transition-colors;
+      transition-property: background-color;
       
       &:hover {
-        background: theme(colors.neutral.light);
+        background-color: var(--rc-popup-close-icon-hover-color);
       }
 
       &:active {

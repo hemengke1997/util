@@ -2,7 +2,7 @@ import { extend, isBrowser } from '@minko-fe/lodash-pro'
 import { useEffect, useState } from 'react'
 import { CloseOutlined } from '../icons'
 import { resolveContainer } from '../utils/dom/getContainer'
-import { render as ReactRender, unmount } from '../utils/dom/render'
+import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'
 import { Dialog as BaseDialog } from './Dialog'
 import type { DialogProps, DialogStatic } from './PropsType'
 
@@ -28,6 +28,7 @@ DialogObj.show = (props: DialogProps): (() => void) => {
   let timeoutId: NodeJS.Timeout
 
   const userContainer = resolveContainer(props.teleport)
+
   const container = document.createElement('div')
   userContainer.appendChild(container)
 
@@ -46,10 +47,7 @@ DialogObj.show = (props: DialogProps): (() => void) => {
       if (onClosed) {
         onClosed()
       }
-      const unmountResult = unmount(container)
-      if (unmountResult && container.parentNode) {
-        container.parentNode.removeChild(container)
-      }
+      unmount()
     }
 
     return (
@@ -75,7 +73,14 @@ DialogObj.show = (props: DialogProps): (() => void) => {
         break
       }
     }
-    unmount(container)
+    unmount()
+  }
+
+  function unmount() {
+    const unmountResult = ReactUnmount(container)
+    if (unmountResult && container.parentNode) {
+      container.parentNode.removeChild(container)
+    }
   }
 
   function render(config: DialogProps) {

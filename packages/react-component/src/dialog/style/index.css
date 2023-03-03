@@ -28,7 +28,7 @@
     @keyframes rc-dialog-bounce-in {
       from {
         opacity: 0;
-        transform: translate3d(-50%, -50%, 0) scale(0.5);
+        transform: translate3d(-50%, -50%, 0) scale(0.8);
       }
 
       to {
@@ -45,16 +45,16 @@
 
       to {
         opacity: 0;
-        transform: translate3d(-50%, -50%, 0) scale(0.5);
+        transform: translate3d(-50%, -50%, 0) scale(0.8);
       }
     }
 
     &-enter-active {
-      animation: var(--rc-animation-duration-fast) rc-dialog-bounce-in both var(--rc-animation-timing-function-enter);
+      animation: var(--rc-animation-duration-fast) rc-dialog-bounce-in both var(--rc-animation-timing-function-ease-out-circ);
     }
 
     &-exit-active {
-      animation: var(--rc-animation-duration-fast) rc-dialog-bounce-out both var(--rc-animation-timing-function-leave);
+      animation: var(--rc-animation-duration-fast) rc-dialog-bounce-out both var(--rc-animation-timing-function-ease-in-out-circ);
     }
   }
 }
