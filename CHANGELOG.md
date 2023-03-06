@@ -1,4 +1,18 @@
-## [0.0.26](https://github.com/hemengke1997/util/compare/v0.0.24...v0.0.26) (2023-03-02)
+## [0.0.27](https://github.com/hemengke1997/util/compare/v0.0.25...v0.0.27) (2023-03-03)
+
+
+### Bug Fixes
+
+* **react-component:** depress tailwind warning ([b19caaa](https://github.com/hemengke1997/util/commit/b19caaad8c36cf2d63eb21d48dbfab16f3fefbae))
+
+
+### Features
+
+* **react-component:** export icons ([448a4bd](https://github.com/hemengke1997/util/commit/448a4bd790b60f45e919cad22aac8890fb7a5244))
+
+
+
+## [0.0.25](https://github.com/hemengke1997/util/compare/v0.0.24...v0.0.25) (2023-03-02)
 
 
 ### Features
