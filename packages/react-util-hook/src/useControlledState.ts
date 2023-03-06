@@ -1,49 +1,52 @@
-import { isUndefined } from '@minko-fe/lodash-pro'
-import { useLayoutUpdateEffect } from './useLayoutUpdateEffect'
-import { useMemoizedFn, useSafeState } from '.'
+import { isFunction } from '@minko-fe/lodash-pro'
+import { useMemoizedFn, useUpdate } from 'ahooks'
+import { useMemo, useRef } from 'react'
 
-type Updater<T> = (updater: T | ((origin: T) => T)) => void
-
-export function useControlledState<T, R = T>(option: {
+function useControlledState<T, R = T>(option: {
   defaultValue?: T | (() => T)
   value?: T
   onChange?: (value: T, prevValue: T) => void
-  postState?: (value: T) => T
-}): [R, Updater<T>] {
-  const { defaultValue, value, onChange = () => {}, postState } = option || {}
+  postValue?: (value: T) => T
+}): [R, (value: T | ((prevState: T) => T)) => void] {
+  const { defaultValue, value, onChange, postValue } = option
 
-  const [innerValue, setInnerValue] = useSafeState<T>(() => {
-    if (!isUndefined(value)) {
+  const isControlled = Object.prototype.hasOwnProperty.call(option, 'value') && typeof value !== 'undefined'
+
+  const initialValue = useMemo(() => {
+    if (isControlled) {
       return value
-    } else if (!isUndefined(defaultValue)) {
-      return typeof defaultValue === 'function' ? (defaultValue as any)() : defaultValue
     }
-  })
-
-  const mergedValue = !isUndefined(value) ? value : innerValue
-  const postMergedValue = postState ? postState(mergedValue) : mergedValue
-
-  const onChangeFn = useMemoizedFn(onChange)
-
-  const [prevValue, setPrevValue] = useSafeState<[T]>([mergedValue])
-
-  useLayoutUpdateEffect(() => {
-    const prev = prevValue[0]
-    if (innerValue !== prev) {
-      onChangeFn(innerValue, prev)
+    if (defaultValue !== undefined) {
+      return isFunction(defaultValue) ? (defaultValue as Function)() : defaultValue
     }
-  }, [prevValue])
+  }, [])
 
-  useLayoutUpdateEffect(() => {
-    if (isUndefined(value)) {
-      setInnerValue(value as T)
+  const stateRef = useRef(initialValue)
+
+  if (isControlled) {
+    stateRef.current = value
+  }
+
+  if (postValue) {
+    stateRef.current = postValue(stateRef.current)
+  }
+
+  const update = useUpdate()
+
+  function triggerChange(newValue: T | ((prevState: T) => T)) {
+    const r = isFunction(newValue) ? newValue(stateRef.current) : newValue
+    if (!isControlled) {
+      stateRef.current = r
+
+      update()
     }
-  }, [value])
 
-  const triggerChange: Updater<T> = useMemoizedFn((updater) => {
-    setInnerValue(updater)
-    setPrevValue([mergedValue])
-  })
+    if (stateRef.current !== r && onChange) {
+      onChange(r, stateRef.current)
+    }
+  }
 
-  return [postMergedValue as unknown as R, triggerChange]
+  return [stateRef.current, useMemoizedFn(triggerChange)]
 }
+
+export { useControlledState }
