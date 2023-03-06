@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/axios-pro",
   "type": "module",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "axios pro",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
