@@ -1,4 +1,13 @@
-## [0.0.29](https://github.com/hemengke1997/util/compare/v0.0.27...v0.0.29) (2023-03-06)
+## [0.0.30](https://github.com/hemengke1997/util/compare/v0.0.28...v0.0.30) (2023-03-06)
+
+
+### Bug Fixes
+
+* build script ([dd367b2](https://github.com/hemengke1997/util/commit/dd367b21e86bb343b2d08c1d77e1ce4935793511))
+
+
+
+## [0.0.28](https://github.com/hemengke1997/util/compare/v0.0.27...v0.0.28) (2023-03-06)
 
 
 
