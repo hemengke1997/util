@@ -55,27 +55,17 @@ const useUrlState = <S extends UrlState = UrlState>(initialState?: S | (() => S)
     // 1. 如果 setState 后，search 没变化，就需要 update 来触发一次更新。比如 demo1 直接点击 clear，就需要 update 来触发更新。
     // 2. update 和 history 的更新会合并，不会造成多次更新
     update()
-    if (history) {
-      history[navigateMode](
-        {
-          hash: location.hash,
-          search: queryString.stringify({ ...queryFromUrl, ...newQuery }, mergedStringifyOptions) || '?',
-        },
-        location.state,
-      )
-    }
-    if (navigate) {
-      navigate(
-        {
-          hash: location.hash,
-          search: queryString.stringify({ ...queryFromUrl, ...newQuery }, mergedStringifyOptions) || '?',
-        },
-        {
-          replace: navigateMode === 'replace',
-          state: location.state,
-        },
-      )
-    }
+
+    navigate(
+      {
+        hash: location.hash,
+        search: queryString.stringify({ ...queryFromUrl, ...newQuery }, mergedStringifyOptions) || '?',
+      },
+      {
+        replace: navigateMode === 'replace',
+        state: location.state,
+      },
+    )
   }
 
   return [targetQuery, useMemoizedFn(setState)] as const
