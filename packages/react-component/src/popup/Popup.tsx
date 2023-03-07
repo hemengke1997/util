@@ -218,7 +218,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   }, [propVisible])
 
   useUpdateEffect(() => {
-    if (visible === false) {
+    if (visible === false && opened.current) {
       close()
     }
   }, [visible])

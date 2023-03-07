@@ -9,7 +9,7 @@ import { A } from '#/A'
 //   // duration: 2000,
 // })
 Dialog.setDefaultOptions({
-  overlay: true,
+  overlay: false,
   overlayStyle: {
     backgroundColor: 'transparent',
   },
@@ -22,6 +22,9 @@ function App() {
   const x = () => {
     destory.current = Dialog.show({
       children: <A url={_url} />,
+      onClose() {
+        console.log('onClose')
+      },
     })
   }
 
@@ -45,6 +48,7 @@ function App() {
         >
           show dialog
         </div>
+        <div onClick={() => destory.current?.()}>close dialog</div>
         <div onClick={() => setVisible(true)}>open dialog</div>
       </div>
     </div>

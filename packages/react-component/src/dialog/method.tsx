@@ -35,7 +35,7 @@ DialogObj.show = (props: DialogProps): (() => void) => {
   let currentConfig: DialogProps = { ...commonOptions, ...props, visible: true }
 
   const TempDialog = (dialogProps: DialogProps) => {
-    const { onClosed, onClose, children, ...rest } = dialogProps
+    const { onClose, onClosed, children, ...rest } = dialogProps
 
     const [visible, setVisible] = useState<boolean>(false)
 
@@ -43,7 +43,7 @@ DialogObj.show = (props: DialogProps): (() => void) => {
       setVisible(dialogProps.visible || false)
     }, [dialogProps.visible])
 
-    const _afterClose = () => {
+    const _onClosed = () => {
       if (onClosed) {
         onClosed()
       }
@@ -58,9 +58,9 @@ DialogObj.show = (props: DialogProps): (() => void) => {
         teleport={() => container}
         onClose={() => {
           setVisible(false)
-          if (onClose) onClose()
+          onClose?.()
         }}
-        onClosed={_afterClose}
+        onClosed={_onClosed}
       >
         {children}
       </BaseDialog>
