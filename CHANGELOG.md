@@ -1,4 +1,14 @@
-## [0.0.34](https://github.com/hemengke1997/util/compare/v0.0.32...v0.0.34) (2023-03-07)
+## [0.0.35](https://github.com/hemengke1997/util/compare/v0.0.33...v0.0.35) (2023-03-07)
+
+
+### Bug Fixes
+
+* **react-component:** dialog return destory and update methods ([5c078b3](https://github.com/hemengke1997/util/commit/5c078b341be78fd0fe6bfa3c42257426ca89db63))
+* **react-component:** popup visible false triiger onClose twice ([241db25](https://github.com/hemengke1997/util/commit/241db25cc39c5969b52a2c1974dab4f3da5d4efb))
+
+
+
+## [0.0.33](https://github.com/hemengke1997/util/compare/v0.0.32...v0.0.33) (2023-03-07)
 
 
 ### Bug Fixes

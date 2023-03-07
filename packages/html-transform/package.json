@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/html-transform",
   "type": "module",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "html-transform",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
