@@ -8,8 +8,8 @@
     "html-transform",
     "lodash-pro",
     "react-component",
-    "react-util-hook",
-    "react-util-route",
+    "react-hook",
+    "react-route",
     "vite-config"
   ]
 }

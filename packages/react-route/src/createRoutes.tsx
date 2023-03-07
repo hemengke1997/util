@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react'
+import { cloneElement } from 'react'
 import type { RouteObject } from 'react-router-dom'
 import { useRoutes } from 'react-router-dom'
 import { RouterUtil } from './routerUtil'
@@ -41,6 +43,7 @@ interface RouterPropsType {
   onRouteBefore?: OnRouteBeforeType
   onRouteMount?: OnRouteMountType
   suspense?: ReactElementType
+  provider?: ReactElement
 }
 
 interface RouterType {
@@ -63,7 +66,7 @@ export type {
 
 export { RouterUtil }
 
-function CreateRoutes({ routes, onRouteBefore, onRouteMount, suspense }: RouterPropsType) {
+function CreateRoutes({ routes, onRouteBefore, onRouteMount, suspense, provider }: RouterPropsType) {
   const util = new RouterUtil({
     routes,
     onRouteBefore,
@@ -75,7 +78,7 @@ function CreateRoutes({ routes, onRouteBefore, onRouteMount, suspense }: RouterP
 
   const elements = useRoutes(reactRoutes)
 
-  return <>{elements}</>
+  return provider ? cloneElement(provider, {}, elements) : elements
 }
 
 export { CreateRoutes }

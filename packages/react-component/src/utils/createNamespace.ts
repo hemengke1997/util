@@ -23,7 +23,7 @@ function gen(name: string, mods?: Mods): string {
 
   if (isArray(mods)) {
     // @ts-ignore
-    return mods.reduce((ret, item) => ret + gen(name, item), '')
+    return mods.reduce((ret: string, item: Mods | undefined) => ret + gen(name, item), '')
   }
   return Object.keys(mods).reduce((ret, key) => ret + (mods[key] ? gen(name, key) : ''), '')
 }
