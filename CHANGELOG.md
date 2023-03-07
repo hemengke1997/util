@@ -1,4 +1,13 @@
-## [0.0.35](https://github.com/hemengke1997/util/compare/v0.0.33...v0.0.35) (2023-03-07)
+## [0.0.36](https://github.com/hemengke1997/util/compare/v0.0.34...v0.0.36) (2023-03-07)
+
+
+### Features
+
+* **react-component:** default box-shadow ([c7f4d16](https://github.com/hemengke1997/util/commit/c7f4d16990696fdc0d9565c0362222d3da05f0a1))
+
+
+
+## [0.0.34](https://github.com/hemengke1997/util/compare/v0.0.33...v0.0.34) (2023-03-07)
 
 
 ### Bug Fixes
