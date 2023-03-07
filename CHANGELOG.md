@@ -1,4 +1,13 @@
-## [0.0.36](https://github.com/hemengke1997/util/compare/v0.0.34...v0.0.36) (2023-03-07)
+## [0.0.37](https://github.com/hemengke1997/util/compare/v0.0.35...v0.0.37) (2023-03-07)
+
+
+### Features
+
+* **react-component:** toast support `warning` type ([b4f8516](https://github.com/hemengke1997/util/commit/b4f8516e9a6950c97183af7a7caf31522b067a98))
+
+
+
+## [0.0.35](https://github.com/hemengke1997/util/compare/v0.0.34...v0.0.35) (2023-03-07)
 
 
 ### Features
