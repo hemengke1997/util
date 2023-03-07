@@ -2,7 +2,7 @@ import { isDef, isUndefined } from '@minko-fe/lodash-pro'
 import classNames from 'classnames'
 import type { FC } from 'react'
 import React, { useEffect, useRef } from 'react'
-import { CheckCircleFilled, CloseCircleFilled } from '../icons'
+import { CheckCircleFilled, CloseCircleFilled, ExclamationCircleFilled } from '../icons'
 import Popup from '../popup'
 import type { PopupInstanceType } from '../popup/PropsType'
 import { createNamespace } from '../utils/createNamespace'
@@ -15,6 +15,7 @@ const builtinIcons: Record<ToastType, React.ReactNode> = {
   info: null,
   error: <CloseCircleFilled />,
   success: <CheckCircleFilled />,
+  warning: <ExclamationCircleFilled />,
 }
 
 const Toast: FC<ToastProps> = (props) => {
@@ -65,7 +66,10 @@ const Toast: FC<ToastProps> = (props) => {
   const renderIcon = () => {
     const { icon } = props
 
-    const hasIcon = icon || type === 'success' || type === 'error'
+    const hasIcon = icon || builtinIcons[type]
+
+    console.log(hasIcon, 'hasIcon')
+
     if (hasIcon) {
       return React.cloneElement((icon || builtinIcons[type]) as React.ReactElement, {
         className: classNames(bem('icon'), bem(type)),

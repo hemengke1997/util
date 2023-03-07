@@ -1,7 +1,7 @@
 import type React from 'react'
 import type { BaseTypeProps } from '../utils/interface'
 
-export type ToastType = 'success' | 'error' | 'info'
+export type ToastType = 'success' | 'error' | 'info' | 'warning'
 
 export type ToastPosition = 'top' | 'middle' | 'bottom'
 
@@ -57,7 +57,7 @@ export type ToastReturnType = {
   /** 动态更新方法 */
   update(configUpdate: ConfigUpdate): void
   /** 清除单例toast */
-  destory: () => void
+  destroy: () => void
 } | null
 
 export interface ToastInstance {

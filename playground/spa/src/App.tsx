@@ -16,11 +16,11 @@ Dialog.setDefaultOptions({
 })
 
 function App() {
-  const destory = useRef<() => void>()
+  const destroy = useRef<() => void>()
   const [_url] = useUrlState()
 
   const x = () => {
-    destory.current = Dialog.show({
+    destroy.current = Dialog.show({
       children: <A url={_url} />,
       onClose() {
         console.log('onClose')
@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div>
-      <div onClick={() => toast.show({ content: <div>{Math.random()}</div>, type: 'info' })}>show toast</div>
+      <div onClick={() => toast.show({ content: <div>{Math.random()}</div>, type: 'warning' })}>show toast</div>
       <AccountBookFilled />
       <div className='App'>
         <div id='test' />
@@ -48,7 +48,7 @@ function App() {
         >
           show dialog
         </div>
-        <div onClick={() => destory.current?.()}>close dialog</div>
+        <div onClick={() => destroy.current?.()}>close dialog</div>
         <div onClick={() => setVisible(true)}>open dialog</div>
       </div>
     </div>

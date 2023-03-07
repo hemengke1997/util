@@ -2,6 +2,7 @@
   /* ------------------ colors ------------------ */
   --rc-error-color: theme(colors.red.default);
   --rc-success-color: theme(colors.green.default);
+  --rc-warning-color: theme(colors.yellow.default);
 
   /* ----------------- animation ---------------- */
 

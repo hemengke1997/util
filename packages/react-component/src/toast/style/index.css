@@ -2,7 +2,7 @@
   --rc-toast-default-width: max-content;
   --rc-toast-max-width: 70%;
   --rc-toast-default-min-height: 36px;
-  --rc-toast-default-padding: 16px 24px;
+  --rc-toast-default-padding: 16px 16px;
   --rc-toast-text-color: theme(colors.white);
   --rc-toast-font-size: 1rem;
   --rc-toast-background-color: theme(colors.black / 70%);
@@ -83,6 +83,10 @@
 
   &__success {
     color: var(--rc-success-color);
+  }
+
+  &__warning {
+    color: var(--rc-warning-color);
   }
 
   &&-bounce {

@@ -36,7 +36,7 @@ export type DialogReturnType = {
   /** 动态更新方法 */
   update(configUpdate: ConfigUpdate): void
   /** 清除dialog */
-  destory: () => void
+  destroy: () => void
 } | null
 
 export interface DialogStatic {

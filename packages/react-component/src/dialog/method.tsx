@@ -124,7 +124,7 @@ DialogObj.show = (props: DialogProps) => {
   destroyFns.push(close)
 
   return {
-    destory: close,
+    destroy: close,
     update,
   }
 }

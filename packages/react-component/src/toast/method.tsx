@@ -176,7 +176,7 @@ toastObj.show = (props: ToastProps) => {
   destroyFns.push(close)
 
   return {
-    destory: close,
+    destroy: close,
     update,
   }
 }
