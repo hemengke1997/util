@@ -1,4 +1,13 @@
-## [0.0.32](https://github.com/hemengke1997/util/compare/v0.0.30...v0.0.32) (2023-03-06)
+## [0.0.33](https://github.com/hemengke1997/util/compare/v0.0.31...v0.0.33) (2023-03-06)
+
+
+### Bug Fixes
+
+* **react-component:** toast style ([3748abc](https://github.com/hemengke1997/util/commit/3748abc1d7a9fe285b01b27d2054b06aee3575de))
+
+
+
+## [0.0.31](https://github.com/hemengke1997/util/compare/v0.0.30...v0.0.31) (2023-03-06)
 
 
 ### Bug Fixes
