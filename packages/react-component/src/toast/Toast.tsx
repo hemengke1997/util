@@ -68,8 +68,6 @@ const Toast: FC<ToastProps> = (props) => {
 
     const hasIcon = icon || builtinIcons[type]
 
-    console.log(hasIcon, 'hasIcon')
-
     if (hasIcon) {
       return React.cloneElement((icon || builtinIcons[type]) as React.ReactElement, {
         className: classNames(bem('icon'), bem(type)),

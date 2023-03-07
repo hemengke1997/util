@@ -25,6 +25,9 @@ async function build(opts: Options = {}) {
     ...opts,
     external: [...(defaultConfig.external || []), ...(opts.external || [])],
     dts,
+    esbuildOptions(opt) {
+      opt.drop = ['console', 'debugger']
+    },
   })
 }
 
