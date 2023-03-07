@@ -30,9 +30,18 @@ export interface DialogProps extends Omit<BaseTypeProps, 'children'>, SharedPopu
   onClosed?: () => void
 }
 
+export type ConfigUpdate = DialogProps | ((prevConfig: DialogProps) => DialogProps)
+
+export type DialogReturnType = {
+  /** 动态更新方法 */
+  update(configUpdate: ConfigUpdate): void
+  /** 清除dialog */
+  destory: () => void
+} | null
+
 export interface DialogStatic {
   (props: DialogProps): React.ReactElement
-  show: (props: DialogProps) => () => void
+  show: (props: DialogProps) => DialogReturnType
   /**
    * 修改默认配置，对所有 Dialog 生效。
    */

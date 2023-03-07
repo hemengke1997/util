@@ -4,7 +4,7 @@ import { CloseOutlined } from '../icons'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'
 import { Dialog as BaseDialog } from './Dialog'
-import type { DialogProps, DialogStatic } from './PropsType'
+import type { ConfigUpdate, DialogProps, DialogStatic } from './PropsType'
 
 const defaultOptions: DialogProps = {
   overlay: true,
@@ -22,8 +22,8 @@ const destroyFns: Array<() => void> = []
 const DialogObj: DialogStatic = BaseDialog
 
 // 可返回用于销毁此弹窗的方法
-DialogObj.show = (props: DialogProps): (() => void) => {
-  if (!isBrowser()) return () => {}
+DialogObj.show = (props: DialogProps) => {
+  if (!isBrowser()) return null
 
   let timeoutId: NodeJS.Timeout
 
@@ -93,6 +93,18 @@ DialogObj.show = (props: DialogProps): (() => void) => {
     })
   }
 
+  function update(configUpdate: ConfigUpdate) {
+    if (typeof configUpdate === 'function') {
+      currentConfig = configUpdate(currentConfig)
+    } else {
+      currentConfig = {
+        ...currentConfig,
+        ...configUpdate,
+      }
+    }
+    render(currentConfig)
+  }
+
   function close() {
     currentConfig = {
       ...currentConfig,
@@ -111,7 +123,10 @@ DialogObj.show = (props: DialogProps): (() => void) => {
 
   destroyFns.push(close)
 
-  return close
+  return {
+    destory: close,
+    update,
+  }
 }
 
 function setDefaultOptions(options?: DialogProps) {
