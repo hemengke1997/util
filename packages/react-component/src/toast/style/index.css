@@ -13,6 +13,7 @@
   --rc-toast-position-bottom-distance: 20%;
   --rc-toast-icon-margin: 0 8px 0 0;
   --rc-toast-icon-size: 16px;
+  --rc-toast-box-shadow: theme(boxShadow.default);
 }
 
 .rc-toast {
@@ -27,6 +28,7 @@
     border-radius: var(--rc-toast-border-radius);
     transition: all var(--rc-animation-duration-fast);
     max-width: var(--rc-toast-max-width);
+    box-shadow: var(--rc-toast-box-shadow);
   }
 
   &&--unclickable {
@@ -80,7 +82,7 @@
   }
 
   &__success {
-    color: var(--rc-success-color)
+    color: var(--rc-success-color);
   }
 
   &&-bounce {

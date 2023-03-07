@@ -13,6 +13,7 @@
   --rc-popup-title-font-size: 16px;
   --rc-popup-description-color: theme(colors.white);
   --rc-popup-description-font-size: 14px;
+  --rc-popup-box-shadow: theme(boxShadow.default);
 }
 
 .rc {
@@ -24,6 +25,7 @@
     @apply fixed max-h-full overflow-y-auto;
     transition: var(--rc-popup-transition);
     -webkit-overflow-scrolling: touch;
+    box-shadow: var(--rc-popup-box-shadow);
 
     &--center {
       @apply center;
