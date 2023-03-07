@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Dialog, toast } from '@minko-fe/react-component'
-import { useUrlState } from '@minko-fe/react-util-hook'
+import { useUrlState } from '@minko-fe/react-hook'
 import { AccountBookFilled } from '@minko-fe/react-component/icons'
 import { A } from '#/A'
 

@@ -1,5 +1,5 @@
 import { extend, isBrowser } from '@minko-fe/lodash-pro'
-import { useLatest } from '@minko-fe/react-util-hook'
+import { useLatest } from '@minko-fe/react-hook'
 import { useEffect, useState } from 'react'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount } from '../utils/dom/render'

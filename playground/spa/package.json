@@ -12,8 +12,8 @@
     "@minko-fe/axios-pro": "workspace:*",
     "@minko-fe/lodash-pro": "workspace:*",
     "@minko-fe/react-component": "workspace:*",
-    "@minko-fe/react-util-hook": "workspace:*",
-    "@minko-fe/react-util-route": "workspace:*",
+    "@minko-fe/react-hook": "workspace:*",
+    "@minko-fe/react-route": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1"

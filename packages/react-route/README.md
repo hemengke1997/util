@@ -2,8 +2,8 @@
 
 ```jsx
 import { BrowserRouter } from 'react-router-dom'
-import { CreateRoutes } from '@minko-fe/react-util-route'
-import type { RoutesItemType } from '@minko-fe/react-util-route'
+import { CreateRoutes } from '@minko-fe/react-route'
+import type { RoutesItemType } from '@minko-fe/react-route'
 
 
 const routes: RoutesItemType[] = [

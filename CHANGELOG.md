@@ -49,7 +49,7 @@
 
 ### Bug Fixes
 
-* **react-util-hook:** useControlledState ([1bf576f](https://github.com/hemengke1997/util/commit/1bf576fe130de930542444cfd83ba1f1d7737130))
+* **react-hook:** useControlledState ([1bf576f](https://github.com/hemengke1997/util/commit/1bf576fe130de930542444cfd83ba1f1d7737130))
 
 
 
@@ -112,7 +112,7 @@
 
 ### Bug Fixes
 
-* **react-util-hook:** useControlledState onChange is undefined ([463046a](https://github.com/hemengke1997/util/commit/463046a1c560031b645370645d5d3b22ac7326e6))
+* **react-hook:** useControlledState onChange is undefined ([463046a](https://github.com/hemengke1997/util/commit/463046a1c560031b645370645d5d3b22ac7326e6))
 
 
 
@@ -148,7 +148,7 @@
 
 ### Bug Fixes
 
-* **react-util-hook:** override use-url-state ([45c3dc5](https://github.com/hemengke1997/util/commit/45c3dc5e863dd39866dd3100672703148953c4ba))
+* **react-hook:** override use-url-state ([45c3dc5](https://github.com/hemengke1997/util/commit/45c3dc5e863dd39866dd3100672703148953c4ba))
 
 
 

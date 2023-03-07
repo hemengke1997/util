@@ -1,5 +1,5 @@
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
-import { useEffectOnce } from '@minko-fe/react-util-hook'
+import { useEffectOnce } from '@minko-fe/react-hook'
 import type { MetaType, OnRouteBeforeResType, OnRouteBeforeType, OnRouteMountType, ReactElementType } from './index'
 
 let cache: ReactElementType | null = null

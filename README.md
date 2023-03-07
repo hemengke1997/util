@@ -8,8 +8,8 @@ Package |
  @minko-fe/html-transform
  @minko-fe/lodash-pro
  @minko-fe/react-component
- @minko-fe/react-util-hook
- @minko-fe/react-util-route
+ @minko-fe/react-hook
+ @minko-fe/react-route
  @minko-fe/vite-config
 
 ## License
