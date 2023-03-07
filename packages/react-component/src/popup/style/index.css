@@ -7,8 +7,8 @@
   --rc-popup-close-icon-hover-color: theme(colors.neutral.dark);
   --rc-popup-close-icon-border-radius: theme(borderRadius.sm);
   --rc-popup-close-icon-size: 14px;
-  --rc-popup-close-icon-margin: 6px;
-  --rc-popup-close-icon-padding: 2px;
+  --rc-popup-close-icon-margin: 8px;
+  --rc-popup-close-icon-padding: 4px;
   --rc-popup-title-color: 'inherit';
   --rc-popup-title-font-size: 16px;
   --rc-popup-description-color: theme(colors.white);

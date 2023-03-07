@@ -22,8 +22,6 @@ function App() {
   const x = () => {
     destory.current = Dialog.show({
       children: <A url={_url} />,
-
-      teleport: document.querySelector('#test'),
     })
   }
 

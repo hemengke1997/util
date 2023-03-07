@@ -1,10 +1,11 @@
 :root {
   --rc-dialog-top: 45%;
   --rc-dialog-font-size: 16px;
-  --rc-dialog-background-color: theme(colors.black / 0.7);
+  --rc-dialog-background-color: theme(colors.black);
   --rc-dialog-border-radius: theme(borderRadius.default);
   --rc-dialog-transition: theme(transitionDuration.default);
-  --rc-dialog-content-padding: 16px 24px;
+  --rc-dialog-content-padding: 24px 24px;
+  --rc-dialog-content-width: auto;
 }
 
 .rc-dialog {
@@ -22,6 +23,7 @@
   &__content {
     color: theme(colors.white);
     padding: var(--rc-dialog-content-padding);
+    width: var(--rc-dialog-content-width);
   }
 
   &&-bounce {
