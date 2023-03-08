@@ -1,4 +1,13 @@
-## [0.0.39](https://github.com/hemengke1997/util/compare/v0.0.37...v0.0.39) (2023-03-07)
+## [0.0.40](https://github.com/hemengke1997/util/compare/v0.0.38...v0.0.40) (2023-03-07)
+
+
+### Features
+
+* **react-route:** support provider ([86dfccd](https://github.com/hemengke1997/util/commit/86dfccdff8bed3543ee0686227e7e7dde4fd1dd0))
+
+
+
+## [0.0.38](https://github.com/hemengke1997/util/compare/v0.0.37...v0.0.38) (2023-03-07)
 
 
 
