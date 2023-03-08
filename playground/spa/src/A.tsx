@@ -7,7 +7,7 @@ export const A: FC<any> = ({ url }) => {
 
   return (
     <div>
-      <div onClick={() => ctx.setVisible(false)}>close</div>
+      <div onClick={() => ctx.close()}>close</div>
     </div>
   )
 }

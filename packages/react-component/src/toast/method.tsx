@@ -2,10 +2,11 @@ import { extend, isBrowser } from '@minko-fe/lodash-pro'
 import { useLatest } from '@minko-fe/react-hook'
 import { useEffect, useState } from 'react'
 import { resolveContainer } from '../utils/dom/getContainer'
-import { render as ReactRender, unmount } from '../utils/dom/render'
+import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'
 import { lockClick } from './lock-click'
 import type { ConfigUpdate, ToastInstance, ToastProps, ToastType } from './PropsType'
 import { Toast as BaseToast } from './Toast'
+import { ToastContext } from './ToastContext'
 
 const defaultOptions: ToastProps = {
   content: '',
@@ -107,17 +108,19 @@ toastObj.show = (props: ToastProps) => {
     }, [toastProps.visible])
 
     return (
-      <BaseToast
-        {...toastProps}
-        visible={visible}
-        teleport={() => container}
-        onClose={internalDestroy}
-        onClosed={() => {
-          props.onClosed?.()
-          destroy()
-        }}
-        onHoverStateChange={setIsHovering}
-      />
+      <ToastContext.Provider value={{ visible, close, update }}>
+        <BaseToast
+          {...toastProps}
+          visible={visible}
+          teleport={() => container}
+          onClose={internalDestroy}
+          onClosed={() => {
+            props.onClosed?.()
+            destroy()
+          }}
+          onHoverStateChange={setIsHovering}
+        />
+      </ToastContext.Provider>
     )
   }
 
@@ -129,8 +132,11 @@ toastObj.show = (props: ToastProps) => {
         break
       }
     }
+    unmount()
+  }
 
-    const unmountResult = unmount(container)
+  function unmount() {
+    const unmountResult = ReactUnmount(container)
     if (unmountResult && container.parentNode) {
       container.parentNode.removeChild(container)
     }
@@ -140,6 +146,12 @@ toastObj.show = (props: ToastProps) => {
     currentConfig = {
       ...currentConfig,
       visible: false,
+      onClosed: () => {
+        if (typeof props.onClosed === 'function') {
+          props.onClosed()
+        }
+        destroy()
+      },
     }
     if (currentConfig.forbidClick) {
       lockClick(false)
@@ -176,7 +188,7 @@ toastObj.show = (props: ToastProps) => {
   destroyFns.push(close)
 
   return {
-    destroy: close,
+    close,
     update,
   }
 }

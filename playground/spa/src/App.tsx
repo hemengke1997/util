@@ -16,7 +16,7 @@ Dialog.setDefaultOptions({
 })
 
 function App() {
-  const destroy = useRef<() => void>()
+  const destroy = useRef<any>()
   const [_url] = useUrlState()
 
   const x = () => {
@@ -48,7 +48,7 @@ function App() {
         >
           show dialog
         </div>
-        <div onClick={() => destroy.current?.()}>close dialog</div>
+        <div onClick={() => destroy.current?.close()}>close dialog</div>
         <div onClick={() => setVisible(true)}>open dialog</div>
       </div>
     </div>

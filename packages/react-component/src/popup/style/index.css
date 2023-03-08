@@ -27,6 +27,14 @@
     -webkit-overflow-scrolling: touch;
     box-shadow: var(--rc-popup-box-shadow);
 
+    &&--unclickable {
+      @apply overflow-hidden cursor-not-allowed;
+  
+      * {
+        @apply pointer-events-none;
+      }
+    }
+
     &--center {
       @apply center;
 

@@ -4,6 +4,7 @@ import { CloseOutlined } from '../icons'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'
 import { Dialog as BaseDialog } from './Dialog'
+import { DialogContext } from './DialogContext'
 import type { ConfigUpdate, DialogProps, DialogStatic } from './PropsType'
 
 const defaultOptions: DialogProps = {
@@ -35,7 +36,7 @@ DialogObj.show = (props: DialogProps) => {
   let currentConfig: DialogProps = { ...commonOptions, ...props, visible: true }
 
   const TempDialog = (dialogProps: DialogProps) => {
-    const { onClose, onClosed, children, ...rest } = dialogProps
+    const { onClose, children, ...rest } = dialogProps
 
     const [visible, setVisible] = useState<boolean>(false)
 
@@ -43,27 +44,25 @@ DialogObj.show = (props: DialogProps) => {
       setVisible(dialogProps.visible || false)
     }, [dialogProps.visible])
 
-    const _onClosed = () => {
-      if (onClosed) {
-        onClosed()
-      }
-      unmount()
-    }
-
     return (
-      <BaseDialog
-        {...rest}
-        {...dialogProps}
-        visible={visible}
-        teleport={() => container}
-        onClose={() => {
-          setVisible(false)
-          onClose?.()
-        }}
-        onClosed={_onClosed}
-      >
-        {children}
-      </BaseDialog>
+      <DialogContext.Provider value={{ visible, close, update }}>
+        <BaseDialog
+          {...rest}
+          {...dialogProps}
+          visible={visible}
+          teleport={() => container}
+          onClose={() => {
+            setVisible(false)
+            onClose?.()
+          }}
+          onClosed={() => {
+            props.onClosed?.()
+            destroy()
+          }}
+        >
+          {children}
+        </BaseDialog>
+      </DialogContext.Provider>
     )
   }
 
@@ -124,7 +123,7 @@ DialogObj.show = (props: DialogProps) => {
   destroyFns.push(close)
 
   return {
-    destroy: close,
+    close,
     update,
   }
 }

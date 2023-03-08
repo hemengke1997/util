@@ -1,9 +1,9 @@
 import type { Context } from 'react'
 import { createContext } from 'react'
+import type { DialogReturnType } from './PropsType'
 
-interface DialogContextProps {
+export interface DialogContextProps extends NonNullable<DialogReturnType> {
   visible: boolean
-  setVisible: (v: boolean) => void
 }
 
 const DialogContext: Context<DialogContextProps> = createContext({} as DialogContextProps)

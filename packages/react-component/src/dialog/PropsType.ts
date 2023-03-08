@@ -35,8 +35,8 @@ export type ConfigUpdate = DialogProps | ((prevConfig: DialogProps) => DialogPro
 export type DialogReturnType = {
   /** 动态更新方法 */
   update(configUpdate: ConfigUpdate): void
-  /** 清除dialog */
-  destroy: () => void
+  /** 关闭dialog */
+  close: () => void
 } | null
 
 export interface DialogStatic {

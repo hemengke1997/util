@@ -158,6 +158,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
           className={classNames(
             bem({
               [position]: position,
+              unclickable: !opened.current,
             }),
             { 'rc-safe-area-bottom': safeAreaInsetBottom },
             className,

@@ -57,7 +57,7 @@ export type ToastReturnType = {
   /** 动态更新方法 */
   update(configUpdate: ConfigUpdate): void
   /** 清除单例toast */
-  destroy: () => void
+  close: () => void
 } | null
 
 export interface ToastInstance {

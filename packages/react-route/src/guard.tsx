@@ -1,6 +1,13 @@
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useEffectOnce } from '@minko-fe/react-hook'
-import type { MetaType, OnRouteBeforeResType, OnRouteBeforeType, OnRouteMountType, ReactElementType } from './index'
+import type {
+  MetaType,
+  OnRouteBeforeResType,
+  OnRouteBeforeType,
+  OnRouteMountType,
+  OnRouteUnMountType,
+  ReactElementType,
+} from './createRoutes'
 
 let cache: ReactElementType | null = null
 
@@ -13,16 +20,21 @@ function Guard({
   meta,
   onRouteBefore,
   onRouteMount,
+  onRouteUnMount,
 }: {
   element: ReactElementType
   meta: MetaType
   onRouteBefore?: OnRouteBeforeType
   onRouteMount?: OnRouteMountType
+  onRouteUnMount?: OnRouteUnMountType
 }) {
   meta = meta || {}
 
   useEffectOnce(() => {
     onRouteMount?.(meta)
+    return () => {
+      onRouteUnMount?.(meta)
+    }
   }, [])
 
   const { pathname } = useLocation()

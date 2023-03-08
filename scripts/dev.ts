@@ -64,7 +64,7 @@ export async function dev(tsup?: Options, chokidar?: WatchOptions) {
   bundle({
     async onSuccess() {
       clearScreen()
-      console.log(picocolors.blue('Build Success 👍'))
+      console.log(picocolors.blue('Build Success 👍\nWatching for change...'))
     },
   })
 

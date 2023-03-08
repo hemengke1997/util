@@ -38,10 +38,13 @@ interface OnRouteBeforeType {
 
 type OnRouteMountType = (meta: MetaType) => void
 
+type OnRouteUnMountType = (meta: MetaType) => void
+
 interface RouterPropsType {
   routes: RoutesType
   onRouteBefore?: OnRouteBeforeType
   onRouteMount?: OnRouteMountType
+  onRouteUnMount?: OnRouteUnMountType
   suspense?: ReactElementType
   provider?: ReactElement
 }
@@ -57,6 +60,7 @@ export type {
   RoutesItemType,
   RoutesType,
   OnRouteMountType,
+  OnRouteUnMountType,
   OnRouteBeforeResType,
   OnRouteBeforeType,
   RouterPropsType,

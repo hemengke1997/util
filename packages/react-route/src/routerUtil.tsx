@@ -9,6 +9,7 @@ import type {
   MetaType,
   OnRouteBeforeType,
   OnRouteMountType,
+  OnRouteUnMountType,
   RouterPropsType,
   RoutesItemType,
   RoutesType,
@@ -17,13 +18,15 @@ import type {
 export class RouterUtil {
   routes: RoutesType
   onRouteBefore?: OnRouteBeforeType
-  onRouteMoount?: OnRouteMountType
+  onRouteMount?: OnRouteMountType
+  onRouteUnMount?: OnRouteUnMountType
   suspense: JSX.Element
 
   constructor(option: RouterPropsType) {
     this.routes = option.routes || []
     this.onRouteBefore = option.onRouteBefore
-    this.onRouteMoount = option.onRouteMount
+    this.onRouteMount = option.onRouteMount
+    this.onRouteUnMount = option.onRouteUnMount
     this.suspense = option.suspense || <div />
   }
 
@@ -66,7 +69,13 @@ export class RouterUtil {
       </React.Suspense>
     )
     return (
-      <Guard element={lazyElement} meta={meta} onRouteBefore={this.onRouteBefore} onRouteMount={this.onRouteMoount} />
+      <Guard
+        element={lazyElement}
+        meta={meta}
+        onRouteBefore={this.onRouteBefore}
+        onRouteMount={this.onRouteMount}
+        onRouteUnMount={this.onRouteUnMount}
+      />
     )
   }
 }
