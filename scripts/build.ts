@@ -23,11 +23,12 @@ async function build(opts: Options = {}) {
   await tsupBuild({
     ...defaultConfig,
     ...opts,
+    esbuildOptions(opt, { format }) {
+      opt.drop = ['console', 'debugger']
+      opts.esbuildOptions?.(opt, { format })
+    },
     external: [...(defaultConfig.external || []), ...(opts.external || [])],
     dts,
-    esbuildOptions(opt) {
-      opt.drop = ['console', 'debugger']
-    },
   })
 }
 

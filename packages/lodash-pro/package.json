@@ -28,8 +28,8 @@
     "README.md"
   ],
   "scripts": {
-    "dev": "tsx scripts/dev",
-    "build": "tsx scripts/build",
+    "dev": "rimraf dist && tsx scripts/dev",
+    "build": "rimraf dist && tsx scripts/build",
     "release": "pnpm run build && pnpm publish --access public",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "vitest",
@@ -39,9 +39,9 @@
     "bump": "pnpm changelog && bumpp package.json CHANGELOG.md --commit --push --tag -all"
   },
   "dependencies": {
-    "@types/lodash-es": "^4.17.6"
-  },
-  "devDependencies": {
+    "@types/lodash-es": "^4.17.6",
+    "deepmerge": "^4.3.0",
+    "lodash": "^4.17.21",
     "lodash-es": "^4.17.21"
   }
 }

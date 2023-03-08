@@ -1,4 +1,4 @@
-import rollupVisualizer from 'rollup-plugin-visualizer'
+import { visualizer as rollupVisualizer } from 'rollup-plugin-visualizer'
 
 export function isReportMode(): boolean {
   return process.env.REPORT === 'true'

@@ -15,7 +15,7 @@ function rmExt(path: string) {
   return path.split(extname(path))[0]
 }
 
-export async function getEntry(entryGlob = './src/index.ts{,x}') {
+export async function getEntry(entryGlob = 'src/index.ts{,x}') {
   const entries = await glob(entryGlob)
   const entry: Record<string, string> = {}
   entries.forEach((e) => {

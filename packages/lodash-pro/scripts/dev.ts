@@ -1,3 +1,5 @@
+import type { Options } from 'tsup'
 import { dev } from '../../../scripts/dev'
+import tsupConfig from './tsup.config'
 
-dev()
+dev(tsupConfig as Options)

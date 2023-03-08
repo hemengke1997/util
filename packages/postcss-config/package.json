@@ -1,8 +1,8 @@
 {
-  "name": "@minko-fe/axios-pro",
+  "name": "@minko-fe/postcss-config",
   "type": "module",
   "version": "0.0.40",
-  "description": "axios pro",
+  "description": "postcss-config",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
   "repository": {
@@ -10,18 +10,30 @@
     "url": "git+https://github.com/hemengke1997/util.git"
   },
   "keywords": [
-    "util"
+    "postcss-config"
   ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
+    },
+    "./tailwindcss/plugin": {
+      "types": "./dist/tailwindcss/plugin/index.d.ts",
+      "require": "./dist/tailwindcss/plugin/index.cjs",
+      "import": "./dist/tailwindcss/plugin/index.js"
     }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "tailwindcss/plugin": [
+        "./dist/tailwindcss/plugin/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "dist",
     "CHANGELOG.md",
@@ -34,16 +46,22 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "vitest",
     "lint": "eslint .",
-    "clean": "rimraf node_modules",
     "upgrade:deps": "pnpm update --i --L",
     "bump": "pnpm changelog && bumpp package.json CHANGELOG.md --commit --push --tag -all"
   },
   "peerDependencies": {
-    "axios": ">=1.0.0"
+    "postcss": ">=8.0.0"
   },
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
-    "axios": "^1.3.4",
-    "query-string": "^8.1.0"
+    "@minko-fe/postcss-pxtorem": "^1.1.1",
+    "@minko-fe/postcss-pxtoviewport": "^1.1.1",
+    "browserslist": "^4.21.5",
+    "postcss-import": "^15.1.0",
+    "postcss-preset-env": "^8.0.1",
+    "tailwindcss": "^3.2.7"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.21"
   }
 }

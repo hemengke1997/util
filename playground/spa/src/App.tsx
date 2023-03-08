@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Dialog, toast } from '@minko-fe/react-component'
 import { useUrlState } from '@minko-fe/react-hook'
-import { AccountBookFilled } from '@minko-fe/react-component/icons'
 import { A } from '#/A'
 
 // Toast.setDefaultOptions({
@@ -37,10 +36,9 @@ function App() {
   return (
     <div>
       <div onClick={() => toast.show({ content: <div>{Math.random()}</div>, type: 'warning' })}>show toast</div>
-      <AccountBookFilled />
       <div className='App'>
         <div id='test' />
-        <A />
+
         <div
           onClick={() => {
             x()

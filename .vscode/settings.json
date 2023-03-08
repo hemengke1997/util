@@ -7,6 +7,7 @@
     "axios-pro",
     "html-transform",
     "lodash-pro",
+    "postcss-config",
     "react-component",
     "react-hook",
     "react-route",

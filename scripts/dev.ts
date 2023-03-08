@@ -42,7 +42,7 @@ function clearScreen() {
   readline.clearScreenDown(process.stdout)
 }
 
-export async function dev(tsup?: Options, chokidar?: WatchOptions) {
+export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
   const root = process.cwd()
 
   const resolvedWatchOptions = resolveChokidarOptions({
@@ -52,9 +52,15 @@ export async function dev(tsup?: Options, chokidar?: WatchOptions) {
 
   const watcher = watch(path.join(root, 'src'), resolvedWatchOptions)
 
+  // dev
   async function bundle(opts?: Options) {
     try {
       await build({
+        dts: false,
+        esbuildOptions(opt, { format }) {
+          opt.drop = []
+          opts?.esbuildOptions?.(opt, { format })
+        },
         ...tsup,
         ...opts,
       })
@@ -72,6 +78,7 @@ export async function dev(tsup?: Options, chokidar?: WatchOptions) {
     await bundle({
       silent: true,
       async onSuccess() {
+        clearScreen()
         logInfo(f)
       },
     })

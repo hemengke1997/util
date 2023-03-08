@@ -156,6 +156,7 @@ export const defaultTransform: AxiosTransform = {
 
     return config
   },
+
   responseInterceptors: (res: AxiosResponse<any>) => {
     return res
   },
