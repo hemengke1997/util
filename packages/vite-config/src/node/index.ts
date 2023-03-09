@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-import { loadEnv, mergeConfig as viteMergeConfig } from 'vite'
+import { loadEnv, splitVendorChunkPlugin, mergeConfig as viteMergeConfig } from 'vite'
 import type { ConfigEnv, PluginOption, UserConfig } from 'vite'
 import type { VPPTPluginOptions } from 'vite-plugin-public-typescript'
 import { injectEnv, pathsMapToAlias } from './utils'
@@ -9,11 +9,28 @@ import type { legacyOptions } from './plugins/legacy'
 import type { compressOptions } from './plugins/compress'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
 
-type pluginOptions = Partial<{
-  compress: compressOptions | false
-  legacy: legacyOptions | false
-  publicTypescript: VPPTPluginOptions | false
-}>
+interface pluginOptions {
+  /**
+   * @default
+   * { compress: 'gzip', deleteOriginFile: false }
+   */
+  compress?: compressOptions | false
+  /**
+   * @default
+   * { renderLegacyChunks: true, polyfills: true, ignoreBrowserslistConfig: false }
+   */
+  legacy?: legacyOptions | false
+  /**
+   * @default
+   * { esbuildOptions: { target: ['es2015'] } }
+   */
+  publicTypescript?: VPPTPluginOptions | false
+  /**
+   * @default
+   * true
+   */
+  splitVendorChunk?: boolean
+}
 
 // https://github.com/evanw/esbuild/issues/121#issuecomment-646956379
 const esbuildTarget = ['es2015']
@@ -21,7 +38,11 @@ const esbuildTarget = ['es2015']
 async function setupPlugins(options: pluginOptions) {
   const vitePlugins: PluginOption = [svgr(), visualizerPlugin()]
 
-  const { compress, legacy, publicTypescript } = options
+  const { compress, legacy, publicTypescript, splitVendorChunk } = options
+
+  if (splitVendorChunk !== false) {
+    vitePlugins.push(splitVendorChunkPlugin())
+  }
 
   if (compress !== false) {
     const { compress: compressPlugin } = await import('./plugins/compress')
