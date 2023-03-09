@@ -7,12 +7,5 @@ export default {
   },
   target: 'esnext',
   format: ['cjs', 'esm'],
-  shims: true,
-  esbuildOptions(opts, { format }) {
-    if (format === 'cjs') {
-      opts.entryPoints = {
-        'node/index': './src/node/index.ts',
-      }
-    }
-  },
+  treeshake: false,
 } as Options
