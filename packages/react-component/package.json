@@ -54,13 +54,13 @@
     "react-dom": ">=17.0.0"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@minko-fe/lodash-pro": "workspace:*",
     "@minko-fe/react-hook": "workspace:*",
     "classnames": "^2.3.2",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
-    "@ant-design/icons": "^5.0.1",
     "@minko-fe/postcss-config": "workspace:*",
     "@types/react-transition-group": "^4.4.5",
     "postcss": "^8.4.21",

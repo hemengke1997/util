@@ -126,12 +126,12 @@ importers:
       react-transition-group: ^4.4.5
       tailwindcss: ^3.2.7
     dependencies:
+      '@ant-design/icons': 5.0.1_biqbaboplfbrettd7655fr4n2y
       '@minko-fe/lodash-pro': link:../lodash-pro
       '@minko-fe/react-hook': link:../react-hook
       classnames: 2.3.2
       react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
     devDependencies:
-      '@ant-design/icons': 5.0.1_biqbaboplfbrettd7655fr4n2y
       '@minko-fe/postcss-config': link:../postcss-config
       '@types/react-transition-group': 4.4.5
       postcss: 8.4.21
@@ -257,11 +257,11 @@ packages:
     resolution: {integrity: sha512-iVm/9PfGCbC0dSMBrz7oiEXZaaGH7ceU40OJEfKmyuzR9R5CRimJYPlRiFtMQGQcbNMea/ePcoIebi4ASGYXtg==}
     dependencies:
       '@ctrl/tinycolor': 3.6.0
-    dev: true
+    dev: false
 
   /@ant-design/icons-svg/4.2.1:
     resolution: {integrity: sha512-EB0iwlKDGpG93hW8f85CTJTs4SvMX7tt5ceupvhALp1IF44SeUFOMhKUOYqpsoYWQKAOuTRDMqn75rEaKDp0Xw==}
-    dev: true
+    dev: false
 
   /@ant-design/icons/5.0.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-ZyF4ksXCcdtwA/1PLlnFLcF/q8/MhwxXhKHh4oCHDA4Ip+ZzAHoICtyp4wZWfiCVDP0yuz3HsjyvuldHFb3wjA==}
@@ -277,7 +277,7 @@ packages:
       rc-util: 5.28.0_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dev: true
+    dev: false
 
   /@antfu/ni/0.20.0:
     resolution: {integrity: sha512-mBgAuq2b0daSA/14LMyjEjaInD7/Zd7KVXZge7bQPKmtQJFqy9/pWBml6DMkMreeHQEomMtIbbeqReNJ/74kjA==}
@@ -1698,7 +1698,7 @@ packages:
   /@ctrl/tinycolor/3.6.0:
     resolution: {integrity: sha512-/Z3l6pXthq0JvMYdUFyX9j0MaCltlIn6mfh9jLyQwg5aPKxkyNa0PTHtU1AlFXLNk55ZuAeJRcpvq+tmLfKmaQ==}
     engines: {node: '>=10'}
-    dev: true
+    dev: false
 
   /@esbuild-kit/cjs-loader/2.4.2:
     resolution: {integrity: sha512-BDXFbYOJzT/NBEtp71cvsrGPwGAMGRB/349rwKuoxNSiKjPraNNnlK6MIIabViCjqZugu6j+xeMDlEkWdHHJSg==}
@@ -3704,6 +3704,7 @@ packages:
 
   /classnames/2.3.2:
     resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    dev: false
 
   /clean-regexp/1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
@@ -7429,7 +7430,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-is: 16.13.1
-    dev: true
+    dev: false
 
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}

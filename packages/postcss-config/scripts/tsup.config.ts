@@ -3,5 +3,5 @@ import { getEntry } from '../../../tsup.config'
 
 export default {
   entry: await getEntry('src/**/index.ts'),
-  target: 'es6',
+  target: 'esnext',
 } as Options
