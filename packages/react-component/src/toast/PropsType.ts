@@ -5,7 +5,7 @@ export type ToastType = 'success' | 'error' | 'info' | 'warning'
 
 export type ToastPosition = 'top' | 'middle' | 'bottom'
 
-export interface ToastProps extends BaseTypeProps {
+export interface ToastProps extends Omit<BaseTypeProps, 'children'> {
   /** 是否支持键盘 */
   keyboard?: boolean
   /** 显隐 */
