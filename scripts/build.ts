@@ -4,8 +4,8 @@ import { getTsconfig } from 'get-tsconfig'
 import { isObject, isUndefined } from '@minko-fe/lodash-pro'
 import { defaultConfig } from '../tsup.config'
 
-async function build(opts: Options = {}, watchMode = false) {
-  let { dts } = opts
+async function build(options: Options = {}, watchMode = false) {
+  let { dts } = options
 
   const tsconfig = getTsconfig()
 
@@ -22,12 +22,15 @@ async function build(opts: Options = {}, watchMode = false) {
 
   await tsupBuild({
     ...defaultConfig,
-    ...opts,
+    ...options,
     esbuildOptions(opt, { format }) {
       !watchMode && (opt.drop = ['console', 'debugger'])
-      opts.esbuildOptions?.(opt, { format })
+      opt.logOverride = {
+        'empty-import-meta': 'silent',
+      }
+      options.esbuildOptions?.(opt, { format })
     },
-    external: [...(defaultConfig.external || []), ...(opts.external || [])],
+    external: [...(defaultConfig.external || []), ...(options.external || [])],
     dts,
   })
 }
