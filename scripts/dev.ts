@@ -1,4 +1,5 @@
 import readline from 'readline'
+import path from 'path'
 import type { WatchOptions } from 'chokidar'
 import { watch } from 'chokidar'
 import type { Options } from 'tsup'
@@ -52,15 +53,14 @@ export async function dev(tsup: Options, chokidar?: WatchOptions) {
   // dev
   async function bundle(opts?: Options) {
     try {
-      await build({
-        dts: false,
-        esbuildOptions(opt, { format }) {
-          opt.drop = []
-          opts?.esbuildOptions?.(opt, { format })
+      await build(
+        {
+          dts: false,
+          ...tsup,
+          ...opts,
         },
-        ...tsup,
-        ...opts,
-      })
+        true,
+      )
     } catch {}
   }
 
@@ -101,14 +101,14 @@ export async function dev(tsup: Options, chokidar?: WatchOptions) {
         return
       }
 
-      debouncedBundle(file)
+      debouncedBundle(path.join(process.cwd(), file))
     })
   }
 
   bundle({
     async onSuccess() {
       clearScreen()
-      logger.info('👀', 'Watching for changes...')
+      logger.info(process.cwd(), 'Watching for changes...')
     },
   })
 

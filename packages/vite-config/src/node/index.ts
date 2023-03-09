@@ -27,7 +27,7 @@ interface pluginOptions {
   publicTypescript?: VPPTPluginOptions | false
   /**
    * @default
-   * true
+   * true when spa build, false when ssr build
    */
   splitVendorChunk?: boolean
 }
@@ -35,13 +35,15 @@ interface pluginOptions {
 // https://github.com/evanw/esbuild/issues/121#issuecomment-646956379
 const esbuildTarget = ['es2015']
 
-async function setupPlugins(options: pluginOptions) {
+async function setupPlugins(options: pluginOptions, configEnv: ConfigEnv) {
+  const { ssrBuild } = configEnv
+
   const vitePlugins: PluginOption = [svgr(), visualizerPlugin()]
 
   const { compress, legacy, publicTypescript, splitVendorChunk } = options
 
   if (splitVendorChunk !== false) {
-    vitePlugins.push(splitVendorChunkPlugin())
+    !ssrBuild && vitePlugins.push(splitVendorChunkPlugin())
   }
 
   if (compress !== false) {
@@ -64,23 +66,22 @@ async function setupPlugins(options: pluginOptions) {
   return vitePlugins
 }
 
-const getDefaultConfig = async ({ root }: { root: string }, options?: pluginOptions): Promise<UserConfig> => {
+const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: pluginOptions): Promise<UserConfig> => {
+  const { root, ...configEnv } = config
   const alias = pathsMapToAlias(root)
 
   return {
     root,
+    mode: configEnv.mode,
     resolve: {
       alias,
     },
-    plugins: await setupPlugins(options || {}),
+    plugins: await setupPlugins(options || {}, configEnv),
     css: {
       modules: {
         localsConvention: 'camelCase',
         generateScopedName: '[local]-[hash:base64:5]',
       },
-    },
-    define: {
-      'process.env': process.env,
     },
     build: {
       minify: 'esbuild',
@@ -98,7 +99,7 @@ const getDefaultConfig = async ({ root }: { root: string }, options?: pluginOpti
 const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig, options?: pluginOptions) => {
   const { mode } = configEnv
   const root = userConfig.root || process.cwd()
-  const config = viteMergeConfig(await getDefaultConfig({ root }, options), userConfig)
+  const config = viteMergeConfig(await getDefaultConfig({ root, ...configEnv }, options), userConfig)
   const env = loadEnv(mode, root) as ImportMetaEnv
   injectEnv(env)
   return config

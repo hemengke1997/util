@@ -8,14 +8,14 @@ import colors from 'picocolors'
 type LOG_TYPE = 'info' | 'success' | 'error' | 'warn'
 
 export const colorize = (type: LOG_TYPE, data: any, onlyImportant = false) => {
-  if (onlyImportant && (type === 'info' || type === 'success')) return data
+  if (onlyImportant && (type === 'info' || type === 'success')) return colors.blue(data)
 
-  const color = type === 'info' ? 'blue' : type === 'error' ? 'red' : type === 'warn' ? 'yellow' : 'green'
+  const color = type === 'info' ? 'dim' : type === 'error' ? 'red' : type === 'warn' ? 'yellow' : 'green'
   return colors[color](data)
 }
 
 export const makeLabel = (name: string | undefined, input: string, type: LOG_TYPE) => {
-  return [name && `${colors.dim('[')}${name.toUpperCase()}${colors.dim(']')}`, colorize(type, input.toUpperCase())]
+  return [name && `${colors.dim('[')}${name.toUpperCase()}${colors.dim(']')}`, colorize(type, input)]
     .filter(Boolean)
     .join(' ')
 }

@@ -4,7 +4,7 @@ import { getTsconfig } from 'get-tsconfig'
 import { isObject, isUndefined } from '@minko-fe/lodash-pro'
 import { defaultConfig } from '../tsup.config'
 
-async function build(opts: Options = {}) {
+async function build(opts: Options = {}, watchMode = false) {
   let { dts } = opts
 
   const tsconfig = getTsconfig()
@@ -24,7 +24,7 @@ async function build(opts: Options = {}) {
     ...defaultConfig,
     ...opts,
     esbuildOptions(opt, { format }) {
-      opt.drop = ['console', 'debugger']
+      !watchMode && (opt.drop = ['console', 'debugger'])
       opts.esbuildOptions?.(opt, { format })
     },
     external: [...(defaultConfig.external || []), ...(opts.external || [])],

@@ -13,5 +13,5 @@ export function visualizer() {
       brotliSize: true,
     })
   }
-  return []
+  return null
 }
