@@ -50,6 +50,8 @@ const toastObj = {} as ToastInstance
 toastObj.show = (props: ToastProps) => {
   if (!isBrowser()) return null
 
+  if (!props.content) return null
+
   let timeoutId: NodeJS.Timeout
   const { teleport } = props
   const container = document.createElement('div')

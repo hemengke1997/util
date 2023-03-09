@@ -61,7 +61,6 @@
     "@minko-fe/lodash-pro": "workspace:*",
     "@vitejs/plugin-legacy": "^4.0.1",
     "get-tsconfig": "^4.4.0",
-    "globrex": "^0.1.2",
     "rollup-plugin-visualizer": "^5.9.0",
     "terser": "^5.16.5",
     "vite-plugin-compression": "^0.5.1",
@@ -69,7 +68,6 @@
     "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
-    "@types/globrex": "^0.1.2",
     "rollup": "^3.18.0",
     "vite": "^4.1.4"
   }
