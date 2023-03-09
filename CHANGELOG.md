@@ -1,4 +1,13 @@
-## [0.0.41](https://github.com/hemengke1997/util/compare/v0.0.39...v0.0.41) (2023-03-08)
+## [0.0.42](https://github.com/hemengke1997/util/compare/v0.0.40...v0.0.42) (2023-03-09)
+
+
+### Features
+
+* **postcss-config:** add postcss-config ([a07b8e3](https://github.com/hemengke1997/util/commit/a07b8e305dca7aca3eb7970e0a5986d2d15c88f0))
+
+
+
+## [0.0.40](https://github.com/hemengke1997/util/compare/v0.0.39...v0.0.40) (2023-03-08)
 
 
 
