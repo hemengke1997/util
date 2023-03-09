@@ -1,4 +1,8 @@
-## [0.0.40](https://github.com/hemengke1997/util/compare/v0.0.38...v0.0.40) (2023-03-07)
+## [0.0.41](https://github.com/hemengke1997/util/compare/v0.0.39...v0.0.41) (2023-03-08)
+
+
+
+## [0.0.39](https://github.com/hemengke1997/util/compare/v0.0.38...v0.0.39) (2023-03-07)
 
 
 ### Features
