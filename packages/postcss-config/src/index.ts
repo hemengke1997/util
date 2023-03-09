@@ -5,59 +5,75 @@ import { deepMerge, isObject } from '@minko-fe/lodash-pro'
 import type { PxtoremOptions } from '@minko-fe/postcss-pxtorem'
 import type { PxtoviewportOptions } from '@minko-fe/postcss-pxtoviewport'
 import type { pluginOptions } from 'postcss-preset-env'
-import browserslist from 'browserslist'
 
 const _require = createRequire(import.meta.url)
 
-export interface PostcssConfig {
-  /**
-   * @default true
-   * @description vite环境请设置false
-   */
-  'postcss-import'?: boolean
-  /**
-   * @default true
-   */
-  'tailwindcss/nesting'?: boolean
-  /**
-   * @default true
-   */
-  'tailwindcss'?: Config | boolean
-  /**
-   * @default false
-   */
-  'postcss-pxtorem'?: boolean | PxtoremOptions
-  /**
-   * @default false
-   */
-  'postcss-pxtoviewport'?: boolean | PxtoviewportOptions
-  /**
-   * @default { features: { 'nesting-rules': false } }
-   */
-  'postcss-preset-env'?: pluginOptions | boolean
+export type PostcssConfig =
+  | {
+      /**
+       * @default true
+       * @description vite环境请设置false
+       * @description 默认内置
+       */
+      'postcss-import'?: boolean
+      /**
+       * @default true
+       * @description 默认内置
+       */
+      'tailwindcss/nesting'?: boolean
+      /**
+       * @default true
+       * @description 默认内置
+       */
+      'tailwindcss'?: Config | boolean
+      /**
+       * @default false
+       */
+      'postcss-pxtorem'?: false | PxtoremOptions
+      /**
+       * @default false
+       */
+      'postcss-pxtoviewport'?: false | PxtoviewportOptions
+      /**
+       * @default true
+       * @description 默认内置
+       */
+      'postcss-preset-env'?: pluginOptions | boolean
+    }
+  | undefined
+
+const defaultOptions: Required<PostcssConfig> = {
+  'postcss-import': true,
+  'tailwindcss/nesting': true,
+  'tailwindcss': true,
+  'postcss-pxtorem': false,
+  'postcss-pxtoviewport': false,
+  'postcss-preset-env': true,
 }
 
-const postcssConfig = (config: PostcssConfig) => {
+const postcssConfig = (options: PostcssConfig) => {
   const plugins: AcceptedPlugin[] = []
 
-  if (config['postcss-import'] !== false) {
+  options = deepMerge(defaultOptions, options || {})!
+
+  if (options['postcss-import'] !== false) {
     plugins.push(_require('postcss-import'))
   }
 
-  if (config['tailwindcss/nesting'] !== false) {
+  if (options['tailwindcss/nesting'] !== false) {
     plugins.push(_require('tailwindcss/nesting'))
   }
 
   {
-    const { tailwindcss } = config
+    const { tailwindcss } = options
     if (tailwindcss !== false) {
-      const options = isObject(tailwindcss) ? tailwindcss : {}
+      const options = isObject(tailwindcss) ? tailwindcss : undefined
       plugins.push(_require('tailwindcss')(options))
     }
   }
 
   {
-    const pxtorem = config['postcss-pxtorem']
+    const pxtorem = options['postcss-pxtorem']
     if (pxtorem) {
       const options = isObject(pxtorem) ? pxtorem : {}
       plugins.push(_require('@minko-fe/postcss-pxtorem')(options))
@@ -65,7 +81,7 @@ const postcssConfig = (config: PostcssConfig) => {
   }
 
   {
-    const pxtoviewport = config['postcss-pxtoviewport']
+    const pxtoviewport = options['postcss-pxtoviewport']
     if (pxtoviewport) {
       const options = isObject(pxtoviewport) ? pxtoviewport : {}
       plugins.push(_require('@minko-fe/postcss-pxtoviewport')(options))
@@ -74,26 +90,28 @@ const postcssConfig = (config: PostcssConfig) => {
 
   // last
   {
-    const presetEnv = config['postcss-preset-env']
+    const presetEnv = options['postcss-preset-env']
+
     if (presetEnv !== false) {
+      const browserslist = _require('browserslist')
+
       const defaultBrowserslist = browserslist.loadConfig({ path: '.' })
 
-      const defaultOptions: pluginOptions = { browsers: defaultBrowserslist }
+      const defaultOptions: pluginOptions = { browsers: defaultBrowserslist, features: { 'nesting-rules': false } }
 
-      const options = isObject(presetEnv) ? deepMerge(presetEnv, defaultOptions) : defaultOptions
+      const _options = deepMerge(defaultOptions, isObject(presetEnv) ? presetEnv : {})
 
-      if (config['tailwindcss/nesting'] !== false) {
-        options.features = options.features || {}
-        options.features!['nesting-rules'] = false
+      if (options['tailwindcss/nesting'] === false) {
+        _options.features['nesting-rules'] = true
       }
 
-      plugins.push(_require('postcss-preset-env')(options))
+      plugins.push(_require('postcss-preset-env')(_options))
     }
   }
 
   return plugins
 }
 
-export function definePlugins(config: PostcssConfig) {
-  return postcssConfig(config)
+export function definePlugins(options: PostcssConfig) {
+  return postcssConfig(options)
 }

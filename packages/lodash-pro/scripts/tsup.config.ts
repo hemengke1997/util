@@ -1,40 +1,38 @@
-import path from 'path'
-import { defineConfig } from 'tsup'
+import type { Format, Options } from 'tsup'
+import type { Plugin } from 'esbuild'
 
-const format: string[] = []
-let n = 0
+function escapeRegExp(str: string) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
 
-export default defineConfig({
-  noExternal: ['lodash', 'lodash-es'],
-  esbuildPlugins: [
-    {
-      name: 'test',
-      setup(build) {
-        build.onResolve({ filter: /.*/ }, (args) => {
-          const id = args.path
-          if (id[0] !== '.' && !path.isAbsolute(id)) {
-            if (id.includes('lodash')) {
-              let p = ''
-              if (format[n] === 'esm') {
-                p = 'lodash-es'
-              } else if (format[n] === 'cjs') {
-                p = 'lodash'
-              }
-              n--
-              return {
-                external: true,
-                sideEffects: false,
-                path: p,
-              }
-            }
-            return {}
-          }
-        })
-      },
+function alias(options: Record<string, string>, format: Format): Plugin {
+  const aliases = Object.keys(options)
+  const re = new RegExp(`^(${aliases.map((x) => escapeRegExp(x)).join('|')})$`)
+
+  return {
+    name: 'alias',
+    setup(build) {
+      build.onResolve({ filter: re }, (args) => {
+        return {
+          path: format === 'cjs' ? options[args.path] : args.path,
+          external: true,
+          sideEffects: false,
+        }
+      })
     },
-  ],
-  esbuildOptions(_, ctx) {
-    format.push(ctx.format)
-    n = format.length - 1
-  },
-})
+  }
+}
+
+export default (format: Format) =>
+  ({
+    noExternal: ['lodash', 'lodash-es'],
+
+    esbuildPlugins: [
+      alias(
+        {
+          'lodash-es': 'lodash',
+        },
+        format,
+      ),
+    ],
+  } as Options)

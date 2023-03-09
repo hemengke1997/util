@@ -1,10 +1,11 @@
-import path from 'path'
 import readline from 'readline'
 import type { WatchOptions } from 'chokidar'
 import { watch } from 'chokidar'
 import type { Options } from 'tsup'
-import picocolors from 'picocolors'
 import { build } from './build'
+import { LoggerFactory } from './utils/log'
+import { debouncePromise, slash } from './utils'
+import { getAllDepsHash } from './utils/load'
 
 function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions {
   const { ignored = [], ...otherOptions } = options ?? {}
@@ -14,8 +15,10 @@ function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions
       '**/.git/**',
       '**/dist/**',
       '**/node_modules/**',
-      '**/CHANGELOG.md',
       '**/__tests__/**',
+      'scripts/**',
+      '**/*.md',
+      '**/*.d.ts',
       '**/*.spec.*',
       '**/*.test.*',
       ...(Array.isArray(ignored) ? ignored : [ignored]),
@@ -28,12 +31,6 @@ function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions
   return resolvedWatchOptions
 }
 
-function logInfo(filePath: string) {
-  console.log(
-    `${picocolors.dim(new Date().toLocaleTimeString())} ${picocolors.blue('update =>')} ${picocolors.cyan(filePath)}`,
-  )
-}
-
 function clearScreen() {
   const repeatCount = process.stdout.rows - 2
   const blank = repeatCount > 0 ? '\n'.repeat(repeatCount) : ''
@@ -42,15 +39,15 @@ function clearScreen() {
   readline.clearScreenDown(process.stdout)
 }
 
-export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
-  const root = process.cwd()
+export async function dev(tsup: Options, chokidar?: WatchOptions) {
+  const logger = new LoggerFactory(tsup.name)
 
   const resolvedWatchOptions = resolveChokidarOptions({
     disableGlobbing: true,
     ...chokidar,
   })
 
-  const watcher = watch(path.join(root, 'src'), resolvedWatchOptions)
+  let depsHash = await getAllDepsHash(process.cwd())
 
   // dev
   async function bundle(opts?: Options) {
@@ -67,32 +64,53 @@ export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
     } catch {}
   }
 
-  bundle({
-    async onSuccess() {
-      clearScreen()
-      console.log(picocolors.blue('Build Success 👍\nWatching for change...'))
-    },
-  })
-
   async function onBundle(f: string) {
-    await bundle({
-      silent: true,
-      async onSuccess() {
-        clearScreen()
-        logInfo(f)
-      },
+    try {
+      await bundle({
+        silent: true,
+        async onSuccess() {
+          clearScreen()
+          logger.info(new Date().toLocaleTimeString(), `✅ Update success: ${f}`)
+        },
+      })
+    } catch {}
+  }
+
+  const debouncedBundle = debouncePromise((filePath: string) => {
+    return onBundle(filePath)
+  }, 100)
+
+  const startWatcher = async () => {
+    const watcher = watch('.', resolvedWatchOptions)
+
+    watcher.on('all', async (_, file) => {
+      file = slash(file)
+
+      // By default we only rebuild when imported files change
+      // If you specify custom `watch`, a string or multiple strings
+      // We rebuild when those files change
+      let shouldSkipChange = false
+
+      if (file === 'package.json') {
+        const currentHash = await getAllDepsHash(process.cwd())
+        shouldSkipChange = currentHash === depsHash
+        depsHash = currentHash
+      }
+
+      if (shouldSkipChange) {
+        return
+      }
+
+      debouncedBundle(file)
     })
   }
 
-  watcher.on('change', async (f) => {
-    await onBundle(f)
+  bundle({
+    async onSuccess() {
+      clearScreen()
+      logger.info('👀', 'Watching for changes...')
+    },
   })
 
-  watcher.on('add', async (f) => {
-    await onBundle(f)
-  })
-
-  watcher.on('unlink', async (f) => {
-    await onBundle(f)
-  })
+  startWatcher()
 }

@@ -24,3 +24,11 @@ export default defineConfig((env) => {
   }
 }
 ```
+
+## visualizer
+
+```bash
+{
+  "report": "cross-env REPORT=true npm run build"
+}
+```

@@ -28,7 +28,7 @@
     box-shadow: var(--rc-popup-box-shadow);
 
     &&--unclickable {
-      @apply overflow-hidden cursor-not-allowed;
+      @apply overflow-hidden pointer-events-none;
   
       * {
         @apply pointer-events-none;

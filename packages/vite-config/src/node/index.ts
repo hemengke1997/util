@@ -3,14 +3,10 @@
 import { loadEnv, mergeConfig as viteMergeConfig } from 'vite'
 import type { ConfigEnv, PluginOption, UserConfig } from 'vite'
 import type { VPPTPluginOptions } from 'vite-plugin-public-typescript'
-import { deepMerge } from '@minko-fe/lodash-pro'
 import { injectEnv, pathsMapToAlias } from './utils'
 import { svgr } from './plugins/svgr'
-import { pt } from './plugins/publicTypescript'
 import type { legacyOptions } from './plugins/legacy'
-import { legacy as legacyPlugin } from './plugins/legacy'
 import type { compressOptions } from './plugins/compress'
-import { compress as compressPlugin } from './plugins/compress'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
 
 type pluginOptions = Partial<{
@@ -22,29 +18,32 @@ type pluginOptions = Partial<{
 // https://github.com/evanw/esbuild/issues/121#issuecomment-646956379
 const esbuildTarget = ['es2015']
 
-function setupPlugins(options: pluginOptions) {
+async function setupPlugins(options: pluginOptions) {
   const vitePlugins: PluginOption = [svgr(), visualizerPlugin()]
 
   const { compress, legacy, publicTypescript } = options
 
   if (compress !== false) {
+    const { compress: compressPlugin } = await import('./plugins/compress')
     vitePlugins.push(compressPlugin(compress))
   }
 
   if (legacy !== false) {
+    const { legacy: legacyPlugin } = await import('./plugins/legacy')
     vitePlugins.push(legacyPlugin(legacy))
   }
 
   if (publicTypescript !== false) {
     const defaultVpptOpts = { esbuildOptions: { target: esbuildTarget } }
-
+    const { pt } = await import('./plugins/publicTypescript')
+    const { deepMerge } = await import('@minko-fe/lodash-pro')
     vitePlugins.push(pt(deepMerge(defaultVpptOpts, publicTypescript || {})))
   }
 
   return vitePlugins
 }
 
-const getDefaultConfig = ({ root }: { root: string }, options?: pluginOptions): UserConfig => {
+const getDefaultConfig = async ({ root }: { root: string }, options?: pluginOptions): Promise<UserConfig> => {
   const alias = pathsMapToAlias(root)
 
   return {
@@ -52,7 +51,7 @@ const getDefaultConfig = ({ root }: { root: string }, options?: pluginOptions): 
     resolve: {
       alias,
     },
-    plugins: setupPlugins(options || {}),
+    plugins: await setupPlugins(options || {}),
     css: {
       modules: {
         localsConvention: 'camelCase',
@@ -78,7 +77,7 @@ const getDefaultConfig = ({ root }: { root: string }, options?: pluginOptions): 
 const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig, options?: pluginOptions) => {
   const { mode } = configEnv
   const root = userConfig.root || process.cwd()
-  const config = viteMergeConfig(getDefaultConfig({ root }, options), userConfig)
+  const config = viteMergeConfig(await getDefaultConfig({ root }, options), userConfig)
   const env = loadEnv(mode, root) as ImportMetaEnv
   injectEnv(env)
   return config

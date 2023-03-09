@@ -62,6 +62,7 @@
     "tailwindcss": "^3.2.7"
   },
   "devDependencies": {
+    "@types/postcss-import": "^14.0.0",
     "postcss": "^8.4.21"
   }
 }

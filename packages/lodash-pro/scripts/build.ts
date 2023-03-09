@@ -5,5 +5,14 @@ build({
   dts: {
     banner: '/// <reference types="lodash-es" />',
   },
-  ...tsupConfig,
+  format: ['cjs'],
+  ...tsupConfig('cjs'),
+})
+
+build({
+  dts: {
+    banner: '/// <reference types="lodash-es" />',
+  },
+  format: ['esm'],
+  ...tsupConfig('esm'),
 })

@@ -1,5 +1,4 @@
 import { dev } from '../../../scripts/dev'
+import tsupConfig from './tsup.config'
 
-dev({
-  target: 'esnext',
-})
+dev(tsupConfig)
