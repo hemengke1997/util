@@ -1,4 +1,13 @@
-## [0.0.42](https://github.com/hemengke1997/util/compare/v0.0.40...v0.0.42) (2023-03-09)
+## [0.0.43](https://github.com/hemengke1997/util/compare/v0.0.41...v0.0.43) (2023-03-09)
+
+
+### Bug Fixes
+
+* **react-component:** export all icons ([c7b4ab9](https://github.com/hemengke1997/util/commit/c7b4ab9f72ad004f4b93c5c01c006a6e6d9a04fc))
+
+
+
+## [0.0.41](https://github.com/hemengke1997/util/compare/v0.0.40...v0.0.41) (2023-03-09)
 
 
 ### Features

@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/react-route",
   "type": "module",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "description": "react util route",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
