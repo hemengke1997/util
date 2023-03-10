@@ -7,7 +7,7 @@ import Popup from '../popup'
 import type { PopupInstanceType } from '../popup/PropsType'
 import { createNamespace } from '../utils/createNamespace'
 import { lockClick } from './lock-click'
-import type { ToastProps, ToastType } from './PropsType'
+import type { ToastPrivateProps, ToastProps, ToastType } from './PropsType'
 
 const [bem] = createNamespace('toast')
 
@@ -18,7 +18,7 @@ const builtinIcons: Record<ToastType, React.ReactNode> = {
   warning: <ExclamationCircleFilled />,
 }
 
-const Toast: FC<ToastProps> = (props) => {
+const Toast: FC<ToastProps & ToastPrivateProps> = (props) => {
   let clickable = false
   const {
     visible,

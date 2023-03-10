@@ -1,6 +1,6 @@
 import { extend, isBrowser } from '@minko-fe/lodash-pro'
 import { useLatest } from '@minko-fe/react-hook'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'
 import { lockClick } from './lock-click'
@@ -61,7 +61,7 @@ toastObj.show = (props: ToastProps) => {
   let currentConfig: ToastProps = { ...commonOptions, ...props, visible: true }
 
   const TempToast = (toastProps: ToastProps) => {
-    let timer = 0
+    const timer = useRef(0)
 
     const [visible, setVisible] = useState(false)
 
@@ -84,29 +84,26 @@ toastObj.show = (props: ToastProps) => {
     }
 
     function delayClear() {
-      timer && clearTimeout(timer)
-      timer = window.setTimeout(() => {
+      timer.current && clearTimeout(timer.current)
+      timer.current = window.setTimeout(() => {
         beforeDestory()
       }, +toastProps.duration!)
     }
 
     useEffect(() => {
-      if (toastProps.duration !== 0 && 'duration' in toastProps) {
+      if (toastProps.visible && toastProps.duration !== 0 && 'duration' in toastProps) {
         delayClear()
       }
 
       return () => {
-        if (timer !== 0) {
-          window.clearTimeout(timer)
+        if (timer.current !== 0 && toastProps.visible) {
+          window.clearTimeout(timer.current)
         }
       }
     }, [])
 
     useEffect(() => {
       setVisible(toastProps.visible || false)
-      if (toastProps.visible === false) {
-        destroy()
-      }
     }, [toastProps.visible])
 
     return (
@@ -119,6 +116,12 @@ toastObj.show = (props: ToastProps) => {
           onClosed={() => {
             props.onClosed?.()
             destroy()
+          }}
+          onIconClick={() => {
+            props.onIconClick?.({
+              close: internalDestroy,
+              update,
+            })
           }}
           onHoverStateChange={setIsHovering}
         />
@@ -187,7 +190,7 @@ toastObj.show = (props: ToastProps) => {
     syncClear()
   }
 
-  destroyFns.push(close)
+  destroyFns.push(allowMultiple ? close : destroy)
 
   return {
     close,

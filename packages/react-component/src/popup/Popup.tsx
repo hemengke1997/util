@@ -155,6 +155,16 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
             ...style(),
             display: !visible && !animatedVisible ? 'none' : undefined,
           }}
+          onMouseEnter={() => {
+            if (opened.current) {
+              onHoverStateChange?.(true)
+            }
+          }}
+          onMouseLeave={() => {
+            if (opened.current) {
+              onHoverStateChange?.(false)
+            }
+          }}
           className={classNames(
             bem({
               [position]: position,
@@ -233,7 +243,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   return renderToContainer(
     teleport,
     <PopupContext.Provider value={{ visible }}>
-      <div onMouseEnter={() => onHoverStateChange?.(true)} onMouseLeave={() => onHoverStateChange?.(false)}>
+      <div>
         {renderOverlay()}
         {renderTransition()}
       </div>

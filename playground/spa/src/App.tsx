@@ -3,10 +3,10 @@ import { Dialog, toast } from '@minko-fe/react-component'
 import { useUrlState } from '@minko-fe/react-hook'
 import { A } from '#/A'
 
-// Toast.setDefaultOptions({
-//   keepOnHover: true,
-//   // duration: 2000,
-// })
+toast.setDefaultOptions({
+  keepOnHover: true,
+})
+
 Dialog.setDefaultOptions({
   overlay: false,
   overlayStyle: {
@@ -16,6 +16,9 @@ Dialog.setDefaultOptions({
 
 function App() {
   const destroy = useRef<any>()
+
+  const toastRef = useRef<any>()
+
   const [_url] = useUrlState()
 
   const x = () => {
@@ -28,7 +31,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(_url, '_url')
+    // console.log(_url, '_url')
   }, [])
 
   const [_visible, setVisible] = useState(false)
@@ -36,17 +39,20 @@ function App() {
   return (
     <div>
       <div
-        onClick={() =>
-          toast.show({
+        onClick={() => {
+          toastRef.current = toast.show({
             content: <div>{Math.random()}</div>,
             type: 'warning',
-            duration: 0,
-            onIconClick: () => console.log('click'),
+            // duration: 0,
+            onIconClick: ({ close }) => {
+              close()
+            },
           })
-        }
+        }}
       >
         show toast
       </div>
+      <div onClick={() => toastRef.current.close()}>close toast</div>
       <div className='App'>
         <div id='test' />
 
