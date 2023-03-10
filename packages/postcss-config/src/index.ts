@@ -12,18 +12,18 @@ export type PostcssConfig =
   | {
       /**
        * @default true
-       * @description vite环境请设置false
-       * @description 默认内置
+       * @description set false in vite env
+       * @description default built-in
        */
       'postcss-import'?: boolean
       /**
        * @default true
-       * @description 默认内置
+       * @description default built-in
        */
       'tailwindcss/nesting'?: boolean
       /**
        * @default true
-       * @description 默认内置
+       * @description default built-in
        */
       'tailwindcss'?: Config | boolean
       /**
@@ -36,7 +36,7 @@ export type PostcssConfig =
       'postcss-pxtoviewport'?: false | PxtoviewportOptions
       /**
        * @default true
-       * @description 默认内置
+       * @description default built-in
        */
       'postcss-preset-env'?: pluginOptions | boolean
     }
