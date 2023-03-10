@@ -35,7 +35,18 @@ function App() {
 
   return (
     <div>
-      <div onClick={() => toast.show({ content: <div>{Math.random()}</div>, type: 'warning' })}>show toast</div>
+      <div
+        onClick={() =>
+          toast.show({
+            content: <div>{Math.random()}</div>,
+            type: 'warning',
+            duration: 0,
+            onIconClick: () => console.log('click'),
+          })
+        }
+      >
+        show toast
+      </div>
       <div className='App'>
         <div id='test' />
 

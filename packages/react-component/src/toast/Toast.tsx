@@ -38,6 +38,7 @@ const Toast: FC<ToastProps> = (props) => {
     onOpened,
     teleport,
     onHoverStateChange,
+    onIconClick,
     transitionTime,
     keyboard,
   } = props
@@ -70,7 +71,8 @@ const Toast: FC<ToastProps> = (props) => {
 
     if (hasIcon) {
       return React.cloneElement((icon || builtinIcons[type]) as React.ReactElement, {
-        className: classNames(bem('icon'), bem(type)),
+        className: classNames(bem('icon'), bem(type), onIconClick && bem('icon', 'click')),
+        onClick: onIconClick,
       })
     }
 

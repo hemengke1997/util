@@ -66,6 +66,9 @@
   &__icon {
     font-size: var(--rc-toast-icon-size);
     margin: var(--rc-toast-icon-margin);
+    &--click {
+      @apply cursor-pointer;
+    }
   }
 
   &__loading {

@@ -47,6 +47,8 @@ export interface ToastProps extends Omit<BaseTypeProps, 'children'> {
   onOpened?: () => void
   onHoverStateChange?: (h: boolean) => void
   onClosed?: () => void
+  /** icon点击回调 */
+  onIconClick?: () => void
 }
 
 export type ToastOptions = Omit<ToastProps, 'type'> | string
