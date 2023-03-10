@@ -12,6 +12,8 @@ export interface ToastProps extends Omit<BaseTypeProps, 'children'> {
   visible?: boolean
   /** hover时不隐藏 */
   keepOnHover?: boolean
+  /** content 为空时是否显示 */
+  showEmpty?: boolean
   /** 提示类型 */
   type?: ToastType
   /** 内容 */

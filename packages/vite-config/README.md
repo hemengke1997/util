@@ -1,6 +1,17 @@
 # Usage
 
-vite.config.ts
+## built-in plugins
+
+- vite-plugin-compression
+- @vitejs/plugin-legacy
+- vite-plugin-public-typescript
+- vite-plugin-svgr
+- rollup-plugin-visualizer
+  
+
+## Use
+
+// vite.config.ts
 ```ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'

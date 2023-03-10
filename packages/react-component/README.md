@@ -14,7 +14,7 @@ import { Dialog, toast } from '@minko-fe/react-component'
 
 Dialog.show({ children: <div>hello world</div> })
 
-toast.show({ message: <div>hello world</div> })
+toast.show({ content: <div>hello world</div> })
 ```
 
 

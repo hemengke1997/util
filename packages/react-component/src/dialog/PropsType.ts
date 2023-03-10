@@ -4,6 +4,7 @@ import type { BaseTypeProps } from '../utils/interface'
 
 export interface DialogProps extends Omit<BaseTypeProps, 'children'>, SharedPopupProps {
   visible?: boolean
+  content?: React.ReactNode
   /** 是否显示右上角关闭按钮 */
   closeable?: boolean
   closeIcon?: React.ReactNode
@@ -21,7 +22,6 @@ export interface DialogProps extends Omit<BaseTypeProps, 'children'>, SharedPopu
   closeOnClickOverlay?: boolean
   /** 点击关闭icon按钮时调用方法 */
   onClickCloseIcon?: () => void
-  children?: React.ReactNode
   /** Dialog弹出时的的父容器 */
   teleport?: HTMLElement | (() => HTMLElement)
   /** Dialog关闭时的回调 */
@@ -30,18 +30,22 @@ export interface DialogProps extends Omit<BaseTypeProps, 'children'>, SharedPopu
   onClosed?: () => void
 }
 
+export interface DialogPrivateProps {
+  children?: React.ReactNode
+}
+
 export type ConfigUpdate = DialogProps | ((prevConfig: DialogProps) => DialogProps)
 
-export type DialogReturnType = {
+export interface DialogInstanceReturnType {
   /** 动态更新方法 */
   update(configUpdate: ConfigUpdate): void
   /** 关闭dialog */
   close: () => void
-} | null
+}
 
 export interface DialogStatic {
   (props: DialogProps): React.ReactElement
-  show: (props: DialogProps) => DialogReturnType
+  show: (props: DialogProps) => DialogInstanceReturnType | null
   /**
    * 修改默认配置，对所有 Dialog 生效。
    */
@@ -51,3 +55,5 @@ export interface DialogStatic {
    */
   resetDefaultOptions(): void
 }
+
+export type DialogMethodOptions = Omit<DialogProps, 'visible'>

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import Popup from '../popup'
 import { createNamespace } from '../utils/createNamespace'
-import type { DialogProps, DialogStatic } from './PropsType'
+import type { DialogPrivateProps, DialogProps, DialogStatic } from './PropsType'
 
 const [bem] = createNamespace('dialog')
 
-const Dialog: React.FC<DialogProps> = (props) => {
+const Dialog: React.FC<DialogProps & DialogPrivateProps> = (props) => {
   const {
     visible: propVisible = false,
     className,
@@ -51,5 +51,5 @@ const Dialog: React.FC<DialogProps> = (props) => {
   )
 }
 
-const ExportDialog = Dialog as React.FC<DialogProps> & DialogStatic
+const ExportDialog = Dialog as React.FC<DialogProps & DialogPrivateProps> & DialogStatic
 export { ExportDialog as Dialog }

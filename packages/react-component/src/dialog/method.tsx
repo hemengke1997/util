@@ -5,9 +5,10 @@ import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'
 import { Dialog as BaseDialog } from './Dialog'
 import { DialogContext } from './DialogContext'
-import type { ConfigUpdate, DialogProps, DialogStatic } from './PropsType'
+import type { ConfigUpdate, DialogMethodOptions, DialogProps, DialogStatic } from './PropsType'
 
-const defaultOptions: DialogProps = {
+const defaultOptions: DialogMethodOptions = {
+  content: '',
   overlay: true,
   closeable: true,
   closeIcon: <CloseOutlined />,
@@ -23,7 +24,7 @@ const destroyFns: Array<() => void> = []
 const DialogObj: DialogStatic = BaseDialog
 
 // 可返回用于销毁此弹窗的方法
-DialogObj.show = (props: DialogProps) => {
+DialogObj.show = (props: DialogMethodOptions) => {
   if (!isBrowser()) return null
 
   let timeoutId: NodeJS.Timeout
@@ -36,7 +37,7 @@ DialogObj.show = (props: DialogProps) => {
   let currentConfig: DialogProps = { ...commonOptions, ...props, visible: true }
 
   const TempDialog = (dialogProps: DialogProps) => {
-    const { onClose, children, ...rest } = dialogProps
+    const { onClose, content, ...rest } = dialogProps
 
     const [visible, setVisible] = useState<boolean>(false)
 
@@ -60,7 +61,7 @@ DialogObj.show = (props: DialogProps) => {
             destroy()
           }}
         >
-          {children}
+          {content}
         </BaseDialog>
       </DialogContext.Provider>
     )
@@ -128,7 +129,7 @@ DialogObj.show = (props: DialogProps) => {
   }
 }
 
-function setDefaultOptions(options?: DialogProps) {
+function setDefaultOptions(options?: DialogMethodOptions) {
   extend(commonOptions, options)
 }
 

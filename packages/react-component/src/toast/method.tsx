@@ -20,6 +20,7 @@ const defaultOptions: ToastProps = {
   keepOnHover: true,
   transition: 'rc-toast-bounce',
   keyboard: false,
+  showEmpty: false,
 }
 
 const destroyFns: (() => void)[] = []
@@ -50,15 +51,15 @@ const toastObj = {} as ToastInstance
 toastObj.show = (props: ToastProps) => {
   if (!isBrowser()) return null
 
-  if (!props.content) return null
+  let currentConfig: ToastProps = { ...commonOptions, ...props, visible: true }
+
+  if (!props.content && !currentConfig.showEmpty) return null
 
   let timeoutId: NodeJS.Timeout
   const { teleport } = props
   const container = document.createElement('div')
   const bodyContainer = resolveContainer(teleport)
   bodyContainer.appendChild(container)
-
-  let currentConfig: ToastProps = { ...commonOptions, ...props, visible: true }
 
   const TempToast = (toastProps: ToastProps) => {
     const timer = useRef(0)
