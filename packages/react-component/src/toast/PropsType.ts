@@ -47,7 +47,7 @@ export interface ToastProps extends Omit<BaseTypeProps, 'children'> {
   onOpened?: () => void
   onClosed?: () => void
   /** icon点击回调 */
-  onIconClick?: (cb: ToastReturnType) => void
+  onIconClick?: (cb: ToastInstanceReturnType) => void
 }
 
 export interface ToastPrivateProps {
@@ -58,15 +58,15 @@ export type ToastOptions = Omit<ToastProps, 'type'> | string
 
 export type ConfigUpdate = ToastProps | ((prevConfig: ToastProps) => ToastProps)
 
-export type ToastReturnType = {
+export interface ToastInstanceReturnType {
   /** 动态更新方法 */
   update(configUpdate: ConfigUpdate): void
   /** 清除单例toast */
   close: () => void
-} | null
+}
 
 export interface ToastInstance {
-  show: (props: ToastProps) => ToastReturnType
+  show: (props: ToastProps) => ToastInstanceReturnType | null
   /**
    * 修改默认配置，对所有 Toast 生效。
    * 传入 type 可以修改指定类型的默认配置
