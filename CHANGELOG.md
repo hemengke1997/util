@@ -1,4 +1,13 @@
-## [0.0.45](https://github.com/hemengke1997/util/compare/v0.0.43...v0.0.45) (2023-03-10)
+## [0.0.46](https://github.com/hemengke1997/util/compare/v0.0.44...v0.0.46) (2023-03-10)
+
+
+### Features
+
+* **react-component:** toast support icon click callback ([8c32ba7](https://github.com/hemengke1997/util/commit/8c32ba7e030da1c22a9f93f9697329a7dcf76373))
+
+
+
+## [0.0.44](https://github.com/hemengke1997/util/compare/v0.0.43...v0.0.44) (2023-03-10)
 
 
 

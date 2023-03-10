@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/util-monorepo",
   "type": "module",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "private": true,
   "packageManager": "pnpm@7.29.1",
   "description": "util monorepo",
