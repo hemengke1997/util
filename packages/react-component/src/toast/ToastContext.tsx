@@ -1,8 +1,8 @@
 import type { Context } from 'react'
 import { createContext } from 'react'
-import type { ToastReturnType } from './PropsType'
+import type { ToastInstanceReturnType } from './PropsType'
 
-export interface ToastContextProps extends NonNullable<ToastReturnType> {
+export interface ToastContextProps extends ToastInstanceReturnType {
   visible: boolean
 }
 
