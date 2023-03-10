@@ -1,4 +1,13 @@
-## [0.0.43](https://github.com/hemengke1997/util/compare/v0.0.41...v0.0.43) (2023-03-09)
+## [0.0.44](https://github.com/hemengke1997/util/compare/v0.0.42...v0.0.44) (2023-03-09)
+
+
+### Features
+
+* **vite-config:** default splitVendorChunk ([01d7591](https://github.com/hemengke1997/util/commit/01d7591c30d4a180292853c11dddd841e8f561fe))
+
+
+
+## [0.0.42](https://github.com/hemengke1997/util/compare/v0.0.41...v0.0.42) (2023-03-09)
 
 
 ### Bug Fixes
