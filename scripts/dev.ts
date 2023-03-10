@@ -40,8 +40,8 @@ function clearScreen() {
   readline.clearScreenDown(process.stdout)
 }
 
-export async function dev(tsup: Options, chokidar?: WatchOptions) {
-  const logger = new LoggerFactory(tsup.name)
+export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
+  const logger = new LoggerFactory(tsup?.name)
 
   const resolvedWatchOptions = resolveChokidarOptions({
     disableGlobbing: true,
@@ -86,9 +86,6 @@ export async function dev(tsup: Options, chokidar?: WatchOptions) {
     watcher.on('all', async (_, file) => {
       file = slash(file)
 
-      // By default we only rebuild when imported files change
-      // If you specify custom `watch`, a string or multiple strings
-      // We rebuild when those files change
       let shouldSkipChange = false
 
       if (file === 'package.json') {

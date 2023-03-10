@@ -32,3 +32,9 @@ export default defineConfig((env) => {
   "report": "cross-env REPORT=true npm run build"
 }
 ```
+
+## env
+
+```tsx
+import { isDev } from '@minko-fe/vite-config/client'
+```

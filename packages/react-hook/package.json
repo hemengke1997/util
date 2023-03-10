@@ -44,7 +44,7 @@
     "react-router-dom": ">=6.0.0"
   },
   "dependencies": {
-    "@minko-fe/lodash-pro": "workspace:^*",
+    "@minko-fe/lodash-pro": "workspace:*",
     "ahooks": "^3.7.5",
     "query-string": "^8.1.0",
     "react-use": "^17.4.0"

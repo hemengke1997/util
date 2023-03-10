@@ -1,5 +1,5 @@
 import { useMemoizedFn, useUpdate } from 'ahooks'
-import queryString from 'query-string'
+import querystring from 'query-string'
 import type { ParseOptions, StringifyOptions } from 'query-string'
 import { useMemo, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -38,7 +38,7 @@ const useUrlState = <S extends UrlState = UrlState>(initialState?: S | (() => S)
   const initialStateRef = useRef(typeof initialState === 'function' ? (initialState as () => S)() : initialState || {})
 
   const queryFromUrl = useMemo(() => {
-    return queryString.parse(location.search, mergedParseOptions)
+    return querystring.parse(location.search, mergedParseOptions)
   }, [location.search])
 
   const targetQuery: State = useMemo(
@@ -59,7 +59,7 @@ const useUrlState = <S extends UrlState = UrlState>(initialState?: S | (() => S)
     navigate(
       {
         hash: location.hash,
-        search: queryString.stringify({ ...queryFromUrl, ...newQuery }, mergedStringifyOptions) || '?',
+        search: querystring.stringify({ ...queryFromUrl, ...newQuery }, mergedStringifyOptions) || '?',
       },
       {
         replace: navigateMode === 'replace',

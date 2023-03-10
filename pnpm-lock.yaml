@@ -142,7 +142,7 @@ importers:
 
   packages/react-hook:
     specifiers:
-      '@minko-fe/lodash-pro': workspace:^*
+      '@minko-fe/lodash-pro': workspace:*
       ahooks: ^3.7.5
       query-string: ^8.1.0
       react: ^18.2.0
@@ -179,25 +179,25 @@ importers:
       '@minko-fe/lodash-pro': workspace:*
       '@vitejs/plugin-legacy': ^4.0.1
       get-tsconfig: ^4.4.0
-      rollup: ^3.18.0
+      rollup: ^3.19.0
       rollup-plugin-visualizer: ^5.9.0
-      terser: ^5.16.5
+      terser: ^5.16.6
       vite: ^4.1.4
       vite-plugin-compression: ^0.5.1
       vite-plugin-public-typescript: ^1.2.4
       vite-plugin-svgr: ^2.4.0
     dependencies:
       '@minko-fe/lodash-pro': link:../lodash-pro
-      '@vitejs/plugin-legacy': 4.0.1_terser@5.16.5+vite@4.1.4
+      '@vitejs/plugin-legacy': 4.0.1_terser@5.16.6+vite@4.1.4
       get-tsconfig: 4.4.0
-      rollup-plugin-visualizer: 5.9.0_rollup@3.18.0
-      terser: 5.16.5
+      rollup-plugin-visualizer: 5.9.0_rollup@3.19.0
+      terser: 5.16.6
       vite-plugin-compression: 0.5.1_vite@4.1.4
       vite-plugin-public-typescript: 1.2.4_vite@4.1.4
-      vite-plugin-svgr: 2.4.0_rollup@3.18.0+vite@4.1.4
+      vite-plugin-svgr: 2.4.0_rollup@3.19.0+vite@4.1.4
     devDependencies:
-      rollup: 3.18.0
-      vite: 4.1.4_terser@5.16.5
+      rollup: 3.19.0
+      vite: 4.1.4_terser@5.16.6
 
   playground/spa:
     specifiers:
@@ -2662,7 +2662,7 @@ packages:
     resolution: {integrity: sha512-YRHie1yQEj0kqqCTCJEfHqYSSNlZQ696QJG+MMiW4mxSl9I0ojz/eRhJS4fs88Z5i6D1SmoF9d3K99/QOhI8/w==}
     engines: {node: '>=14'}
 
-  /@rollup/pluginutils/5.0.2_rollup@3.18.0:
+  /@rollup/pluginutils/5.0.2_rollup@3.19.0:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2674,7 +2674,7 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.18.0
+      rollup: 3.19.0
     dev: false
 
   /@svgr/babel-plugin-add-jsx-attribute/6.5.1_@babel+core@7.21.0:
@@ -3082,7 +3082,7 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-legacy/4.0.1_terser@5.16.5+vite@4.1.4:
+  /@vitejs/plugin-legacy/4.0.1_terser@5.16.6+vite@4.1.4:
     resolution: {integrity: sha512-/ZV63NagI1c9TB5E4ijGmycY//fNm/2L02nsnXXxACwYaF9W+/OyVlgIW24jYUIS+g0yQRtn+N5hzBc8RLNhGA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -3096,8 +3096,8 @@ packages:
       magic-string: 0.27.0
       regenerator-runtime: 0.13.11
       systemjs: 6.14.0
-      terser: 5.16.5
-      vite: 4.1.4_terser@5.16.5
+      terser: 5.16.6
+      vite: 4.1.4_terser@5.16.6
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -7710,7 +7710,7 @@ packages:
       stubborn-fs: 1.2.4
     dev: false
 
-  /rollup-plugin-visualizer/5.9.0_rollup@3.18.0:
+  /rollup-plugin-visualizer/5.9.0_rollup@3.19.0:
     resolution: {integrity: sha512-bbDOv47+Bw4C/cgs0czZqfm8L82xOZssk4ayZjG40y9zbXclNk7YikrZTDao6p7+HDiGxrN0b65SgZiVm9k1Cg==}
     engines: {node: '>=14'}
     hasBin: true
@@ -7722,13 +7722,13 @@ packages:
     dependencies:
       open: 8.4.2
       picomatch: 2.3.1
-      rollup: 3.18.0
+      rollup: 3.19.0
       source-map: 0.7.4
       yargs: 17.7.1
     dev: false
 
-  /rollup/3.18.0:
-    resolution: {integrity: sha512-J8C6VfEBjkvYPESMQYxKHxNOh4A5a3FlP+0BETGo34HEcE4eTlgCrO2+eWzlu2a/sHs2QUkZco+wscH7jhhgWg==}
+  /rollup/3.19.0:
+    resolution: {integrity: sha512-xZzJZlH9Ca6cosfdNGPwl2z7Pby8dTi9TrYLPeg6/j7aUoDOhBd706tCUFvbiBj45h/cS7z/a4gS8xd5Yg0jBw==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -8233,8 +8233,8 @@ packages:
       uuid: 3.4.0
     dev: true
 
-  /terser/5.16.5:
-    resolution: {integrity: sha512-qcwfg4+RZa3YvlFh0qjifnzBHjKGNbtDo9yivMqMFDy9Q6FSaQWSB/j1xKhsoUFJIqDOM3TsN6D5xbrMrFcHbg==}
+  /terser/5.16.6:
+    resolution: {integrity: sha512-IBZ+ZQIA9sMaXmRZCUMDjNH0D5AQQfdn4WUjHL0+1lF4TP1IHRJbrhb6fNaXWikrYQTSkb7SLxkeXAiy1p7mbg==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -8392,7 +8392,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.4
       resolve-from: 5.0.0
-      rollup: 3.18.0
+      rollup: 3.19.0
       source-map: 0.8.0-beta.0
       sucrase: 3.29.0
       tree-kill: 1.2.2
@@ -8613,7 +8613,7 @@ packages:
       chalk: 4.1.2
       debug: 4.3.4
       fs-extra: 10.1.0
-      vite: 4.1.4_terser@5.16.5
+      vite: 4.1.4_terser@5.16.6
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -8628,18 +8628,18 @@ packages:
       fs-extra: 11.1.0
       on-change: 4.0.2
       tiny-glob: 0.2.9
-      vite: 4.1.4_terser@5.16.5
+      vite: 4.1.4_terser@5.16.6
       watcher: 2.2.2
     dev: false
 
-  /vite-plugin-svgr/2.4.0_rollup@3.18.0+vite@4.1.4:
+  /vite-plugin-svgr/2.4.0_rollup@3.19.0+vite@4.1.4:
     resolution: {integrity: sha512-q+mJJol6ThvqkkJvvVFEndI4EaKIjSI0I3jNFgSoC9fXAz1M7kYTVUin8fhUsFojFDKZ9VHKtX6NXNaOLpbsHA==}
     peerDependencies:
       vite: ^2.6.0 || 3 || 4
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.18.0
+      '@rollup/pluginutils': 5.0.2_rollup@3.19.0
       '@svgr/core': 6.5.1
-      vite: 4.1.4_terser@5.16.5
+      vite: 4.1.4_terser@5.16.6
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -8673,7 +8673,7 @@ packages:
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
-      rollup: 3.18.0
+      rollup: 3.19.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -8707,12 +8707,12 @@ packages:
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
-      rollup: 3.18.0
+      rollup: 3.19.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vite/4.1.4_terser@5.16.5:
+  /vite/4.1.4_terser@5.16.6:
     resolution: {integrity: sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -8740,8 +8740,8 @@ packages:
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
-      rollup: 3.18.0
-      terser: 5.16.5
+      rollup: 3.19.0
+      terser: 5.16.6
     optionalDependencies:
       fsevents: 2.3.2
 
