@@ -1,4 +1,13 @@
-## [0.0.47](https://github.com/hemengke1997/util/compare/v0.0.45...v0.0.47) (2023-03-10)
+## [0.0.48](https://github.com/hemengke1997/util/compare/v0.0.46...v0.0.48) (2023-03-10)
+
+
+### Bug Fixes
+
+* **react-component:** toast onIconClick types ([629c6ff](https://github.com/hemengke1997/util/commit/629c6ff8ff11992e9e7f4e990d134adafd088ad2))
+
+
+
+## [0.0.46](https://github.com/hemengke1997/util/compare/v0.0.45...v0.0.46) (2023-03-10)
 
 
 
