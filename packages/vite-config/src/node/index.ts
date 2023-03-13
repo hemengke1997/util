@@ -4,12 +4,15 @@ import { loadEnv, splitVendorChunkPlugin, mergeConfig as viteMergeConfig } from 
 import type { ConfigEnv, PluginOption, UserConfig } from 'vite'
 import type { VPPTPluginOptions } from 'vite-plugin-public-typescript'
 import { injectEnv, pathsMapToAlias } from './utils'
-import { svgr } from './plugins/svgr'
 import type { legacyOptions } from './plugins/legacy'
 import type { compressOptions } from './plugins/compress'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
 
 interface pluginOptions {
+  /**
+   * @default true
+   */
+  svgr?: boolean
   /**
    * @default
    * { compress: 'gzip', deleteOriginFile: false }
@@ -38,9 +41,14 @@ const esbuildTarget = ['es2015']
 async function setupPlugins(options: pluginOptions, configEnv: ConfigEnv) {
   const { ssrBuild } = configEnv
 
-  const vitePlugins: PluginOption = [svgr(), visualizerPlugin()]
+  const { svgr, compress, legacy, publicTypescript, splitVendorChunk } = options
 
-  const { compress, legacy, publicTypescript, splitVendorChunk } = options
+  const vitePlugins: PluginOption = [visualizerPlugin()]
+
+  if (svgr !== false) {
+    const { svgr: svgrPlugin } = await import('./plugins/svgr')
+    vitePlugins.push(svgrPlugin())
+  }
 
   if (splitVendorChunk !== false) {
     !ssrBuild && vitePlugins.push(splitVendorChunkPlugin())

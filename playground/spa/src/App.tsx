@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Dialog, toast } from '@minko-fe/react-component'
 import { useUrlState } from '@minko-fe/react-hook'
+import { ReactComponent as Logo } from './public/logo.svg'
 import { A } from '#/A'
 
 toast.setDefaultOptions({
@@ -38,6 +39,7 @@ function App() {
 
   return (
     <div>
+      <Logo />
       <div
         onClick={() => {
           toastRef.current = toast.show({

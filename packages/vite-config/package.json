@@ -36,7 +36,8 @@
   "files": [
     "dist",
     "CHANGELOG.md",
-    "README.md"
+    "README.md",
+    "svgr.d.ts"
   ],
   "scripts": {
     "dev": "rimraf dist && tsx scripts/dev",
