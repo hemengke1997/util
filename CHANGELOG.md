@@ -1,4 +1,14 @@
-## [0.0.48](https://github.com/hemengke1997/util/compare/v0.0.46...v0.0.48) (2023-03-10)
+## [0.0.49](https://github.com/hemengke1997/util/compare/v0.0.47...v0.0.49) (2023-03-13)
+
+
+### Features
+
+* **react-component:** toast support `showEmpty` option ([5b6a244](https://github.com/hemengke1997/util/commit/5b6a2443541cd36c8114330dad59f2bcb6eba208))
+* **vite-config:** plugin-svgr on demand ([d3428ec](https://github.com/hemengke1997/util/commit/d3428ecafcb0e67e56f0bf868b14b5e40423b60a))
+
+
+
+## [0.0.47](https://github.com/hemengke1997/util/compare/v0.0.46...v0.0.47) (2023-03-10)
 
 
 ### Bug Fixes
