@@ -10,8 +10,10 @@ importers:
       '@testing-library/react': ^14.0.0
       '@types/fs-extra': ^11.0.1
       '@types/node': ^18.15.2
+      '@types/prompts': ^2.4.3
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
+      '@types/validate-npm-package-name': ^4.0.0
       bumpp: ^9.0.0
       chokidar: ^3.5.3
       conventional-changelog-cli: ^2.2.2
@@ -22,6 +24,7 @@ importers:
       joycon: ^3.1.1
       jsonc-simple-parser: ^3.0.0
       picocolors: ^1.0.0
+      prompts: ^2.4.2
       react: ^18.2.0
       react-dom: ^18.2.0
       rimraf: ^4.4.0
@@ -30,6 +33,7 @@ importers:
       tsup: ^6.6.3
       tsx: ^3.12.5
       typescript: ^4.9.5
+      validate-npm-package-name: ^5.0.0
       vitest: ^0.29.2
     devDependencies:
       '@minko-fe/eslint-config': 1.2.23_eslint@8.36.0
@@ -38,8 +42,10 @@ importers:
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@types/fs-extra': 11.0.1
       '@types/node': 18.15.2
+      '@types/prompts': 2.4.3
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
+      '@types/validate-npm-package-name': 4.0.0
       bumpp: 9.0.0
       chokidar: 3.5.3
       conventional-changelog-cli: 2.2.2
@@ -50,6 +56,7 @@ importers:
       joycon: 3.1.1
       jsonc-simple-parser: 3.0.0
       picocolors: 1.0.0
+      prompts: 2.4.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       rimraf: 4.4.0
@@ -58,6 +65,7 @@ importers:
       tsup: 6.6.3_typescript@4.9.5
       tsx: 3.12.5
       typescript: 4.9.5
+      validate-npm-package-name: 5.0.0
       vitest: 0.29.2
 
   packages/axios-pro:
@@ -2921,6 +2929,13 @@ packages:
       postcss: 8.4.21
     dev: true
 
+  /@types/prompts/2.4.3:
+    resolution: {integrity: sha512-qpzXlxoPv67TCtTCS+SwYmz1M+G5ARTrE5YVlrZPy/xBD36dzLqiJLDzOzsMXkcJYq6+6UkWqFwtLAOjsfec5Q==}
+    dependencies:
+      '@types/node': 18.15.2
+      kleur: 3.0.3
+    dev: true
+
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
@@ -2955,6 +2970,10 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
+    dev: true
+
+  /@types/validate-npm-package-name/4.0.0:
+    resolution: {integrity: sha512-RpO62vB2lkjEkyLbwTheA2+uwYmtVMWTr/kWRI++UAgVdZqNqdAuIQl/SxBCGeMKfdjWaXPbyhZbiCc4PAj+KA==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.54.1_4rfaf6mlw2mmutqjcopwvbftpu:
@@ -8585,6 +8604,13 @@ packages:
   /validate-npm-package-name/4.0.0:
     resolution: {integrity: sha512-mzR0L8ZDktZjpX4OB46KT+56MAhl4EIazWP/+G/HPGuvfdaqg4YsCdtOm6U9+LOFyYDoh4dpnpxZRB9MQQns5Q==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
+    dependencies:
+      builtins: 5.0.1
+    dev: true
+
+  /validate-npm-package-name/5.0.0:
+    resolution: {integrity: sha512-YuKoXDAhBYxY7SfOKxHBDoSyENFeW5VvIIQp2TGQuit8gpK6MnWaQelBKxso72DoxTZfZdcP3W90LqpSkgPzLQ==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       builtins: 5.0.1
     dev: true

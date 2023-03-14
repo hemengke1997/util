@@ -11,7 +11,6 @@ export default defineConfig(async (env) => {
     },
     {
       compress: false,
-      legacy: true,
     },
   )
 })
