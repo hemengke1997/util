@@ -21,7 +21,7 @@
     "test": "pnpm -r --parallel --filter=./packages/* test",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "preinstall": "npx only-allow pnpm",
-    "lint": "eslint .",
+    "lint": "eslint --ignore-pattern \"/playground/\" .",
     "clean": "rimraf node_modules & pnpm -r --parallel --filter=./packages/* clean",
     "upgrade:deps": "pnpm update --i --L",
     "taze": "taze -r -w",
