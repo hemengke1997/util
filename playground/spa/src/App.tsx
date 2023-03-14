@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Dialog, toast } from '@minko-fe/react-component'
 import { useUrlState } from '@minko-fe/react-hook'
-import { ReactComponent as Logo } from './public/logo.svg'
 import { A } from '#/A'
 
 toast.setDefaultOptions({
@@ -24,7 +23,7 @@ function App() {
 
   const x = () => {
     destroy.current = Dialog.show({
-      children: <A url={_url} />,
+      content: <A url={_url} />,
       onClose() {
         console.log('onClose')
       },
@@ -39,7 +38,6 @@ function App() {
 
   return (
     <div>
-      <Logo />
       <div
         onClick={() => {
           toastRef.current = toast.show({

@@ -7,13 +7,13 @@ export interface compressOptions {
 }
 
 export function compress(options?: compressOptions): Plugin | Plugin[] {
-  const { compress = 'gzip', deleteOriginFile = false } = options || {}
+  const { compress, deleteOriginFile } = options || {}
 
-  const compressList = compress.split(',')
+  const compressList = compress?.split(',')
 
   const plugins: Plugin[] = []
 
-  if (compressList.includes('gzip')) {
+  if (compressList?.includes('gzip')) {
     plugins.push(
       compressPlugin({
         ext: '.gz',
@@ -22,7 +22,7 @@ export function compress(options?: compressOptions): Plugin | Plugin[] {
     )
   }
 
-  if (compressList.includes('brotli')) {
+  if (compressList?.includes('brotli')) {
     plugins.push(
       compressPlugin({
         ext: '.br',

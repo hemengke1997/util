@@ -2,10 +2,9 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: light dark;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   color: rgb(255 255 255 / 100%);
+  background-color: #000;
+  --rc-dialog-background-color: #242731;
 }
 
 body {

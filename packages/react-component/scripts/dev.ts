@@ -1,9 +1,8 @@
 import { dev } from '../../../scripts/dev'
+import tsupConfig from './tsup.config'
 
 dev({
-  entry: ['src/**/*.{ts,tsx,css}'],
-  bundle: false,
+  ...tsupConfig,
   format: ['esm'],
   dts: false,
-  legacyOutput: true,
 })

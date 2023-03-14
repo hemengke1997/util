@@ -3,12 +3,13 @@
 import { loadEnv, splitVendorChunkPlugin, mergeConfig as viteMergeConfig } from 'vite'
 import type { ConfigEnv, PluginOption, UserConfig } from 'vite'
 import type { VPPTPluginOptions } from 'vite-plugin-public-typescript'
+import { deepMerge } from '@minko-fe/lodash-pro'
 import { injectEnv, pathsMapToAlias } from './utils'
 import type { legacyOptions } from './plugins/legacy'
 import type { compressOptions } from './plugins/compress'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
 
-interface pluginOptions {
+interface PluginOptions {
   /**
    * @default true
    */
@@ -30,7 +31,9 @@ interface pluginOptions {
   publicTypescript?: VPPTPluginOptions | false
   /**
    * @default
-   * true when spa build, false when ssr build
+   * csr and not legacy render
+   * @suggestion
+   * disable if you want legacy render
    */
   splitVendorChunk?: boolean
 }
@@ -38,7 +41,26 @@ interface pluginOptions {
 // https://github.com/evanw/esbuild/issues/121#issuecomment-646956379
 const esbuildTarget = ['es2015']
 
-async function setupPlugins(options: pluginOptions, configEnv: ConfigEnv) {
+const defaultOptions: PluginOptions = {
+  svgr: true,
+  compress: {
+    compress: 'gzip',
+    deleteOriginFile: false,
+  },
+  legacy: {
+    renderLegacyChunks: true,
+    polyfills: true,
+    ignoreBrowserslistConfig: false,
+  },
+  publicTypescript: {
+    esbuildOptions: { target: esbuildTarget },
+  },
+  splitVendorChunk: undefined,
+}
+
+async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
+  options = deepMerge(defaultOptions, options)
+
   const { ssrBuild } = configEnv
 
   const { svgr, compress, legacy, publicTypescript, splitVendorChunk } = options
@@ -51,7 +73,9 @@ async function setupPlugins(options: pluginOptions, configEnv: ConfigEnv) {
   }
 
   if (splitVendorChunk !== false) {
-    !ssrBuild && vitePlugins.push(splitVendorChunkPlugin())
+    // splitVendorChunk brings style inject which make style order
+    // and css weights wrong in legacy render
+    !ssrBuild && !legacy && vitePlugins.push(splitVendorChunkPlugin())
   }
 
   if (compress !== false) {
@@ -65,16 +89,14 @@ async function setupPlugins(options: pluginOptions, configEnv: ConfigEnv) {
   }
 
   if (publicTypescript !== false) {
-    const defaultVpptOpts = { esbuildOptions: { target: esbuildTarget } }
     const { pt } = await import('./plugins/publicTypescript')
-    const { deepMerge } = await import('@minko-fe/lodash-pro')
-    vitePlugins.push(pt(deepMerge(defaultVpptOpts, publicTypescript || {})))
+    vitePlugins.push(pt(publicTypescript!))
   }
 
   return vitePlugins
 }
 
-const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: pluginOptions): Promise<UserConfig> => {
+const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: PluginOptions): Promise<UserConfig> => {
   const { root, ...configEnv } = config
   const alias = pathsMapToAlias(root)
 
@@ -100,11 +122,14 @@ const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: 
       rollupOptions: {
         treeshake: true,
       },
+      cssCodeSplit: true,
+      manifest: !configEnv.ssrBuild,
+      ssrManifest: configEnv.ssrBuild,
     },
   }
 }
 
-const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig, options?: pluginOptions) => {
+const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig, options?: PluginOptions) => {
   const { mode } = configEnv
   const root = userConfig.root || process.cwd()
   const config = viteMergeConfig(await getDefaultConfig({ root, ...configEnv }, options), userConfig)
