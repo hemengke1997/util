@@ -10,7 +10,7 @@
     "url": "git+https://github.com/hemengke1997/util.git"
   },
   "keywords": [
-    "util"
+    "axios pro"
   ],
   "exports": {
     ".": {

@@ -2,7 +2,7 @@
   "name": "@minko-fe/react-route",
   "type": "module",
   "version": "0.0.49",
-  "description": "react util route",
+  "description": "react-route",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
   "repository": {
@@ -10,7 +10,7 @@
     "url": "git+https://github.com/hemengke1997/util.git"
   },
   "keywords": [
-    "react util"
+    "react-route"
   ],
   "exports": {
     ".": {
