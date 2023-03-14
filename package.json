@@ -24,12 +24,12 @@
     "lint": "eslint --ignore-pattern \"/playground/\" .",
     "clean": "rimraf node_modules & pnpm -r --parallel --filter=./packages/* clean",
     "upgrade:deps": "pnpm update --i --L",
-    "taze": "taze -r -w",
+    "taze": "taze -I -r -w",
     "bump": "pnpm changelog && bumpp CHANGELOG.md packages/*/package.json package.json CHANGELOG.md --commit --push --tag -all"
   },
   "devDependencies": {
     "@minko-fe/eslint-config": "^1.2.23",
-    "@minko-fe/lodash-pro": "^0.0.44",
+    "@minko-fe/lodash-pro": "^0.0.49",
     "@minko-fe/tsconfig": "^1.2.23",
     "@testing-library/react": "^14.0.0",
     "@types/fs-extra": "^11.0.1",
