@@ -19,7 +19,7 @@ function cp(p: string) {
   const pkg = JSON.parse(pkgStr.replaceAll('template', dirName))
   pkg.version = currentVersion
   fs.writeFileSync(join(`${targetDir}/package.json`), `${JSON.stringify(pkg, null, 2)}\n`)
-  console.log(picocolors.green('generate success\n'))
+  console.log(picocolors.green('✅ Generate success'))
 }
 
 const createLib = async () => {

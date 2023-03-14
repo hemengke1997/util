@@ -12,3 +12,5 @@
 | KeyCode   | 键盘码     |
 | noop      | 空函数     |
 | timeRange | 时间范围   |
+| strategyPattern | 策略模式 |
+| deepMerge | https://github.com/TehShrike/deepmerge |

@@ -22,7 +22,7 @@ let totalLockCount = 0
 
 const BODY_LOCK_CLASS = 'rc-overflow-hidden'
 
-// 移植自vant：https://github.com/youzan/vant/blob/HEAD/src/composables/use-lock-scroll.ts
+// Taken from vant：https://github.com/youzan/vant/blob/HEAD/src/composables/use-lock-scroll.ts
 export function useLockScroll(rootRef: RefObject<HTMLElement>, shouldLock = false) {
   const touch = useTouch()
 

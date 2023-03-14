@@ -70,7 +70,7 @@ export type {
 
 export { RouterUtil }
 
-function CreateRoutes({ routes, onRouteBefore, onRouteMount, suspense, provider }: RouterPropsType) {
+export function CreateRoutes({ routes, onRouteBefore, onRouteMount, suspense, provider }: RouterPropsType) {
   const util = new RouterUtil({
     routes,
     onRouteBefore,
@@ -84,5 +84,3 @@ function CreateRoutes({ routes, onRouteBefore, onRouteMount, suspense, provider 
 
   return provider ? cloneElement(provider, {}, elements) : elements
 }
-
-export { CreateRoutes }

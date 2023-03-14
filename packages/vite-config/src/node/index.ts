@@ -73,7 +73,7 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
   }
 
   if (splitVendorChunk !== false) {
-    // splitVendorChunk brings style inject which make style order
+    // splitVendorChunk brings inline css which make style order
     // and css weights wrong in legacy render
     // https://github.com/vitejs/vite/issues/2062
     !ssrBuild && !legacy && vitePlugins.push(splitVendorChunkPlugin())

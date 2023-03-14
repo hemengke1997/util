@@ -22,6 +22,7 @@ const baseStringifyConfig: StringifyOptions = {
 
 type UrlState = Record<string, any>
 
+// Taken from @ahookjs/use-url-state
 const useUrlState = <S extends UrlState = UrlState>(initialState?: S | (() => S), options?: Options) => {
   type State = Partial<{ [key in keyof S]: any }>
   const { navigateMode = 'push', parseOptions, stringifyOptions } = options || {}
@@ -52,8 +53,6 @@ const useUrlState = <S extends UrlState = UrlState>(initialState?: S | (() => S)
   const setState = (s: React.SetStateAction<State>) => {
     const newQuery = typeof s === 'function' ? s(targetQuery) : s
 
-    // 1. 如果 setState 后，search 没变化，就需要 update 来触发一次更新。比如 demo1 直接点击 clear，就需要 update 来触发更新。
-    // 2. update 和 history 的更新会合并，不会造成多次更新
     update()
 
     navigate(
