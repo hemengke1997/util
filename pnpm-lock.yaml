@@ -185,6 +185,7 @@ importers:
   packages/vite-config:
     specifiers:
       '@minko-fe/lodash-pro': workspace:*
+      '@minko-fe/style-object-to-string': ^0.0.1
       '@vitejs/plugin-legacy': ^4.0.1
       get-tsconfig: ^4.4.0
       rollup: ^3.19.1
@@ -196,6 +197,7 @@ importers:
       vite-plugin-svgr: ^2.4.0
     dependencies:
       '@minko-fe/lodash-pro': link:../lodash-pro
+      '@minko-fe/style-object-to-string': 0.0.1
       '@vitejs/plugin-legacy': 4.0.1_terser@5.16.6+vite@4.1.4
       get-tsconfig: 4.4.0
       rollup-plugin-visualizer: 5.9.0_rollup@3.19.1
@@ -2547,6 +2549,10 @@ packages:
     dependencies:
       prettier: 2.8.4
     dev: true
+
+  /@minko-fe/style-object-to-string/0.0.1:
+    resolution: {integrity: sha512-R+yS5YwYYG6KVtl9BkICcJ48JotSbsxJwyiWdUM98oU//+rYiCEcOltYEaKLCNhkZO2u+KPuF74jcQHM5SmXgg==}
+    dev: false
 
   /@minko-fe/tsconfig/1.2.23_typescript@4.9.5:
     resolution: {integrity: sha512-96ATFihZ08AkLhoS1Tvt7UqBnjHqUVpdSNMFHLHC4t9ZMGW0souuEzKcteUNtGhDhENTsc3cMnyvkdzr2f2DEg==}

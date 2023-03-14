@@ -1,8 +1,8 @@
 /**
- * @param start 开始时间
- * @param end 结束时间
- * @param unit 单位(小时) 默认 24(小时)
- * @returns 时间范围
+ * @param start startTime
+ * @param end endTime
+ * @param unit unit(default 24hour)
+ * @returns range between startTime and endTime
  */
 function timeRange(start: number, end: number, unit = 24) {
   const res: number[] = []

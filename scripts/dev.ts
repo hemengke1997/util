@@ -64,13 +64,20 @@ export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
     } catch {}
   }
 
+  let previousFile: string
+  let n = 0
   async function onBundle(f: string) {
     try {
       await bundle({
         silent: true,
         async onSuccess() {
           clearScreen()
-          logger.info(new Date().toLocaleTimeString(), `✅ Update success: ${f}`)
+          logger.info(
+            new Date().toLocaleTimeString(),
+            `✅ Update success: ${f}`,
+            previousFile === f ? `✖️  ${++n}` : (n = 0) || '',
+          )
+          previousFile = f
         },
       })
     } catch {}

@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
+    "@minko-fe/style-object-to-string": "^0.0.1",
     "@vitejs/plugin-legacy": "^4.0.1",
     "get-tsconfig": "^4.4.0",
     "rollup-plugin-visualizer": "^5.9.0",

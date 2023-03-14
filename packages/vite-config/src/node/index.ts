@@ -93,6 +93,9 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
     const { pt } = await import('./plugins/publicTypescript')
     vitePlugins.push(pt(publicTypescript!))
   }
+  const { log } = await import('./plugins/log')
+
+  vitePlugins.push(log())
 
   return vitePlugins
 }
