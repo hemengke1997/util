@@ -47,7 +47,7 @@
     "test": "vitest",
     "lint": "eslint .",
     "clean": "rimraf node_modules",
-    "upgrade:deps": "pnpm update --i --L",
+    "up": "taze -I -w",
     "bump": "pnpm changelog && bumpp package.json CHANGELOG.md --commit --push --tag -all"
   },
   "peerDependencies": {
@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
-    "@minko-fe/style-object-to-string": "^0.0.1",
+    "@minko-fe/style-object-to-string": "^0.0.2",
     "@vitejs/plugin-legacy": "^4.0.1",
     "get-tsconfig": "^4.4.0",
     "rollup-plugin-visualizer": "^5.9.0",

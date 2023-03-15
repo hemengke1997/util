@@ -75,7 +75,7 @@ export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
           logger.info(
             new Date().toLocaleTimeString(),
             `✅ Update success: ${f}`,
-            previousFile === f ? `✖️  ${++n}` : (n = 0) || '',
+            previousFile === f ? `(✖️  ${++n})` : (n = 0) || '',
           )
           previousFile = f
         },

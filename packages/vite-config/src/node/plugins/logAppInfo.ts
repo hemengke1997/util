@@ -1,7 +1,12 @@
 import type { PluginOption } from 'vite'
+import { ClientLogger } from '../../client'
 
-export function log(): PluginOption {
+export function logAppInfo(): PluginOption {
   const currentBuildTime = new Date().toLocaleString()
+
+  const logger = new ClientLogger(undefined, true)
+
+  const t = logger.log({ text: 'BuildTime', type: 'warn' }, { text: currentBuildTime, type: 'info' })!
 
   return {
     name: 'vite:log-app-info',
@@ -11,7 +16,7 @@ export function log(): PluginOption {
         tags: [
           {
             injectTo: 'body',
-            children: `console.log('✨BuildTime: ${currentBuildTime}')`,
+            children: `console.log(${t.map((str) => `"${str}"`)})`,
             tag: 'script',
           },
         ],

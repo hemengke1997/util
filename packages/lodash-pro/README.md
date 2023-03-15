@@ -3,14 +3,14 @@
 > more than lodash
 
 
-| methods   | desc       |
-| --------- | ---------- |
-| isDef     | 已定义     |
-| isBrowesr | 浏览器环境 |
-| isNull    | null       |
-| isPromise | promise    |
-| KeyCode   | 键盘码     |
-| noop      | 空函数     |
-| timeRange | 时间范围   |
-| strategyPattern | 策略模式 |
-| deepMerge | https://github.com/TehShrike/deepmerge |
+| methods         | desc                                   |
+| --------------- | -------------------------------------- |
+| isDef           | if defined                             |
+| isBrowesr       | browser env                            |
+| isNull          | if null                                |
+| isPromise       | promise                                |
+| KeyCode         | key code                               |
+| noop            | noop function                          |
+| timeRange       | time range                             |
+| strategyPattern | strategy pattern                       |
+| deepMerge       | https://github.com/TehShrike/deepmerge |

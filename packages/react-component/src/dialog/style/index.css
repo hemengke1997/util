@@ -5,7 +5,7 @@
   --rc-dialog-border-radius: theme(borderRadius.default);
   --rc-dialog-transition: theme(transitionDuration.default);
   --rc-dialog-content-padding: 24px 24px;
-  --rc-dialog-content-width: auto;
+  --rc-dialog-content-width: max-content;
   --rc-dialog-box-shadow: theme(boxShadow.default);
 }
 

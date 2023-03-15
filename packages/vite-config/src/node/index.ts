@@ -36,6 +36,10 @@ interface PluginOptions {
    * disable if you want legacy render
    */
   splitVendorChunk?: boolean
+  /**
+   * @default true
+   */
+  logAppInfo?: boolean
 }
 
 // https://github.com/evanw/esbuild/issues/121#issuecomment-646956379
@@ -56,6 +60,7 @@ const defaultOptions: PluginOptions = {
     esbuildOptions: { target: esbuildTarget },
   },
   splitVendorChunk: undefined,
+  logAppInfo: true,
 }
 
 async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
@@ -63,7 +68,7 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
 
   const { ssrBuild } = configEnv
 
-  const { svgr, compress, legacy, publicTypescript, splitVendorChunk } = options
+  const { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo } = options
 
   const vitePlugins: PluginOption = [visualizerPlugin()]
 
@@ -93,9 +98,11 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
     const { pt } = await import('./plugins/publicTypescript')
     vitePlugins.push(pt(publicTypescript!))
   }
-  const { log } = await import('./plugins/log')
 
-  vitePlugins.push(log())
+  if (logAppInfo) {
+    const { logAppInfo: logAppInfoPlugin } = await import('./plugins/logAppInfo')
+    vitePlugins.push(logAppInfoPlugin())
+  }
 
   return vitePlugins
 }

@@ -35,7 +35,7 @@
     "test": "vitest",
     "lint": "eslint .",
     "clean": "rimraf node_modules",
-    "upgrade:deps": "pnpm update --i --L",
+    "up": "taze -I -w",
     "bump": "pnpm changelog && bumpp package.json CHANGELOG.md --commit --push --tag -all"
   },
   "dependencies": {

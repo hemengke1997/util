@@ -1,2 +1,2 @@
 export * from './utils/env'
-export * from './utils/logInfo'
+export * from './utils/ClientLogger'

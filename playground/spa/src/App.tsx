@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Dialog, toast } from '@minko-fe/react-component'
 import { useUrlState } from '@minko-fe/react-hook'
+import { ClientLogger } from '@minko-fe/vite-config/client'
 import { A } from '#/A'
 
 toast.setDefaultOptions({
@@ -13,6 +14,8 @@ Dialog.setDefaultOptions({
     backgroundColor: 'transparent',
   },
 })
+
+const logger = new ClientLogger({ text: 'Title!', type: 'success' })
 
 function App() {
   const destroy = useRef<any>()
@@ -32,6 +35,7 @@ function App() {
 
   useEffect(() => {
     // console.log(_url, '_url')
+    // logger.log({ text: 'haha', type: 'error' }, { text: 'end', type: 'info' })
   }, [])
 
   const [_visible, setVisible] = useState(false)

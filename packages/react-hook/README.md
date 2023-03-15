@@ -3,10 +3,11 @@
 > more than ahooks and react-use
 
 
-new hooks | desc
----------|----------
-useControlledState | 受控state
-useLayoutUpdateEffect | layoutEffect for update
-useLockScroll | lock scroll
-useStrictInput | 严格input输入
-useUrlState | url
+| new hooks             | desc                                                                          |
+| --------------------- | ----------------------------------------------------------------------------- |
+| useControlledState    | controlled state                                                              |
+| useLayoutUpdateEffect | layoutEffect for update                                                       |
+| useLockScroll         | lock scroll                                                                   |
+| useStrictInput        | strict input                                                                  |
+| useUrlState           | url                                                                           |
+| useEffectOnce         | useEffect but trigger once only (effect triggered twice in React strict mode) |
