@@ -1,4 +1,13 @@
-## [0.0.49](https://github.com/hemengke1997/util/compare/v0.0.47...v0.0.49) (2023-03-13)
+## [0.0.50](https://github.com/hemengke1997/util/compare/v0.0.48...v0.0.50) (2023-03-14)
+
+
+### Bug Fixes
+
+* **vite-config:** conditional enable splitVendorChunk plugin ([bf29d81](https://github.com/hemengke1997/util/commit/bf29d81bc5310786df5e9a7ea2959c9bf78c6ef8))
+
+
+
+## [0.0.48](https://github.com/hemengke1997/util/compare/v0.0.47...v0.0.48) (2023-03-13)
 
 
 ### Features
