@@ -23,7 +23,6 @@
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint --ignore-pattern \"/playground/\" .",
     "clean": "rimraf node_modules & pnpm -r --parallel --filter=./packages/* clean",
-    "up": "taze -I -w",
     "taze": "taze -I -r -w",
     "bump": "pnpm changelog && bumpp CHANGELOG.md packages/*/package.json package.json CHANGELOG.md --commit --push --tag -all"
   },
