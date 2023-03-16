@@ -1,7 +1,8 @@
 # Usage
 
+
+## vite.config.ts
 ```ts
-// vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { overrideConfig } from '@minko-fe/vite-config'
@@ -23,7 +24,7 @@ export default defineConfig(async (env) => {
 })
 ```
 
-
+## entry.tsx
 ```tsx
 import { setupI18n, useTranslation } from '@minko-fe/react-locale'
 
@@ -33,5 +34,19 @@ function App() {
   const { t } = useTranslation()
 
   return <div>{t('namespace.key')}</div>
+}
+```
+
+
+## .vscode => settings.json
+``` json
+{
+  "i18n-ally.localesPaths": ["src/locale"],
+  "i18n-ally.keystyle": "flat",
+  "i18n-ally.enabledParsers": ["json"],
+  "i18n-ally.enabledFrameworks": ["react", "i18next"],
+  "i18n-ally.namespace": true,
+  "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
+  "i18n-ally.sourceLanguage": "en"
 }
 ```
