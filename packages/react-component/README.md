@@ -1,6 +1,8 @@
-# Usage
+# react-component
 
-## components
+## Usage
+
+### components
 
 | components
 | -------- 

@@ -1,17 +1,18 @@
-# Usage
+# vite-config
 
-## built-in plugins
+## Usage
+
+### built-in plugins
 
 - vite-plugin-compression
 - @vitejs/plugin-legacy
+- vite-plugin-logAppInfo
 - vite-plugin-public-typescript
 - vite-plugin-svgr
 - rollup-plugin-visualizer
-  
 
-## Use
+### vite.config.ts
 
-// vite.config.ts
 ```ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -26,7 +27,7 @@ export default defineConfig((env) => {
 ```
 
 
-// tsconfig.json
+### tsconfig.json
 ```json
 {
   "baseUrl": ".",
@@ -37,7 +38,7 @@ export default defineConfig((env) => {
 }
 ```
 
-## visualizer
+### visualizer
 
 ```bash
 {
@@ -45,7 +46,7 @@ export default defineConfig((env) => {
 }
 ```
 
-## env
+### env
 
 ```tsx
 import { isDev } from '@minko-fe/vite-config/client'

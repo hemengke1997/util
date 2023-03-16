@@ -1,7 +1,8 @@
-# Usage
+# lodash-pro
 
 > more than lodash
 
+## Usage
 
 | methods         | desc                                   |
 | --------------- | -------------------------------------- |

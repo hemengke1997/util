@@ -1,4 +1,6 @@
-# Usage
+# axios-pro
+
+## Usage
 
 ```ts
 import { AxiosPro } from '@minko-fe/axios-pro'

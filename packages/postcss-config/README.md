@@ -1,6 +1,8 @@
-# Usage
+# postcss-config
 
-## postcss.config.cjs
+## Usage
+
+### postcss.config.cjs
 
 ```js
 const { definePlugins } = require('@minko-fe/postcss-config')
@@ -15,5 +17,4 @@ module.exports = {
     'postcss-preset-env': {}, // default
   }),
 }
-
 ```

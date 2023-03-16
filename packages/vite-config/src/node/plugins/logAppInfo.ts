@@ -1,12 +1,18 @@
-import type { PluginOption } from 'vite'
+import type { ConfigEnv, PluginOption } from 'vite'
 import { ClientLogger } from '../../client'
 
-export function logAppInfo(): PluginOption {
+export function logAppInfo(configEnv: ConfigEnv): PluginOption {
+  const { mode } = configEnv
+
   const currentBuildTime = new Date().toLocaleString()
 
   const logger = new ClientLogger(undefined, true)
 
-  const t = logger.log({ text: 'BuildTime', type: 'success' }, { text: currentBuildTime, type: 'info' })!
+  const t = logger.log(
+    { text: mode, type: 'success' },
+    { text: 'BuildTime', type: 'warn' },
+    { text: currentBuildTime, type: 'info' },
+  )!
 
   return {
     name: 'vite:log-app-info',

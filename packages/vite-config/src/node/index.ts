@@ -101,7 +101,7 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
 
   if (logAppInfo) {
     const { logAppInfo: logAppInfoPlugin } = await import('./plugins/logAppInfo')
-    vitePlugins.push(logAppInfoPlugin())
+    vitePlugins.push(logAppInfoPlugin(configEnv))
   }
 
   return vitePlugins

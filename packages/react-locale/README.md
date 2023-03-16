@@ -1,7 +1,8 @@
-# Usage
+# react-locale
 
+## Usage
 
-## vite.config.ts
+### vite.config.ts
 ```ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -24,7 +25,7 @@ export default defineConfig(async (env) => {
 })
 ```
 
-## entry.tsx
+### entry.tsx
 ```tsx
 import { setupI18n, useTranslation } from '@minko-fe/react-locale'
 
@@ -38,7 +39,7 @@ function App() {
 ```
 
 
-## .vscode => settings.json
+### .vscode => settings.json
 ``` json
 {
   "i18n-ally.localesPaths": ["src/locale"],
@@ -50,3 +51,8 @@ function App() {
   "i18n-ally.sourceLanguage": "en"
 }
 ```
+
+
+## Warning
+
+Currently, we only support `.json` file
