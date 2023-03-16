@@ -13,7 +13,7 @@ interface DetectI18nResourceOptions {
 
 type ResourceType<T = any> = Record<string, T>
 
-// Do not edit this directly
+// Do not modify this variable directly
 let globalData = {
   localeDirBasename: '',
   localeEntry: '',
