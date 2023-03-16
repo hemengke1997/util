@@ -1,4 +1,13 @@
-## [0.0.51](https://github.com/hemengke1997/util/compare/v0.0.49...v0.0.51) (2023-03-15)
+## [0.0.52](https://github.com/hemengke1997/util/compare/v0.0.50...v0.0.52) (2023-03-16)
+
+
+### Features
+
+* **react-locale:** add react-locale lib ([0413cd5](https://github.com/hemengke1997/util/commit/0413cd5fa13b52bbc9d10f20da54cb168f3834c7))
+
+
+
+## [0.0.50](https://github.com/hemengke1997/util/compare/v0.0.49...v0.0.50) (2023-03-15)
 
 
 ### Features
