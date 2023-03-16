@@ -73,7 +73,7 @@ function getResource(resources: ResourceType, filePath: string) {
   }
 }
 
-export async function detectI18nResource(options: DetectI18nResourceOptions): Promise<PluginOption> {
+export async function detectI18nResource(options: DetectI18nResourceOptions) {
   const { localeEntry } = options
 
   if (path.parse(localeEntry).ext) {
@@ -122,5 +122,5 @@ export async function detectI18nResource(options: DetectI18nResourceOptions): Pr
         })
       }
     },
-  }
+  } as PluginOption
 }

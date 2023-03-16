@@ -29,7 +29,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build
-        run: pnpm -r --parallel --filter "./packages/*" build
+        run: pnpm run build
 
       - name: Publish to NPM
         run: pnpm -r --filter "./packages/*" publish --access public --no-git-checks
