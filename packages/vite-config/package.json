@@ -61,7 +61,7 @@
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
     "@minko-fe/style-object-to-string": "^0.0.2",
-    "@vitejs/plugin-legacy": "^4.0.1",
+    "@vitejs/plugin-legacy": "^4.0.2",
     "get-tsconfig": "^4.4.0",
     "rollup-plugin-visualizer": "^5.9.0",
     "terser": "^5.16.6",
@@ -71,6 +71,6 @@
   },
   "devDependencies": {
     "rollup": "^3.19.1",
-    "vite": "^4.1.4"
+    "vite": "^4.2.0"
   }
 }
