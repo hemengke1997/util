@@ -2,7 +2,7 @@
   "name": "@minko-fe/axios-pro",
   "type": "module",
   "version": "0.0.50",
-  "description": "axios pro",
+  "description": "axios-pro",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
   "repository": {
@@ -10,7 +10,7 @@
     "url": "git+https://github.com/hemengke1997/util.git"
   },
   "keywords": [
-    "axios pro"
+    "axios-pro"
   ],
   "exports": {
     ".": {

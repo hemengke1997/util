@@ -32,13 +32,10 @@ export class ClientLogger {
 
     if (isFirst) {
       style.borderRadius = '4px 0 0 4px'
-      style.padding = '2px 4px'
     } else if (isLast) {
-      style.padding = '2px 4px'
       style.borderRadius = '0 4px 4px 0'
-    } else {
-      style.padding = '2px 4px'
     }
+    style.padding = '2px 4px'
     style.background = type ? colors[type] : color
     style.color = '#fff'
     return {

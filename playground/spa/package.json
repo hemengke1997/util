@@ -14,6 +14,7 @@
     "@minko-fe/lodash-pro": "workspace:*",
     "@minko-fe/react-component": "workspace:*",
     "@minko-fe/react-hook": "workspace:*",
+    "@minko-fe/react-locale": "workspace:*",
     "@minko-fe/react-route": "workspace:*",
     "picocolors": "^1.0.0",
     "react": "^18.2.0",

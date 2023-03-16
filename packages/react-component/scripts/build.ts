@@ -1,5 +1,5 @@
 import { build } from '../../../scripts/build'
-import { getEntry } from '../../../tsup.config'
+import { getEntry } from '../../../scripts/utils'
 import tsupConfig from './tsup.config'
 
 build({

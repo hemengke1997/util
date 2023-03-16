@@ -1,3 +1,7 @@
+import path from 'path'
+import stripDirs from 'strip-dirs'
+import glob from 'tiny-glob'
+
 // Taken from https://github.com/sindresorhus/slash/blob/main/index.js (MIT)
 export function slash(path: string) {
   const isExtendedLengthPath = /^\\\\\?\\/.test(path)
@@ -38,4 +42,18 @@ export function debouncePromise<T extends unknown[]>(
       }, delay)
     }
   }
+}
+
+function rmExt(filePath: string) {
+  return filePath.split(path.extname(filePath))[0]
+}
+
+export async function getEntry(entryGlob = 'src/index.ts{,x}') {
+  const entries = await glob(entryGlob)
+  const entry: Record<string, string> = {}
+  entries.forEach((e) => {
+    entry[rmExt(stripDirs(e, 1))] = e
+  })
+
+  return entry
 }

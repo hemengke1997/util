@@ -10,7 +10,15 @@
     "postcss-config",
     "react-component",
     "react-hook",
+    "react-locale",
     "react-route",
     "vite-config"
-  ]
+  ],
+  "i18n-ally.localesPaths": ["playground/spa/src/locale"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.enabledParsers": ["json"],
+  "i18n-ally.enabledFrameworks": ["react", "i18next"],
+  "i18n-ally.namespace": true,
+  "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
+  "i18n-ally.sourceLanguage": "en"
 }

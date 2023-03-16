@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Dialog, toast } from '@minko-fe/react-component'
 import { useUrlState } from '@minko-fe/react-hook'
-import { ClientLogger } from '@minko-fe/vite-config/client'
+import { setupI18n, useTranslation } from '@minko-fe/react-locale'
 import { A } from '#/A'
 
 toast.setDefaultOptions({
@@ -15,10 +15,12 @@ Dialog.setDefaultOptions({
   },
 })
 
-const logger = new ClientLogger({ text: 'Title!', type: 'success' })
+setupI18n()
 
 function App() {
   const destroy = useRef<any>()
+
+  const { t } = useTranslation()
 
   const toastRef = useRef<any>()
 
@@ -29,6 +31,9 @@ function App() {
       content: <A url={_url} />,
       onClose() {
         console.log('onClose')
+      },
+      onClosed: () => {
+        console.log('closed!!!!!!!!!!')
       },
     })
   }
@@ -42,6 +47,7 @@ function App() {
 
   return (
     <div>
+      {t('test.AgreementUse')}
       <div
         onClick={() => {
           toastRef.current = toast.show({

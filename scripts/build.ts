@@ -2,7 +2,7 @@ import type { Options } from 'tsup'
 import { build as tsupBuild } from 'tsup'
 import { getTsconfig } from 'get-tsconfig'
 import { isObject, isUndefined } from '@minko-fe/lodash-pro'
-import { defaultConfig } from '../tsup.config'
+import { defaultConfig } from './utils/config'
 
 async function build(options: Options = {}, watchMode = false) {
   let { dts } = options

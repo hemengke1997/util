@@ -352,7 +352,7 @@ export class AxiosPro {
               const ret = transformResponseHook(res) as unknown as T
               resolve(ret)
             } catch (err) {
-              reject(err || new Error('request error!'))
+              reject(err || new Error('[axios-pro]: request error!'))
             }
             return
           }
