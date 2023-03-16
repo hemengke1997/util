@@ -10,6 +10,7 @@ Package |
  @minko-fe/postcss-config
  @minko-fe/react-component
  @minko-fe/react-hook
+ @minko-fe/react-locale
  @minko-fe/react-route
  @minko-fe/vite-config
 
