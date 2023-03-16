@@ -10,6 +10,7 @@ export function logAppInfo(): PluginOption {
 
   return {
     name: 'vite:log-app-info',
+    enforce: 'post',
     transformIndexHtml(html) {
       return {
         html,

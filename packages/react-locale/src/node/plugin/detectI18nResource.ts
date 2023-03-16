@@ -73,6 +73,9 @@ function getResource(resources: ResourceType, filePath: string) {
   }
 }
 
+export const virtualModuleId = 'virtual:i18n-resources'
+const resolvedVirtualModuleId = `\0${virtualModuleId}`
+
 export async function detectI18nResource(options: DetectI18nResourceOptions) {
   const { localeEntry } = options
 
@@ -91,13 +94,16 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
     localeEntry,
   })
 
-  const virtualModuleId = 'virtual:i18n-resources'
-  const resolvedVirtualModuleId = `\0${virtualModuleId}`
-
   const files = await glob(entry)
 
   return {
     name: 'vite:detect-I18n-resource',
+    enforce: 'pre',
+    config: () => ({
+      optimizeDeps: {
+        exclude: [virtualModuleId],
+      },
+    }),
     resolveId(id) {
       if (id === virtualModuleId) {
         return resolvedVirtualModuleId
@@ -109,13 +115,10 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
         return `export const resources = ${JSON.stringify(resources)}`
       }
     },
-
     handleHotUpdate({ file, server }) {
       if (file.includes(parsedEntry.base) && path.extname(file) === '.json') {
         const virtualModule = server.moduleGraph.getModuleById(resolvedVirtualModuleId)!
-
         server.moduleGraph.invalidateModule(virtualModule)
-
         server.ws.send({
           type: 'full-reload',
           path: '*',
