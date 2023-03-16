@@ -1,4 +1,13 @@
-## [0.0.50](https://github.com/hemengke1997/util/compare/v0.0.48...v0.0.50) (2023-03-14)
+## [0.0.51](https://github.com/hemengke1997/util/compare/v0.0.49...v0.0.51) (2023-03-15)
+
+
+### Features
+
+* **vite-config:** add `logAppInfo` plugin (default enable) ([8c5a96e](https://github.com/hemengke1997/util/commit/8c5a96e8a3cbe7a9657a707588d28a503de442c4))
+
+
+
+## [0.0.49](https://github.com/hemengke1997/util/compare/v0.0.48...v0.0.49) (2023-03-14)
 
 
 ### Bug Fixes

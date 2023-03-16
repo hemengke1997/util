@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/react-locale",
   "type": "module",
-  "version": "0.0.50",
+  "version": "0.0.51",
   "description": "react-locale",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
