@@ -1,12 +1,12 @@
 import type { Plugin } from 'vite'
 import compressPlugin from 'vite-plugin-compression'
 
-export interface compressOptions {
+export interface CompressOptions {
   compress?: 'gzip' | 'brotli' | 'none'
   deleteOriginFile?: boolean
 }
 
-export function compress(options?: compressOptions): Plugin | Plugin[] {
+export function compress(options?: CompressOptions): Plugin | Plugin[] {
   const { compress, deleteOriginFile } = options || {}
 
   const compressList = compress?.split(',')

@@ -3,8 +3,8 @@ import type { ConfigEnv, PluginOption, UserConfig } from 'vite'
 import type { VPPTPluginOptions } from 'vite-plugin-public-typescript'
 import { deepMerge } from '@minko-fe/lodash-pro'
 import { injectEnv, pathsMapToAlias } from './utils'
-import type { legacyOptions } from './plugins/legacy'
-import type { compressOptions } from './plugins/compress'
+import type { LegacyOptions } from './plugins/legacy'
+import type { CompressOptions } from './plugins/compress'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
 
 interface PluginOptions {
@@ -16,12 +16,12 @@ interface PluginOptions {
    * @default
    * { compress: 'gzip', deleteOriginFile: false }
    */
-  compress?: compressOptions | false
+  compress?: CompressOptions | false
   /**
    * @default
    * { renderLegacyChunks: true, polyfills: true, ignoreBrowserslistConfig: false }
    */
-  legacy?: legacyOptions | false
+  legacy?: LegacyOptions | false
   /**
    * @default
    * { esbuildOptions: { target: ['es2015'] } }
@@ -142,7 +142,7 @@ const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig, opti
   const { mode } = configEnv
   const root = userConfig.root || process.cwd()
   const config = viteMergeConfig(await getDefaultConfig({ root, ...configEnv }, options), userConfig)
-  const env = loadEnv(mode, root) as ImportMetaEnv
+  const env = loadEnv(mode, root)
   injectEnv(env)
   return config
 }
