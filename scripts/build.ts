@@ -10,7 +10,7 @@ async function build(options: Options = {}, watchMode = false) {
   const tsconfig = getTsconfig()
 
   if (isObject(dts) || isUndefined(dts)) {
-    dts = {}
+    dts = dts || {}
     dts = {
       ...dts,
       compilerOptions: {

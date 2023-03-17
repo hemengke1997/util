@@ -224,6 +224,7 @@ importers:
       '@minko-fe/lodash-pro': workspace:*
       '@minko-fe/style-object-to-string': ^0.0.2
       '@vitejs/plugin-legacy': ^4.0.2
+      dayjs: ^1.11.7
       get-tsconfig: ^4.4.0
       rollup: ^3.19.1
       rollup-plugin-visualizer: ^5.9.0
@@ -236,6 +237,7 @@ importers:
       '@minko-fe/lodash-pro': link:../lodash-pro
       '@minko-fe/style-object-to-string': 0.0.2
       '@vitejs/plugin-legacy': 4.0.2_terser@5.16.6+vite@4.2.0
+      dayjs: 1.11.7
       get-tsconfig: 4.4.0
       rollup-plugin-visualizer: 5.9.0_rollup@3.19.1
       terser: 5.16.6

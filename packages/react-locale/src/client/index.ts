@@ -14,9 +14,10 @@ type I18nSetupOptions =
       debug?: boolean
     } & InitOptions
 
-function setupI18n(options?: I18nSetupOptions) {
+async function setupI18n(options?: I18nSetupOptions) {
   const { fallbackLng = 'en', lookupTarget = 'lang', debug = isDev(), ...rest } = options || {}
-
+  const r = await import('virtual:i18n-resources')
+  console.log(r, 'r')
   i18next
     .use(LanguageDetector)
     .use(initReactI18next)
@@ -39,6 +40,10 @@ function setupI18n(options?: I18nSetupOptions) {
       },
       ...rest,
     })
+
+  // i18next.on('languageChanged', (lng) => {
+  //   // add resource
+  // })
 }
 
 export { setupI18n }

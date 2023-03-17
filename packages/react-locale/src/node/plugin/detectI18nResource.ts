@@ -73,8 +73,24 @@ function getResource(resources: ResourceType, filePath: string) {
   }
 }
 
+const VIRTUAL_PREFIX = '\0'
+
+// function invalidateVirtualModule(server: ViteDevServer, id: string): void {
+//   const { moduleGraph, ws } = server
+//   const module = moduleGraph.getModuleById(`${VIRTUAL_PREFIX}${id}`)
+//   if (module) {
+//     moduleGraph.invalidateModule(module)
+//     if (ws) {
+//       ws.send({
+//         type: 'full-reload',
+//         path: '*',
+//       })
+//     }
+//   }
+// }
+
 export const virtualModuleId = 'virtual:i18n-resources'
-const resolvedVirtualModuleId = `\0${virtualModuleId}`
+const resolvedVirtualModuleId = `${VIRTUAL_PREFIX}${virtualModuleId}`
 
 export async function detectI18nResource(options: DetectI18nResourceOptions) {
   const { localeEntry } = options

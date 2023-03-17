@@ -26,7 +26,6 @@ function alias(options: Record<string, string>, format: Format): Plugin {
 export default (format: Format) =>
   ({
     noExternal: ['lodash', 'lodash-es'],
-
     esbuildPlugins: [
       alias(
         {
