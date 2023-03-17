@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@minko-fe/eslint-config': ^1.2.25
-      '@minko-fe/lodash-pro': ^0.0.53
+      '@minko-fe/lodash-pro': latest
       '@minko-fe/tsconfig': ^1.2.25
       '@testing-library/react': ^14.0.0
       '@types/fs-extra': ^11.0.1
@@ -39,7 +39,7 @@ importers:
       vitest: ^0.29.3
     devDependencies:
       '@minko-fe/eslint-config': 1.2.25_eslint@8.36.0
-      '@minko-fe/lodash-pro': 0.0.53
+      '@minko-fe/lodash-pro': 0.0.54
       '@minko-fe/tsconfig': 1.2.25_typescript@4.9.5
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@types/fs-extra': 11.0.1
@@ -173,6 +173,7 @@ importers:
 
   packages/react-locale:
     specifiers:
+      '@minko-fe/lodash-pro': workspace:*
       '@minko-fe/vite-config': workspace:*
       '@types/globrex': ^0.1.2
       '@types/parse-glob': ^3.0.29
@@ -189,6 +190,7 @@ importers:
       tiny-glob: ^0.2.9
       vite: ^4.2.0
     dependencies:
+      '@minko-fe/lodash-pro': link:../lodash-pro
       '@minko-fe/vite-config': link:../vite-config
       depth: 0.1.1
       fs-extra: 11.1.0
@@ -2379,8 +2381,8 @@ packages:
       - supports-color
     dev: true
 
-  /@minko-fe/lodash-pro/0.0.53:
-    resolution: {integrity: sha512-Dk+BuZiOkQIti3IClWj6dlqoM0peNLgfurnCCHpZVhQKDuNjmnrWsYPa5sGn7W9WTx9jmcTgh4nOpRtHtMmVFg==}
+  /@minko-fe/lodash-pro/0.0.54:
+    resolution: {integrity: sha512-t9L2K6XwCbYqFIknWExPfPmx235VGJBjgbCLvXcIBTR4HuUkjdRH8YxlKVMQFMXD8Oxpn1TjaTj5j0FyvPqRWw==}
     dependencies:
       '@types/lodash-es': 4.17.7
       deepmerge: 4.3.1

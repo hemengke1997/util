@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@minko-fe/eslint-config": "^1.2.25",
-    "@minko-fe/lodash-pro": "^0.0.53",
+    "@minko-fe/lodash-pro": "latest",
     "@minko-fe/tsconfig": "^1.2.25",
     "@testing-library/react": "^14.0.0",
     "@types/fs-extra": "^11.0.1",

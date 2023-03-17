@@ -55,6 +55,7 @@
     "vite": ">=4.0.0"
   },
   "dependencies": {
+    "@minko-fe/lodash-pro": "workspace:*",
     "@minko-fe/vite-config": "workspace:*",
     "depth": "^0.1.1",
     "fs-extra": "^11.1.0",
