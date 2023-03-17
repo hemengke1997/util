@@ -34,13 +34,13 @@ importers:
       tiny-glob: ^0.2.9
       tsup: ^6.6.3
       tsx: ^3.12.5
-      typescript: ^5.0.2
+      typescript: ^4.9.2
       validate-npm-package-name: ^5.0.0
       vitest: ^0.29.3
     devDependencies:
       '@minko-fe/eslint-config': 1.2.25_eslint@8.36.0
       '@minko-fe/lodash-pro': 0.0.53
-      '@minko-fe/tsconfig': 1.2.25_typescript@5.0.2
+      '@minko-fe/tsconfig': 1.2.25_typescript@4.9.5
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@types/fs-extra': 11.0.1
       '@types/node': 18.15.3
@@ -66,9 +66,9 @@ importers:
       strip-dirs: 3.0.0
       taze: 0.9.0
       tiny-glob: 0.2.9
-      tsup: 6.6.3_typescript@5.0.2
+      tsup: 6.6.3_typescript@4.9.5
       tsx: 3.12.5
-      typescript: 5.0.2
+      typescript: 4.9.5
       validate-npm-package-name: 5.0.0
       vitest: 0.29.3
 
@@ -270,7 +270,7 @@ importers:
       react-dom: ^18.2.0
       react-router-dom: ^6.9.0
       tailwindcss: ^3.2.7
-      typescript: ^5.0.2
+      typescript: ^4.9.2
       vite: ^4.2.0
       vite-plugin-dynamic-import-module: ^0.2.1
     dependencies:
@@ -293,7 +293,7 @@ importers:
       cross-env: 7.0.3
       postcss: 8.4.21
       tailwindcss: 3.2.7_postcss@8.4.21
-      typescript: 5.0.2
+      typescript: 4.9.5
       vite: 4.2.0
       vite-plugin-dynamic-import-module: 0.2.1
 
@@ -2412,12 +2412,12 @@ packages:
     resolution: {integrity: sha512-sNGOtMLjBn6PqlRZRbEes//TbiBMPQq3hR9KrhI/SS23w7oY7tps2IMqghRvdmmqVcgc/eI8fTYYjyyf49q5TQ==}
     dev: false
 
-  /@minko-fe/tsconfig/1.2.25_typescript@5.0.2:
+  /@minko-fe/tsconfig/1.2.25_typescript@4.9.5:
     resolution: {integrity: sha512-hbiN3i/0D8rXSkVFZSuMGTnvfLjlcS1TFcexUqpK5nlziqvbwNT/3Vwi603m076T5lD37m0NPP41DbK1jedx6w==}
     peerDependencies:
       typescript: '>=3.9'
     dependencies:
-      typescript: 5.0.2
+      typescript: 4.9.5
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -8629,7 +8629,7 @@ packages:
     resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
     dev: false
 
-  /tsup/6.6.3_typescript@5.0.2:
+  /tsup/6.6.3_typescript@4.9.5:
     resolution: {integrity: sha512-OLx/jFllYlVeZQ7sCHBuRVEQBBa1tFbouoc/gbYakyipjVQdWy/iQOvmExUA/ewap9iQ7tbJf9pW0PgcEFfJcQ==}
     engines: {node: '>=14.18'}
     hasBin: true
@@ -8659,7 +8659,7 @@ packages:
       source-map: 0.8.0-beta.0
       sucrase: 3.29.0
       tree-kill: 1.2.2
-      typescript: 5.0.2
+      typescript: 4.9.5
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -8729,12 +8729,6 @@ packages:
   /typescript/4.9.5:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: true
-
-  /typescript/5.0.2:
-    resolution: {integrity: sha512-wVORMBGO/FAs/++blGNeAVdbNKtIh1rbBL2EyQ1+J9lClJ93KiiKe8PmFIVdXhHcyv44SL9oglmfeSsndo0jRw==}
-    engines: {node: '>=12.20'}
     hasBin: true
     dev: true
 

@@ -57,7 +57,7 @@
     "tiny-glob": "^0.2.9",
     "tsup": "^6.6.3",
     "tsx": "^3.12.5",
-    "typescript": "^5.0.2",
+    "typescript": "^4.9.2",
     "validate-npm-package-name": "^5.0.0",
     "vitest": "^0.29.3"
   }
