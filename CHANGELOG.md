@@ -1,4 +1,14 @@
-## [0.0.53](https://github.com/hemengke1997/util/compare/v0.0.51...v0.0.53) (2023-03-16)
+## [0.0.54](https://github.com/hemengke1997/util/compare/v0.0.52...v0.0.54) (2023-03-16)
+
+
+### Bug Fixes
+
+* **axios-pro:** comment unstable tests ([b172494](https://github.com/hemengke1997/util/commit/b1724949cb5c1cdafa3f5b9dadfc2c660a795b16))
+* **react-locale:** add virtualModule to optimizeDeps ([1818c4e](https://github.com/hemengke1997/util/commit/1818c4e2bd7f04218ec8ce2002ae16524fa6a142))
+
+
+
+## [0.0.52](https://github.com/hemengke1997/util/compare/v0.0.51...v0.0.52) (2023-03-16)
 
 
 ### Bug Fixes
