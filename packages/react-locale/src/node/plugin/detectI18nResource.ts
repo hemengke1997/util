@@ -1,11 +1,12 @@
 import path from 'path'
-import type { PluginOption } from 'vite'
+import type { PluginOption, ViteDevServer } from 'vite'
 import { normalizePath } from 'vite'
 import parseGlob from 'parse-glob'
 import glob from 'tiny-glob'
 import stripDirs from 'strip-dirs'
 import depth from 'depth'
 import fs from 'fs-extra'
+import { cloneDeep } from '@minko-fe/lodash-pro'
 
 interface DetectI18nResourceOptions {
   localeEntry: string
@@ -73,24 +74,48 @@ function getResource(resources: ResourceType, filePath: string) {
   }
 }
 
-const VIRTUAL_PREFIX = '\0'
+const VIRTUAL = 'virtual:i18n-resources'
 
-// function invalidateVirtualModule(server: ViteDevServer, id: string): void {
-//   const { moduleGraph, ws } = server
-//   const module = moduleGraph.getModuleById(`${VIRTUAL_PREFIX}${id}`)
-//   if (module) {
-//     moduleGraph.invalidateModule(module)
-//     if (ws) {
-//       ws.send({
-//         type: 'full-reload',
-//         path: '*',
-//       })
-//     }
-//   }
-// }
+const VIRTUAL_PREFIX = `/@virtual:vite:detect-I18n-resource/`
 
-export const virtualModuleId = 'virtual:i18n-resources'
-const resolvedVirtualModuleId = `${VIRTUAL_PREFIX}${virtualModuleId}`
+function invalidateVirtualModule(server: ViteDevServer, id: string): void {
+  const { moduleGraph, ws } = server
+  const module = moduleGraph.getModuleById(`${VIRTUAL_PREFIX}${id}`)
+  if (module) {
+    moduleGraph.invalidateModule(module)
+    if (ws) {
+      ws.send({
+        type: 'full-reload',
+        path: '*',
+      })
+    }
+  }
+}
+
+async function initModules(opts: { entry: string }) {
+  const { entry } = opts
+  const files = await glob(entry)
+
+  const langModules = files.reduce(getResource, {})
+  const resolvedIds = new Map<string, string>()
+
+  console.log(langModules, '111')
+
+  langModules.all = cloneDeep(langModules)
+
+  Object.keys(langModules).forEach((k) => {
+    const id = `${VIRTUAL}:${k}`
+    langModules[id] = { [k]: langModules[k] }
+    resolvedIds.set(path.resolve(id), id)
+    delete langModules[k]
+  })
+
+  return {
+    langModules,
+    resolvedIds,
+    files,
+  }
+}
 
 export async function detectI18nResource(options: DetectI18nResourceOptions) {
   const { localeEntry } = options
@@ -110,35 +135,61 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
     localeEntry,
   })
 
-  const files = await glob(entry)
+  let { langModules, resolvedIds } = await initModules({ entry })
+
+  console.log(langModules, 'langModules')
 
   return {
     name: 'vite:detect-I18n-resource',
     enforce: 'pre',
     config: () => ({
-      optimizeDeps: {
-        exclude: [virtualModuleId],
+      build: {
+        dynamicImportVarsOptions: {
+          exclude: [/react-locale/, /node_modules/],
+        },
       },
     }),
-    resolveId(id) {
-      if (id === virtualModuleId) {
-        return resolvedVirtualModuleId
+    async resolveId(id: string, importer: string) {
+      if (id in langModules) {
+        return VIRTUAL_PREFIX + id
       }
-    },
-    load(id) {
-      if (id === resolvedVirtualModuleId) {
-        const resources = files.reduce(getResource, {})
-        return `export const resources = ${JSON.stringify(resources)}`
+
+      const langKeys = Object.keys(langModules)
+      for (let i = 0; i < langKeys.length; i++) {
+        if (id.includes(langKeys[i])) {
+          return VIRTUAL_PREFIX + langKeys[i]
+        }
       }
+
+      if (importer) {
+        const importerNoPrefix = importer.startsWith(VIRTUAL_PREFIX) ? importer.slice(VIRTUAL_PREFIX.length) : importer
+        const resolved = path.resolve(path.dirname(importerNoPrefix), id)
+        if (resolvedIds.has(resolved)) {
+          return VIRTUAL_PREFIX + resolved
+        }
+      }
+      return null
     },
-    handleHotUpdate({ file, server }) {
+    async load(id) {
+      if (id.startsWith(VIRTUAL_PREFIX)) {
+        const idNoPrefix = id.slice(VIRTUAL_PREFIX.length)
+        const resolvedId = idNoPrefix in langModules ? idNoPrefix : resolvedIds.get(idNoPrefix)
+        if (resolvedId) {
+          console.log(langModules, 'langModules')
+          const module = langModules[resolvedId]
+          return typeof module === 'string' ? module : `export default ${JSON.stringify(module)}`
+        }
+      }
+      return null
+    },
+    async handleHotUpdate({ file, server }) {
       if (file.includes(parsedEntry.base) && path.extname(file) === '.json') {
-        const virtualModule = server.moduleGraph.getModuleById(resolvedVirtualModuleId)!
-        server.moduleGraph.invalidateModule(virtualModule)
-        server.ws.send({
-          type: 'full-reload',
-          path: '*',
-        })
+        for (const [, value] of resolvedIds) {
+          const modules = await initModules({ entry })
+          langModules = modules.langModules
+          resolvedIds = modules.resolvedIds
+          invalidateVirtualModule(server, value)
+        }
       }
     },
   } as PluginOption

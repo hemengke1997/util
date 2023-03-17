@@ -7,5 +7,5 @@ export default {
   },
   target: 'esnext',
   format: ['cjs', 'esm'],
-  external: ['virtual:i18n-resources'],
+  external: [/^virtual:i18n-resources:.*/],
 } as Options

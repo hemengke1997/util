@@ -1,11 +1,9 @@
-/// <reference types="vite/client" />
-
 import type { InitOptions } from 'i18next'
 import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { isDev } from '@minko-fe/vite-config/client'
-import { resources } from 'virtual:i18n-resources'
+import r from 'virtual:i18n-resources:all'
 
 type I18nSetupOptions =
   | {
@@ -14,16 +12,22 @@ type I18nSetupOptions =
       debug?: boolean
     } & InitOptions
 
+// async function lazyloadResource(lang: string) {
+//   return (await import(/* @vite-ignore */ `/virtual:i18n-resources:${lang}`)).default
+// }
+
 async function setupI18n(options?: I18nSetupOptions) {
   const { fallbackLng = 'en', lookupTarget = 'lang', debug = isDev(), ...rest } = options || {}
-  const r = await import('virtual:i18n-resources')
-  console.log(r, 'r')
+
   i18next
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
+      react: {
+        useSuspense: true,
+      },
       debug,
-      resources,
+      resources: r,
       nsSeparator: '.',
       keySeparator: false,
       interpolation: {
@@ -40,13 +44,8 @@ async function setupI18n(options?: I18nSetupOptions) {
       },
       ...rest,
     })
-
-  // i18next.on('languageChanged', (lng) => {
-  //   // add resource
-  // })
 }
 
 export { setupI18n }
-export { resources }
 export { i18next }
 export * from 'react-i18next'

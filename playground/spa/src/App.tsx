@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { Dialog, toast } from '@minko-fe/react-component'
-import { useUrlState } from '@minko-fe/react-hook'
-import { setupI18n, useTranslation } from '@minko-fe/react-locale'
+import { useAsyncEffect, useUrlState } from '@minko-fe/react-hook'
+import { i18next, setupI18n, useTranslation } from '@minko-fe/react-locale'
 import { A } from '#/A'
 
 toast.setDefaultOptions({
@@ -15,9 +15,11 @@ Dialog.setDefaultOptions({
   },
 })
 
-setupI18n()
-
 function App() {
+  useAsyncEffect(async () => {
+    await setupI18n()
+  }, [])
+
   const destroy = useRef<any>()
 
   const { t } = useTranslation()
@@ -46,37 +48,41 @@ function App() {
   const [_visible, setVisible] = useState(false)
 
   return (
-    <div>
-      {t('test.AgreementUse')}
-      <div
-        onClick={() => {
-          toastRef.current = toast.show({
-            content: <div>{Math.random()}</div>,
-            type: 'warning',
-            // duration: 0,
-            onIconClick: ({ close }) => {
-              close()
-            },
-          })
-        }}
-      >
-        show toast
-      </div>
-      <div onClick={() => toastRef.current.close()}>close toast</div>
-      <div className='App'>
-        <div id='test' />
-
+    <Suspense fallback={<div />}>
+      <div>
+        {t('test.AgreementUse')}
+        <div onClick={() => i18next.changeLanguage('zh')}>zh</div>
+        <div onClick={() => i18next.changeLanguage('en')}>en</div>
         <div
           onClick={() => {
-            x()
+            toastRef.current = toast.show({
+              content: <div>{Math.random()}</div>,
+              type: 'warning',
+              // duration: 0,
+              onIconClick: ({ close }) => {
+                close()
+              },
+            })
           }}
         >
-          show dialog
+          show toast
         </div>
-        <div onClick={() => destroy.current?.close()}>close dialog</div>
-        <div onClick={() => setVisible(true)}>open dialog</div>
+        <div onClick={() => toastRef.current.close()}>close toast</div>
+        <div className='App'>
+          <div id='test' />
+
+          <div
+            onClick={() => {
+              x()
+            }}
+          >
+            show dialog
+          </div>
+          <div onClick={() => destroy.current?.close()}>close dialog</div>
+          <div onClick={() => setVisible(true)}>open dialog</div>
+        </div>
       </div>
-    </div>
+    </Suspense>
   )
 }
 

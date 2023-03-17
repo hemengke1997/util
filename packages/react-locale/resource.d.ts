@@ -1,3 +1,3 @@
-declare module 'virtual:i18n-resources' {
-  export const resources: Record<string, any>
+declare module 'virtual:i18n-resources:*' {
+  export default Record<string, any>
 }
