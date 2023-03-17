@@ -25,14 +25,38 @@ export default defineConfig(async (env) => {
 })
 ```
 
-### entry.tsx
-```tsx
-import { setupI18n, useTranslation } from '@minko-fe/react-locale'
+### main.tsx
 
-setupI18n()
+```tsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { setupI18n } from '@minko-fe/react-locale'
+import App from './App'
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
+setupI18n({
+  onLocaleChange: () => {
+    root.render(
+      <React.StrictMode>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </React.StrictMode>,
+    )
+  },
+})
+
+```
+
+### App.tsx
+
+```tsx
+import { useTranslation } from '@minko-fe/react-locale'
 
 function App() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   return <div>{t('namespace.key')}</div>
 }

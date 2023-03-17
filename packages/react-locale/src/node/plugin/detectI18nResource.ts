@@ -99,13 +99,13 @@ async function initModules(opts: { entry: string }) {
   const langModules = files.reduce(getResource, {})
   const resolvedIds = new Map<string, string>()
 
-  console.log(langModules, '111')
+  const ALL = 'all'
 
-  langModules.all = cloneDeep(langModules)
+  langModules[ALL] = cloneDeep(langModules)
 
   Object.keys(langModules).forEach((k) => {
     const id = `${VIRTUAL}:${k}`
-    langModules[id] = { [k]: langModules[k] }
+    langModules[id] = k === ALL ? langModules[k] : { [k]: langModules[k] }
     resolvedIds.set(path.resolve(id), id)
     delete langModules[k]
   })
@@ -136,8 +136,6 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
   })
 
   let { langModules, resolvedIds } = await initModules({ entry })
-
-  console.log(langModules, 'langModules')
 
   return {
     name: 'vite:detect-I18n-resource',
@@ -175,7 +173,6 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
         const idNoPrefix = id.slice(VIRTUAL_PREFIX.length)
         const resolvedId = idNoPrefix in langModules ? idNoPrefix : resolvedIds.get(idNoPrefix)
         if (resolvedId) {
-          console.log(langModules, 'langModules')
           const module = langModules[resolvedId]
           return typeof module === 'string' ? module : `export default ${JSON.stringify(module)}`
         }

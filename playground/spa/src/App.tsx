@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useRef, useState } from 'react'
 import { Dialog, toast } from '@minko-fe/react-component'
-import { useAsyncEffect, useUrlState } from '@minko-fe/react-hook'
-import { i18next, setupI18n, useTranslation } from '@minko-fe/react-locale'
+import { useUrlState } from '@minko-fe/react-hook'
+import { useTranslation } from '@minko-fe/react-locale'
 import { A } from '#/A'
 
 toast.setDefaultOptions({
@@ -16,13 +16,9 @@ Dialog.setDefaultOptions({
 })
 
 function App() {
-  useAsyncEffect(async () => {
-    await setupI18n()
-  }, [])
-
   const destroy = useRef<any>()
 
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const toastRef = useRef<any>()
 
@@ -51,8 +47,8 @@ function App() {
     <Suspense fallback={<div />}>
       <div>
         {t('test.AgreementUse')}
-        <div onClick={() => i18next.changeLanguage('zh')}>zh</div>
-        <div onClick={() => i18next.changeLanguage('en')}>en</div>
+        <div onClick={() => i18n.changeLanguage('zh')}>zh</div>
+        <div onClick={() => i18n.changeLanguage('en')}>en</div>
         <div
           onClick={() => {
             toastRef.current = toast.show({

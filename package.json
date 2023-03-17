@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@minko-fe/eslint-config": "^1.2.25",
-    "@minko-fe/lodash-pro": "^0.0.50",
+    "@minko-fe/lodash-pro": "^0.0.53",
     "@minko-fe/tsconfig": "^1.2.25",
     "@testing-library/react": "^14.0.0",
     "@types/fs-extra": "^11.0.1",
@@ -40,7 +40,7 @@
     "bumpp": "^9.0.0",
     "chokidar": "^3.5.3",
     "conventional-changelog-cli": "^2.2.2",
-    "esbuild": "^0.17.11",
+    "esbuild": "^0.17.12",
     "eslint": "^8.36.0",
     "fs-extra": "^11.1.0",
     "get-tsconfig": "^4.4.0",
@@ -57,7 +57,7 @@
     "tiny-glob": "^0.2.9",
     "tsup": "^6.6.3",
     "tsx": "^3.12.5",
-    "typescript": "^4.9.5",
+    "typescript": "^5.0.2",
     "validate-npm-package-name": "^5.0.0",
     "vitest": "^0.29.3"
   }

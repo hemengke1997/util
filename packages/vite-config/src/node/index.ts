@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 import { loadEnv, splitVendorChunkPlugin, mergeConfig as viteMergeConfig } from 'vite'
 import type { ConfigEnv, PluginOption, UserConfig } from 'vite'
 import type { VPPTPluginOptions } from 'vite-plugin-public-typescript'
