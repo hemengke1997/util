@@ -1,10 +1,16 @@
 import type { ConfigEnv, PluginOption } from 'vite'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc.js' // https://github.com/iamkun/dayjs/issues/1167
+import tz from 'dayjs/plugin/timezone.js'
 import { ClientLogger } from '../../client'
+
+dayjs.extend(utc)
+dayjs.extend(tz)
 
 export function logAppInfo(configEnv: ConfigEnv): PluginOption {
   const { mode } = configEnv
 
-  const currentBuildTime = new Date().toLocaleString()
+  const currentBuildTime = dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm:ss')
 
   const logger = new ClientLogger(undefined, true)
 
