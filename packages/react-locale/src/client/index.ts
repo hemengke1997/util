@@ -36,8 +36,6 @@ function setupI18n(options: I18nSetupOptions) {
       interpolation: {
         escapeValue: false,
       },
-      partialBundledLanguages: true,
-      ns: [],
       fallbackLng,
       detection: {
         order: ['querystring', 'cookie', 'localStorage', 'sessionStorage'],
