@@ -3,16 +3,18 @@ import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { isDev } from '@minko-fe/vite-config/client'
+import allLangs from 'virtual:i18n-resources:all'
+
+const PKGNAME = 'react-locale/client'
 
 type I18nSetupOptions =
   | {
       fallbackLng?: string
       lookupTarget?: string
       debug?: boolean
-      onLocaleChange: () => void
+      onLocaleChange: (() => void) | undefined
     } & InitOptions
 
-// TODO: lazyload resource
 export async function lazyloadResource(lang: string) {
   return (await import(/* @vite-ignore */ `/virtual:i18n-resources:${lang}`)).default
 }
@@ -58,24 +60,33 @@ function setupI18n(options: I18nSetupOptions) {
       i18next.addResourceBundle(lang, ns, langs[ns])
     })
 
-    // callback
-    // notify react render
-    if (!mounted) {
+    // Notify UI framewrok render
+    if (!mounted && onLocaleChange) {
       mounted = true
       onLocaleChange()
     }
   }
 
-  i18next.on('languageChanged', (lang) => {
-    load(lang)
-  })
-
   const changeLanguage = i18next.changeLanguage
 
-  i18next.changeLanguage = async (lang: string) => {
+  i18next.changeLanguage = async (lang: string | undefined) => {
+    if (!lang) {
+      console.warn(`[${PKGNAME}]: Language is undefined, fallback to ${fallbackLng}`)
+      lang = fallbackLng
+    }
+    if (!(lang in allLangs)) {
+      console.warn(
+        `[${PKGNAME}]: ${lang} is detected but which is not defined in locales, fallback to ${fallbackLng}. Please check your locales folder`,
+      )
+      lang = fallbackLng
+    }
     await load(lang)
     return changeLanguage(lang)
   }
+
+  i18next.on('languageChanged', (lang) => {
+    load(lang)
+  })
 
   i18next.changeLanguage(lng)
 }

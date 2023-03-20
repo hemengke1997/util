@@ -92,6 +92,14 @@ function invalidateVirtualModule(server: ViteDevServer, id: string): void {
   }
 }
 
+function clearObjectValue(obj: Record<string, any>) {
+  const clone = cloneDeep(obj)
+  for (const k in clone) {
+    clone[k] = {}
+  }
+  return clone
+}
+
 async function initModules(opts: { entry: string }) {
   const { entry } = opts
   const files = await glob(entry)
@@ -105,7 +113,7 @@ async function initModules(opts: { entry: string }) {
 
   Object.keys(langModules).forEach((k) => {
     const id = `${VIRTUAL}:${k}`
-    langModules[id] = k === ALL ? langModules[k] : { [k]: langModules[k] }
+    langModules[id] = k === ALL ? clearObjectValue(langModules[k]) : { [k]: langModules[k] }
     resolvedIds.set(path.resolve(id), id)
     delete langModules[k]
   })
@@ -136,6 +144,8 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
   })
 
   let { langModules, resolvedIds } = await initModules({ entry })
+
+  console.log(langModules, 'langModules')
 
   return {
     name: 'vite:detect-I18n-resource',
