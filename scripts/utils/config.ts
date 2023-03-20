@@ -5,7 +5,7 @@ export const defaultConfig: Options = {
   entry: await getEntry(),
   splitting: false,
   watch: false,
-  treeshake: false,
+  treeshake: true,
   target: 'es6',
   minify: false,
   keepNames: true,

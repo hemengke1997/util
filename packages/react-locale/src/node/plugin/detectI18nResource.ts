@@ -145,8 +145,6 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
 
   let { langModules, resolvedIds } = await initModules({ entry })
 
-  console.log(langModules, 'langModules')
-
   return {
     name: 'vite:detect-I18n-resource',
     enforce: 'pre',

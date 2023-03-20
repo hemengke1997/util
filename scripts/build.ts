@@ -24,7 +24,10 @@ async function build(options: Options = {}, watchMode = false) {
     ...defaultConfig,
     ...options,
     esbuildOptions(opt, { format }) {
-      !watchMode && (opt.drop = ['console', 'debugger'])
+      if (!watchMode) {
+        opt.drop = ['debugger']
+        opt.pure = ['console.log']
+      }
       opt.logOverride = {
         'empty-import-meta': 'silent',
       }
