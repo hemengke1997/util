@@ -1,4 +1,14 @@
-## [0.0.57](https://github.com/hemengke1997/util/compare/v0.0.55...v0.0.57) (2023-03-20)
+## [0.0.58](https://github.com/hemengke1997/util/compare/v0.0.56...v0.0.58) (2023-03-20)
+
+
+### Bug Fixes
+
+* build config ([408c40c](https://github.com/hemengke1997/util/commit/408c40c1263842228a77b2cdef500edc799307ad))
+* **react-locale:** virtual module ([2ad8029](https://github.com/hemengke1997/util/commit/2ad802969698c91ef2fcd5b9438726bc1af212a4))
+
+
+
+## [0.0.56](https://github.com/hemengke1997/util/compare/v0.0.55...v0.0.56) (2023-03-20)
 
 
 ### Bug Fixes
