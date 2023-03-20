@@ -1,4 +1,4 @@
-## [0.0.58](https://github.com/hemengke1997/util/compare/v0.0.56...v0.0.58) (2023-03-20)
+## [0.0.59](https://github.com/hemengke1997/util/compare/v0.0.56...v0.0.59) (2023-03-20)
 
 
 ### Bug Fixes
