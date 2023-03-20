@@ -1,4 +1,13 @@
-## [0.0.56](https://github.com/hemengke1997/util/compare/v0.0.54...v0.0.56) (2023-03-20)
+## [0.0.57](https://github.com/hemengke1997/util/compare/v0.0.55...v0.0.57) (2023-03-20)
+
+
+### Bug Fixes
+
+* **react-locale:** handle edge case like lang is undefined ([beb44b4](https://github.com/hemengke1997/util/commit/beb44b4a2e4df83e1bfcc52f2d42e96c7f16a266))
+
+
+
+## [0.0.55](https://github.com/hemengke1997/util/compare/v0.0.54...v0.0.55) (2023-03-20)
 
 
 ### Bug Fixes
