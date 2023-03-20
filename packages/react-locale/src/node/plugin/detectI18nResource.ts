@@ -129,7 +129,7 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
   const { localeEntry } = options
 
   if (path.parse(localeEntry).ext) {
-    throw new Error(`[${PKGNAME}]: localeEntry should be a dir, but it is a file now.`)
+    throw new Error(`[${PKGNAME}]: localeEntry should be a dir, but got a file.`)
   }
 
   const entry = normalizePath(`${localeEntry}/**/*.json`)
@@ -149,6 +149,9 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
     name: 'vite:detect-I18n-resource',
     enforce: 'pre',
     config: () => ({
+      optimizeDeps: {
+        exclude: [`${VIRTUAL}:*`],
+      },
       build: {
         dynamicImportVarsOptions: {
           exclude: [/react-locale/, /node_modules/],
