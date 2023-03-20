@@ -27,9 +27,9 @@
     "bump": "pnpm changelog && bumpp CHANGELOG.md packages/*/package.json package.json CHANGELOG.md --commit --push --tag -all"
   },
   "devDependencies": {
-    "@minko-fe/eslint-config": "^1.2.29",
+    "@minko-fe/eslint-config": "^1.2.30",
     "@minko-fe/lodash-pro": "latest",
-    "@minko-fe/tsconfig": "^1.2.29",
+    "@minko-fe/tsconfig": "^1.2.30",
     "@testing-library/react": "^14.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.15.3",

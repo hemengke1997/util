@@ -87,4 +87,4 @@ function App() {
 
 ## ⚠️ Warning
 
-Currently, we only support `.json` file
+Currently, we only support `.json(5)` file

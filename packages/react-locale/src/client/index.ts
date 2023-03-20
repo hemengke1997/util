@@ -3,9 +3,9 @@ import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { isDev } from '@minko-fe/vite-config/client'
-import allLangs from 'virtual:i18n-resources:all'
+// import resources from 'virtual:i18n-resources:all'
 
-const PKGNAME = 'react-locale/client'
+// const PKGNAME = 'react-locale/client'
 
 type I18nSetupOptions =
   | {
@@ -15,11 +15,12 @@ type I18nSetupOptions =
       onLocaleChange: (() => void) | undefined
     } & InitOptions
 
-export async function lazyloadResource(lang: string) {
-  return (await import(/* @vite-ignore */ `/virtual:i18n-resources:${lang}`)).default
+async function lazyloadAll() {
+  return (await import('virtual:i18n-resources:all')).default
 }
 
 let mounted = false
+let resourceCache: Record<string, any>
 
 function setupI18n(options: I18nSetupOptions) {
   const { fallbackLng = 'en', lookupTarget = 'lang', debug = isDev(), onLocaleChange, ...rest } = options || {}
@@ -33,6 +34,8 @@ function setupI18n(options: I18nSetupOptions) {
         useSuspense: true,
       },
       debug,
+      // defaultNS: Object.keys(resources[fallbackLng]),
+      // ns: Object.keys(resources[fallbackLng]),
       resources: {},
       nsSeparator: '.',
       keySeparator: false,
@@ -51,14 +54,14 @@ function setupI18n(options: I18nSetupOptions) {
       ...rest,
     })
 
-  const lng = i18next.language || fallbackLng
+  async function load() {
+    resourceCache = await lazyloadAll()
 
-  async function load(lang: string) {
-    const res = await lazyloadResource(lang)
-    const langs = res[lang]
-
-    Object.keys(langs).forEach((ns) => {
-      i18next.addResourceBundle(lang, ns, langs[ns])
+    Object.keys(resourceCache).forEach((lang) => {
+      const r = resourceCache[lang]
+      Object.keys(r).forEach((ns) => {
+        i18next.addResourceBundle(lang, ns, r[ns])
+      })
     })
 
     // Notify UI framewrok render
@@ -68,27 +71,11 @@ function setupI18n(options: I18nSetupOptions) {
     }
   }
 
-  const _changeLanguage = i18next.changeLanguage
-  i18next.changeLanguage = async (lang: string | undefined) => {
-    if (!lang) {
-      console.warn(`[${PKGNAME}]: Language is undefined, fallback to '${fallbackLng}'`)
-      lang = fallbackLng
-    }
-    if (!(lang in allLangs)) {
-      console.warn(
-        `[${PKGNAME}]: Language '${lang}' is detected but which is not defined in locales, fallback to '${fallbackLng}'. Please check your locales folder`,
-      )
-      lang = fallbackLng
-    }
-    await load(lang)
-    return _changeLanguage(lang)
-  }
-
-  i18next.on('languageChanged', (lang) => {
-    load(lang)
+  i18next.on('languageChanged', () => {
+    load()
   })
 
-  i18next.changeLanguage(lng)
+  load()
 }
 
 export { setupI18n }

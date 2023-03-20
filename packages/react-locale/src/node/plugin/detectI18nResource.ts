@@ -1,6 +1,7 @@
 import path from 'path'
 import type { PluginOption, ViteDevServer } from 'vite'
 import { normalizePath } from 'vite'
+import JSONC from 'jsonc-simple-parser'
 import parseGlob from 'parse-glob'
 import glob from 'tiny-glob'
 import stripDirs from 'strip-dirs'
@@ -64,7 +65,7 @@ function getResource(resources: ResourceType, filePath: string) {
   try {
     const lang = getLangName(filePath)
 
-    const jsonData = fs.readJsonSync(filePath)
+    const jsonData = JSONC.parse(fs.readFileSync(filePath, 'utf-8'))
 
     fillObject(resources, lang, jsonData)
 
@@ -92,7 +93,7 @@ function invalidateVirtualModule(server: ViteDevServer, id: string): void {
   }
 }
 
-function clearObjectValue(obj: Record<string, any>) {
+function _clearObjectValue(obj: Record<string, any>) {
   const clone = cloneDeep(obj)
   for (const k in clone) {
     clone[k] = {}
@@ -113,7 +114,7 @@ async function initModules(opts: { entry: string }) {
 
   Object.keys(langModules).forEach((k) => {
     const id = `${VIRTUAL}:${k}`
-    langModules[id] = k === ALL ? clearObjectValue(langModules[k]) : { [k]: langModules[k] }
+    langModules[id] = k === ALL ? langModules[k] : { [k]: langModules[k] }
     resolvedIds.set(path.resolve(id), id)
     delete langModules[k]
   })
@@ -125,6 +126,10 @@ async function initModules(opts: { entry: string }) {
   }
 }
 
+function isJson(p: string) {
+  return /\.?json5?$/.test(path.extname(p))
+}
+
 export async function detectI18nResource(options: DetectI18nResourceOptions) {
   const { localeEntry } = options
 
@@ -132,7 +137,7 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
     throw new Error(`[${PKGNAME}]: localeEntry should be a dir, but got a file.`)
   }
 
-  const entry = normalizePath(`${localeEntry}/**/*.json`)
+  const entry = normalizePath(`${localeEntry}/**/*.{json,json5}`)
 
   const parsedEntry = parseGlob(entry)
 
@@ -151,11 +156,6 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
     config: () => ({
       optimizeDeps: {
         exclude: [`${VIRTUAL}:*`],
-      },
-      build: {
-        dynamicImportVarsOptions: {
-          exclude: [/react-locale/, /node_modules/],
-        },
       },
     }),
     async resolveId(id: string, importer: string) {
@@ -189,10 +189,11 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
           return typeof module === 'string' ? module : `export default ${JSON.stringify(module)}`
         }
       }
+
       return null
     },
     async handleHotUpdate({ file, server }) {
-      if (file.includes(parsedEntry.base) && path.extname(file) === '.json') {
+      if (file.includes(parsedEntry.base) && isJson(file)) {
         for (const [, value] of resolvedIds) {
           const modules = await initModules({ entry })
           langModules = modules.langModules

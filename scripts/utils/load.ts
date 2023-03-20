@@ -18,7 +18,7 @@ const loadJson = async (filepath: string) => {
 }
 
 const jsonLoader = {
-  test: /\.json$/,
+  test: /\.json5?$/,
   load(filepath: string) {
     return loadJson(filepath)
   },
