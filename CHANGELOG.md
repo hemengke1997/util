@@ -1,4 +1,18 @@
-## [0.0.55](https://github.com/hemengke1997/util/compare/v0.0.53...v0.0.55) (2023-03-17)
+## [0.0.56](https://github.com/hemengke1997/util/compare/v0.0.54...v0.0.56) (2023-03-20)
+
+
+### Bug Fixes
+
+* **react-locale:** deps ([12382a4](https://github.com/hemengke1997/util/commit/12382a44d8636ffd886b9360bbf4ab4d04b0823d))
+
+
+### Features
+
+* **react-locale:** lazyload ([9b8ce56](https://github.com/hemengke1997/util/commit/9b8ce56ef63ece16774949b165b44be8b474ae6a))
+
+
+
+## [0.0.54](https://github.com/hemengke1997/util/compare/v0.0.53...v0.0.54) (2023-03-17)
 
 
 ### Bug Fixes
