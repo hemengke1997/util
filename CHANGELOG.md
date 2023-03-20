@@ -1,4 +1,31 @@
-## [0.0.60](https://github.com/hemengke1997/util/compare/v0.0.56...v0.0.60) (2023-03-20)
+## [0.0.60](https://github.com/hemengke1997/util/compare/v0.0.59...v0.0.60) (2023-03-20)
+
+
+### Bug Fixes
+
+* **react-locale:** remove lazyload ([10aa9f4](https://github.com/hemengke1997/util/commit/10aa9f4697441d296bacb5876214b1eddcd4a31b))
+
+
+
+## [0.0.59](https://github.com/hemengke1997/util/compare/v0.0.58...v0.0.59) (2023-03-20)
+
+
+### Bug Fixes
+
+* **react-locale:** improve type dts ([f2d9186](https://github.com/hemengke1997/util/commit/f2d9186752231f7eac23e7c34f2f67f359c3dc12))
+
+
+
+## [0.0.58](https://github.com/hemengke1997/util/compare/v0.0.57...v0.0.58) (2023-03-20)
+
+
+### Bug Fixes
+
+* **react-locale:** fix error caused by esbuild analyze virtual modules ([88c91d4](https://github.com/hemengke1997/util/commit/88c91d4d948688358bea30f8134e45ba3b7c0536))
+
+
+
+## [0.0.57](https://github.com/hemengke1997/util/compare/v0.0.56...v0.0.57) (2023-03-20)
 
 
 ### Bug Fixes
