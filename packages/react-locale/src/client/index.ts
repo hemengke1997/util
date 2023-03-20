@@ -71,6 +71,20 @@ function setupI18n(options: I18nSetupOptions) {
     }
   }
 
+  const _changeLanguage = i18next.changeLanguage
+
+  i18next.changeLanguage = (lang: string) => {
+    /**
+     * NOTE:
+     * If you need to specify the language setting for headers, such as the `fetch` API, set it here.
+     * The following is an example for axios.
+     *
+     * axios.defaults.headers.common['Accept-Language'] = lang
+     */
+    document.querySelector('html')!.setAttribute('lang', lang)
+    return _changeLanguage(lang)
+  }
+
   i18next.on('languageChanged', () => {
     load()
   })
