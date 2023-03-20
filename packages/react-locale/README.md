@@ -62,6 +62,14 @@ function App() {
 }
 ```
 
+### tsconfig.json
+
+```json
+{
+  "types": ["@minko-fe/react-locale/i18n"] // fix useTranslation returnNull
+}
+```
+
 
 ### .vscode => settings.json
 ``` json
@@ -77,6 +85,6 @@ function App() {
 ```
 
 
-## Warning
+## ⚠️ Warning
 
 Currently, we only support `.json` file

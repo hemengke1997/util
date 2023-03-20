@@ -46,7 +46,7 @@ function App() {
   return (
     <Suspense fallback={<div />}>
       <div>
-        {t('test.AgreementUse')}
+        <input placeholder={t('test.AgreementUse')} />
         <div onClick={() => i18n.changeLanguage('zh')}>zh</div>
         <div onClick={() => i18n.changeLanguage('en')}>en</div>
         <div

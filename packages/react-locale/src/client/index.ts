@@ -28,6 +28,7 @@ function setupI18n(options: I18nSetupOptions) {
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
+      returnNull: false,
       react: {
         useSuspense: true,
       },

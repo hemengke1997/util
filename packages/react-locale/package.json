@@ -37,7 +37,8 @@
     "dist",
     "CHANGELOG.md",
     "README.md",
-    "resource.d.ts"
+    "resource.d.ts",
+    "i18n.d.ts"
   ],
   "scripts": {
     "dev": "rimraf dist && tsx scripts/dev",

@@ -16,7 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "types": ["vite/client", "@minko-fe/vite-config/svgr"],
+    "types": ["vite/client", "@minko-fe/vite-config/svgr", "@minko-fe/react-locale/i18n"],
     "paths": {
       "@/*": ["src/*"],
       "#/*": ["src/*"]
