@@ -9,10 +9,10 @@ export const defaultConfig: Options = {
   target: 'es6',
   minify: false,
   keepNames: true,
-  shims: true,
+  shims: false,
   clean: false,
   config: false,
   platform: 'node',
   format: ['esm', 'cjs'],
-  external: ['react', 'react-router-dom'],
+  external: ['react', 'react-dom'],
 }
