@@ -1,4 +1,23 @@
-## [0.0.54](https://github.com/hemengke1997/util/compare/v0.0.52...v0.0.54) (2023-03-16)
+## [0.0.55](https://github.com/hemengke1997/util/compare/v0.0.53...v0.0.55) (2023-03-17)
+
+
+### Bug Fixes
+
+* **vite-config:** format appinfo time with china tz ([1a6fbaf](https://github.com/hemengke1997/util/commit/1a6fbafd02fc23522c306ada891e804eef835713))
+
+
+### Features
+
+* **react-locale:** support lazyload ([06343e4](https://github.com/hemengke1997/util/commit/06343e4a083bad99c25c2faa6ca98967c4a495d8))
+
+
+### Performance Improvements
+
+* **vite-config:** post apply logAppInfo plugin ([20afff8](https://github.com/hemengke1997/util/commit/20afff8a46c5f221e999d86caaafa6eca0815b22))
+
+
+
+## [0.0.53](https://github.com/hemengke1997/util/compare/v0.0.52...v0.0.53) (2023-03-16)
 
 
 ### Bug Fixes
