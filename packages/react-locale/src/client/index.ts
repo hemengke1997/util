@@ -67,21 +67,20 @@ function setupI18n(options: I18nSetupOptions) {
     }
   }
 
-  const changeLanguage = i18next.changeLanguage
-
+  const _changeLanguage = i18next.changeLanguage
   i18next.changeLanguage = async (lang: string | undefined) => {
     if (!lang) {
-      console.warn(`[${PKGNAME}]: Language is undefined, fallback to ${fallbackLng}`)
+      console.warn(`[${PKGNAME}]: Language is undefined, fallback to '${fallbackLng}'`)
       lang = fallbackLng
     }
     if (!(lang in allLangs)) {
       console.warn(
-        `[${PKGNAME}]: ${lang} is detected but which is not defined in locales, fallback to ${fallbackLng}. Please check your locales folder`,
+        `[${PKGNAME}]: Language '${lang}' is detected but which is not defined in locales, fallback to '${fallbackLng}'. Please check your locales folder`,
       )
       lang = fallbackLng
     }
     await load(lang)
-    return changeLanguage(lang)
+    return _changeLanguage(lang)
   }
 
   i18next.on('languageChanged', (lang) => {

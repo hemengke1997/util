@@ -8,6 +8,8 @@ import depth from 'depth'
 import fs from 'fs-extra'
 import { cloneDeep } from '@minko-fe/lodash-pro'
 
+const PKGNAME = '@minko-fe/react-locale/plugin/detectI18nResource'
+
 interface DetectI18nResourceOptions {
   localeEntry: string
 }
@@ -27,8 +29,6 @@ function setGlobalData(d: typeof globalData) {
 function getGlobalData() {
   return globalData
 }
-
-const PKGNAME = '@minko-fe/react-locale/plugin/detectI18nResource'
 
 function getLangName(filePath: string) {
   const fileBase = path.basename(path.dirname(filePath))
@@ -76,7 +76,7 @@ function getResource(resources: ResourceType, filePath: string) {
 
 const VIRTUAL = 'virtual:i18n-resources'
 
-const VIRTUAL_PREFIX = `/@virtual:vite:detect-I18n-resource/`
+const VIRTUAL_PREFIX = `\0/@virtual:vite:detect-I18n-resource/`
 
 function invalidateVirtualModule(server: ViteDevServer, id: string): void {
   const { moduleGraph, ws } = server
@@ -129,7 +129,7 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
   const { localeEntry } = options
 
   if (path.parse(localeEntry).ext) {
-    throw new Error('localeEntry should be a dir, but it is a file now.')
+    throw new Error(`[${PKGNAME}]: localeEntry should be a dir, but it is a file now.`)
   }
 
   const entry = normalizePath(`${localeEntry}/**/*.json`)
@@ -174,6 +174,7 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
           return VIRTUAL_PREFIX + resolved
         }
       }
+
       return null
     },
     async load(id) {
