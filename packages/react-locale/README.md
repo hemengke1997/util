@@ -58,7 +58,7 @@ import { useTranslation } from '@minko-fe/react-locale'
 function App() {
   const { t, i18n } = useTranslation()
 
-  return <div>{t('namespace.key')}</div>
+  return <div onClick={() => i18n.changeLanguage('zh')}>{t('namespace.key')}</div>
 }
 ```
 

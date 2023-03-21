@@ -47,8 +47,27 @@ function App() {
     <Suspense fallback={<div />}>
       <div>
         <input placeholder={t('test.AgreementUse')} />
-        <div onClick={() => i18n.changeLanguage('zh')}>zh</div>
-        <div onClick={() => i18n.changeLanguage('en')}>en</div>
+        <button
+          onClick={async () => {
+            i18n.changeLanguage('zh')
+          }}
+        >
+          中文
+        </button>
+        <button
+          onClick={async () => {
+            i18n.changeLanguage('en')
+          }}
+        >
+          英文
+        </button>
+        <button
+          onClick={async () => {
+            i18n.changeLanguage('de')
+          }}
+        >
+          德文
+        </button>
         <div
           onClick={() => {
             toastRef.current = toast.show({

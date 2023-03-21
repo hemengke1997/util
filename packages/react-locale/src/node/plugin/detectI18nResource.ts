@@ -75,13 +75,15 @@ function getResource(resources: ResourceType, filePath: string) {
   }
 }
 
-const VIRTUAL = 'virtual:i18n-resources'
+const VIRTUAL = 'virtual:i18n'
 
-const VIRTUAL_PREFIX = `\0/@virtual:vite:detect-I18n-resource/`
+const RESOLVED_VIRTUAL_PREFIX = '\0/@i18n/'
+
+const RESOURCE_VIRTURL_HELPER = `${VIRTUAL}-helper`
 
 function invalidateVirtualModule(server: ViteDevServer, id: string): void {
   const { moduleGraph, ws } = server
-  const module = moduleGraph.getModuleById(`${VIRTUAL_PREFIX}${id}`)
+  const module = moduleGraph.getModuleById(RESOLVED_VIRTUAL_PREFIX + id)
   if (module) {
     moduleGraph.invalidateModule(module)
     if (ws) {
@@ -93,7 +95,7 @@ function invalidateVirtualModule(server: ViteDevServer, id: string): void {
   }
 }
 
-function _clearObjectValue(obj: Record<string, any>) {
+function clearObjectValue(obj: Record<string, any>) {
   const clone = cloneDeep(obj)
   for (const k in clone) {
     clone[k] = {}
@@ -108,19 +110,18 @@ async function initModules(opts: { entry: string }) {
   const langModules = files.reduce(getResource, {})
   const resolvedIds = new Map<string, string>()
 
-  const ALL = 'all'
+  const virtualLangModules = cloneDeep(langModules)
 
-  langModules[ALL] = cloneDeep(langModules)
-
-  Object.keys(langModules).forEach((k) => {
-    const id = `${VIRTUAL}:${k}`
-    langModules[id] = k === ALL ? langModules[k] : { [k]: langModules[k] }
+  Object.keys(virtualLangModules).forEach((k) => {
+    const id = `${VIRTUAL}-${k}`
+    virtualLangModules[id] = virtualLangModules[k]
     resolvedIds.set(path.resolve(id), id)
-    delete langModules[k]
+    delete virtualLangModules[k]
   })
 
   return {
     langModules,
+    virtualLangModules,
     resolvedIds,
     files,
   }
@@ -148,59 +149,78 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
     localeEntry,
   })
 
-  let { langModules, resolvedIds } = await initModules({ entry })
+  let { langModules, resolvedIds, virtualLangModules } = await initModules({ entry })
 
-  return {
-    name: 'vite:detect-I18n-resource',
-    enforce: 'pre',
-    config: () => ({
-      optimizeDeps: {
-        exclude: [`${VIRTUAL}:*`],
+  return [
+    {
+      name: 'vite:detect-i18n-resource',
+      enforce: 'pre',
+      config: () => ({
+        optimizeDeps: {
+          exclude: [`${VIRTUAL}-*`],
+        },
+      }),
+      async resolveId(id: string, importer: string) {
+        if (id in virtualLangModules) {
+          return RESOLVED_VIRTUAL_PREFIX + id
+        }
+
+        if (importer) {
+          const importerNoPrefix = importer.startsWith(RESOLVED_VIRTUAL_PREFIX)
+            ? importer.slice(RESOLVED_VIRTUAL_PREFIX.length)
+            : importer
+          const resolved = path.resolve(path.dirname(importerNoPrefix), id)
+          if (resolvedIds.has(resolved)) {
+            return RESOLVED_VIRTUAL_PREFIX + resolved
+          }
+        }
+
+        if (id === RESOURCE_VIRTURL_HELPER) {
+          return RESOLVED_VIRTUAL_PREFIX + RESOURCE_VIRTURL_HELPER
+        }
+
+        return null
       },
-    }),
-    async resolveId(id: string, importer: string) {
-      if (id in langModules) {
-        return VIRTUAL_PREFIX + id
-      }
+      async load(id) {
+        if (id.startsWith(RESOLVED_VIRTUAL_PREFIX)) {
+          const idNoPrefix = id.slice(RESOLVED_VIRTUAL_PREFIX.length)
+          const resolvedId = idNoPrefix in virtualLangModules ? idNoPrefix : resolvedIds.get(idNoPrefix)
 
-      const langKeys = Object.keys(langModules)
-      for (let i = 0; i < langKeys.length; i++) {
-        if (id.includes(langKeys[i])) {
-          return VIRTUAL_PREFIX + langKeys[i]
+          if (resolvedId) {
+            const module = virtualLangModules[resolvedId]
+            return typeof module === 'string' ? module : `export default ${JSON.stringify(module)}`
+          }
+
+          if (id.endsWith(RESOURCE_VIRTURL_HELPER)) {
+            const langs = clearObjectValue(langModules)
+            let code = `export default { `
+            for (const k in langs) {
+              // Currently rollup don't support inline chunkName
+              // TODO: chunk name
+              code += `${k}: () => import(/* chunkName: 'locale-${k}' */ '${VIRTUAL}-${k}'),`
+            }
+            code += ' };'
+
+            return {
+              code,
+              map: { mappings: '' },
+            }
+          }
         }
-      }
 
-      if (importer) {
-        const importerNoPrefix = importer.startsWith(VIRTUAL_PREFIX) ? importer.slice(VIRTUAL_PREFIX.length) : importer
-        const resolved = path.resolve(path.dirname(importerNoPrefix), id)
-        if (resolvedIds.has(resolved)) {
-          return VIRTUAL_PREFIX + resolved
+        return null
+      },
+      async handleHotUpdate({ file, server }) {
+        if (file.includes(parsedEntry.base) && isJson(file)) {
+          for (const [, value] of resolvedIds) {
+            const modules = await initModules({ entry })
+            virtualLangModules = modules.virtualLangModules
+            langModules = modules.langModules
+            resolvedIds = modules.resolvedIds
+            invalidateVirtualModule(server, value)
+          }
         }
-      }
-
-      return null
+      },
     },
-    async load(id) {
-      if (id.startsWith(VIRTUAL_PREFIX)) {
-        const idNoPrefix = id.slice(VIRTUAL_PREFIX.length)
-        const resolvedId = idNoPrefix in langModules ? idNoPrefix : resolvedIds.get(idNoPrefix)
-        if (resolvedId) {
-          const module = langModules[resolvedId]
-          return typeof module === 'string' ? module : `export default ${JSON.stringify(module)}`
-        }
-      }
-
-      return null
-    },
-    async handleHotUpdate({ file, server }) {
-      if (file.includes(parsedEntry.base) && isJson(file)) {
-        for (const [, value] of resolvedIds) {
-          const modules = await initModules({ entry })
-          langModules = modules.langModules
-          resolvedIds = modules.resolvedIds
-          invalidateVirtualModule(server, value)
-        }
-      }
-    },
-  } as PluginOption
+  ] as PluginOption
 }
