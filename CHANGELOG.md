@@ -1,4 +1,9 @@
-## [0.0.61](https://github.com/hemengke1997/util/compare/v0.0.61...v0.0.61) (2023-03-21)
+## [0.0.62](https://github.com/hemengke1997/util/compare/v0.0.61...v0.0.62) (2023-03-21)
+
+
+### Bug Fixes
+
+* changelog order ([7803db7](https://github.com/hemengke1997/util/commit/7803db7ed9ddc3405ab2a5408dbfc49982be1f39))
 
 
 
