@@ -4,6 +4,13 @@
 ### Bug Fixes
 
 * changelog order ([7803db7](https://github.com/hemengke1997/util/commit/7803db7ed9ddc3405ab2a5408dbfc49982be1f39))
+* ges ([3fe18bc](https://github.com/hemengke1997/util/commit/3fe18bc922f634ca5cedf6d3b332f83c60a9f4b4))
+* t ([08015d0](https://github.com/hemengke1997/util/commit/08015d0bf00945cab40545bee72931a042cc8eca))
+
+
+### Performance Improvements
+
+* **react-locale:** dynamic import `query-string` ([f5d2136](https://github.com/hemengke1997/util/commit/f5d213635b7cffa505a685babe05adaf7c5e9786))
 
 
 
