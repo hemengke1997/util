@@ -50,7 +50,6 @@ export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
 
   let depsHash = await getAllDepsHash(process.cwd())
 
-  // dev
   async function bundle(opts?: Options) {
     try {
       await build(

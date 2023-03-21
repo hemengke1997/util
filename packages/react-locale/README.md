@@ -1,5 +1,10 @@
 # react-locale
 
+## Features
+
+- Unawared DX 
+- Default support **lazyload**
+
 ## Usage
 
 ### vite.config.ts

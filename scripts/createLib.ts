@@ -14,7 +14,7 @@ function cp(p: string) {
   const targetDir = `../packages/${dirName}`
   fs.copySync(join('../template'), join(targetDir))
   const currentVersion = fs.readJSONSync(join('../package.json')).version
-  // rename `template` with folder name in package.json
+  // Rename `template` with folder name in package.json
   const pkgStr = fs.readFileSync(join('../template/package.json'), 'utf-8')
   const pkg = JSON.parse(pkgStr.replaceAll('template', dirName))
   pkg.version = currentVersion

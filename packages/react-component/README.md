@@ -1,5 +1,10 @@
 # react-component
 
+## Features
+
+- Dialog support `show` method
+- toast better animation and is unified for pc and mobile
+
 ## Usage
 
 ### components
