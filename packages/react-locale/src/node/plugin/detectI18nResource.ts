@@ -196,7 +196,7 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
           for (const k in langs) {
             // Currently rollup don't support inline chunkName
             // TODO: chunk name
-            code += `${k}: () => import(/* chunkName: 'locale-${k}' */ '${VIRTUAL}-${k}'),`
+            code += `${k}: () => import('${VIRTUAL}-${k}'),`
           }
           code += ' };'
 
