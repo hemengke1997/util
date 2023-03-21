@@ -19,12 +19,12 @@
     "build": "pnpm -r --filter ./packages/* build",
     "create": "tsx scripts/createLib",
     "test": "pnpm -r --filter=./packages/* run test --run",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint --ignore-pattern \"/playground/\" .",
     "clean": "rimraf node_modules & pnpm -r --parallel --filter=./packages/* clean",
     "taze": "taze -I -r -w",
-    "bump": "pnpm changelog && bumpp CHANGELOG.md packages/*/package.json package.json CHANGELOG.md --commit --push --tag -all"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "bump": "bumpp packages/*/package.json package.json -c --all -p -t -x \"pnpm run changelog\""
   },
   "devDependencies": {
     "@minko-fe/eslint-config": "^1.2.30",

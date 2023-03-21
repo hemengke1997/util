@@ -1,4 +1,17 @@
-## [0.0.61](https://github.com/hemengke1997/util/compare/v0.0.59...v0.0.61) (2023-03-20)
+## [0.0.61](https://github.com/hemengke1997/util/compare/v0.0.61...v0.0.61) (2023-03-21)
+
+
+
+## [0.0.61](https://github.com/hemengke1997/util/compare/v0.0.60...v0.0.61) (2023-03-21)
+
+
+### Features
+
+* **react-locale:** locale lazyload via virtual module ([bb263ff](https://github.com/hemengke1997/util/commit/bb263ffed0ff45fe104cd081d60ca5753f44154a))
+
+
+
+## [0.0.60](https://github.com/hemengke1997/util/compare/v0.0.59...v0.0.60) (2023-03-20)
 
 
 ### Bug Fixes

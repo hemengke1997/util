@@ -39,7 +39,7 @@ importers:
       vitest: ^0.29.3
     devDependencies:
       '@minko-fe/eslint-config': 1.2.30_eslint@8.36.0
-      '@minko-fe/lodash-pro': 0.0.60
+      '@minko-fe/lodash-pro': 0.0.61
       '@minko-fe/tsconfig': 1.2.30_typescript@4.9.5
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@types/fs-extra': 11.0.1
@@ -271,7 +271,7 @@ importers:
       react-router-dom: ^6.9.0
       tailwindcss: ^3.2.7
       typescript: ^4.9.5
-      vite: 'link: ./../../../../vite/packages/vite'
+      vite: ^4.2.0
     dependencies:
       '@minko-fe/axios-pro': link:../../packages/axios-pro
       '@minko-fe/lodash-pro': link:../../packages/lodash-pro
@@ -288,12 +288,12 @@ importers:
       '@minko-fe/vite-config': link:../../packages/vite-config
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
-      '@vitejs/plugin-react': 3.1.0_vite@vite+packages+vite
+      '@vitejs/plugin-react': 3.1.0_vite@4.2.0
       cross-env: 7.0.3
       postcss: 8.4.21
       tailwindcss: 3.2.7_postcss@8.4.21
       typescript: 4.9.5
-      vite: link:../../../vite/packages/vite
+      vite: 4.2.0
 
 packages:
 
@@ -2366,8 +2366,8 @@ packages:
       - supports-color
     dev: true
 
-  /@minko-fe/lodash-pro/0.0.60:
-    resolution: {integrity: sha512-3xCJ28W077lBasauz0XBS/WhCcsbxXwBmSGGsgIVy1ytaKyg7w3xR0Wy+zTTDesLuirzqL7nQgU8kODuEkTBiA==}
+  /@minko-fe/lodash-pro/0.0.61:
+    resolution: {integrity: sha512-McM4sunew6xsF62i0L1dU9kDapOWphBVaDyxbvujhncB/ed7lUoC5VhV2v9/CY+yroHEcqrGguj5351+jMR0OQ==}
     dependencies:
       '@types/lodash-es': 4.17.7
       deepmerge: 4.3.1
@@ -2979,7 +2979,7 @@ packages:
       - supports-color
     dev: false
 
-  /@vitejs/plugin-react/3.1.0_vite@vite+packages+vite:
+  /@vitejs/plugin-react/3.1.0_vite@4.2.0:
     resolution: {integrity: sha512-AfgcRL8ZBhAlc3BFdigClmTUMISmmzHn7sB2h9U1odvc5U/MjWXsAaz18b/WoppUTDBzxOJwo2VdClfUcItu9g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -2990,7 +2990,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6_@babel+core@7.21.0
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: link:../vite/packages/vite
+      vite: 4.2.0
     transitivePeerDependencies:
       - supports-color
     dev: true
