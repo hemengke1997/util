@@ -151,76 +151,74 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
 
   let { langModules, resolvedIds, virtualLangModules } = await initModules({ entry })
 
-  return [
-    {
-      name: 'vite:detect-i18n-resource',
-      enforce: 'pre',
-      config: () => ({
-        optimizeDeps: {
-          exclude: [`${VIRTUAL}-*`],
-        },
-      }),
-      async resolveId(id: string, importer: string) {
-        if (id in virtualLangModules) {
-          return RESOLVED_VIRTUAL_PREFIX + id
-        }
-
-        if (importer) {
-          const importerNoPrefix = importer.startsWith(RESOLVED_VIRTUAL_PREFIX)
-            ? importer.slice(RESOLVED_VIRTUAL_PREFIX.length)
-            : importer
-          const resolved = path.resolve(path.dirname(importerNoPrefix), id)
-          if (resolvedIds.has(resolved)) {
-            return RESOLVED_VIRTUAL_PREFIX + resolved
-          }
-        }
-
-        if (id === RESOURCE_VIRTURL_HELPER) {
-          return RESOLVED_VIRTUAL_PREFIX + RESOURCE_VIRTURL_HELPER
-        }
-
-        return null
+  return {
+    name: 'vite:detect-i18n-resource',
+    enforce: 'pre',
+    config: () => ({
+      optimizeDeps: {
+        exclude: [`${VIRTUAL}-*`],
       },
-      async load(id) {
-        if (id.startsWith(RESOLVED_VIRTUAL_PREFIX)) {
-          const idNoPrefix = id.slice(RESOLVED_VIRTUAL_PREFIX.length)
-          const resolvedId = idNoPrefix in virtualLangModules ? idNoPrefix : resolvedIds.get(idNoPrefix)
+    }),
+    async resolveId(id: string, importer: string) {
+      if (id in virtualLangModules) {
+        return RESOLVED_VIRTUAL_PREFIX + id
+      }
 
-          if (resolvedId) {
-            const module = virtualLangModules[resolvedId]
-            return typeof module === 'string' ? module : `export default ${JSON.stringify(module)}`
-          }
-
-          if (id.endsWith(RESOURCE_VIRTURL_HELPER)) {
-            const langs = clearObjectValue(langModules)
-            let code = `export default { `
-            for (const k in langs) {
-              // Currently rollup don't support inline chunkName
-              // TODO: chunk name
-              code += `${k}: () => import(/* chunkName: 'locale-${k}' */ '${VIRTUAL}-${k}'),`
-            }
-            code += ' };'
-
-            return {
-              code,
-              map: { mappings: '' },
-            }
-          }
+      if (importer) {
+        const importerNoPrefix = importer.startsWith(RESOLVED_VIRTUAL_PREFIX)
+          ? importer.slice(RESOLVED_VIRTUAL_PREFIX.length)
+          : importer
+        const resolved = path.resolve(path.dirname(importerNoPrefix), id)
+        if (resolvedIds.has(resolved)) {
+          return RESOLVED_VIRTUAL_PREFIX + resolved
         }
+      }
 
-        return null
-      },
-      async handleHotUpdate({ file, server }) {
-        if (file.includes(parsedEntry.base) && isJson(file)) {
-          for (const [, value] of resolvedIds) {
-            const modules = await initModules({ entry })
-            virtualLangModules = modules.virtualLangModules
-            langModules = modules.langModules
-            resolvedIds = modules.resolvedIds
-            invalidateVirtualModule(server, value)
-          }
-        }
-      },
+      if (id === RESOURCE_VIRTURL_HELPER) {
+        return RESOLVED_VIRTUAL_PREFIX + RESOURCE_VIRTURL_HELPER
+      }
+
+      return null
     },
-  ] as PluginOption
+    async load(id) {
+      if (id.startsWith(RESOLVED_VIRTUAL_PREFIX)) {
+        const idNoPrefix = id.slice(RESOLVED_VIRTUAL_PREFIX.length)
+        const resolvedId = idNoPrefix in virtualLangModules ? idNoPrefix : resolvedIds.get(idNoPrefix)
+
+        if (resolvedId) {
+          const module = virtualLangModules[resolvedId]
+          return typeof module === 'string' ? module : `export default ${JSON.stringify(module)}`
+        }
+
+        if (id.endsWith(RESOURCE_VIRTURL_HELPER)) {
+          const langs = clearObjectValue(langModules)
+          let code = `export default { `
+          for (const k in langs) {
+            // Currently rollup don't support inline chunkName
+            // TODO: chunk name
+            code += `${k}: () => import(/* chunkName: 'locale-${k}' */ '${VIRTUAL}-${k}'),`
+          }
+          code += ' };'
+
+          return {
+            code,
+            map: { mappings: '' },
+          }
+        }
+      }
+
+      return null
+    },
+    async handleHotUpdate({ file, server }) {
+      if (file.includes(parsedEntry.base) && isJson(file)) {
+        for (const [, value] of resolvedIds) {
+          const modules = await initModules({ entry })
+          virtualLangModules = modules.virtualLangModules
+          langModules = modules.langModules
+          resolvedIds = modules.resolvedIds
+          invalidateVirtualModule(server, value)
+        }
+      }
+    },
+  } as PluginOption
 }

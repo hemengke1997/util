@@ -3,7 +3,6 @@ import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { isDev } from '@minko-fe/vite-config/client'
-import queryString from 'query-string'
 import helper from 'virtual:i18n-helper'
 
 const PKGNAME = 'react-locale/client'
@@ -84,7 +83,7 @@ function setupI18n(options: I18nSetupOptions) {
     onLoaded?.()
   }
 
-  function setLangAttrs(lang: string) {
+  async function setLangAttrs(lang: string) {
     /**
      * NOTE:
      * If you need to specify the language setting for headers, such as the `fetch` API, set it here.
@@ -94,6 +93,7 @@ function setupI18n(options: I18nSetupOptions) {
      */
     document.querySelector('html')?.setAttribute('lang', lang)
     if (setQueryOnChange) {
+      const queryString = (await import('query-string')).default
       const query = queryString.parse(location.search)
       query[lookupTarget] = lang
       history.replaceState({ query }, '', queryString.stringifyUrl({ url: window.location.href, query }))
