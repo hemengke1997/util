@@ -71,7 +71,7 @@
     "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
-    "rollup": "^3.19.1",
-    "vite": "^4.2.0"
+    "rollup": "^3.20.0",
+    "vite": "^4.2.1"
   }
 }
