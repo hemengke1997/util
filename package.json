@@ -23,13 +23,13 @@
     "lint": "eslint --ignore-pattern \"/playground/\" .",
     "clean": "rimraf node_modules & pnpm -r --parallel --filter ./packages/* clean",
     "taze": "taze -I -r -w",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "bump": "bumpp packages/*/package.json package.json -c --all -p -t"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "bump": "bumpp packages/*/package.json package.json -c --all -p -t -x \"pnpm run changelog\""
   },
   "devDependencies": {
-    "@minko-fe/eslint-config": "^1.2.31",
+    "@minko-fe/eslint-config": "^1.2.32",
     "@minko-fe/lodash-pro": "latest",
-    "@minko-fe/tsconfig": "^1.2.31",
+    "@minko-fe/tsconfig": "^1.2.32",
     "@testing-library/react": "^14.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.15.5",

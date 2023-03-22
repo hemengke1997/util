@@ -1,1 +1,1 @@
-export * from './detectI18nResource'
+export * from 'vite-plugin-i18n-detector'

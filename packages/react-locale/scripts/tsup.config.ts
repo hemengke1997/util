@@ -7,5 +7,4 @@ export default {
   },
   target: 'esnext',
   format: ['cjs', 'esm'],
-  external: [/^virtual:.*/],
 } as Options

@@ -1,10 +1,5 @@
 # react-locale
 
-## Features
-
-- Unawared DX 
-- Default support **lazyload**
-
 ## Usage
 
 ### vite.config.ts
@@ -74,22 +69,3 @@ function App() {
   "types": ["@minko-fe/react-locale/i18n"] // fix useTranslation returnNull
 }
 ```
-
-
-### .vscode => settings.json
-``` json
-{
-  "i18n-ally.localesPaths": ["src/locale"],
-  "i18n-ally.keystyle": "flat",
-  "i18n-ally.enabledParsers": ["json"],
-  "i18n-ally.enabledFrameworks": ["react", "i18next"],
-  "i18n-ally.namespace": true,
-  "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
-  "i18n-ally.sourceLanguage": "en"
-}
-```
-
-
-## ⚠️ Warning
-
-Currently, we only support `.json(5)` file
