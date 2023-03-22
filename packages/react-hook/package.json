@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/react-hook",
   "type": "module",
-  "version": "0.0.62",
+  "version": "0.0.63",
   "description": "react-hook",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",

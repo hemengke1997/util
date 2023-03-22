@@ -1,14 +1,28 @@
+## [0.0.63](https://github.com/hemengke1997/util/compare/v0.0.62...v0.0.63) (2023-03-22)
+
+
+### Bug Fixes
+
+* update deps ([594cc8f](https://github.com/hemengke1997/util/commit/594cc8f16ae1974964d5ee9c60caa7257942c5c8))
+
+
+### Features
+
+* **react-locale:** introduce debug mode ([529690d](https://github.com/hemengke1997/util/commit/529690d72e7ddd3dd2a3993dcf15fd2fb6f8703e))
+
+
+### Performance Improvements
+
+* **react-locale:** dynamic import `query-string` ([f5d2136](https://github.com/hemengke1997/util/commit/f5d213635b7cffa505a685babe05adaf7c5e9786))
+
+
+
 ## [0.0.62](https://github.com/hemengke1997/util/compare/v0.0.61...v0.0.62) (2023-03-21)
 
 
 ### Bug Fixes
 
 * changelog order ([7803db7](https://github.com/hemengke1997/util/commit/7803db7ed9ddc3405ab2a5408dbfc49982be1f39))
-
-
-### Performance Improvements
-
-* **react-locale:** dynamic import `query-string` ([f5d2136](https://github.com/hemengke1997/util/commit/f5d213635b7cffa505a685babe05adaf7c5e9786))
 
 
 
