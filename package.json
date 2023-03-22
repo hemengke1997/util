@@ -18,10 +18,10 @@
     "dev": "pnpm -r --parallel --filter ./packages/* dev",
     "build": "pnpm -r --filter ./packages/* build",
     "create": "tsx scripts/createLib",
-    "test": "pnpm -r --filter=./packages/* run test --run",
+    "test": "pnpm -r --filter ./packages/* run test --run",
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint --ignore-pattern \"/playground/\" .",
-    "clean": "rimraf node_modules & pnpm -r --parallel --filter=./packages/* clean",
+    "clean": "rimraf node_modules & pnpm -r --parallel --filter ./packages/* clean",
     "taze": "taze -I -r -w",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "bump": "bumpp packages/*/package.json package.json -c --all -p -t"

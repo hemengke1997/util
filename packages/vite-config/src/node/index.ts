@@ -2,10 +2,13 @@ import { loadEnv, splitVendorChunkPlugin, mergeConfig as viteMergeConfig } from 
 import type { ConfigEnv, PluginOption, UserConfig } from 'vite'
 import type { VPPTPluginOptions } from 'vite-plugin-public-typescript'
 import { deepMerge } from '@minko-fe/lodash-pro'
+import createDebug from 'debug'
 import { injectEnv, pathsMapToAlias } from './utils'
 import type { LegacyOptions } from './plugins/legacy'
 import type { CompressOptions } from './plugins/compress'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
+
+const debug = createDebug('vite-config')
 
 interface PluginOptions {
   /**
@@ -64,6 +67,8 @@ const defaultOptions: PluginOptions = {
 async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
   options = deepMerge(defaultOptions, options)
 
+  debug('options:', options)
+
   const { ssrBuild } = configEnv
 
   const { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo } = options
@@ -101,6 +106,8 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
     const { logAppInfo: logAppInfoPlugin } = await import('./plugins/logAppInfo')
     vitePlugins.push(logAppInfoPlugin(configEnv))
   }
+
+  debug('plugins:', vitePlugins)
 
   return vitePlugins
 }
@@ -142,7 +149,9 @@ const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig, opti
   const { mode } = configEnv
   const root = userConfig.root || process.cwd()
   const config = viteMergeConfig(await getDefaultConfig({ root, ...configEnv }, options), userConfig)
+  debug('config:', config)
   const env = loadEnv(mode, root)
+  debug('env:', env)
   injectEnv(env)
   return config
 }

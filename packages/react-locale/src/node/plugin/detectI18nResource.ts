@@ -8,6 +8,9 @@ import stripDirs from 'strip-dirs'
 import depth from 'depth'
 import fs from 'fs-extra'
 import { cloneDeep } from '@minko-fe/lodash-pro'
+import createDebug from 'debug'
+
+const debug = createDebug('vite-plugin-detect-i18n-resource')
 
 const PKGNAME = '@minko-fe/react-locale/plugin/detectI18nResource'
 
@@ -108,6 +111,7 @@ async function initModules(opts: { entry: string }) {
   const files = await glob(entry)
 
   const langModules = files.reduce(getResource, {})
+
   const resolvedIds = new Map<string, string>()
 
   const virtualLangModules = cloneDeep(langModules)
@@ -134,6 +138,8 @@ function isJson(p: string) {
 export async function detectI18nResource(options: DetectI18nResourceOptions) {
   const { localeEntry } = options
 
+  debug('plugin options:', options)
+
   if (path.parse(localeEntry).ext) {
     throw new Error(`[${PKGNAME}]: localeEntry should be a dir, but got a file.`)
   }
@@ -149,7 +155,15 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
     localeEntry,
   })
 
+  debug('globalData:', getGlobalData())
+
   let { langModules, resolvedIds, virtualLangModules } = await initModules({ entry })
+
+  debug('initModules returnValue:', {
+    langModules,
+    resolvedIds,
+    virtualLangModules,
+  })
 
   return {
     name: 'vite:detect-i18n-resource',
@@ -200,6 +214,8 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
           }
           code += ' };'
 
+          debug('helper:', code)
+
           return {
             code,
             map: { mappings: '' },
@@ -211,11 +227,12 @@ export async function detectI18nResource(options: DetectI18nResourceOptions) {
     },
     async handleHotUpdate({ file, server }) {
       if (file.includes(parsedEntry.base) && isJson(file)) {
+        const modules = await initModules({ entry })
+        virtualLangModules = modules.virtualLangModules
+        langModules = modules.langModules
+        resolvedIds = modules.resolvedIds
+        debug('hmr:', file, 'hmr re-inited modules:', modules)
         for (const [, value] of resolvedIds) {
-          const modules = await initModules({ entry })
-          virtualLangModules = modules.virtualLangModules
-          langModules = modules.langModules
-          resolvedIds = modules.resolvedIds
           invalidateVirtualModule(server, value)
         }
       }
