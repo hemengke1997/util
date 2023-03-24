@@ -1,3 +1,12 @@
+## [0.0.64](https://github.com/hemengke1997/util/compare/v0.0.63...v0.0.64) (2023-03-24)
+
+
+### Features
+
+* update vite-plugin-i18n-detector ([91cc24f](https://github.com/hemengke1997/util/commit/91cc24f5014fc51fc542fdac6915bd87f6ad3c51))
+
+
+
 ## [0.0.63](https://github.com/hemengke1997/util/compare/v0.0.62...v0.0.63) (2023-03-22)
 
 
