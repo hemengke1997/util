@@ -1,3 +1,4 @@
+import path from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { overrideConfig } from '@minko-fe/vite-config'
@@ -11,7 +12,9 @@ export default defineConfig(async (env) => {
       plugins: [
         react(),
         i18nDetector({
-          localeEntry: './src/locale',
+          localesPaths: [path.join(__dirname, './src/locale')],
+          pathMatcher: '{locale}/{namespace}.{ext}',
+          enableParsers: ['json'],
         }),
       ],
       clearScreen: false,

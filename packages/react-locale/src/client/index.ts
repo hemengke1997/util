@@ -18,7 +18,7 @@ function setupI18n(options: SetupOptions) {
     lookupTarget = 'lang',
     debug = isDev(),
     onLocaleChange,
-    setQueryOnChange,
+    setQuery,
     ...rest
   } = options || {}
 
@@ -52,7 +52,8 @@ function setupI18n(options: SetupOptions) {
   _setupI18n({
     i18n: i18next,
     onLocaleChange,
-    setQueryOnChange,
+    setQuery,
+    fallbackLng,
   })
 }
 
