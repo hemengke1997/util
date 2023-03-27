@@ -36,7 +36,7 @@
     "lint": "eslint .",
     "clean": "rimraf node_modules",
     "up": "taze -I -w",
-    "bump": "pnpm changelog && bumpp package.json CHANGELOG.md --commit --push --tag -all"
+    "bump": "bumpp package.json -c --all -p -t -x \"pnpm run changelog\""
   },
   "peerDependencies": {
     "axios": ">=1.0.0"
@@ -45,5 +45,10 @@
     "@minko-fe/lodash-pro": "workspace:*",
     "axios": "^1.3.4",
     "query-string": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/sinon": "^10.0.13",
+    "nock": "^13.3.0",
+    "sinon": "^15.0.3"
   }
 }

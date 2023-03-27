@@ -12,5 +12,5 @@ export enum EnumDataType {
 }
 
 export function is(val: unknown, type: string) {
-  return toString.call(val) === `[object ${type}]`
+  return Object.prototype.toString.call(val) === `[object ${type}]`
 }

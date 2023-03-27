@@ -6,6 +6,7 @@
     "noUnusedParameters": false,
     "noImplicitAny": false,
     "noEmitOnError": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["vitest/globals"]
   }
 }

@@ -10,7 +10,7 @@ import { overrideConfig } from '@minko-fe/vite-config'
 import { i18nDetector } from '@minko-fe/react-locale/plugin'
 
 // https://vitejs.dev/config/
-export default defineConfig(async (env) => {
+export default defineConfig((env) => {
   return overrideConfig(
     env,
     {
@@ -18,7 +18,7 @@ export default defineConfig(async (env) => {
         react(),
         i18nDetector({
           localesPaths: [path.join(__dirname, './src/locale')],
-          pathMatcher: '{locale}/{namespace}',
+          pathMatcher: '{locale}/{namespace}.{ext}',
         }),
       ],
     },
