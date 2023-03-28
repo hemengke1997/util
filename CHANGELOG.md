@@ -1,3 +1,12 @@
+## [0.0.65](https://github.com/hemengke1997/util/compare/v0.0.64...v0.0.65) (2023-03-28)
+
+
+### Bug Fixes
+
+* **postcss-config:** bump deps ([53a1a00](https://github.com/hemengke1997/util/commit/53a1a00cb99a4e30095c0adc042b32ed7a1cccfe))
+
+
+
 ## [0.0.64](https://github.com/hemengke1997/util/compare/v0.0.63...v0.0.64) (2023-03-24)
 
 
