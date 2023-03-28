@@ -14,7 +14,7 @@ export default defineConfig(async (env) => {
         i18nDetector({
           localesPaths: [path.join(__dirname, './src/locale')],
           pathMatcher: '{locale}/{namespace}.{ext}',
-          enableParsers: ['json'],
+          enabledParsers: ['json'],
         }),
       ],
       clearScreen: false,

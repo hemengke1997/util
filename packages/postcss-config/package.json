@@ -55,8 +55,8 @@
   },
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
-    "@minko-fe/postcss-pxtorem": "^1.2.0",
-    "@minko-fe/postcss-pxtoviewport": "^1.2.0",
+    "@minko-fe/postcss-pxtorem": "^1.2.1",
+    "@minko-fe/postcss-pxtoviewport": "^1.2.1",
     "browserslist": "^4.21.5",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^8.1.0",
@@ -69,7 +69,7 @@
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
-        "postcss-preset-env",
+        "postcss-*",
         "@csstools/*"
       ]
     }
