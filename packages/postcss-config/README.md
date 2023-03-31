@@ -15,6 +15,6 @@ module.exports = {
     'postcss-pxtorem': {}, // set if you need
     'postcss-pxtoviewport': {}, // set if you need
     'postcss-preset-env': {}, // default
-  }),
+  })[0], // nextjs pick second: definePlugins()[1]
 }
 ```
