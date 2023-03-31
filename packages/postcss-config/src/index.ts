@@ -51,40 +51,45 @@ const defaultOptions: Required<PostcssConfig> = {
   'postcss-preset-env': true,
 }
 
-const postcssConfig = (options: PostcssConfig) => {
-  const plugins: AcceptedPlugin[] = []
+const plugins: AcceptedPlugin[] = []
 
+const pluginsForNextjs: (string | any[])[] = []
+
+function unPlugins(pluginName: string, options?: any) {
+  plugins.push(options ? _require(pluginName)(options) : _require(pluginName))
+  pluginsForNextjs.push(options ? [pluginName, options] : pluginName)
+}
+
+const postcssConfig = (options: PostcssConfig) => {
   options = deepMerge(defaultOptions, options || {})!
 
   if (options['postcss-import'] !== false) {
-    plugins.push(_require('postcss-import'))
+    unPlugins('postcss-import')
   }
 
   if (options['tailwindcss/nesting'] !== false) {
-    plugins.push(_require('tailwindcss/nesting'))
+    unPlugins('tailwindcss/nesting')
   }
 
   {
     const { tailwindcss } = options
     if (tailwindcss !== false) {
       const options = isObject(tailwindcss) ? tailwindcss : undefined
-      plugins.push(_require('tailwindcss')(options))
+      unPlugins('tailwindcss', options)
     }
   }
 
   {
     const pxtorem = options['postcss-pxtorem']
     if (pxtorem) {
-      const options = isObject(pxtorem) ? pxtorem : {}
-      plugins.push(_require('@minko-fe/postcss-pxtorem')(options))
+      unPlugins('@minko-fe/postcss-pxtorem', options)
     }
   }
 
   {
     const pxtoviewport = options['postcss-pxtoviewport']
     if (pxtoviewport) {
-      const options = isObject(pxtoviewport) ? pxtoviewport : {}
-      plugins.push(_require('@minko-fe/postcss-pxtoviewport')(options))
+      unPlugins('@minko-fe/postcss-pxtoviewport', options)
     }
   }
 
@@ -105,11 +110,11 @@ const postcssConfig = (options: PostcssConfig) => {
         _options.features['nesting-rules'] = true
       }
 
-      plugins.push(_require('postcss-preset-env')(_options))
+      unPlugins('postcss-preset-env', _options)
     }
   }
 
-  return plugins
+  return [plugins, pluginsForNextjs]
 }
 
 export function definePlugins(options: PostcssConfig) {
