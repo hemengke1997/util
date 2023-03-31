@@ -1,3 +1,12 @@
+## [0.0.66](https://github.com/hemengke1997/util/compare/v0.0.65...v0.0.66) (2023-03-31)
+
+
+### Features
+
+* **postcss-config:** support nextjs ([f8e4cd4](https://github.com/hemengke1997/util/commit/f8e4cd4f7068ae12f9ba1af4e5bffe7d497f5392))
+
+
+
 ## [0.0.65](https://github.com/hemengke1997/util/compare/v0.0.64...v0.0.65) (2023-03-28)
 
 
