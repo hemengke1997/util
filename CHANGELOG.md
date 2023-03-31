@@ -1,6 +1,11 @@
 ## [0.0.67](https://github.com/hemengke1997/util/compare/v0.0.66...v0.0.67) (2023-03-31)
 
 
+### Features
+
+* introduce `client-logger` ([3d9a5a4](https://github.com/hemengke1997/util/commit/3d9a5a4550d42fe76557807b11c45f5d7c8a0ce2))
+
+
 
 ## [0.0.66](https://github.com/hemengke1997/util/compare/v0.0.65...v0.0.66) (2023-03-31)
 
