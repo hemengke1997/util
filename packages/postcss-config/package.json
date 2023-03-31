@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/postcss-config",
   "type": "module",
-  "version": "0.0.66",
+  "version": "0.0.67",
   "description": "postcss-config",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
@@ -68,6 +68,9 @@
   },
   "pnpm": {
     "peerDependencyRules": {
+      "allowAny": [
+        "@csstools/*"
+      ],
       "ignoreMissing": [
         "postcss-*",
         "@csstools/*"

@@ -39,7 +39,7 @@ importers:
       vitest: ^0.29.7
     devDependencies:
       '@minko-fe/eslint-config': 1.2.32_eslint@8.36.0
-      '@minko-fe/lodash-pro': 0.0.64
+      '@minko-fe/lodash-pro': 0.0.66
       '@minko-fe/tsconfig': 1.2.32_typescript@4.9.5
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@types/fs-extra': 11.0.1
@@ -88,6 +88,14 @@ importers:
       '@types/sinon': 10.0.13
       nock: 13.3.0
       sinon: 15.0.3
+
+  packages/client-logger:
+    specifiers:
+      '@minko-fe/style-object-to-string': ^0.0.2
+      dayjs: ^1.11.7
+    dependencies:
+      '@minko-fe/style-object-to-string': 0.0.2
+      dayjs: 1.11.7
 
   packages/html-transform:
     specifiers:
@@ -216,11 +224,10 @@ importers:
 
   packages/vite-config:
     specifiers:
+      '@minko-fe/client-logger': workspace:*
       '@minko-fe/lodash-pro': workspace:*
-      '@minko-fe/style-object-to-string': ^0.0.2
       '@types/debug': ^4.1.7
       '@vitejs/plugin-legacy': ^4.0.2
-      dayjs: ^1.11.7
       debug: ^4.3.4
       get-tsconfig: ^4.5.0
       rollup: ^3.20.2
@@ -231,10 +238,9 @@ importers:
       vite-plugin-public-typescript: ^1.3.0
       vite-plugin-svgr: ^2.4.0
     dependencies:
+      '@minko-fe/client-logger': link:../client-logger
       '@minko-fe/lodash-pro': link:../lodash-pro
-      '@minko-fe/style-object-to-string': 0.0.2
       '@vitejs/plugin-legacy': 4.0.2_terser@5.16.8+vite@4.2.1
-      dayjs: 1.11.7
       debug: 4.3.4
       get-tsconfig: 4.5.0
       rollup-plugin-visualizer: 5.9.0_rollup@3.20.2
@@ -2409,8 +2415,8 @@ packages:
       - supports-color
     dev: true
 
-  /@minko-fe/lodash-pro/0.0.64:
-    resolution: {integrity: sha512-NSAnKPcwyEw+w5fdabzny2Y4xuNCLAXSfyVS3641ZSP8Y060MtXNRfMUb8hl2mCNtWfVt9J/0g6Fq082OcWfHw==}
+  /@minko-fe/lodash-pro/0.0.66:
+    resolution: {integrity: sha512-qkF71HcZsCSBgBLNRtn06S3o586ZwOXo9G5gNBmGC9YM7VHWmm1tmMgHwFVQDe/CfKCRc50R2rXNxooH544+eQ==}
     dependencies:
       '@types/lodash-es': 4.17.7
       deepmerge: 4.3.1

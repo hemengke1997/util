@@ -5,6 +5,7 @@
 | Package                   | Desc                                 |
 | ------------------------- | ------------------------------------ |
 | @minko-fe/axios-pro       | Like axios but pro                   |
+| @minko-fe/client-logger   | Colorful logger in browser           |
 | @minko-fe/html-transform  | Vite transform-html logic            |
 | @minko-fe/lodash-pro      | More than lodash                     |
 | @minko-fe/postcss-config  | Common postcss config                |

@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/vite-config",
   "type": "module",
-  "version": "0.0.66",
+  "version": "0.0.67",
   "description": "vite-config",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
@@ -59,10 +59,9 @@
     }
   },
   "dependencies": {
+    "@minko-fe/client-logger": "workspace:*",
     "@minko-fe/lodash-pro": "workspace:*",
-    "@minko-fe/style-object-to-string": "^0.0.2",
     "@vitejs/plugin-legacy": "^4.0.2",
-    "dayjs": "^1.11.7",
     "debug": "^4.3.4",
     "get-tsconfig": "^4.5.0",
     "rollup-plugin-visualizer": "^5.9.0",
@@ -79,6 +78,7 @@
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
+        "postcss-*",
         "@csstools/*"
       ]
     }
