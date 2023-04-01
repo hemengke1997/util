@@ -59,11 +59,11 @@
     }
   },
   "dependencies": {
-    "@minko-fe/client-logger": "workspace:*",
     "@minko-fe/lodash-pro": "workspace:*",
     "@vitejs/plugin-legacy": "^4.0.2",
     "debug": "^4.3.4",
     "get-tsconfig": "^4.5.0",
+    "picologger": "^0.0.1",
     "rollup-plugin-visualizer": "^5.9.0",
     "terser": "^5.16.8",
     "vite-plugin-compression": "^0.5.1",

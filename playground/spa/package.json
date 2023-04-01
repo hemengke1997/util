@@ -32,5 +32,12 @@
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5",
     "vite": "^4.2.1"
-  }
+  },
+  "browserslist": [
+    "chrome 64",
+    "edge 79",
+    "firefox 67",
+    "opera 51",
+    "safari 12"
+  ]
 }

@@ -1,5 +1,5 @@
 const { definePlugins } = require('@minko-fe/postcss-config')
 
 module.exports = {
-  plugins: definePlugins()[0],
+  plugins: definePlugins().normal,
 }

@@ -69,6 +69,7 @@
   "pnpm": {
     "peerDependencyRules": {
       "allowAny": [
+        "postcss-*",
         "@csstools/*"
       ],
       "ignoreMissing": [

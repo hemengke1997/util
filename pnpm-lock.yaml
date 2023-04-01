@@ -39,7 +39,7 @@ importers:
       vitest: ^0.29.7
     devDependencies:
       '@minko-fe/eslint-config': 1.2.32_eslint@8.36.0
-      '@minko-fe/lodash-pro': 0.0.66
+      '@minko-fe/lodash-pro': 0.0.67
       '@minko-fe/tsconfig': 1.2.32_typescript@4.9.5
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@types/fs-extra': 11.0.1
@@ -88,14 +88,6 @@ importers:
       '@types/sinon': 10.0.13
       nock: 13.3.0
       sinon: 15.0.3
-
-  packages/client-logger:
-    specifiers:
-      '@minko-fe/style-object-to-string': ^0.0.2
-      dayjs: ^1.11.7
-    dependencies:
-      '@minko-fe/style-object-to-string': 0.0.2
-      dayjs: 1.11.7
 
   packages/html-transform:
     specifiers:
@@ -224,12 +216,12 @@ importers:
 
   packages/vite-config:
     specifiers:
-      '@minko-fe/client-logger': workspace:*
       '@minko-fe/lodash-pro': workspace:*
       '@types/debug': ^4.1.7
       '@vitejs/plugin-legacy': ^4.0.2
       debug: ^4.3.4
       get-tsconfig: ^4.5.0
+      picologger: ^0.0.1
       rollup: ^3.20.2
       rollup-plugin-visualizer: ^5.9.0
       terser: ^5.16.8
@@ -238,11 +230,11 @@ importers:
       vite-plugin-public-typescript: ^1.3.0
       vite-plugin-svgr: ^2.4.0
     dependencies:
-      '@minko-fe/client-logger': link:../client-logger
       '@minko-fe/lodash-pro': link:../lodash-pro
       '@vitejs/plugin-legacy': 4.0.2_terser@5.16.8+vite@4.2.1
       debug: 4.3.4
       get-tsconfig: 4.5.0
+      picologger: 0.0.1
       rollup-plugin-visualizer: 5.9.0_rollup@3.20.2
       terser: 5.16.8
       vite-plugin-compression: 0.5.1_vite@4.2.1
@@ -2415,8 +2407,8 @@ packages:
       - supports-color
     dev: true
 
-  /@minko-fe/lodash-pro/0.0.66:
-    resolution: {integrity: sha512-qkF71HcZsCSBgBLNRtn06S3o586ZwOXo9G5gNBmGC9YM7VHWmm1tmMgHwFVQDe/CfKCRc50R2rXNxooH544+eQ==}
+  /@minko-fe/lodash-pro/0.0.67:
+    resolution: {integrity: sha512-qjAtZL7Hw5ngiVvsjXO9xGhTsCz3rOduRlXAib5BR40RSs07+fZN0L8Psk/0vbSEhGe2vEU9en9niePD6eDl2g==}
     dependencies:
       '@types/lodash-es': 4.17.7
       deepmerge: 4.3.1
@@ -2448,8 +2440,10 @@ packages:
       prettier: 2.8.4
     dev: true
 
-  /@minko-fe/style-object-to-string/0.0.2:
-    resolution: {integrity: sha512-sNGOtMLjBn6PqlRZRbEes//TbiBMPQq3hR9KrhI/SS23w7oY7tps2IMqghRvdmmqVcgc/eI8fTYYjyyf49q5TQ==}
+  /@minko-fe/style-object-to-string/0.0.3:
+    resolution: {integrity: sha512-k8EngshIRQLumZ3qlni6aMwjR8nC7NsFOImOr5jvVAbIPJCXHI9Hr67p2KcuD2b1Ery5EFHidSLNYRMlNzLKow==}
+    dependencies:
+      csstype: 3.1.1
     dev: false
 
   /@minko-fe/tsconfig/1.2.32_typescript@4.9.5:
@@ -6875,6 +6869,14 @@ packages:
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+
+  /picologger/0.0.1:
+    resolution: {integrity: sha512-M9AwcRnldvFp5t8bKJ0ngrdKyXE32B9f1czdpNMzw3MeAe89ZQU4Wn05zlu6OyTvtrB2W3bCoGcCfvMg34wsxw==}
+    requiresBuild: true
+    dependencies:
+      '@minko-fe/style-object-to-string': 0.0.3
+      dayjs: 1.11.7
+    dev: false
 
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}

@@ -114,7 +114,10 @@ const postcssConfig = (options: PostcssConfig) => {
     }
   }
 
-  return [plugins, pluginsForNextjs]
+  return {
+    normal: plugins,
+    nextjs: pluginsForNextjs,
+  }
 }
 
 export function definePlugins(options: PostcssConfig) {

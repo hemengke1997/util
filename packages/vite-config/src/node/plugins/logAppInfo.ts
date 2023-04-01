@@ -1,10 +1,10 @@
 import type { ConfigEnv, PluginOption } from 'vite'
-import { logBuildInfo } from '@minko-fe/client-logger'
+import { logTimeInfo } from 'picologger'
 
 export function logAppInfo(configEnv: ConfigEnv): PluginOption {
   const { mode } = configEnv
 
-  const infoStr = logBuildInfo(mode)
+  const infoStr = logTimeInfo(mode)
 
   return {
     name: 'vite:log-app-info',
