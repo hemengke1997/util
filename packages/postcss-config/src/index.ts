@@ -21,11 +21,11 @@ export type PostcssConfig =
        * @description default built-in
        */
       'tailwindcss/nesting'?: boolean
+
       /**
        * @default true
-       * @description default built-in
        */
-      'tailwindcss'?: Config | boolean
+      'autoprefixer'?: boolean
       /**
        * @default false
        */
@@ -34,6 +34,11 @@ export type PostcssConfig =
        * @default false
        */
       'postcss-pxtoviewport'?: false | PxtoviewportOptions
+      /**
+       * @default true
+       * @description default built-in
+       */
+      'tailwindcss'?: Config | boolean
       /**
        * @default true
        * @description default built-in
@@ -48,6 +53,7 @@ const defaultOptions: Required<PostcssConfig> = {
   'tailwindcss': true,
   'postcss-pxtorem': false,
   'postcss-pxtoviewport': false,
+  'autoprefixer': true,
   'postcss-preset-env': true,
 }
 
@@ -76,6 +82,13 @@ const postcssConfig = (options: PostcssConfig) => {
     if (tailwindcss !== false) {
       const options = isObject(tailwindcss) ? tailwindcss : undefined
       unPlugins('tailwindcss', options)
+    }
+  }
+
+  {
+    const { autoprefixer } = options
+    if (autoprefixer !== false) {
+      unPlugins('autoprefixer')
     }
   }
 
