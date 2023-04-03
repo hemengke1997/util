@@ -1,3 +1,12 @@
+## [0.0.71-beta.0](https://github.com/hemengke1997/util/compare/v0.0.70...v0.0.71-beta.0) (2023-04-03)
+
+
+### Features
+
+* **postcss-config:** support autoprefixer default" ([38c9c15](https://github.com/hemengke1997/util/commit/38c9c157f9ab03e12151eb10d9d015fd52692b77))
+
+
+
 ## [0.0.70](https://github.com/hemengke1997/util/compare/v0.0.69...v0.0.70) (2023-04-03)
 
 
