@@ -12,7 +12,7 @@ const [bem] = createNamespace('overlay')
 
 const Overlay: React.FC<OverlayProps> = (props) => {
   const nodeRef = useRef(null)
-  const { visible, duration = 300, stopPropagation = ['click'], lockScroll = true } = props
+  const { visible, duration = 300, stopPropagation = ['click'], lockScroll = true, transitionName = 'rc-fade' } = props
 
   const preventTouchMove = (event: TouchEvent) => {
     if (!lockScroll) return
@@ -51,7 +51,14 @@ const Overlay: React.FC<OverlayProps> = (props) => {
   useEventListener('touchmove', preventTouchMove, { target: nodeRef })
 
   return (
-    <CSSTransition nodeRef={nodeRef} mountOnEnter unmountOnExit in={visible} timeout={duration} classNames='rc-fade'>
+    <CSSTransition
+      nodeRef={nodeRef}
+      mountOnEnter
+      unmountOnExit
+      in={visible}
+      timeout={duration}
+      classNames={transitionName}
+    >
       {renderOverlay()}
     </CSSTransition>
   )

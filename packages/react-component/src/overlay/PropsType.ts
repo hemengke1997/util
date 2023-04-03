@@ -10,6 +10,8 @@ export interface OverlayProps extends BaseTypeProps {
   customStyle?: React.CSSProperties
   /** 动画时长，单位`ms`，设置为 0 可以禁用动画	， */
   duration?: number
+  /** 动画名称 */
+  transitionName?: string
   /** 是否锁定背景滚动，锁定时蒙层里的内容也将无法滚动 */
   lockScroll?: boolean
   /** 点击时触发 */

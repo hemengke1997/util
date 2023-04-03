@@ -13,6 +13,7 @@ const defaultOptions: DialogMethodOptions = {
   closeable: true,
   closeIcon: <CloseOutlined />,
   transition: 'rc-dialog-bounce',
+  overlayTransition: 'rc-dialog-bounce',
   closeOnClickOverlay: false,
   duration: 150,
 }

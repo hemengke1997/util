@@ -20,6 +20,7 @@ export interface SharedPopupProps {
   overlayClass?: string
   /** 自定义遮罩层样式 */
   overlayStyle?: React.CSSProperties
+  overlayTransition?: string
   /** 关闭时销毁 Popup 里的子元素 */
   destroyOnClose?: boolean
   /** 强制渲染 Popup */

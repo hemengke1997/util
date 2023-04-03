@@ -31,6 +31,8 @@ export interface ToastProps extends Omit<BaseTypeProps, 'children'> {
   overlay?: boolean
   overlayClass?: string
   overlayStyle?: React.CSSProperties
+  /** Overlay动画名词 */
+  overlayTransition?: string
   /** 是否禁止背景点击	 */
   forbidClick?: boolean
   /** 是否在点击遮罩层后关闭	 */

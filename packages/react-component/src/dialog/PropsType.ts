@@ -2,7 +2,7 @@ import type React from 'react'
 import type { SharedPopupProps } from '../popup/PropsType'
 import type { BaseTypeProps } from '../utils/interface'
 
-export interface DialogProps extends Omit<BaseTypeProps, 'children'>, SharedPopupProps {
+export interface DialogProps extends BaseTypeProps, SharedPopupProps {
   visible?: boolean
   content?: React.ReactNode
   /** 是否显示右上角关闭按钮 */
@@ -15,6 +15,7 @@ export interface DialogProps extends Omit<BaseTypeProps, 'children'>, SharedPopu
   /** 是否显示背景遮罩层	 */
   overlay?: boolean
   overlayClass?: string
+  overlayTransition?: string
   overlayStyle?: React.CSSProperties
   /** 是否在页面回退时自动关闭	 */
   closeOnPopstate?: boolean

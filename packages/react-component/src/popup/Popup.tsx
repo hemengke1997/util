@@ -102,6 +102,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
         style={style}
         className={props.overlayClass}
         customStyle={props.overlayStyle}
+        transitionName={props.overlayTransition}
         zIndex={zIndex.current}
         duration={propDuration}
         onClick={onClickOverlay}
@@ -227,6 +228,10 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   useIsomorphicLayoutEffect(() => {
     setVisible(propVisible)
   }, [propVisible])
+
+  useIsomorphicLayoutEffect(() => {
+    open()
+  }, [])
 
   useUpdateEffect(() => {
     if (visible === false && opened.current) {

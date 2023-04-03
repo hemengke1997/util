@@ -19,6 +19,7 @@ const defaultOptions: ToastProps = {
   teleport: () => document.body,
   keepOnHover: true,
   transition: 'rc-toast-bounce',
+  overlayTransition: 'rc-toast-bounce',
   keyboard: false,
   showEmpty: false,
 }

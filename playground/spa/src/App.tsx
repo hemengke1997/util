@@ -96,6 +96,8 @@ function App() {
           <div onClick={() => destroy.current?.close()}>close dialog</div>
           <div onClick={() => setVisible(true)}>open dialog</div>
         </div>
+
+        <Dialog visible>默认内容</Dialog>
       </div>
     </Suspense>
   )

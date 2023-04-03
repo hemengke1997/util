@@ -41,6 +41,7 @@ const Toast: FC<ToastProps & ToastPrivateProps> = (props) => {
     onIconClick,
     transitionTime,
     keyboard,
+    overlayTransition,
   } = props
 
   const toggleClickable = () => {
@@ -97,6 +98,7 @@ const Toast: FC<ToastProps & ToastPrivateProps> = (props) => {
       transition={transition}
       overlayClass={overlayClass}
       destroyOnClose
+      overlayTransition={overlayTransition}
       overlayStyle={overlayStyle}
       closeOnClickOverlay={closeOnClickOverlay}
       lockScroll={false}
