@@ -1,3 +1,12 @@
+## [0.0.70](https://github.com/hemengke1997/util/compare/v0.0.69...v0.0.70) (2023-04-03)
+
+
+### Bug Fixes
+
+* **react-component:** popup ssr issue ([610f45e](https://github.com/hemengke1997/util/commit/610f45e8f653cb10e1752e1144b5aae2b001016a))
+
+
+
 ## [0.0.69](https://github.com/hemengke1997/util/compare/v0.0.68...v0.0.69) (2023-04-03)
 
 
