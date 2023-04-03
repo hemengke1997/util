@@ -1,8 +1,14 @@
-import { KeyCode, isDef } from '@minko-fe/lodash-pro'
+import { KeyCode, isBrowser, isDef } from '@minko-fe/lodash-pro'
 import type { Ref } from 'react'
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { useEventListener, useIsomorphicLayoutEffect, useLockScroll, useUpdateEffect } from '@minko-fe/react-hook'
+import {
+  useEventListener,
+  useIsomorphicLayoutEffect,
+  useLockScroll,
+  useUpdate,
+  useUpdateEffect,
+} from '@minko-fe/react-hook'
 import classNames from 'classnames'
 import { CloseOutlined } from '../icons'
 import { renderToContainer } from '../utils/dom/renderToContainer'
@@ -54,6 +60,8 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   const [visible, setVisible] = useState(propVisible)
 
   const [animatedVisible, setAnimatedVisible] = useState(visible)
+
+  const update = useUpdate()
 
   const style = () => {
     const initStyle = {
@@ -118,7 +126,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     }
   }
 
-  useEventListener('keydown', onWrapperKeyDown, { target: document.documentElement })
+  useEventListener('keydown', onWrapperKeyDown, { target: isBrowser() ? document.documentElement : null })
 
   function onWrapperKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
     if (keyboard && e.keyCode === KeyCode.ESC) {
@@ -230,7 +238,11 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   }, [propVisible])
 
   useIsomorphicLayoutEffect(() => {
-    open()
+    if (propVisible) {
+      open()
+      // For Nextjs SSR
+      update()
+    }
   }, [])
 
   useUpdateEffect(() => {
