@@ -1,3 +1,7 @@
+## [0.0.71-beta.1](https://github.com/hemengke1997/util/compare/v0.0.71-beta.0...v0.0.71-beta.1) (2023-04-04)
+
+
+
 ## [0.0.71-beta.0](https://github.com/hemengke1997/util/compare/v0.0.70...v0.0.71-beta.0) (2023-04-03)
 
 
