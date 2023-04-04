@@ -1,3 +1,12 @@
+## [0.0.71-beta.2](https://github.com/hemengke1997/util/compare/v0.0.71-beta.1...v0.0.71-beta.2) (2023-04-04)
+
+
+### Bug Fixes
+
+* **postcss-config:** make `preset-env` compatiable with tailwindcss important ([8421bcf](https://github.com/hemengke1997/util/commit/8421bcfae265dfde1da6fa9a8753f33d591adfce))
+
+
+
 ## [0.0.71-beta.1](https://github.com/hemengke1997/util/compare/v0.0.71-beta.0...v0.0.71-beta.1) (2023-04-04)
 
 
