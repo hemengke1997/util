@@ -115,7 +115,17 @@ const postcssConfig = (options: PostcssConfig) => {
 
       const defaultBrowserslist = browserslist.loadConfig({ path: '.' })
 
-      const defaultOptions: pluginOptions = { browsers: defaultBrowserslist, features: { 'nesting-rules': false } }
+      const defaultOptions: pluginOptions = {
+        browsers: defaultBrowserslist || ['defaults'],
+        features: { 'nesting-rules': false, 'custom-properties': false },
+        autoprefixer: {
+          // Disable legacy flexbox support
+          flexbox: 'no-2009',
+        },
+        // Enable CSS features that have shipped to the
+        // web platform, i.e. in 2+ browsers unflagged.
+        stage: 3,
+      }
 
       const _options = deepMerge(defaultOptions, isObject(presetEnv) ? presetEnv : {})
 
