@@ -1,3 +1,12 @@
+## [0.0.71-beta.4](https://github.com/hemengke1997/util/compare/v0.0.71-beta.3...v0.0.71-beta.4) (2023-04-06)
+
+
+### Bug Fixes
+
+* **postcss-config:** user-select tailwindcss ([f9d819f](https://github.com/hemengke1997/util/commit/f9d819f099fa0dee3dda9916523a5a7e2de09206))
+
+
+
 ## [0.0.71-beta.3](https://github.com/hemengke1997/util/compare/v0.0.71-beta.2...v0.0.71-beta.3) (2023-04-06)
 
 

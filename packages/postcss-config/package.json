@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/postcss-config",
   "type": "module",
-  "version": "0.0.71-beta.3",
+  "version": "0.0.71-beta.4",
   "description": "postcss-config",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
