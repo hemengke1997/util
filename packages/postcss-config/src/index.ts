@@ -117,7 +117,13 @@ const postcssConfig = (options: PostcssConfig) => {
 
       const defaultOptions: pluginOptions = {
         browsers: defaultBrowserslist || ['defaults'],
-        features: { 'nesting-rules': false, 'custom-properties': false },
+        features: {
+          'nesting-rules': false,
+          'custom-properties': false,
+          // 'is-pseudo-class': {
+          //   onComplexSelector: undefined,
+          // },
+        },
         autoprefixer: {
           // Disable legacy flexbox support
           flexbox: 'no-2009',
