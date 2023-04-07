@@ -1,3 +1,12 @@
+## [0.0.71-beta.5](https://github.com/hemengke1997/util/compare/v0.0.71-beta.4...v0.0.71-beta.5) (2023-04-07)
+
+
+### Bug Fixes
+
+* **react-locale:** kebab case language ([240862f](https://github.com/hemengke1997/util/commit/240862fe5c7b3e13cb13c5e3d5993973c2fc927d))
+
+
+
 ## [0.0.71-beta.4](https://github.com/hemengke1997/util/compare/v0.0.71-beta.3...v0.0.71-beta.4) (2023-04-06)
 
 
