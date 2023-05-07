@@ -49,9 +49,11 @@ describe('useControlledState', () => {
       })
     )
 
-    const [value, setValue] = result.current
+    const [_, setValue] = result.current
 
-    setValue('controlled')
+    act(() => {
+      setValue('controlled')
+    })
 
     expect(val).toBe('controlled')
   })
@@ -69,7 +71,9 @@ describe('useControlledState', () => {
 
     const [value, setValue] = result.current
 
-    setValue('controlled')
+    act(() => {
+      setValue('controlled')
+    })
 
     expect(val).toBe('')
   })
