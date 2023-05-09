@@ -16,7 +16,7 @@ describe('useControlledState', () => {
     const { result } = renderHook(() =>
       useControlledState({
         defaultValue: 'defaultValue',
-      })
+      }),
     )
 
     const [value] = result.current
@@ -29,7 +29,7 @@ describe('useControlledState', () => {
       useControlledState({
         value: 'value',
         defaultValue: 'defaultValue',
-      })
+      }),
     )
 
     const [value] = result.current
@@ -43,10 +43,10 @@ describe('useControlledState', () => {
       useControlledState({
         value: 'value',
         defaultValue: 'defaultValue',
-        onChange: (value, preValue) => {
+        onChange: (value) => {
           val = value
         },
-      })
+      }),
     )
 
     const [_, setValue] = result.current
@@ -63,13 +63,13 @@ describe('useControlledState', () => {
     const { result } = renderHook(() =>
       useControlledState({
         defaultValue: 'defaultValue',
-        onChange: (value, preValue) => {
+        onChange: (value) => {
           val = value
         },
-      })
+      }),
     )
 
-    const [value, setValue] = result.current
+    const [_, setValue] = result.current
 
     act(() => {
       setValue('controlled')
@@ -85,7 +85,7 @@ describe('useStrictInput', () => {
     const { result } = renderHook(() =>
       useStrictInput(value, (newValue) => {
         value = newValue
-      })
+      }),
     )
     act(() => {
       result.current.onChange('asd123~!@#$ ][];.,/?"*-+')
