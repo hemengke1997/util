@@ -2,5 +2,5 @@ import type { Options } from 'tsup'
 
 export default {
   target: 'esnext',
-  external: ['react-router', 'react-router-dom'],
+  external: ['react-router'],
 } as Options
