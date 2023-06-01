@@ -12,7 +12,7 @@ const defaultOptions: ToastProps = {
   content: '',
   className: '',
   type: 'info',
-  position: 'middle',
+  position: 'center',
   forbidClick: false,
   duration: 2000,
   transitionTime: 150,

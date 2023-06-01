@@ -16,6 +16,7 @@ const defaultOptions: DialogMethodOptions = {
   overlayTransition: 'rc-dialog-bounce',
   closeOnClickOverlay: false,
   duration: 150,
+  position: 'center',
 }
 
 let commonOptions = extend({}, defaultOptions)

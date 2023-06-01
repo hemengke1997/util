@@ -125,11 +125,7 @@ export const defaultTransform: AxiosTransform = {
         config.params = undefined
       }
     } else {
-      if (
-        config.method?.toUpperCase() === RequestEnum.POST &&
-        !config.headers?.['Content-Type'] &&
-        !config.headers?.['content-type']
-      ) {
+      if (config.method?.toUpperCase() === RequestEnum.POST && !config.headers?.['Content-Type']) {
         config.headers = {
           ...config.headers,
           'Content-Type': ContentTypeEnum.FORM_URLENCODED,

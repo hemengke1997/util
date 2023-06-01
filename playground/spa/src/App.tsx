@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from 'react'
+import { Suspense, useRef, useState } from 'react'
 import { Dialog, toast } from '@minko-fe/react-component'
 import { useUrlState } from '@minko-fe/react-hook'
 import { useTranslation } from '@minko-fe/react-locale'
@@ -9,10 +9,10 @@ toast.setDefaultOptions({
 })
 
 Dialog.setDefaultOptions({
-  overlay: false,
-  overlayStyle: {
-    backgroundColor: 'transparent',
-  },
+  // overlay: false,
+  // overlayStyle: {
+  //   backgroundColor: 'transparent',
+  // },
 })
 
 function App() {
@@ -30,16 +30,25 @@ function App() {
       onClose() {
         console.log('onClose')
       },
+      position: 'center',
       onClosed: () => {
         console.log('closed!!!!!!!!!!')
       },
     })
   }
 
-  useEffect(() => {
-    // console.log(_url, '_url')
-    // logger.log({ text: 'haha', type: 'error' }, { text: 'end', type: 'info' })
-  }, [])
+  const y = () => {
+    destroy.current = Dialog.show({
+      content: <A url={_url} />,
+      onClose() {
+        console.log('onClose')
+      },
+      position: 'top',
+      onClosed: () => {
+        console.log('closed!!!!!!!!!!')
+      },
+    })
+  }
 
   const [_visible, setVisible] = useState(false)
 
@@ -73,7 +82,7 @@ function App() {
             toastRef.current = toast.show({
               content: <div>{Math.random()}</div>,
               type: 'warning',
-              // duration: 0,
+              duration: 0,
               onIconClick: ({ close }) => {
                 close()
               },
@@ -93,15 +102,19 @@ function App() {
           >
             show dialog
           </div>
+          <div
+            onClick={() => {
+              y()
+            }}
+          >
+            show dialog top
+          </div>
           <div onClick={() => destroy.current?.close()}>close dialog</div>
           <div onClick={() => setVisible(true)}>open dialog</div>
         </div>
-
-        <Dialog visible>默认内容</Dialog>
       </div>
     </Suspense>
   )
 }
 
-// eslint-disable-next-line no-restricted-syntax
 export default App

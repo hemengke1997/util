@@ -120,9 +120,6 @@ const postcssConfig = (options: PostcssConfig) => {
         features: {
           'nesting-rules': false,
           'custom-properties': false,
-          // 'is-pseudo-class': {
-          //   onComplexSelector: undefined,
-          // },
         },
         autoprefixer: {
           // Disable legacy flexbox support

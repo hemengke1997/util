@@ -22,58 +22,72 @@
   }
 
   &-popup {
-    @apply fixed max-h-full overflow-y-auto;
+    &__wrap {
+      @apply fixed top-0 bottom-0 overflow-auto outline-0;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
+      -webkit-overflow-scrolling: touch;
+
+      &--center {
+        @apply inline-block text-center;
+        &:before {
+          display: inline-block;
+          width: 0;
+          height: 100%;
+          vertical-align: middle;
+          content: "";
+        }
+        .rc {
+          &-popup {
+            @apply !inline-block !text-center;
+          }
+        }
+      }
+    }
+  }
+
+  &-popup {
+    @apply max-h-full overflow-y-auto relative mx-auto;
     transition: var(--rc-popup-transition);
-    -webkit-overflow-scrolling: touch;
     box-shadow: var(--rc-popup-box-shadow);
 
     &&--unclickable {
       @apply overflow-hidden pointer-events-none;
-  
+
       * {
         @apply pointer-events-none;
       }
     }
 
     &--center {
-      @apply center;
-
       &.rc-popup--round {
         border-radius: var(--rc-popup-round-border-radius);
       }
     }
 
-    &--top {
-      @apply left-0 top-0 w-full;
+    /*&--top {*/
+    /*  &.rc-popup--round {*/
+    /*    border-radius: 0 0 var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius);*/
+    /*  }*/
+    /*}*/
 
-      &.rc-popup--round {
-        border-radius: 0 0 var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius);
-      }
-    }
+    /*&--right {*/
+    /*  &.rc-popup--round {*/
+    /*    border-radius: var(--rc-popup-round-border-radius) 0 0 var(--rc-popup-round-border-radius);*/
+    /*  }*/
+    /*}*/
 
-    &--right {
-      @apply top-0 right-0;
+    /*&--bottom {*/
+    /*  &.rc-popup--round {*/
+    /*    border-radius: var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius) 0 0;*/
+    /*  }*/
+    /*}*/
 
-      &.rc-popup--round {
-        border-radius: var(--rc-popup-round-border-radius) 0 0 var(--rc-popup-round-border-radius);
-      }
-    }
-
-    &--bottom {
-      @apply bottom-0 left-0 w-full;
-
-      &.rc-popup--round {
-        border-radius: var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius) 0 0;
-      }
-    }
-
-    &--left {
-      @apply top-0 left-0;
-
-      &.rc-popup--round {
-        border-radius: 0 var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius) 0;
-      }
-    }
+    /*&--left {*/
+    /*  &.rc-popup--round {*/
+    /*    border-radius: 0 var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius) 0;*/
+    /*  }*/
+    /*}*/
 
     &-slide-top-enter,
     &-slide-top-exit-active {
@@ -124,7 +138,7 @@
       cursor: pointer;
       @apply transition-colors;
       transition-property: background-color;
-      
+
       &:hover {
         background-color: var(--rc-popup-close-icon-hover-color);
       }

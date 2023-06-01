@@ -65,7 +65,6 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
 
   const style = () => {
     const initStyle = {
-      zIndex: zIndex.current,
       ...propStyle,
     }
 
@@ -159,33 +158,43 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
       return withStopPropagation(
         stopPropagation,
         <div
-          ref={popupRef as Ref<HTMLDivElement>}
-          style={{
-            ...style(),
-            display: !visible && !animatedVisible ? 'none' : undefined,
-          }}
-          onMouseEnter={() => {
-            if (opened.current) {
-              onHoverStateChange?.(true)
-            }
-          }}
-          onMouseLeave={() => {
-            if (opened.current) {
-              onHoverStateChange?.(false)
-            }
-          }}
           className={classNames(
-            bem({
+            bem('wrap', {
               [position]: position,
-              unclickable: !opened.current,
             }),
-            { 'rc-safe-area-bottom': safeAreaInsetBottom },
-            className,
           )}
-          onClick={onClick}
+          style={{
+            zIndex: zIndex.current,
+          }}
         >
-          {children}
-          {renderCloseIcon()}
+          <div
+            ref={popupRef as Ref<HTMLDivElement>}
+            style={{
+              ...style(),
+              display: !visible && !animatedVisible ? 'none' : undefined,
+            }}
+            onMouseEnter={() => {
+              if (opened.current) {
+                onHoverStateChange?.(true)
+              }
+            }}
+            onMouseLeave={() => {
+              if (opened.current) {
+                onHoverStateChange?.(false)
+              }
+            }}
+            className={classNames(
+              bem({
+                unclickable: !opened.current,
+              }),
+              { 'rc-safe-area-bottom': safeAreaInsetBottom },
+              className,
+            )}
+            onClick={onClick}
+          >
+            {children}
+            {renderCloseIcon()}
+          </div>
         </div>,
       )
     }
