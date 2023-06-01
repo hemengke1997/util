@@ -44,7 +44,7 @@
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
     "axios": "^1.3.5",
-    "query-string": "^8.1.0"
+    "query-string": "7.1.3"
   },
   "devDependencies": {
     "@types/sinon": "^10.0.13",

@@ -49,6 +49,8 @@
  For more information, please refer to <https://unlicense.org>
  */
 
+import * as ReactUse from 'react-use'
+
 export {
   useRequest,
   useDynamicList,
@@ -130,6 +132,42 @@ export {
   useMutationObserver,
 } from 'ahooks'
 
+const {
+  useAsync,
+  useAsyncFn,
+  useAsyncRetry,
+  useBeforeUnload,
+  useCopyToClipboard,
+  useCss,
+  useCustomCompareEffect,
+  useDefault,
+  useEvent,
+  useError,
+  useGetSet,
+  useGetSetState,
+  useHoverDirty,
+  useIntersection,
+  usePageLeave,
+  usePermission,
+  usePreviousDistinct,
+  useQueue,
+  useRaf,
+  useRafLoop,
+  useSearchParam,
+  useStartTyping,
+  useSpeech,
+  useSlider,
+  useScrolling,
+  useScrollbarWidth,
+  useWindowScroll,
+  useWindowSize,
+  useMeasure,
+  usePinchZoom,
+  useFirstMountState,
+  useHash,
+  useLockBodyScroll,
+} = ReactUse
+
 export {
   useAsync,
   useAsyncFn,
@@ -164,7 +202,7 @@ export {
   useFirstMountState,
   useHash,
   useLockBodyScroll,
-} from 'react-use'
+}
 
 export * from './useControlledState'
 export * from './useStrictInput'
