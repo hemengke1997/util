@@ -23,13 +23,13 @@
 
   &-popup {
     &__wrap {
-      @apply fixed top-0 bottom-0 overflow-auto outline-0;
+      @apply fixed top-0 bottom-0 left-0 right-0 overflow-auto outline-0;
       inset-inline-start: 0;
       inset-inline-end: 0;
       -webkit-overflow-scrolling: touch;
 
       &--center {
-        @apply inline-block text-center;
+        @apply inline-block text-center align-middle;
         &:before {
           display: inline-block;
           width: 0;
@@ -39,7 +39,7 @@
         }
         .rc {
           &-popup {
-            @apply !inline-block !text-center;
+            @apply inline-block text-center align-middle;
           }
         }
       }
@@ -64,30 +64,6 @@
         border-radius: var(--rc-popup-round-border-radius);
       }
     }
-
-    /*&--top {*/
-    /*  &.rc-popup--round {*/
-    /*    border-radius: 0 0 var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius);*/
-    /*  }*/
-    /*}*/
-
-    /*&--right {*/
-    /*  &.rc-popup--round {*/
-    /*    border-radius: var(--rc-popup-round-border-radius) 0 0 var(--rc-popup-round-border-radius);*/
-    /*  }*/
-    /*}*/
-
-    /*&--bottom {*/
-    /*  &.rc-popup--round {*/
-    /*    border-radius: var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius) 0 0;*/
-    /*  }*/
-    /*}*/
-
-    /*&--left {*/
-    /*  &.rc-popup--round {*/
-    /*    border-radius: 0 var(--rc-popup-round-border-radius) var(--rc-popup-round-border-radius) 0;*/
-    /*  }*/
-    /*}*/
 
     &-slide-top-enter,
     &-slide-top-exit-active {

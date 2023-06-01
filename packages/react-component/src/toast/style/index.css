@@ -18,7 +18,7 @@
 
 .rc-toast {
   &.rc-popup {
-    @apply flex flex-col items-center box-border whitespace-pre-wrap break-words text-center origin-center;
+    @apply box-border whitespace-pre-wrap break-words text-center origin-center align-middle;
     width: var(--rc-toast-default-width);
     min-height: var(--rc-toast-default-min-height);
     padding: var(--rc-toast-default-padding);
