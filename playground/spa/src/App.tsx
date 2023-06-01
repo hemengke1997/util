@@ -111,6 +111,9 @@ function App() {
           </div>
           <div onClick={() => destroy.current?.close()}>close dialog</div>
           <div onClick={() => setVisible(true)}>open dialog</div>
+          <Dialog visible={_visible} overlay>
+            <div onClick={() => setVisible(false)}>close</div>
+          </Dialog>
         </div>
       </div>
     </Suspense>

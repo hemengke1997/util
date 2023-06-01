@@ -165,13 +165,13 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
           )}
           style={{
             zIndex: zIndex.current,
+            display: !visible && !animatedVisible ? 'none' : undefined,
           }}
         >
           <div
             ref={popupRef as Ref<HTMLDivElement>}
             style={{
               ...style(),
-              display: !visible && !animatedVisible ? 'none' : undefined,
             }}
             onMouseEnter={() => {
               if (opened.current) {
