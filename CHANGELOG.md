@@ -1,3 +1,12 @@
+## [0.0.71-beta.8](https://github.com/hemengke1997/util/compare/v0.0.71-beta.7...v0.0.71-beta.8) (2023-06-01)
+
+
+### Bug Fixes
+
+* dialog close ([9a0f6af](https://github.com/hemengke1997/util/commit/9a0f6af50c2621d1e272652908fbfe64c3b5745a))
+
+
+
 ## [0.0.71-beta.7](https://github.com/hemengke1997/util/compare/v0.0.71-beta.6...v0.0.71-beta.7) (2023-06-01)
 
 
