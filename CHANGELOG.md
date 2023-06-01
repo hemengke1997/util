@@ -1,3 +1,12 @@
+## [0.0.71-beta.7](https://github.com/hemengke1997/util/compare/v0.0.71-beta.6...v0.0.71-beta.7) (2023-06-01)
+
+
+### Bug Fixes
+
+* popup align center ([5079702](https://github.com/hemengke1997/util/commit/5079702ef8dc7f8e41defccea10504e0fb872cec))
+
+
+
 ## [0.0.71-beta.6](https://github.com/hemengke1997/util/compare/v0.0.71-beta.5...v0.0.71-beta.6) (2023-06-01)
 
 
