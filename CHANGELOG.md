@@ -1,3 +1,12 @@
+## [0.0.71-beta.10](https://github.com/hemengke1997/util/compare/v0.0.71-beta.9...v0.0.71-beta.10) (2023-06-01)
+
+
+### Bug Fixes
+
+* react-use ssr ([82302d7](https://github.com/hemengke1997/util/commit/82302d7e5b9b4d76e71e0038b734ab2e83003026))
+
+
+
 ## [0.0.71-beta.9](https://github.com/hemengke1997/util/compare/v0.0.71-beta.8...v0.0.71-beta.9) (2023-06-01)
 
 
