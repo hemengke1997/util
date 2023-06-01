@@ -1,3 +1,12 @@
+## [0.0.71-beta.9](https://github.com/hemengke1997/util/compare/v0.0.71-beta.8...v0.0.71-beta.9) (2023-06-01)
+
+
+### Bug Fixes
+
+* useUrlState react-router-dom dep ([e10e1fb](https://github.com/hemengke1997/util/commit/e10e1fb0988ab9df1f411fe5178e2d872d64e8cb))
+
+
+
 ## [0.0.71-beta.8](https://github.com/hemengke1997/util/compare/v0.0.71-beta.7...v0.0.71-beta.8) (2023-06-01)
 
 
