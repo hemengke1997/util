@@ -45,6 +45,7 @@
     "fs-extra": "^11.1.1",
     "get-tsconfig": "^4.5.0",
     "joycon": "^3.1.1",
+    "jsdom": "^22.0.0",
     "jsonc-simple-parser": "^3.0.0",
     "picocolors": "^1.0.0",
     "pnpm": "^8.1.1",
