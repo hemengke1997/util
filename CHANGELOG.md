@@ -1,3 +1,19 @@
+## [0.0.71-beta.6](https://github.com/hemengke1997/util/compare/v0.0.71-beta.5...v0.0.71-beta.6) (2023-06-01)
+
+
+### Bug Fixes
+
+* popup模糊问题 ([520f0df](https://github.com/hemengke1997/util/commit/520f0dfc227e236b30892891121a372f8a56dd9a))
+* react-hook test lint ([d5601d7](https://github.com/hemengke1997/util/commit/d5601d7ed08dae50573786108610b59523b190a1))
+
+
+### Features
+
+* useControlledState spec ([1513044](https://github.com/hemengke1997/util/commit/1513044937877d9a70bd4a1ea5d1ec85724c429f))
+* useStrictInput test ([b112aa9](https://github.com/hemengke1997/util/commit/b112aa9529ac8b5f6412e0f02f1e09fb76394036))
+
+
+
 ## [0.0.71-beta.5](https://github.com/hemengke1997/util/compare/v0.0.71-beta.4...v0.0.71-beta.5) (2023-04-07)
 
 
