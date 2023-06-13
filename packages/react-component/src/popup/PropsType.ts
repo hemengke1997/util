@@ -72,6 +72,8 @@ export interface PopupProps extends BaseTypeProps, SharedPopupProps {
   onClickCloseIcon?: (e: React.MouseEvent) => void
   children?: React.ReactNode
   onHoverStateChange?: (h: boolean) => void
+  /** wrap层className */
+  wrapClassName?: string
 }
 
 export interface PopupInstanceType {

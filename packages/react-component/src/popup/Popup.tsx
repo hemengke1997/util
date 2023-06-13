@@ -27,6 +27,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   const {
     closeable = false,
     className,
+    wrapClassName,
     overlay = true,
     lockScroll = true,
     closeOnClickOverlay = true,
@@ -160,6 +161,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
         stopPropagation,
         <div
           className={classNames(
+            wrapClassName,
             bem('wrap', {
               [position]: position,
             }),

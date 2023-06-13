@@ -111,6 +111,7 @@ const Toast: FC<ToastProps & ToastPrivateProps> = (props) => {
       onHoverStateChange={onHoverStateChange}
       duration={transitionTime}
       keyboard={keyboard}
+      wrapClassName={classNames([bem('wrap')])}
     >
       <div className={classNames(bem('content'))}>
         {renderIcon()}
