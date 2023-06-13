@@ -1,6 +1,6 @@
 import { KeyCode, isBrowser, isDef } from '@minko-fe/lodash-pro'
 import type { Ref } from 'react'
-import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import { cloneElement, forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import {
   useEventListener,
@@ -50,6 +50,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     onClickOverlay: propOnClickOverlay,
     onClickCloseIcon: propOnClickCloseIcon,
     onHoverStateChange,
+    wrapper,
   } = props
 
   const opened = useRef(false)
@@ -266,13 +267,17 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     popupRef,
   }))
 
+  const elements = (
+    <>
+      {renderOverlay()}
+      {renderTransition()}
+    </>
+  )
+
   return renderToContainer(
     teleport,
     <PopupContext.Provider value={{ visible }}>
-      <div>
-        {renderOverlay()}
-        {renderTransition()}
-      </div>
+      {wrapper ? cloneElement(wrapper, {}, elements) : elements}
     </PopupContext.Provider>,
   )
 })

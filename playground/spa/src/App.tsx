@@ -8,11 +8,16 @@ toast.setDefaultOptions({
   keepOnHover: true,
 })
 
+function W({ children }: any) {
+  return <div className={'hahaha'}>{children}</div>
+}
+
 Dialog.setDefaultOptions({
   // overlay: false,
   // overlayStyle: {
   //   backgroundColor: 'transparent',
   // },
+  wrapper: <W />,
 })
 
 function App() {
