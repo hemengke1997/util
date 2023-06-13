@@ -1,3 +1,12 @@
+## [0.0.71](https://github.com/hemengke1997/util/compare/v0.0.71-beta.10...v0.0.71) (2023-06-13)
+
+
+### Features
+
+* popup supports wrapper ([bee918d](https://github.com/hemengke1997/util/commit/bee918dd8a146191f22943f04cc1bb887a0a6cac))
+
+
+
 ## [0.0.71-beta.10](https://github.com/hemengke1997/util/compare/v0.0.71-beta.9...v0.0.71-beta.10) (2023-06-01)
 
 
