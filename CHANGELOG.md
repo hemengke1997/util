@@ -1,3 +1,12 @@
+## [0.0.72-beta.0](https://github.com/hemengke1997/util/compare/v0.0.71...v0.0.72-beta.0) (2023-06-13)
+
+
+### Bug Fixes
+
+* toast pointer-events ([aac6289](https://github.com/hemengke1997/util/commit/aac6289616371329d4c188a808eb14614dda1c2c))
+
+
+
 ## [0.0.71](https://github.com/hemengke1997/util/compare/v0.0.71-beta.10...v0.0.71) (2023-06-13)
 
 
