@@ -49,11 +49,35 @@ function setupI18n(options: SetupOptions) {
       ...rest,
     })
 
-  _setupI18n({
-    i18n: i18next,
+  const { loadResource, onLanguageChanged } = _setupI18n({
+    language: i18next.language,
+    onInit(langs) {
+      if (!langs.includes(i18next.language)) {
+        i18next.changeLanguage(fallbackLng)
+      }
+    },
+    addResource: (langs, currentLang) => {
+      Object.keys(langs).forEach((ns) => {
+        i18next.addResourceBundle(currentLang, ns, langs[ns])
+      })
+    },
     onLocaleChange,
     setQuery,
     fallbackLng,
+  })
+
+  const _changeLanguage = i18next.changeLanguage
+  i18next.changeLanguage = async (lang: string | undefined, ...args) => {
+    let currentLng = i18next.language
+    // If language did't change, return
+    if (currentLng === lang) return undefined as any
+    currentLng = lang || currentLng
+    await loadResource(lang)
+    return _changeLanguage(lang, ...args)
+  }
+
+  i18next.on('languageChanged', (lang) => {
+    onLanguageChanged(lang)
   })
 }
 

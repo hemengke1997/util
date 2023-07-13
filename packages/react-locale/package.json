@@ -59,9 +59,9 @@
     "@minko-fe/lodash-pro": "workspace:*",
     "@minko-fe/vite-config": "workspace:*",
     "i18next": "^22.4.14",
-    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-browser-languagedetector": "^7.1.0",
     "react-i18next": "^12.2.0",
-    "vite-plugin-i18n-detector": "^0.0.8"
+    "vite-plugin-i18n-detector": "^0.0.10"
   },
   "devDependencies": {
     "react": "^18.2.0",
