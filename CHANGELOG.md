@@ -1,3 +1,12 @@
+## [0.0.72-beta.1](https://github.com/hemengke1997/util/compare/v0.0.72-beta.0...v0.0.72-beta.1) (2023-07-13)
+
+
+### Bug Fixes
+
+* **react-locale:** always fallback to defaulLang when browser lang not detected ([4e4ab1a](https://github.com/hemengke1997/util/commit/4e4ab1a913884463cf8f85302e6fcaf34a9ea2a8))
+
+
+
 ## [0.0.72-beta.0](https://github.com/hemengke1997/util/compare/v0.0.71...v0.0.72-beta.0) (2023-06-13)
 
 
