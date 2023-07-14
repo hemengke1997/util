@@ -1,3 +1,12 @@
+## [0.0.72-beta.2](https://github.com/hemengke1997/util/compare/v0.0.72-beta.1...v0.0.72-beta.2) (2023-07-14)
+
+
+### Bug Fixes
+
+* override unnecessary props ([a91bdf6](https://github.com/hemengke1997/util/commit/a91bdf67adca50dd2deb24904510c80985aa5f40))
+
+
+
 ## [0.0.72-beta.1](https://github.com/hemengke1997/util/compare/v0.0.72-beta.0...v0.0.72-beta.1) (2023-07-13)
 
 
