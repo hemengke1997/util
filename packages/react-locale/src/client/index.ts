@@ -10,7 +10,10 @@ type SetupOptions = InitOptions & {
   fallbackLng?: string
   lookupTarget?: string
   debug?: boolean
-} & Omit<I18nSetupOptions, 'i18n'>
+  onLocaleChange: I18nSetupOptions['onLocaleChange']
+  setQuery: I18nSetupOptions['setQuery']
+  onInit?: I18nSetupOptions['onInit']
+}
 
 function setupI18n(options: SetupOptions) {
   const {
@@ -19,6 +22,7 @@ function setupI18n(options: SetupOptions) {
     debug = isDev(),
     onLocaleChange,
     setQuery,
+    onInit,
     ...rest
   } = options || {}
 
@@ -51,10 +55,11 @@ function setupI18n(options: SetupOptions) {
 
   const { loadResource, onLanguageChanged } = _setupI18n({
     language: i18next.language,
-    onInit(langs) {
+    onInit(langs, currentLang) {
       if (!langs.includes(i18next.language)) {
         i18next.changeLanguage(fallbackLng)
       }
+      onInit?.(langs, currentLang)
     },
     addResource: (langs, currentLang) => {
       Object.keys(langs).forEach((ns) => {
