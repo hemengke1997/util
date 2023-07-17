@@ -1,3 +1,12 @@
+## [0.0.72-beta.3](https://github.com/hemengke1997/util/compare/v0.0.72-beta.2...v0.0.72-beta.3) (2023-07-17)
+
+
+### Bug Fixes
+
+* **react-hook:** useUrlState `useLocation` issue ([2dc34ba](https://github.com/hemengke1997/util/commit/2dc34ba9b97d3518f4477900c58a9bd07f332c50))
+
+
+
 ## [0.0.72-beta.2](https://github.com/hemengke1997/util/compare/v0.0.72-beta.1...v0.0.72-beta.2) (2023-07-14)
 
 
