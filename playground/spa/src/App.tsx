@@ -23,6 +23,10 @@ Dialog.setDefaultOptions({
 function App() {
   const destroy = useRef<any>()
 
+  const [u] = useUrlState()
+
+  console.log(u)
+
   const { t, i18n } = useTranslation()
 
   const toastRef = useRef<any>()
