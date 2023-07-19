@@ -1,5 +1,5 @@
 :root {
-  --rc-dialog-top: 45%;
+  --rc-dialog-top: 30%;
   --rc-dialog-font-size: 16px;
   --rc-dialog-background-color: theme(colors.black);
   --rc-dialog-border-radius: theme(borderRadius.default);
@@ -17,6 +17,10 @@
     border-radius: var(--rc-dialog-border-radius);
     backface-visibility: hidden;
     transition-property: transform, opacity;
+  }
+
+  &--top {
+    top: var(--rc-dialog-top);
   }
   
   &__content {

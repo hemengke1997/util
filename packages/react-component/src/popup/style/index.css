@@ -28,6 +28,8 @@
       inset-inline-end: 0;
       -webkit-overflow-scrolling: touch;
 
+      @apply flex flex-col;
+
       &--center {
         @apply inline-block text-center align-middle;
         &:before {
@@ -37,10 +39,8 @@
           vertical-align: middle;
           content: "";
         }
-        .rc {
-          &-popup {
-            @apply inline-block text-center align-middle;
-          }
+        .rc-popup {
+          @apply inline-block text-center align-middle;
         }
       }
     }

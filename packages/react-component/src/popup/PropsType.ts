@@ -1,8 +1,6 @@
 import type { BaseTypeProps, TeleportType } from '../utils/interface'
 
-// export type PopupPosition = 'top' | 'left' | 'bottom' | 'right' | 'center' | ''
-// 暂时只支持center
-export type PopupPosition = 'center'
+export type PopupPosition = 'top' | 'left' | 'bottom' | 'right' | 'center' | ''
 
 export type PopupCloseIconPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
 

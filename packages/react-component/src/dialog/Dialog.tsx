@@ -14,6 +14,7 @@ const Dialog: React.FC<DialogProps & DialogPrivateProps> = (props) => {
     onClickCloseIcon,
     transition = 'rc-dialog-bounce',
     closeOnPopstate = true,
+    position = 'center',
     onClose,
     onClosed,
     children,
@@ -37,10 +38,16 @@ const Dialog: React.FC<DialogProps & DialogPrivateProps> = (props) => {
   return (
     <Popup
       {...rest}
+      position={position}
       transition={transition}
       closeOnPopstate={closeOnPopstate}
       visible={visible}
-      className={classNames(bem(), className)}
+      className={classNames(
+        bem('', {
+          [position]: position,
+        }),
+        className,
+      )}
       closeOnClickOverlay={closeOnClickOverlay}
       onClickCloseIcon={onClickCloseIcon}
       onClose={onClose}
