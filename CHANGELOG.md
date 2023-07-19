@@ -1,3 +1,12 @@
+## [0.0.72-beta.4](https://github.com/hemengke1997/util/compare/v0.0.72-beta.3...v0.0.72-beta.4) (2023-07-19)
+
+
+### Features
+
+* **react-component:** popup support top position ([bee5ad3](https://github.com/hemengke1997/util/commit/bee5ad3e053beb4528ca7f0fe6c354896babc18d))
+
+
+
 ## [0.0.72-beta.3](https://github.com/hemengke1997/util/compare/v0.0.72-beta.2...v0.0.72-beta.3) (2023-07-17)
 
 
