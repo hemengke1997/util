@@ -55,6 +55,7 @@ const defaultOptions: PluginOptions = {
   legacy: {
     renderLegacyChunks: true,
     polyfills: true,
+    modernPolyfills: true,
     ignoreBrowserslistConfig: false,
   },
   publicTypescript: {
