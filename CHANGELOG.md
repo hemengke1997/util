@@ -1,3 +1,12 @@
+## [0.0.72](https://github.com/hemengke1997/util/compare/v0.0.72-beta.4...v0.0.72) (2023-08-28)
+
+
+### Features
+
+* **react-hook:** useConstant ([060a850](https://github.com/hemengke1997/util/commit/060a850d99d50728f7f4ad6bc85de47a009619aa))
+
+
+
 ## [0.0.72-beta.4](https://github.com/hemengke1997/util/compare/v0.0.72-beta.3...v0.0.72-beta.4) (2023-07-19)
 
 
