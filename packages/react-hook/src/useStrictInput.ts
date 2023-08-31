@@ -21,7 +21,7 @@ function useStrictInput(
 
   const onCompositionEnd: React.CompositionEventHandler<HTMLInputElement> = () => {
     composedRef.current = false
-    setValue(value?.replaceAll(strictRegExp, ''))
+    setValue(value?.replace(strictRegExp, ''))
   }
 
   const onChange = (value: string) => {
@@ -33,11 +33,11 @@ function useStrictInput(
     }
 
     if (!composedRef.current) {
-      v = value.replaceAll(strictRegExp, '')
+      v = value?.replace(strictRegExp, '')
     }
 
     setValue(v)
-    return v.replaceAll(strictRegExp, '')
+    return v?.replace(strictRegExp, '')
   }
 
   return {

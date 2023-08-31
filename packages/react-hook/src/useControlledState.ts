@@ -1,14 +1,15 @@
 import { isFunction } from '@minko-fe/lodash-pro'
-import { useMemoizedFn, useUpdate } from 'ahooks'
+import { useMemoizedFn, usePrevious, useUpdate } from 'ahooks'
 import { useMemo, useRef } from 'react'
 
 function useControlledState<T, R = T>(option: {
   defaultValue?: T | (() => T)
   value?: T
   onChange?: (value: T, prevValue: T) => void
-  postValue?: (value: T) => T
-}): [R, (value: T | ((prevState: T) => T)) => void] {
-  const { defaultValue, value, onChange, postValue } = option
+  beforeValue?: (value: T, prevValue: T) => T | void
+  postValue?: (value: T, prevValue: T) => T | void
+}): [R, (value: T | ((prevState: T) => T)) => void, R] {
+  const { defaultValue, value, onChange, beforeValue, postValue } = option
 
   const isControlled = Object.prototype.hasOwnProperty.call(option, 'value') && typeof value !== 'undefined'
 
@@ -27,26 +28,38 @@ function useControlledState<T, R = T>(option: {
     stateRef.current = value
   }
 
+  const previousState = usePrevious(stateRef.current)
+
   if (postValue) {
-    stateRef.current = postValue(stateRef.current)
+    const post = postValue(stateRef.current, previousState)
+    if (post) {
+      stateRef.current = post
+    }
   }
 
   const update = useUpdate()
 
   function triggerChange(newValue: T | ((prevState: T) => T)) {
-    const r = isFunction(newValue) ? newValue(stateRef.current) : newValue
-    if (!isControlled) {
-      stateRef.current = r
+    let r = isFunction(newValue) ? newValue(stateRef.current) : newValue
 
-      update()
+    if (beforeValue) {
+      const before = beforeValue(r, stateRef.current)
+      if (before) {
+        r = before
+      }
     }
 
-    if (stateRef.current !== r && onChange) {
+    if (onChange) {
       onChange(r, stateRef.current)
+    }
+
+    if (!isControlled) {
+      stateRef.current = r
+      update()
     }
   }
 
-  return [stateRef.current, useMemoizedFn(triggerChange)]
+  return [stateRef.current, useMemoizedFn(triggerChange), previousState]
 }
 
 export { useControlledState }
