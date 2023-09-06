@@ -22,7 +22,7 @@ interface PluginOptions {
   compress?: CompressOptions | false
   /**
    * @default
-   * { renderLegacyChunks: true, polyfills: true, ignoreBrowserslistConfig: false }
+   * { renderLegacyChunks: true, polyfills: true, modernPolyfills: true, ignoreBrowserslistConfig: false }
    */
   legacy?: LegacyOptions | false
   /**
@@ -32,7 +32,7 @@ interface PluginOptions {
   publicTypescript?: VPPTPluginOptions | false
   /**
    * @default
-   * csr and not legacy render
+   * when csr and not legacy render
    * @suggestion
    * disable if you want legacy render
    */
