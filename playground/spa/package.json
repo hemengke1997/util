@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@minko-fe/axios-pro": "workspace:*",
+    "@minko-fe/flexible-pro": "workspace:*",
     "@minko-fe/lodash-pro": "workspace:*",
     "@minko-fe/react-component": "workspace:*",
     "@minko-fe/react-hook": "workspace:*",
@@ -31,6 +32,7 @@
     "postcss": "^8.4.21",
     "tailwindcss": "3.2.7",
     "typescript": "^5.0.3",
-    "vite": "^4.2.1"
+    "vite": "^4.2.1",
+    "vite-plugin-html": "^3.2.0"
   }
 }

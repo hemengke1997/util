@@ -11,7 +11,7 @@ type SetupOptions = InitOptions & {
   lookupTarget?: string
   debug?: boolean
   onLocaleChange: I18nSetupOptions['onLocaleChange']
-  setQuery: I18nSetupOptions['setQuery']
+  setQuery?: I18nSetupOptions['setQuery']
   onInit?: I18nSetupOptions['onInit']
 }
 

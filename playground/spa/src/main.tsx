@@ -17,4 +17,5 @@ setupI18n({
       </React.StrictMode>,
     )
   },
+  setQuery: undefined,
 })
