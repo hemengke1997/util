@@ -39,7 +39,7 @@
     "bump": "bumpp package.json -c --all -p -t -x \"pnpm run changelog\""
   },
   "dependencies": {
-    "@types/lodash-es": "^4.17.7",
+    "@types/lodash-es": "^4.17.9",
     "deepmerge": "^4.3.1",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21"

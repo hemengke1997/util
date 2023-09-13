@@ -45,13 +45,13 @@
   },
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
-    "ahooks": "^3.7.6",
+    "ahooks": "^3.7.8",
     "query-string": "7.1.3",
     "react-use": "^17.4.0"
   },
   "devDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.10.0"
+    "react-router-dom": "^6.15.0"
   }
 }

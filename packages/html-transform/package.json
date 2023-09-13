@@ -39,6 +39,6 @@
     "bump": "bumpp package.json -c --all -p -t -x \"pnpm run changelog\""
   },
   "devDependencies": {
-    "acorn": "^8.8.2"
+    "acorn": "^8.10.0"
   }
 }

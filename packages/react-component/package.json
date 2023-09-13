@@ -55,7 +55,7 @@
     "react-dom": ">=17.0.0"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.0.1",
+    "@ant-design/icons": "^5.2.6",
     "@minko-fe/lodash-pro": "workspace:*",
     "@minko-fe/react-hook": "workspace:*",
     "classnames": "^2.3.2",
@@ -63,11 +63,11 @@
   },
   "devDependencies": {
     "@minko-fe/postcss-config": "workspace:*",
-    "@types/react-transition-group": "^4.4.5",
-    "postcss": "^8.4.21",
+    "@types/react-transition-group": "^4.4.6",
+    "postcss": "^8.4.29",
     "postcss-import": "^15.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.3.1"
+    "tailwindcss": "^3.3.3"
   }
 }

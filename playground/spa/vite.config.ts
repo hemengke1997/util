@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 import { overrideConfig } from '@minko-fe/vite-config'
 import { i18nDetector } from '@minko-fe/react-locale/plugin'
 import { createHtmlPlugin } from 'vite-plugin-html'
-import manifest from './publicTypescript/manifest.json'
+import manifest from './public-typescript/manifest.json'
 
 function setupHtml() {
   const tags: Parameters<typeof createHtmlPlugin>[0] = {
@@ -44,12 +44,13 @@ export default defineConfig(async (env) => {
         }),
         setupHtml(),
       ] as any,
-      clearScreen: false,
+      // clearScreen: false,
     },
     {
       compress: false,
       publicTypescript: {
         sideEffects: true,
+        destination: 'memory',
       },
     },
   )

@@ -39,8 +39,8 @@
     "bump": "bumpp package.json -c --all -p -t -x \"pnpm run changelog\""
   },
   "dependencies": {
-    "@minko-fe/lodash-pro": "^0.0.74",
-    "modern-flexible": "^0.0.1",
+    "@minko-fe/lodash-pro": "^0.0.75",
+    "modern-flexible": "^0.0.2",
     "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {
