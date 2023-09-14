@@ -1,3 +1,12 @@
+## [0.0.78](https://github.com/hemengke1997/util/compare/v0.0.77...v0.0.78) (2023-09-14)
+
+
+### Bug Fixes
+
+* **vite-config:** export all from `vite-plugin-public-typescript` ([6b36796](https://github.com/hemengke1997/util/commit/6b36796b025e84b3d3cba35ebf9007da83b09c8d))
+
+
+
 ## [0.0.77](https://github.com/hemengke1997/util/compare/v0.0.76...v0.0.77) (2023-09-14)
 
 

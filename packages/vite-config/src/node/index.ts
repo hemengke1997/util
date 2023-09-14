@@ -159,3 +159,4 @@ const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig, opti
 
 export * from './utils/rollupOptions'
 export { getDefaultConfig, overrideConfig, injectEnv }
+export * from 'vite-plugin-public-typescript'
