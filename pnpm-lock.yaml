@@ -13,7 +13,7 @@ importers:
         version: 1.2.33(eslint@8.49.0)
       '@minko-fe/lodash-pro':
         specifier: latest
-        version: 0.0.78
+        version: 0.0.79
       '@minko-fe/tsconfig':
         specifier: ^1.2.33
         version: 1.2.33(typescript@5.2.2)
@@ -343,8 +343,8 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1(vite@4.4.9)
       vite-plugin-public-typescript:
-        specifier: ^1.5.1
-        version: 1.5.1(vite@4.4.9)
+        specifier: ^1.5.2
+        version: 1.5.2(vite@4.4.9)
       vite-plugin-svgr:
         specifier: ^2.4.0
         version: 2.4.0(rollup@3.29.1)(vite@4.4.9)
@@ -3070,8 +3070,8 @@ packages:
       lodash-es: 4.17.21
     dev: false
 
-  /@minko-fe/lodash-pro@0.0.78:
-    resolution: {integrity: sha512-AXNIQvbLBbOKYVEBoUhMK5P0wcK4BcKY142JVhNjmegCYKqFd6jaNUGoqq5/g4LEzPmgFDJyELe4FkoZMLEH5g==}
+  /@minko-fe/lodash-pro@0.0.79:
+    resolution: {integrity: sha512-xPwp3m38h345A0dclNUkOiuSOo8jAyJi/l8kSWqYnxg8OIGwfWTKvxTKIzQb5QD6E9uwtbjeFHVe4GlbAH1FLA==}
     dependencies:
       '@types/lodash-es': 4.17.9
       deepmerge: 4.3.1
@@ -9928,8 +9928,8 @@ packages:
       - supports-color
     dev: false
 
-  /vite-plugin-public-typescript@1.5.1(vite@4.4.9):
-    resolution: {integrity: sha512-D9loMFUSGElMDERq7z4vUpBHTRD37xbGF4WXUewE/MVdTtOPlnhCN1DAeuPWnlyxJDWMOPEbIGlukFL4yadgiw==}
+  /vite-plugin-public-typescript@1.5.2(vite@4.4.9):
+    resolution: {integrity: sha512-fuPlIWimRofbIQ3xpEpCTVgI+J2IOtu85Vfym9oteg/fJdRrwLoLeEMm/4LpePFtN2LCdoDi0oT8LNdZoAVkAA==}
     requiresBuild: true
     peerDependencies:
       vite: 3 || 4

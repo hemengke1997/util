@@ -1,7 +1,7 @@
 {
   "name": "@minko-fe/vite-config",
   "type": "module",
-  "version": "0.0.79",
+  "version": "0.0.80",
   "description": "vite-config",
   "author": "hemengke <https://github.com/hemengke1997>",
   "license": "MIT",
@@ -67,7 +67,7 @@
     "rollup-plugin-visualizer": "^5.9.2",
     "terser": "^5.19.4",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-public-typescript": "^1.5.1",
+    "vite-plugin-public-typescript": "^1.5.2",
     "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
