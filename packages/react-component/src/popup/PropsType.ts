@@ -1,4 +1,4 @@
-import type { BaseTypeProps, TeleportType } from '../utils/interface'
+import { type BaseTypeProps, type TeleportType } from '../utils/interface'
 
 export type PopupPosition = 'top' | 'left' | 'bottom' | 'right' | 'center' | ''
 

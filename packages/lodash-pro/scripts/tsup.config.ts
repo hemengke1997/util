@@ -1,8 +1,8 @@
-import type { Format, Options } from 'tsup'
-import type { Plugin } from 'esbuild'
+import { type Format, type Options } from 'tsup'
+import { type Plugin } from 'esbuild'
 
 function escapeRegExp(str: string) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return str.replaceAll(/[$()*+.?[\\\]^{|}]/g, '\\$&')
 }
 
 function alias(options: Record<string, string>, format: Format): Plugin {
@@ -34,4 +34,4 @@ export default (format: Format) =>
         format,
       ),
     ],
-  } as Options)
+  }) as Options

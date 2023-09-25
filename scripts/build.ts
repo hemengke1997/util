@@ -1,5 +1,4 @@
-import type { Options } from 'tsup'
-import { build as tsupBuild } from 'tsup'
+import { type Options, build as tsupBuild } from 'tsup'
 import { getTsconfig } from 'get-tsconfig'
 import { isObject, isUndefined } from '@minko-fe/lodash-pro'
 import { defaultConfig } from './utils/config'

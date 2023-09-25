@@ -1,6 +1,5 @@
 import { KeyCode, isBrowser, isDef } from '@minko-fe/lodash-pro'
-import type { Ref } from 'react'
-import { cloneElement, forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import { type Ref, cloneElement, forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import {
   useEventListener,
@@ -16,8 +15,8 @@ import { withStopPropagation } from '../utils/dom/event'
 import { createNamespace } from '../utils/createNamespace'
 import { callInterceptor } from '../utils/interceptor'
 import Overlay from '../overlay'
-import type { PopupInstanceType, PopupProps } from './PropsType'
 import { PopupContext } from './PopupContext'
+import { type PopupInstanceType, type PopupProps } from './PropsType'
 
 const [bem] = createNamespace('popup')
 

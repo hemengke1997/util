@@ -1,5 +1,4 @@
-import type { Context } from 'react'
-import { createContext } from 'react'
+import { type Context, createContext } from 'react'
 
 interface PopupContextProps {
   visible?: boolean

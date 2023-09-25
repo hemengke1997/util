@@ -1,5 +1,5 @@
+import { type BaseTypeProps } from '../utils/interface'
 import type React from 'react'
-import type { BaseTypeProps } from '../utils/interface'
 
 export interface OverlayProps extends BaseTypeProps {
   /** 是否可见 */

@@ -1,11 +1,17 @@
-import { loadEnv, splitVendorChunkPlugin, mergeConfig as viteMergeConfig } from 'vite'
-import type { ConfigEnv, PluginOption, UserConfig } from 'vite'
-import type { VPPTPluginOptions } from 'vite-plugin-public-typescript'
 import { deepMerge } from '@minko-fe/lodash-pro'
 import createDebug from 'debug'
+import {
+  type ConfigEnv,
+  type PluginOption,
+  type UserConfig,
+  loadEnv,
+  splitVendorChunkPlugin,
+  mergeConfig as viteMergeConfig,
+} from 'vite'
+import { type VPPTPluginOptions } from 'vite-plugin-public-typescript'
 import { injectEnv, pathsMapToAlias } from './utils'
-import type { LegacyOptions } from './plugins/legacy'
-import type { CompressOptions } from './plugins/compress'
+import { type LegacyOptions } from './plugins/legacy'
+import { type CompressOptions } from './plugins/compress'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
 
 const debug = createDebug('vite-config')
@@ -140,7 +146,6 @@ const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: 
         treeshake: true,
       },
       cssCodeSplit: true,
-      manifest: !configEnv.ssrBuild,
       ssrManifest: configEnv.ssrBuild,
     },
   }

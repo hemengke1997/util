@@ -1,13 +1,13 @@
-import type { HtmlTagDescriptor } from '.'
+import { type HtmlTagDescriptor } from '.'
 
-const headInjectRE = /([ \t]*)<\/head>/i
-const headPrependInjectRE = /([ \t]*)<head[^>]*>/i
+const headInjectRE = /([\t ]*)<\/head>/i
+const headPrependInjectRE = /([\t ]*)<head[^>]*>/i
 
 const htmlInjectRE = /<\/html>/i
-const htmlPrependInjectRE = /([ \t]*)<html[^>]*>/i
+const htmlPrependInjectRE = /([\t ]*)<html[^>]*>/i
 
-const bodyInjectRE = /([ \t]*)<\/body>/i
-const bodyPrependInjectRE = /([ \t]*)<body[^>]*>/i
+const bodyInjectRE = /([\t ]*)<\/body>/i
+const bodyPrependInjectRE = /([\t ]*)<body[^>]*>/i
 
 const doctypePrependInjectRE = /<!doctype html>/i
 
@@ -91,15 +91,15 @@ export function serializeTags(tags: HtmlTagDescriptor['children'], indent = ''):
 }
 
 export function serializeAttrs(attrs: HtmlTagDescriptor['attrs']): string {
-  let res = ''
-  for (const key in attrs) {
-    if (typeof attrs[key] === 'boolean') {
-      res += attrs[key] ? ` ${key}` : ``
-    } else {
-      res += ` ${key}=${JSON.stringify(attrs[key])}`
-    }
-  }
-  return res
+  return Object.entries(attrs || [])
+    .map(([key, value]) => {
+      if (typeof value === 'boolean') {
+        return value ? ` ${key}` : ''
+      } else {
+        return ` ${key}=${JSON.stringify(value)}`
+      }
+    })
+    .join('')
 }
 
 export function incrementIndent(indent = '') {

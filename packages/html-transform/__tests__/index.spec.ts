@@ -1,6 +1,5 @@
 import { expect, test } from 'vitest'
-import type { ecmaVersion } from 'acorn'
-import { parse } from 'acorn'
+import { type ecmaVersion, parse } from 'acorn'
 import { snippets } from '../src'
 
 const { detectModernBrowserDetector } = snippets

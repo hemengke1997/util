@@ -5,7 +5,7 @@ function useStrictInput(
   v: string,
   onVChange: (v: string) => void,
   // default treat input as `Number`
-  strictRegExp = /[^0-9]/g,
+  strictRegExp = /\D/g,
 ) {
   const [value, setValue] = useControlledState({
     defaultValue: v,

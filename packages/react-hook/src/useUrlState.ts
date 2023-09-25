@@ -1,6 +1,5 @@
 import { useMemoizedFn, useUpdate } from 'ahooks'
-import querystring from 'query-string'
-import type { ParseOptions, StringifyOptions } from 'query-string'
+import querystring, { type ParseOptions, type StringifyOptions } from 'query-string'
 import { useMemo, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 

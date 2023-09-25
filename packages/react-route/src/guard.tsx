@@ -1,18 +1,18 @@
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useEffectOnce } from '@minko-fe/react-hook'
-import type {
-  MetaType,
-  OnRouteBeforeResType,
-  OnRouteBeforeType,
-  OnRouteMountType,
-  OnRouteUnMountType,
-  ReactElementType,
+import {
+  type MetaType,
+  type OnRouteBeforeResType,
+  type OnRouteBeforeType,
+  type OnRouteMountType,
+  type OnRouteUnMountType,
+  type ReactElementType,
 } from './createRoutes'
 
 let cache: ReactElementType | null = null
 
 function getDataType(data: any): string {
-  return (Object.prototype.toString.call(data).match(/\s(\w+)\]/) as string[])[1]
+  return (Object.prototype.toString.call(data).match(/\s(\w+)]/) as string[])[1]
 }
 
 function Guard({
@@ -52,10 +52,8 @@ function Guard({
           navigate(res, { replace: true })
         }
       })
-    } else {
-      if (pathRes && pathRes !== pathname) {
-        element = <Navigate to={pathRes as string} replace />
-      }
+    } else if (pathRes && pathRes !== pathname) {
+      element = <Navigate to={pathRes as string} replace />
     }
   }
 

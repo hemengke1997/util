@@ -1,12 +1,12 @@
 {
-  "extends": "@minko-fe/tsconfig/tsconfig.base",
+  "extends": "@minko-fe/tsconfig/tsconfig.app",
   "compilerOptions": {
     "baseUrl": ".",
+    "types": ["vitest/globals"],
+    "noEmitOnError": false,
+    "noImplicitAny": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noImplicitAny": false,
-    "noEmitOnError": false,
-    "skipLibCheck": true,
-    "types": ["vitest/globals"]
+    "skipLibCheck": true
   }
 }

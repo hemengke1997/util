@@ -1,17 +1,25 @@
 {
   "name": "@minko-fe/react-component",
-  "type": "module",
   "version": "0.0.80",
   "description": "react-component",
-  "author": "hemengke <https://github.com/hemengke1997>",
+  "type": "module",
+  "keywords": [
+    "react-component"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hemengke1997/util.git"
   },
-  "keywords": [
-    "react-component"
+  "author": "hemengke <https://github.com/hemengke1997>",
+  "files": [
+    "CHANGELOG.md",
+    "README.md",
+    "dist"
   ],
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -24,9 +32,6 @@
       "import": "./dist/esm/icons/index.js"
     }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
       "icons": [
@@ -34,11 +39,6 @@
       ]
     }
   },
-  "files": [
-    "dist",
-    "CHANGELOG.md",
-    "README.md"
-  ],
   "scripts": {
     "dev": "rimraf dist && tsx scripts/dev",
     "build": "rimraf dist && tsx scripts/build",

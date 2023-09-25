@@ -49,7 +49,7 @@ describe('useControlledState', () => {
       }),
     )
 
-    const [_, setValue] = result.current
+    const [, setValue] = result.current
 
     act(() => {
       setValue('controlled')
@@ -69,7 +69,7 @@ describe('useControlledState', () => {
       }),
     )
 
-    const [_, setValue] = result.current
+    const [, setValue] = result.current
 
     act(() => {
       setValue('controlled')

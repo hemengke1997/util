@@ -1,13 +1,12 @@
 import { isDef, isUndefined } from '@minko-fe/lodash-pro'
 import classNames from 'classnames'
-import type { FC } from 'react'
-import React, { useEffect, useRef } from 'react'
+import React, { type FC, useEffect, useRef } from 'react'
 import { CheckCircleFilled, CloseCircleFilled, ExclamationCircleFilled } from '../icons'
 import Popup from '../popup'
-import type { PopupInstanceType } from '../popup/PropsType'
 import { createNamespace } from '../utils/createNamespace'
+import { type PopupInstanceType } from '../popup/PropsType'
 import { lockClick } from './lock-click'
-import type { ToastPrivateProps, ToastProps, ToastType } from './PropsType'
+import { type ToastPrivateProps, type ToastProps, type ToastType } from './PropsType'
 
 const [bem] = createNamespace('toast')
 

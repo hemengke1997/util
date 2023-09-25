@@ -1,17 +1,26 @@
 {
   "name": "@minko-fe/vite-config",
-  "type": "module",
   "version": "0.0.80",
   "description": "vite-config",
-  "author": "hemengke <https://github.com/hemengke1997>",
+  "type": "module",
+  "keywords": [
+    "vite-config"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hemengke1997/util.git"
   },
-  "keywords": [
-    "vite-config"
+  "author": "hemengke <https://github.com/hemengke1997>",
+  "files": [
+    "CHANGELOG.md",
+    "README.md",
+    "dist",
+    "svgr.d.ts"
   ],
+  "main": "./dist/node/index.cjs",
+  "module": "./dist/node/index.js",
+  "types": "./dist/node/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/node/index.d.ts",
@@ -23,9 +32,6 @@
       "import": "./dist/client/index.js"
     }
   },
-  "main": "./dist/node/index.cjs",
-  "module": "./dist/node/index.js",
-  "types": "./dist/node/index.d.ts",
   "typesVersions": {
     "*": {
       "client": [
@@ -33,12 +39,6 @@
       ]
     }
   },
-  "files": [
-    "dist",
-    "CHANGELOG.md",
-    "README.md",
-    "svgr.d.ts"
-  ],
   "scripts": {
     "dev": "rimraf dist && tsx scripts/dev",
     "build": "rimraf dist && tsx scripts/build",
@@ -74,13 +74,5 @@
     "@types/debug": "^4.1.8",
     "rollup": "^3.29.1",
     "vite": "^4.4.9"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "postcss-*",
-        "@csstools/*"
-      ]
-    }
   }
 }

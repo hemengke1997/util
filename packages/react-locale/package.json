@@ -1,17 +1,27 @@
 {
   "name": "@minko-fe/react-locale",
-  "type": "module",
   "version": "0.0.80",
   "description": "react-locale",
-  "author": "hemengke <https://github.com/hemengke1997>",
+  "type": "module",
+  "keywords": [
+    "react-locale"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hemengke1997/util.git"
   },
-  "keywords": [
-    "react-locale"
+  "author": "hemengke <https://github.com/hemengke1997>",
+  "files": [
+    "CHANGELOG.md",
+    "README.md",
+    "dist",
+    "i18n.d.ts",
+    "virtual.d.ts"
   ],
+  "main": "./dist/client/index.js",
+  "module": "./dist/client/index.js",
+  "types": "./dist/client/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/client/index.d.ts",
@@ -23,9 +33,6 @@
       "import": "./dist/node/plugin/index.js"
     }
   },
-  "main": "./dist/client/index.js",
-  "module": "./dist/client/index.js",
-  "types": "./dist/client/index.d.ts",
   "typesVersions": {
     "*": {
       "plugin": [
@@ -33,13 +40,6 @@
       ]
     }
   },
-  "files": [
-    "dist",
-    "CHANGELOG.md",
-    "README.md",
-    "virtual.d.ts",
-    "i18n.d.ts"
-  ],
   "scripts": {
     "dev": "rimraf dist && tsx scripts/dev",
     "build": "rimraf dist && tsx scripts/build",

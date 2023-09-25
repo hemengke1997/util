@@ -1,5 +1,4 @@
-import type { ReactElement } from 'react'
-import React from 'react'
+import React, { type ReactElement } from 'react'
 
 export function stopPropagation(event): void {
   event.stopPropagation()

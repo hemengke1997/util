@@ -1,4 +1,4 @@
-import type { MutableRefObject } from 'react'
+import { type MutableRefObject } from 'react'
 
 export type BasicTarget<T = HTMLElement> = (() => T | null) | T | null | MutableRefObject<T | null | undefined>
 

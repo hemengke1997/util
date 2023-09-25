@@ -1,11 +1,11 @@
-import path from 'path'
+import path from 'node:path'
 import { getTsconfig } from 'get-tsconfig'
 
 export function injectEnv(envConf: Record<string, any>): ImportMetaEnv {
   const ret: any = {}
 
   for (const envName of Object.keys(envConf)) {
-    let realName = envConf[envName].replace(/\\n/g, '\n')
+    let realName = envConf[envName].replaceAll('\\n', '\n')
     realName = realName === 'true' ? true : realName === 'false' ? false : realName
 
     ret[envName] = realName
@@ -37,10 +37,10 @@ export function pathsMapToAlias(root: string) {
       if (relativePaths.length > 1) {
         continue
       }
-      pattern = escapeStringRegexp(pattern).replace(/\/\*/g, '')
+      pattern = escapeStringRegexp(pattern).replaceAll('/*', '')
       resolved.push({
         find: pattern,
-        replacement: path.resolve(base, relativePaths[0].replace(/\/\*/g, '')),
+        replacement: path.resolve(base, relativePaths[0].replaceAll('/*', '')),
       })
     }
 
@@ -48,11 +48,11 @@ export function pathsMapToAlias(root: string) {
   }
   function getPrefixLength(pattern: string): number {
     const prefixLength = pattern.indexOf('*')
-    return pattern.substring(0, prefixLength).length
+    return pattern.slice(0, Math.max(0, prefixLength)).length
   }
 
   function escapeStringRegexp(string: string) {
-    return string.replace(/[|\\{}()[\]^$+?.]/g, '\\$&').replace(/-/g, '\\x2d')
+    return string.replaceAll(/[$()+.?[\\\]^{|}]/g, '\\$&').replaceAll('-', '\\x2d')
   }
 
   return resolvePathMappings(compilerOptions?.paths || {}, compilerOptions?.baseUrl || '.')

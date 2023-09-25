@@ -1,8 +1,8 @@
 /**
  * https://github.com/egoist/tsup/blob/HEAD/src/log.ts
  */
-import util from 'util'
-import { isMainThread, parentPort } from 'worker_threads'
+import util from 'node:util'
+import { isMainThread, parentPort } from 'node:worker_threads'
 import colors from 'picocolors'
 
 type LOG_TYPE = 'info' | 'success' | 'error' | 'warn'

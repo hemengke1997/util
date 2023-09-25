@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import Popup from '../popup'
 import { createNamespace } from '../utils/createNamespace'
-import type { DialogPrivateProps, DialogProps, DialogStatic } from './PropsType'
+import { type DialogPrivateProps, type DialogProps, type DialogStatic } from './PropsType'
 
 const [bem] = createNamespace('dialog')
 

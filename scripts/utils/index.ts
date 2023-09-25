@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import stripDirs from 'strip-dirs'
 import glob from 'tiny-glob'
 
@@ -8,7 +8,7 @@ export function slash(path: string) {
   if (isExtendedLengthPath) {
     return path
   }
-  return path.replace(/\\/g, '/')
+  return path.replaceAll('\\', '/')
 }
 
 export function debouncePromise<T extends unknown[]>(

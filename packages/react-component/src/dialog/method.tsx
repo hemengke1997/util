@@ -5,7 +5,7 @@ import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'
 import { Dialog as BaseDialog } from './Dialog'
 import { DialogContext } from './DialogContext'
-import type { ConfigUpdate, DialogMethodOptions, DialogProps, DialogStatic } from './PropsType'
+import { type ConfigUpdate, type DialogMethodOptions, type DialogProps, type DialogStatic } from './PropsType'
 
 const defaultOptions: DialogMethodOptions = {
   content: '',
@@ -34,7 +34,7 @@ DialogObj.show = (props: DialogMethodOptions) => {
   const userContainer = resolveContainer(props.teleport)
 
   const container = document.createElement('div')
-  userContainer.appendChild(container)
+  userContainer.append(container)
 
   let currentConfig: DialogProps = { ...commonOptions, ...props, visible: true }
 
@@ -83,7 +83,7 @@ DialogObj.show = (props: DialogMethodOptions) => {
   function unmount() {
     const unmountResult = ReactUnmount(container)
     if (unmountResult && container.parentNode) {
-      container.parentNode.removeChild(container)
+      container.remove()
     }
   }
 

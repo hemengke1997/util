@@ -1,12 +1,11 @@
-import type { CSSProperties } from 'react'
-import React, { useRef } from 'react'
+import React, { type CSSProperties, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { isDef } from '@minko-fe/lodash-pro'
 import { useEventListener } from '@minko-fe/react-hook'
 import { createNamespace } from '../utils/createNamespace'
 import { preventDefault, withStopPropagation } from '../utils/dom/event'
-import type { OverlayProps } from './PropsType'
+import { type OverlayProps } from './PropsType'
 
 const [bem] = createNamespace('overlay')
 

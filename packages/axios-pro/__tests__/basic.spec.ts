@@ -1,6 +1,5 @@
 import nock from 'nock'
-import type { CreateAxiosOptions, RequestOptions, Result } from '../src'
-import { AxiosPro, ContentTypeEnum } from '../src'
+import { AxiosPro, ContentTypeEnum, type CreateAxiosOptions, type RequestOptions, type Result } from '../src'
 
 const API_URL = 'http://api.example.com'
 

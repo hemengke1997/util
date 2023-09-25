@@ -1,7 +1,6 @@
 import { isBrowser } from '@minko-fe/lodash-pro'
 import { useEffect, useState } from 'react'
-import type { BasicTarget } from './dom/getTargetElement'
-import { getTargetElement } from './dom/getTargetElement'
+import { type BasicTarget, getTargetElement } from './dom/getTargetElement'
 
 type ScrollElement = Element | HTMLElement | Window | undefined
 

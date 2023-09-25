@@ -6,8 +6,8 @@ function useControlledState<T, R = T>(option: {
   defaultValue?: T | (() => T)
   value?: T
   onChange?: (value: T, prevValue: T) => void
-  beforeValue?: (value: T, prevValue: T) => T | void
-  postValue?: (value: T, prevValue: T) => T | void
+  beforeValue?: (value: T, prevValue: T) => T | undefined
+  postValue?: (value: T, prevValue: T) => T | undefined
 }): [R, (value: T | ((prevState: T) => T)) => void, R] {
   const { defaultValue, value, onChange, beforeValue, postValue } = option
 

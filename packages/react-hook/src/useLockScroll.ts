@@ -1,6 +1,5 @@
 import { isBrowser } from '@minko-fe/lodash-pro'
-import type { RefObject } from 'react'
-import { useEffect } from 'react'
+import { type RefObject, useEffect } from 'react'
 import { getScrollParent } from './useScrollParent'
 import { useTouch } from './useTouch'
 
@@ -15,7 +14,7 @@ if (isBrowser()) {
       },
     })
     window.addEventListener('test-passive', null as any, opts)
-  } catch (e) {}
+  } catch {}
 }
 
 let totalLockCount = 0
@@ -39,7 +38,7 @@ export function useLockScroll(rootRef: RefObject<HTMLElement>, shouldLock = fals
       status = '10'
     }
 
-    if (status !== '11' && touch.isVertical() && !(parseInt(status, 2) & parseInt(direction, 2))) {
+    if (status !== '11' && touch.isVertical() && !(Number.parseInt(status, 2) & Number.parseInt(direction, 2))) {
       if (event.cancelable) {
         event.preventDefault()
       }

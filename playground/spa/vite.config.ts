@@ -1,10 +1,9 @@
-import path from 'path'
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { overrideConfig, injectScripts } from '@minko-fe/vite-config'
+import { injectScripts, overrideConfig } from '@minko-fe/vite-config'
 import { i18nDetector } from '@minko-fe/react-locale/plugin'
 import manifest from './public-typescript/manifest.json'
-
 
 // https://vitejs.dev/config/
 export default defineConfig(async (env) => {
@@ -18,12 +17,14 @@ export default defineConfig(async (env) => {
           pathMatcher: '{locale}/{namespace}.{ext}',
           enabledParsers: ['json'],
         }),
-        injectScripts([{
-          attrs: {
-            src: manifest.flexible,
+        injectScripts([
+          {
+            attrs: {
+              src: manifest.flexible,
+            },
+            injectTo: 'head-prepend',
           },
-          injectTo: 'head-prepend',
-        }])
+        ]),
       ],
     },
     {

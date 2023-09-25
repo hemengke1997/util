@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom'
-import type { ReactElement } from 'react'
 import { isBrowser } from '@minko-fe/lodash-pro'
+import { type ReactElement } from 'react'
 import { resolveContainer } from './getContainer'
 
 export type GetContainer = HTMLElement | (() => HTMLElement) | null

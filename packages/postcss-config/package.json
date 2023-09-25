@@ -1,17 +1,25 @@
 {
   "name": "@minko-fe/postcss-config",
-  "type": "module",
   "version": "0.0.80",
   "description": "postcss-config",
-  "author": "hemengke <https://github.com/hemengke1997>",
+  "type": "module",
+  "keywords": [
+    "postcss-config"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hemengke1997/util.git"
   },
-  "keywords": [
-    "postcss-config"
+  "author": "hemengke <https://github.com/hemengke1997>",
+  "files": [
+    "CHANGELOG.md",
+    "README.md",
+    "dist"
   ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -24,9 +32,6 @@
       "import": "./dist/tailwindcss/plugin/index.js"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
       "tailwindcss/plugin": [
@@ -34,11 +39,6 @@
       ]
     }
   },
-  "files": [
-    "dist",
-    "CHANGELOG.md",
-    "README.md"
-  ],
   "scripts": {
     "dev": "rimraf dist && tsx scripts/dev",
     "build": "rimraf dist && tsx scripts/build",
@@ -67,17 +67,5 @@
     "@types/postcss-import": "^14.0.0",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "allowAny": [
-        "postcss-*",
-        "@csstools/*"
-      ],
-      "ignoreMissing": [
-        "postcss-*",
-        "@csstools/*"
-      ]
-    }
   }
 }

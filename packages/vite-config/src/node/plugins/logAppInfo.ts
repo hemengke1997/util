@@ -1,5 +1,5 @@
-import type { ConfigEnv, PluginOption } from 'vite'
 import { logTimeInfo } from 'picologger'
+import { type ConfigEnv, type PluginOption } from 'vite'
 
 export function logAppInfo(configEnv: ConfigEnv): PluginOption {
   const { mode } = configEnv

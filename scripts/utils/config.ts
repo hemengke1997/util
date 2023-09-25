@@ -1,4 +1,4 @@
-import type { Options } from 'tsup'
+import { type Options } from 'tsup'
 import { getEntry } from '.'
 
 export const defaultConfig: Options = {

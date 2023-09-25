@@ -5,7 +5,7 @@ import { setupI18n } from '@minko-fe/react-locale'
 import App from './App'
 import './index.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+const root = ReactDOM.createRoot(document.querySelector('#root') as HTMLElement)
 
 setupI18n({
   onLocaleChange: () => {

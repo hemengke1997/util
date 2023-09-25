@@ -1,18 +1,17 @@
 import React from 'react'
 import { cloneDeep } from '@minko-fe/lodash-pro'
-import type { RouteObject } from 'react-router-dom'
+import { type RouteObject } from 'react-router-dom'
 import { Nav } from './Navigator'
 import { Guard } from './guard'
-
-import type {
-  FunctionalImportType,
-  MetaType,
-  OnRouteBeforeType,
-  OnRouteMountType,
-  OnRouteUnMountType,
-  RouterPropsType,
-  RoutesItemType,
-  RoutesType,
+import {
+  type FunctionalImportType,
+  type MetaType,
+  type OnRouteBeforeType,
+  type OnRouteMountType,
+  type OnRouteUnMountType,
+  type RouterPropsType,
+  type RoutesItemType,
+  type RoutesType,
 } from './index'
 
 export class RouterUtil {

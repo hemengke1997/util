@@ -1,7 +1,12 @@
-import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
-import axios from 'axios'
 import { cloneDeep, deepMerge, isFunction, isString } from '@minko-fe/lodash-pro'
 import querystring from 'query-string'
+import axios, {
+  type AxiosError,
+  type AxiosInstance,
+  type AxiosRequestConfig,
+  type AxiosResponse,
+  type InternalAxiosRequestConfig,
+} from 'axios'
 import { AxiosCanceler } from './axiosCancel'
 import { joinTimestamp } from './utils'
 
@@ -364,6 +369,7 @@ export class AxiosPro {
             return
           }
           if (axios.isAxiosError(e)) {
+            // TODO
           }
           reject(e)
         })

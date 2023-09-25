@@ -35,7 +35,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { setupI18n } from '@minko-fe/react-locale'
 import App from './App'
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+const root = ReactDOM.createRoot(document.querySelector('#root') as HTMLElement)
 
 setupI18n({
   onLocaleChange: () => {

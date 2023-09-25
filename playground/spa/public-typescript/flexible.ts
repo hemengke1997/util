@@ -6,4 +6,3 @@ flexible({
     { isDevice: (w: number) => w >= 750, UIWidth: 1920, deviceWidthRange: [1080, 1920] },
   ],
 })
-

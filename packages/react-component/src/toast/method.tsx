@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'
 import { lockClick } from './lock-click'
-import type { ConfigUpdate, ToastInstance, ToastProps, ToastType } from './PropsType'
 import { Toast as BaseToast } from './Toast'
 import { ToastContext } from './ToastContext'
+import { type ConfigUpdate, type ToastInstance, type ToastProps, type ToastType } from './PropsType'
 
 const defaultOptions: ToastProps = {
   content: '',
@@ -60,7 +60,7 @@ toastObj.show = (props: ToastProps) => {
   const { teleport } = props
   const container = document.createElement('div')
   const bodyContainer = resolveContainer(teleport)
-  bodyContainer.appendChild(container)
+  bodyContainer.append(container)
 
   const TempToast = (toastProps: ToastProps) => {
     const timer = useRef(0)
@@ -145,7 +145,7 @@ toastObj.show = (props: ToastProps) => {
   function unmount() {
     const unmountResult = ReactUnmount(container)
     if (unmountResult && container.parentNode) {
-      container.parentNode.removeChild(container)
+      container.remove()
     }
   }
 
