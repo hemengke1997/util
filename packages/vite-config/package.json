@@ -74,5 +74,13 @@
     "@types/debug": "^4.1.8",
     "rollup": "^3.29.1",
     "vite": "^4.4.9"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "postcss-*",
+        "@csstools/*"
+      ]
+    }
   }
 }
