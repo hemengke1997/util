@@ -22,8 +22,7 @@ interface PluginOptions {
    */
   svgr?: boolean
   /**
-   * @default
-   * { compress: 'gzip', deleteOriginFile: false }
+   * @default false
    */
   compress?: CompressOptions | false
   /**
@@ -54,10 +53,7 @@ const esbuildTarget = ['es2015']
 
 const defaultOptions: PluginOptions = {
   svgr: true,
-  compress: {
-    compress: 'gzip',
-    deleteOriginFile: false,
-  },
+  compress: false,
   legacy: {
     renderLegacyChunks: true,
     polyfills: true,
