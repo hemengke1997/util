@@ -1,3 +1,12 @@
+## [0.0.82](https://github.com/hemengke1997/util/compare/v0.0.81...v0.0.82) (2023-09-26)
+
+
+### Bug Fixes
+
+* pnpm warning ([18a2760](https://github.com/hemengke1997/util/commit/18a2760288374c20e9ba3919cbc4900adb05aab3))
+
+
+
 ## [0.0.81](https://github.com/hemengke1997/util/compare/v0.0.80...v0.0.81) (2023-09-26)
 
 
