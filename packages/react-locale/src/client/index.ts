@@ -65,8 +65,8 @@ function setupI18n(options: SetupOptions) {
     // If language did't change, return
     if (currentLng === lang) return undefined as any
     currentLng = lang || currentLng
-    await loadResourceByLang(lang)
-    return _changeLanguage(lang, ...args)
+    await loadResourceByLang(currentLng)
+    return _changeLanguage(currentLng, ...args)
   }
 }
 
