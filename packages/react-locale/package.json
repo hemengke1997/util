@@ -31,6 +31,12 @@
       "types": "./dist/node/plugin/index.d.ts",
       "require": "./dist/node/plugin/index.cjs",
       "import": "./dist/node/plugin/index.js"
+    },
+    "./i18n": {
+      "types": "./i18n.d.ts"
+    },
+    "./virtual": {
+      "types": "./virtual.d.ts"
     }
   },
   "typesVersions": {
