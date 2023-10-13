@@ -8,7 +8,7 @@ import './index.css'
 const root = ReactDOM.createRoot(document.querySelector('#root') as HTMLElement)
 
 setupI18n({
-  onLocaleChange: () => {
+  onInited: () => {
     root.render(
       <React.StrictMode>
         <BrowserRouter>
@@ -17,5 +17,8 @@ setupI18n({
       </React.StrictMode>,
     )
   },
-  setQuery: undefined,
+  lookupTarget: 'lang',
+  query: {
+    url: 'lang',
+  },
 })

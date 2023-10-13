@@ -38,7 +38,7 @@ import App from './App'
 const root = ReactDOM.createRoot(document.querySelector('#root') as HTMLElement)
 
 setupI18n({
-  onLocaleChange: () => {
+  onInited: () => {
     root.render(
       <React.StrictMode>
         <BrowserRouter>

@@ -8,21 +8,12 @@ type SetupOptions = InitOptions & {
   fallbackLng?: string
   lookupTarget?: string
   debug?: boolean
-  onLocaleChange: I18nSetupOptions['onLocaleChange']
-  setQuery?: I18nSetupOptions['setQuery']
-  onInit?: I18nSetupOptions['onInit']
+  query?: I18nSetupOptions['query']
+  onInited?: I18nSetupOptions['onInited']
 }
 
 function setupI18n(options: SetupOptions) {
-  const {
-    fallbackLng = 'en',
-    lookupTarget = 'lang',
-    debug = isDev(),
-    onLocaleChange,
-    setQuery,
-    onInit,
-    ...rest
-  } = options || {}
+  const { fallbackLng = 'en', lookupTarget = 'lang', debug = isDev(), query, onInited, ...rest } = options || {}
 
   i18next
     .use(LanguageDetector)
@@ -51,21 +42,20 @@ function setupI18n(options: SetupOptions) {
       ...rest,
     })
 
-  const { loadResource, onLanguageChanged } = _setupI18n({
+  const { loadResourceByLang } = _setupI18n({
     language: i18next.language,
-    onInit(langs, currentLang) {
+    onInited(langs, currentLang) {
       if (!langs.includes(i18next.language)) {
         i18next.changeLanguage(fallbackLng)
       }
-      onInit?.(langs, currentLang)
+      onInited?.(langs, currentLang)
     },
-    addResource: (langs, currentLang) => {
+    onResourceLoaded: (langs, currentLang) => {
       Object.keys(langs).forEach((ns) => {
         i18next.addResourceBundle(currentLang, ns, langs[ns])
       })
     },
-    onLocaleChange,
-    setQuery,
+    query,
     fallbackLng,
   })
 
@@ -75,13 +65,9 @@ function setupI18n(options: SetupOptions) {
     // If language did't change, return
     if (currentLng === lang) return undefined as any
     currentLng = lang || currentLng
-    await loadResource(lang)
+    await loadResourceByLang(lang)
     return _changeLanguage(lang, ...args)
   }
-
-  i18next.on('languageChanged', (lang) => {
-    onLanguageChanged(lang)
-  })
 }
 
 export { setupI18n }
