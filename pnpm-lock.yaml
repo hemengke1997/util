@@ -287,8 +287,8 @@ importers:
         specifier: ^12.3.1
         version: 12.3.1(i18next@22.5.1)(react-dom@18.2.0)(react@18.2.0)
       vite-plugin-i18n-detector:
-        specifier: ^1.0.1
-        version: 1.0.1(vite@4.4.9)
+        specifier: ^1.0.2
+        version: 1.0.2(vite@4.4.9)
     devDependencies:
       react:
         specifier: ^18.2.0
@@ -10135,8 +10135,8 @@ packages:
       - supports-color
     dev: false
 
-  /vite-plugin-i18n-detector@1.0.1(vite@4.4.9):
-    resolution: {integrity: sha512-M1CxkzMvhDnTr9ZJBBOU37OrWP1Qvc+o7R6Ct2Cwv2kPtdO9yaqwj59TD+K0L914UwPtKcQgQPAPoqDo5Xy90Q==}
+  /vite-plugin-i18n-detector@1.0.2(vite@4.4.9):
+    resolution: {integrity: sha512-mAboU1yFoAgKyO7Ebw8P5ecBL1vlofifFvO/N09w1VBuGBJsRe7Ac+97AEidqWz38PwcRmcjqe6G/ispIcrQFw==}
     requiresBuild: true
     peerDependencies:
       vite: '>=4.0.0'
