@@ -1,3 +1,12 @@
+## [0.1.2](https://github.com/hemengke1997/util/compare/v0.1.1...v0.1.2) (2023-10-13)
+
+
+### Bug Fixes
+
+* types ([187c3a2](https://github.com/hemengke1997/util/commit/187c3a2eba0b746f41e4709e632cebf06b6f9ebb))
+
+
+
 ## [0.1.1](https://github.com/hemengke1997/util/compare/v0.1.0...v0.1.1) (2023-10-13)
 
 
