@@ -13,9 +13,8 @@ export default defineConfig(async (env) => {
       plugins: [
         react(),
         i18nDetector({
-          localesPaths: [path.join(__dirname, './src/locale')],
+          localesPaths: [path.join(__dirname, './src/locales')],
           pathMatcher: '{locale}/{namespace}.{ext}',
-          enabledParsers: ['json'],
         }),
         injectScripts([
           {
