@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/postcss-config",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "postcss-config",
   "type": "module",
   "keywords": [
