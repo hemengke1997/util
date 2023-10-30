@@ -101,12 +101,12 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
   }
 
   if (publicTypescript !== false) {
-    const { pt } = await import('./plugins/publicTypescript')
+    const { pt } = await import('./plugins/public-typescript')
     vitePlugins.push(pt(publicTypescript!))
   }
 
   if (logAppInfo) {
-    const { logAppInfo: logAppInfoPlugin } = await import('./plugins/logAppInfo')
+    const { logAppInfo: logAppInfoPlugin } = await import('./plugins/log-appinfo')
     vitePlugins.push(logAppInfoPlugin(configEnv))
   }
 

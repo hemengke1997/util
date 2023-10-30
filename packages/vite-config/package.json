@@ -65,13 +65,13 @@
     "get-tsconfig": "^4.7.0",
     "picologger": "^0.0.1",
     "rollup-plugin-visualizer": "^5.9.2",
-    "terser": "^5.19.4",
+    "terser": "^5.22.0",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-public-typescript": "^1.5.5",
+    "vite-plugin-public-typescript": "^2.0.1",
     "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.8",
+    "@types/debug": "^4.1.10",
     "rollup": "^3.29.1",
     "vite": "^4.4.9"
   },
