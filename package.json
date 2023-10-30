@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/util-monorepo",
-  "version": "0.1.4",
+  "version": "0.1.3",
   "private": true,
   "packageManager": "pnpm@8.7.5",
   "description": "util monorepo",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@minko-fe/eslint-config": "^2.0.0",
-    "@minko-fe/lodash-pro": "workspace:*",
+    "@minko-fe/lodash-pro": "latest",
     "@minko-fe/tsconfig": "^2.0.0",
     "@testing-library/react": "^14.0.0",
     "@types/fs-extra": "^11.0.1",
