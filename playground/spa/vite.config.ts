@@ -1,9 +1,7 @@
-import path from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { injectScripts, overrideConfig } from '@minko-fe/vite-config'
 import { i18nDetector } from '@minko-fe/react-locale/plugin'
-import manifest from './public-typescript/manifest.json'
 
 // https://vitejs.dev/config/
 export default defineConfig(async (env) => {
@@ -12,11 +10,8 @@ export default defineConfig(async (env) => {
     {
       plugins: [
         react(),
-        i18nDetector({
-          localesPaths: [path.join(__dirname, './src/locales')],
-          pathMatcher: '{locale}/{namespace}.{ext}',
-        }),
-        injectScripts([
+        i18nDetector(),
+        injectScripts((manifest) => [
           {
             attrs: {
               src: manifest.flexible,
@@ -28,10 +23,6 @@ export default defineConfig(async (env) => {
     },
     {
       compress: false,
-      publicTypescript: {
-        sideEffects: true,
-        destination: 'memory',
-      },
     },
   )
 })

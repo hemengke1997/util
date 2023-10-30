@@ -15,12 +15,11 @@ flexible()
 ```ts
 // vite.config.ts
 import { publicTypescript } from 'vite-plugin-public-typescript'
-import manifest from './publicTypescript/manifest.json'
 
 // use manifest.flexible as usual
 
 export default defineConfig(()=> ({
-  plugins: [publicTypescript({ sideEffects: true })],
+  plugins: [publicTypescript()],
 }))
 ```
 
