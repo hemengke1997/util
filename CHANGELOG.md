@@ -1,3 +1,12 @@
+## [0.1.7](https://github.com/hemengke1997/util/compare/v0.1.6...v0.1.7) (2023-10-30)
+
+
+### Bug Fixes
+
+* **vite-config:** splite manifest to standalone ([6157b23](https://github.com/hemengke1997/util/commit/6157b23954bc6cd7c1fb2d516bab2d3f11fdb986))
+
+
+
 ## [0.1.6](https://github.com/hemengke1997/util/compare/v0.1.5...v0.1.6) (2023-10-30)
 
 
