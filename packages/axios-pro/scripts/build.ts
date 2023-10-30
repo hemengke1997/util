@@ -1,3 +1,3 @@
-import { build } from '../../../scripts/build'
+import { build } from '~scripts/build'
 
 build()

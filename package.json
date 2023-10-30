@@ -15,7 +15,7 @@
   },
   "author": "hemengke <https://github.com/hemengke1997>",
   "scripts": {
-    "dev": "pnpm -r --parallel --filter \"./packages/*\" dev",
+    "dev": "pnpm -r --filter \"./packages/*\" dev",
     "build": "pnpm -r --filter \"./packages/*\" build",
     "create": "tsx scripts/createLib",
     "test": "pnpm -r --filter \"./packages/*\" run test --run",

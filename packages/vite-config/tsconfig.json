@@ -1,7 +1,6 @@
 {
-  "extends": "../../tsconfig.base",
+  "extends": "../../tsconfig",
   "compilerOptions": {
-    "baseUrl": ".",
     "types": ["vite/client"]
   }
 }

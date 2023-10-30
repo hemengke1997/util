@@ -1,3 +1,3 @@
-import { dev } from '../../../scripts/dev'
+import { dev } from '~scripts/dev'
 
 dev()

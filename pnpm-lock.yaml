@@ -13,7 +13,7 @@ importers:
         version: 2.0.0(eslint@8.49.0)
       '@minko-fe/lodash-pro':
         specifier: latest
-        version: 0.1.5
+        version: 0.1.6
       '@minko-fe/tsconfig':
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.2.2)
@@ -3009,8 +3009,8 @@ packages:
       - supports-color
     dev: true
 
-  /@minko-fe/lodash-pro@0.1.5:
-    resolution: {integrity: sha512-KECkuEFpqDXsazXTW4JYt/V0IVCf+/C+P51DfbQYQvD8qKlZlExbWBfScT4JwCEpmUvHNeORfBjyB9ni7cGgIA==}
+  /@minko-fe/lodash-pro@0.1.6:
+    resolution: {integrity: sha512-crlEP3iGSgulqex0DVPYmVWywVtzaOA5Z9RdnZe9bBF4u7rGHSf+JGmlXJCuqBwFrITA2hk1MpP86AqHuD0ryw==}
     dependencies:
       '@types/lodash-es': 4.17.9
       deepmerge: 4.3.1

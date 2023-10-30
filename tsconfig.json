@@ -1,6 +1,11 @@
 {
   "extends": "./tsconfig.base",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "~scripts/dev": ["./scripts/dev.ts"],
+      "~scripts/build": ["./scripts/build.ts"],
+      "~scripts/utils": ["./scripts/utils/index.ts"]
+    }
   }
 }

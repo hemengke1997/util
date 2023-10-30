@@ -14,5 +14,5 @@ export const defaultConfig: Options = {
   config: false,
   platform: 'node',
   format: ['esm', 'cjs'],
-  external: ['react', 'react-dom'],
+  external: ['react', 'react-dom', /^virtual:.*/],
 }

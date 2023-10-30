@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import { useTranslation } from '@minko-fe/react-locale'
+import { manifest } from '@minko-fe/vite-config/client/manifest'
 
 function App() {
   const { t, i18n } = useTranslation()
@@ -30,6 +31,8 @@ function App() {
           德文
         </button>
       </div>
+
+      <div>flexible: {manifest.flexible}</div>
     </Suspense>
   )
 }
