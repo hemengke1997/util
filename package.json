@@ -28,9 +28,9 @@
     "bump": "bumpp package.json packages/*/package.json package.json -c --all -p -t -x \"pnpm run changelog\""
   },
   "devDependencies": {
-    "@minko-fe/eslint-config": "^2.0.0",
+    "@minko-fe/eslint-config": "^2.0.5",
     "@minko-fe/lodash-pro": "latest",
-    "@minko-fe/tsconfig": "^2.0.0",
+    "@minko-fe/tsconfig": "^2.0.5",
     "@testing-library/react": "^14.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.17.15",
@@ -42,7 +42,7 @@
     "chokidar": "^3.5.3",
     "conventional-changelog-cli": "^2.2.2",
     "esbuild": "^0.17.19",
-    "eslint": "^8.49.0",
+    "eslint": "^8.52.0",
     "fs-extra": "^11.1.1",
     "get-tsconfig": "^4.7.0",
     "joycon": "^3.1.1",

@@ -41,20 +41,22 @@ export type ResponseErrorType = AxiosError & {
   config: CreateAxiosOptions
 }
 
+type MayPromise<T> = T | Promise<T>
+
 export abstract class AxiosTransform<T = any> {
-  beforeRequestHook?: (config: AxiosRequestConfig, options: RequestOptions) => AxiosRequestConfig
+  beforeRequestHook?: (config: AxiosRequestConfig, options: RequestOptions) => MayPromise<AxiosRequestConfig>
 
-  transformResponseHook?: (res: AxiosResponse<Result>) => Result<T>
+  transformResponseHook?: (res: AxiosResponse<Result>) => MayPromise<Result<T>>
 
-  requestCatchHook?: (e: ResponseErrorType, options: RequestOptions) => Result<T>
+  requestCatchHook?: (e: ResponseErrorType, options: RequestOptions) => MayPromise<Result<T>>
 
-  requestInterceptors?: (config: AxiosRequestConfig, options: CreateAxiosOptions) => AxiosRequestConfig
+  requestInterceptors?: (config: AxiosRequestConfig, options: CreateAxiosOptions) => MayPromise<AxiosRequestConfig>
 
-  responseInterceptors?: (res: AxiosResponse<any>) => AxiosResponse<any>
+  responseInterceptors?: (res: AxiosResponse<any>) => MayPromise<AxiosResponse<any>>
 
-  requestInterceptorsCatch?: (error: Error) => Promise<any> | undefined
+  requestInterceptorsCatch?: (error: Error) => MayPromise<Promise<any> | undefined>
 
-  responseInterceptorsCatch?: (error: ResponseErrorType) => Promise<any> | undefined
+  responseInterceptorsCatch?: (error: ResponseErrorType) => MayPromise<Promise<any> | undefined>
 }
 export enum ContentTypeEnum {
   /**
@@ -237,12 +239,12 @@ export class AxiosPro {
 
     const { requestInterceptors, requestInterceptorsCatch, responseInterceptors, responseInterceptorsCatch } = transform
 
-    this.axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
+    this.axiosInstance.interceptors.request.use(async (config: AxiosRequestConfig) => {
       const ignoreRepeatRequest = this.options.requestOptions?.ignoreRepeatRequest
 
       ignoreRepeatRequest && axiosCanceler.addPending(config)
       if (requestInterceptors && isFunction(requestInterceptors)) {
-        config = requestInterceptors(config, this.options)
+        config =  await requestInterceptors(config, this.options)
       }
       return config as InternalAxiosRequestConfig
     }, undefined)
@@ -251,10 +253,10 @@ export class AxiosPro {
       isFunction(requestInterceptorsCatch) &&
       this.axiosInstance.interceptors.request.use(undefined, requestInterceptorsCatch)
 
-    this.axiosInstance.interceptors.response.use((res: AxiosResponse<any>) => {
+    this.axiosInstance.interceptors.response.use(async (res: AxiosResponse<any>) => {
       res && axiosCanceler.removePending(res.config)
       if (responseInterceptors && isFunction(responseInterceptors)) {
-        res = responseInterceptors(res)
+        res = await responseInterceptors(res)
       }
       return res
     }, undefined)
@@ -327,7 +329,7 @@ export class AxiosPro {
     return this.request({ ...config, method: 'PATCH' }, options)
   }
 
-  request<T = Result>(config: AxiosRequestConfig, options?: RequestOptions) {
+  async request<T = Result>(config: AxiosRequestConfig, options?: RequestOptions) {
     let conf: CreateAxiosOptions = cloneDeep(config)
     const transform = this.getTransform()
 
@@ -337,7 +339,7 @@ export class AxiosPro {
 
     const { beforeRequestHook, requestCatchHook, transformResponseHook } = transform || {}
     if (beforeRequestHook && isFunction(beforeRequestHook)) {
-      conf = beforeRequestHook(conf, opt)
+      conf = await beforeRequestHook(conf, opt)
     }
 
     conf.requestOptions = opt

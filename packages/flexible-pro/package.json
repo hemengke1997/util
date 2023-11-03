@@ -40,10 +40,6 @@
   },
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
-    "modern-flexible": "^0.0.4",
-    "throttle-debounce": "^5.0.0"
-  },
-  "devDependencies": {
-    "@types/throttle-debounce": "^5.0.0"
+    "modern-flexible": "^0.0.7"
   }
 }

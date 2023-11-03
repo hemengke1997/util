@@ -74,7 +74,7 @@
     "rollup-plugin-visualizer": "^5.9.2",
     "terser": "^5.22.0",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-public-typescript": "^2.0.2",
+    "vite-plugin-public-typescript": "^2.2.0",
     "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
