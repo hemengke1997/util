@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 
-import { describe, expect, test } from 'vitest'
 import { act, renderHook } from '@testing-library/react'
-import { useStrictInput } from '../src/useStrictInput'
+import { describe, expect, test } from 'vitest'
 import { useControlledState } from '../src/useControlledState'
+import { useStrictInput } from '../src/useStrictInput'
 
 describe('condition', () => {
   test('test', () => {
