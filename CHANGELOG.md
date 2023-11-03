@@ -1,3 +1,12 @@
+## [0.1.8](https://github.com/hemengke1997/util/compare/v0.1.7...v0.1.8) (2023-11-03)
+
+
+### Features
+
+* **vite-config:** public-typescript support babel ([79cbac9](https://github.com/hemengke1997/util/commit/79cbac9303293d7e6ea229302ff8500aedf5178c))
+
+
+
 ## [0.1.7](https://github.com/hemengke1997/util/compare/v0.1.6...v0.1.7) (2023-10-30)
 
 
