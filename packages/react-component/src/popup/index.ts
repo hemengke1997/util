@@ -1,7 +1,7 @@
-import './style/index.css'
 import { Popup } from './Popup'
+import './style/index.css'
 
 export default Popup
 export { Popup }
-export type { PopupProps, PopupPosition, PopupCloseIconPosition, SharedPopupProps } from './PropsType'
 export { PopupContext } from './PopupContext'
+export type { PopupCloseIconPosition, PopupPosition, PopupProps, SharedPopupProps } from './PropsType'

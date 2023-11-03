@@ -3,10 +3,10 @@ import classNames from 'classnames'
 import React, { type FC, useEffect, useRef } from 'react'
 import { CheckCircleFilled, CloseCircleFilled, ExclamationCircleFilled } from '../icons'
 import Popup from '../popup'
-import { createNamespace } from '../utils/createNamespace'
 import { type PopupInstanceType } from '../popup/PropsType'
-import { lockClick } from './lock-click'
+import { createNamespace } from '../utils/createNamespace'
 import { type ToastPrivateProps, type ToastProps, type ToastType } from './PropsType'
+import { lockClick } from './lock-click'
 
 const [bem] = createNamespace('toast')
 

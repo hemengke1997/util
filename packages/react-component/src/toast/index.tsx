@@ -1,8 +1,8 @@
-import './style/index.css'
 import { toast } from './method'
+import './style/index.css'
 
 export default toast
 export { toast }
-export type { ToastType, ToastOptions } from './PropsType'
+export type { ToastOptions, ToastType } from './PropsType'
 export { ToastContext } from './ToastContext'
 export type { ToastContextProps } from './ToastContext'

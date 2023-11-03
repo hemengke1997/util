@@ -1,6 +1,4 @@
 import { KeyCode, isBrowser, isDef } from '@minko-fe/lodash-pro'
-import { type Ref, cloneElement, forwardRef, useImperativeHandle, useRef, useState } from 'react'
-import { CSSTransition } from 'react-transition-group'
 import {
   useEventListener,
   useIsomorphicLayoutEffect,
@@ -9,12 +7,14 @@ import {
   useUpdateEffect,
 } from '@minko-fe/react-hook'
 import classNames from 'classnames'
+import { type Ref, cloneElement, forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import { CloseOutlined } from '../icons'
-import { renderToContainer } from '../utils/dom/renderToContainer'
-import { withStopPropagation } from '../utils/dom/event'
-import { createNamespace } from '../utils/createNamespace'
-import { callInterceptor } from '../utils/interceptor'
 import Overlay from '../overlay'
+import { createNamespace } from '../utils/createNamespace'
+import { withStopPropagation } from '../utils/dom/event'
+import { renderToContainer } from '../utils/dom/renderToContainer'
+import { callInterceptor } from '../utils/interceptor'
 import { PopupContext } from './PopupContext'
 import { type PopupInstanceType, type PopupProps } from './PropsType'
 

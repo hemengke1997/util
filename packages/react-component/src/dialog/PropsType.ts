@@ -1,6 +1,6 @@
+import type React from 'react'
 import { type SharedPopupProps } from '../popup/PropsType'
 import { type BaseTypeProps } from '../utils/interface'
-import type React from 'react'
 
 export interface DialogProps extends BaseTypeProps, SharedPopupProps {
   visible?: boolean

@@ -1,5 +1,5 @@
-import { type Format, type Options } from 'tsup'
 import { type Plugin } from 'esbuild'
+import { type Format, type Options } from 'tsup'
 
 function escapeRegExp(str: string) {
   return str.replaceAll(/[$()*+.?[\\\]^{|}]/g, '\\$&')

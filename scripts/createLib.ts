@@ -1,6 +1,6 @@
+import fs from 'fs-extra'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import fs from 'fs-extra'
 import picocolors from 'picocolors'
 import prompts from 'prompts'
 import validate from 'validate-npm-package-name'

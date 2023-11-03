@@ -4,10 +4,10 @@
 
 ### vite.config.ts
 ```ts
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { overrideConfig } from '@minko-fe/vite-config'
 import { i18nDetector } from '@minko-fe/react-locale/plugin'
+import { overrideConfig } from '@minko-fe/vite-config'
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig((env) => {
@@ -29,10 +29,10 @@ export default defineConfig((env) => {
 ### main.tsx
 
 ```tsx
+import { setupI18n } from '@minko-fe/react-locale'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { setupI18n } from '@minko-fe/react-locale'
 import App from './App'
 
 const root = ReactDOM.createRoot(document.querySelector('#root') as HTMLElement)

@@ -1,5 +1,5 @@
-import axios, { type AxiosRequestConfig, type Canceler } from 'axios'
 import { isFunction } from '@minko-fe/lodash-pro'
+import axios, { type AxiosRequestConfig, type Canceler } from 'axios'
 
 let pendingMap = new Map<string, Canceler>()
 

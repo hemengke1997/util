@@ -1,8 +1,8 @@
-import i18next, { type InitOptions } from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import LanguageDetector from 'i18next-browser-languagedetector'
 import { isDev } from '@minko-fe/vite-config/client'
-import { type I18nSetupOptions, setupI18n as _setupI18n } from 'vite-plugin-i18n-detector/client'
+import i18next, { type InitOptions } from 'i18next'
+import LanguageDetector from 'i18next-browser-languagedetector'
+import { initReactI18next } from 'react-i18next'
+import { setupI18n as _setupI18n, type I18nSetupOptions } from 'vite-plugin-i18n-detector/client'
 
 type SetupOptions = InitOptions & {
   fallbackLng?: string

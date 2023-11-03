@@ -52,18 +52,18 @@ interface RouterType {
 }
 
 export type {
-  MetaType,
   FunctionalImportType,
-  ReactElementType,
-  RoutesItemType,
-  RoutesType,
-  OnRouteMountType,
-  OnRouteUnMountType,
+  Merge,
+  MetaType,
   OnRouteBeforeResType,
   OnRouteBeforeType,
+  OnRouteMountType,
+  OnRouteUnMountType,
+  ReactElementType,
   RouterPropsType,
   RouterType,
-  Merge,
+  RoutesItemType,
+  RoutesType,
 }
 
 export { RouterUtil }

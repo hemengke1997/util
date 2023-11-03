@@ -1,7 +1,7 @@
-import path from 'node:path'
 import fs from 'fs-extra'
 import JoyCon from 'joycon'
 import JSONC from 'jsonc-simple-parser'
+import path from 'node:path'
 
 const joycon = new JoyCon()
 

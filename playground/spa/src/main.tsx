@@ -1,7 +1,7 @@
+import { setupI18n } from '@minko-fe/react-locale'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { setupI18n } from '@minko-fe/react-locale'
 import App from './App'
 import './index.css'
 

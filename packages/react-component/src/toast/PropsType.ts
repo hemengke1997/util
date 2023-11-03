@@ -1,6 +1,6 @@
-import { type BaseTypeProps } from '../utils/interface'
-import { type PopupPosition } from '../popup'
 import type React from 'react'
+import { type PopupPosition } from '../popup'
+import { type BaseTypeProps } from '../utils/interface'
 
 export type ToastType = 'success' | 'error' | 'info' | 'warning'
 

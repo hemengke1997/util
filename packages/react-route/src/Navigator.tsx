@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom'
 import { useEffectOnce } from '@minko-fe/react-hook'
+import { useNavigate } from 'react-router-dom'
 
 const Nav: React.FC<{
   to: string

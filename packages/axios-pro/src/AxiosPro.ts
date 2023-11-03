@@ -1,5 +1,4 @@
 import { cloneDeep, deepMerge, isFunction, isString } from '@minko-fe/lodash-pro'
-import querystring from 'query-string'
 import axios, {
   type AxiosError,
   type AxiosInstance,
@@ -7,6 +6,7 @@ import axios, {
   type AxiosResponse,
   type InternalAxiosRequestConfig,
 } from 'axios'
+import querystring from 'query-string'
 import { AxiosCanceler } from './axiosCancel'
 import { joinTimestamp } from './utils'
 
@@ -244,7 +244,7 @@ export class AxiosPro {
 
       ignoreRepeatRequest && axiosCanceler.addPending(config)
       if (requestInterceptors && isFunction(requestInterceptors)) {
-        config =  await requestInterceptors(config, this.options)
+        config = await requestInterceptors(config, this.options)
       }
       return config as InternalAxiosRequestConfig
     }, undefined)

@@ -1,6 +1,6 @@
 import path from 'node:path'
-import { normalizePath } from 'vite'
 import { type RollupOptions } from 'rollup'
+import { normalizePath } from 'vite'
 
 export function setupRollupOptions(root: string, ssrBuild: boolean | undefined): RollupOptions {
   return {

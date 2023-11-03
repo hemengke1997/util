@@ -1,4 +1,4 @@
-import tsupConfig from './tsup.config'
 import { build } from '~scripts/build'
+import tsupConfig from './tsup.config'
 
 build({ ...tsupConfig })

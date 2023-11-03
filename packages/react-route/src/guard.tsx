@@ -1,5 +1,5 @@
-import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useEffectOnce } from '@minko-fe/react-hook'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import {
   type MetaType,
   type OnRouteBeforeResType,

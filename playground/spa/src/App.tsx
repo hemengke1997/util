@@ -1,6 +1,6 @@
-import { Suspense } from 'react'
 import { useTranslation } from '@minko-fe/react-locale'
 import { manifest } from '@minko-fe/vite-config/client/manifest'
+import { Suspense } from 'react'
 
 function App() {
   const { t, i18n } = useTranslation()

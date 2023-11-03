@@ -1,6 +1,6 @@
+import { type ReactElement } from 'react'
 import * as ReactDOM from 'react-dom'
 import { type Root } from 'react-dom/client'
-import { type ReactElement } from 'react'
 import { reactDomVersion } from './version'
 
 // 移植自rc-util: https://github.com/react-component/util/blob/master/src/React/render.ts

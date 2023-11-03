@@ -1,11 +1,11 @@
-import readline from 'node:readline'
-import path from 'node:path'
 import { type WatchOptions, watch } from 'chokidar'
+import path from 'node:path'
+import readline from 'node:readline'
 import { type Options } from 'tsup'
 import { build } from './build'
-import { LoggerFactory } from './utils/log'
 import { debouncePromise, slash } from './utils'
 import { getAllDepsHash } from './utils/load'
+import { LoggerFactory } from './utils/log'
 
 function resolveChokidarOptions(options: WatchOptions | undefined): WatchOptions {
   const { ignored = [], ...otherOptions } = options ?? {}

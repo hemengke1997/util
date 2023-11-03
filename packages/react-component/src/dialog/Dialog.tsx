@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
 import classNames from 'classnames'
+import React, { useEffect, useState } from 'react'
 import Popup from '../popup'
 import { createNamespace } from '../utils/createNamespace'
 import { type DialogPrivateProps, type DialogProps, type DialogStatic } from './PropsType'

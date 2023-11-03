@@ -3,8 +3,8 @@
 ## Usage
 
 ```tsx
-import { BrowserRouter } from 'react-router-dom'
 import { CreateRoutes, type RoutesItemType } from '@minko-fe/react-route'
+import { BrowserRouter } from 'react-router-dom'
 
 const routes: RoutesItemType[] = [
   {

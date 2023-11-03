@@ -1,5 +1,5 @@
-import { type Options } from 'tsup'
 import { getEntry } from '~scripts/utils'
+import { type Options } from 'tsup'
 
 export default {
   entry: await getEntry('src/**/index.ts'),

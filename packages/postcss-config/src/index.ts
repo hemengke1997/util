@@ -1,9 +1,9 @@
-import { createRequire } from 'node:module'
 import { deepMerge, isObject } from '@minko-fe/lodash-pro'
 import { type PxtoremOptions } from '@minko-fe/postcss-pxtorem'
 import { type PxtoviewportOptions } from '@minko-fe/postcss-pxtoviewport'
-import { type pluginOptions } from 'postcss-preset-env'
+import { createRequire } from 'node:module'
 import { type AcceptedPlugin } from 'postcss'
+import { type pluginOptions } from 'postcss-preset-env'
 import { type Config } from 'tailwindcss'
 
 const _require = createRequire(import.meta.url)

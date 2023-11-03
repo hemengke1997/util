@@ -9,10 +9,10 @@ import {
   mergeConfig as viteMergeConfig,
 } from 'vite'
 import { type VPPTPluginOptions } from 'vite-plugin-public-typescript'
-import { injectEnv, pathsMapToAlias } from './utils'
-import { type LegacyOptions } from './plugins/legacy'
 import { type CompressOptions } from './plugins/compress'
+import { type LegacyOptions } from './plugins/legacy'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
+import { injectEnv, pathsMapToAlias } from './utils'
 
 const debug = createDebug('vite-config')
 
@@ -159,5 +159,5 @@ const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig, opti
 }
 
 export * from './utils/rollupOptions'
-export { getDefaultConfig, overrideConfig, injectEnv }
+export { getDefaultConfig, injectEnv, overrideConfig }
 export * from 'vite-plugin-public-typescript'

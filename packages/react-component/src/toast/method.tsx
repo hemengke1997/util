@@ -3,10 +3,10 @@ import { useLatest } from '@minko-fe/react-hook'
 import { useEffect, useRef, useState } from 'react'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'
-import { lockClick } from './lock-click'
+import { type ConfigUpdate, type ToastInstance, type ToastProps, type ToastType } from './PropsType'
 import { Toast as BaseToast } from './Toast'
 import { ToastContext } from './ToastContext'
-import { type ConfigUpdate, type ToastInstance, type ToastProps, type ToastType } from './PropsType'
+import { lockClick } from './lock-click'
 
 const defaultOptions: ToastProps = {
   content: '',

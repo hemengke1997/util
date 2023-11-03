@@ -1,5 +1,5 @@
-import path from 'node:path'
 import { getTsconfig } from 'get-tsconfig'
+import path from 'node:path'
 
 export function injectEnv(envConf: Record<string, any>): ImportMetaEnv {
   const ret: any = {}
