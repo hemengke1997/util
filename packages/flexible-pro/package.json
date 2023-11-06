@@ -40,6 +40,6 @@
   },
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
-    "modern-flexible": "^0.0.7"
+    "modern-flexible": "latest"
   }
 }
