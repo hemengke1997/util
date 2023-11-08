@@ -1,4 +1,4 @@
-import { cloneDeep, deepMerge, isFunction, isString } from '@minko-fe/lodash-pro'
+import { cloneDeep, deepMerge, isFunction, isString, omit } from '@minko-fe/lodash-pro'
 import axios, {
   type AxiosError,
   type AxiosInstance,
@@ -9,14 +9,6 @@ import axios, {
 import querystring from 'query-string'
 import { AxiosCanceler } from './axiosCancel'
 import { joinTimestamp } from './utils'
-
-export interface RequestOptions {
-  joinUrlPrefix?: boolean
-  apiUrl?: string
-  urlPrefix?: string
-  joinTime?: string
-  ignoreRepeatRequest?: boolean
-}
 
 export interface Result<T = any> {
   success: boolean
@@ -32,14 +24,22 @@ export interface UploadFileParams {
   [key: string]: any
 }
 
-export type CreateAxiosOptions = {
+export type RequestOptions = {
+  joinUrlPrefix?: boolean
+  apiUrl?: string
+  urlPrefix?: string
+  joinTime?: string
+  ignoreRepeatRequest?: boolean
+} & {
   [key in Lowercase<REQUEST_METHOD>]?: {
     headers?: AxiosRequestConfig['headers']
   }
-} & AxiosRequestConfig & {
-    transform?: AxiosTransform
-    requestOptions?: RequestOptions
-  }
+}
+
+export type CreateAxiosOptions = AxiosRequestConfig & {
+  transform?: AxiosTransform
+  requestOptions?: RequestOptions
+}
 
 export type ResponseErrorType = AxiosError & {
   config: CreateAxiosOptions
@@ -48,7 +48,7 @@ export type ResponseErrorType = AxiosError & {
 type MayPromise<T> = T | Promise<T>
 
 export abstract class AxiosTransform<T = any> {
-  beforeRequestHook?: (config: CreateAxiosOptions, options: RequestOptions) => MayPromise<AxiosRequestConfig>
+  beforeRequestHook?: (config: AxiosRequestConfig, options: RequestOptions) => MayPromise<AxiosRequestConfig>
 
   transformResponseHook?: (res: AxiosResponse<Result>) => MayPromise<Result<T>>
 
@@ -132,7 +132,7 @@ export const DEFAULT_TRANSFORM: AxiosTransform = {
     if (config.method) {
       config.headers = {
         ...config.headers,
-        ...config[config.method?.toLowerCase()]?.headers,
+        ...options[config.method?.toLowerCase()]?.headers,
       }
     }
 
@@ -145,6 +145,8 @@ export const DEFAULT_TRANSFORM: AxiosTransform = {
       }
     } else {
       if (config.method?.toUpperCase() === REQUEST_METHOD.POST) {
+        // I forgot why FORM_URLENCODED by default
+        // But I have to be compatible with it
         if (!config.headers?.['Content-Type']) {
           config.headers = {
             ...config.headers,
@@ -192,7 +194,7 @@ export const DEFAULT_TRANSFORM: AxiosTransform = {
   },
 }
 
-export const defaultOptions: CreateAxiosOptions = {
+export const DEFAULT_OPTIONS: CreateAxiosOptions = {
   timeout: 30 * 1000,
   headers: {
     'Content-Type': CONTENT_TYPE.JSON,
@@ -216,7 +218,9 @@ export class AxiosPro {
   readonly options: CreateAxiosOptions
 
   constructor(options: CreateAxiosOptions) {
-    this.options = deepMerge(defaultOptions, options)
+    this.options = deepMerge(DEFAULT_OPTIONS, options)
+
+    omit(options, ['transform', 'requestOptions'])
     this.axiosInstance = axios.create(options)
 
     this.setupInterceptors()
