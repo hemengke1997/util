@@ -40,8 +40,7 @@
   },
   "peerDependencies": {
     "react": ">=17.0.0",
-    "react-dom": ">=17.0.0",
-    "react-router-dom": ">=6.0.0"
+    "react-dom": ">=17.0.0"
   },
   "peerDependenciesMeta": {
     "react-router-dom": {

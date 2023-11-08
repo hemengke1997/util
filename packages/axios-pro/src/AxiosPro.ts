@@ -32,10 +32,14 @@ export interface UploadFileParams {
   [key: string]: any
 }
 
-export interface CreateAxiosOptions extends AxiosRequestConfig {
-  transform?: AxiosTransform
-  requestOptions?: RequestOptions
-}
+export type CreateAxiosOptions = {
+  [key in Lowercase<REQUEST_METHOD>]?: {
+    headers?: AxiosRequestConfig['headers']
+  }
+} & AxiosRequestConfig & {
+    transform?: AxiosTransform
+    requestOptions?: RequestOptions
+  }
 
 export type ResponseErrorType = AxiosError & {
   config: CreateAxiosOptions
@@ -44,7 +48,7 @@ export type ResponseErrorType = AxiosError & {
 type MayPromise<T> = T | Promise<T>
 
 export abstract class AxiosTransform<T = any> {
-  beforeRequestHook?: (config: AxiosRequestConfig, options: RequestOptions) => MayPromise<AxiosRequestConfig>
+  beforeRequestHook?: (config: CreateAxiosOptions, options: RequestOptions) => MayPromise<AxiosRequestConfig>
 
   transformResponseHook?: (res: AxiosResponse<Result>) => MayPromise<Result<T>>
 
@@ -58,7 +62,7 @@ export abstract class AxiosTransform<T = any> {
 
   responseInterceptorsCatch?: (error: ResponseErrorType) => MayPromise<Promise<any> | undefined>
 }
-export enum ContentTypeEnum {
+export enum CONTENT_TYPE {
   /**
    * json
    */
@@ -70,10 +74,10 @@ export enum ContentTypeEnum {
   /**
    * 文件上传
    */
-  FORM_DATA = 'multipart/form-data;charset=UTF-8', // 文件
+  FORM_DATA = 'multipart/form-data;charset=UTF-8',
 }
 
-export enum RequestEnum {
+export enum REQUEST_METHOD {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
@@ -81,7 +85,7 @@ export enum RequestEnum {
   PATCH = 'PATCH',
 }
 
-export const defaultTransform: AxiosTransform = {
+export const DEFAULT_TRANSFORM: AxiosTransform = {
   transformResponseHook: (res: AxiosResponse<Result>) => {
     const { data } = res || {}
 
@@ -124,7 +128,15 @@ export const defaultTransform: AxiosTransform = {
     const params = config.params || {}
 
     const data = config.data || false
-    if (config.method?.toUpperCase() === RequestEnum.GET) {
+
+    if (config.method) {
+      config.headers = {
+        ...config.headers,
+        ...config[config.method?.toLowerCase()]?.headers,
+      }
+    }
+
+    if (config.method?.toUpperCase() === REQUEST_METHOD.GET) {
       if (!isString(params)) {
         config.params = Object.assign(params || {}, joinTimestamp(joinTime, false))
       } else {
@@ -132,10 +144,12 @@ export const defaultTransform: AxiosTransform = {
         config.params = undefined
       }
     } else {
-      if (config.method?.toUpperCase() === RequestEnum.POST && !config.headers?.['Content-Type']) {
-        config.headers = {
-          ...config.headers,
-          'Content-Type': ContentTypeEnum.FORM_URLENCODED,
+      if (config.method?.toUpperCase() === REQUEST_METHOD.POST) {
+        if (!config.headers?.['Content-Type']) {
+          config.headers = {
+            ...config.headers,
+            'Content-Type': CONTENT_TYPE.FORM_URLENCODED,
+          }
         }
       }
       if (!isString(params)) {
@@ -180,8 +194,10 @@ export const defaultTransform: AxiosTransform = {
 
 export const defaultOptions: CreateAxiosOptions = {
   timeout: 30 * 1000,
-  headers: { 'Content-Type': ContentTypeEnum.JSON },
-  transform: defaultTransform,
+  headers: {
+    'Content-Type': CONTENT_TYPE.JSON,
+  },
+  transform: DEFAULT_TRANSFORM,
   requestOptions: {
     joinUrlPrefix: true,
     apiUrl: '',
@@ -296,9 +312,9 @@ export class AxiosPro {
     const contentType = headers?.['Content-Type'] || headers?.['content-type']
 
     if (
-      contentType !== ContentTypeEnum.FORM_URLENCODED ||
+      contentType !== CONTENT_TYPE.FORM_URLENCODED ||
       !Reflect.has(config, 'data') ||
-      config.method?.toUpperCase() === RequestEnum.GET
+      config.method?.toUpperCase() === REQUEST_METHOD.GET
     ) {
       return config
     }
