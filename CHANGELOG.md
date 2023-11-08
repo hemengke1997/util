@@ -1,3 +1,12 @@
+## [0.1.11](https://github.com/hemengke1997/util/compare/v0.1.10...v0.1.11) (2023-11-08)
+
+
+### Bug Fixes
+
+* **axios-pro:** customizable header for any method ([a4927b7](https://github.com/hemengke1997/util/commit/a4927b78e34fa622dd9ce8aee183df980fac6f68))
+
+
+
 ## [0.1.10](https://github.com/hemengke1997/util/compare/v0.1.9...v0.1.10) (2023-11-08)
 
 
