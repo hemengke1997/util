@@ -13,7 +13,7 @@ export interface SharedPopupProps {
    * @deprecated 使用 render 替代
    */
   wrapper?: React.ReactElement
-  render?: (children: React.ReactNode) => React.ReactNode
+  render?: (children: React.JSX.Element) => React.JSX.Element
   /** 是否支持键盘 */
   keyboard?: boolean
   /** css z-index值 */
