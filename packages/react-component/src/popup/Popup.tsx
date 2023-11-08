@@ -51,6 +51,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     onClickCloseIcon: propOnClickCloseIcon,
     onHoverStateChange,
     wrapper,
+    render,
   } = props
 
   const opened = useRef(false)
@@ -268,19 +269,26 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     popupRef,
   }))
 
-  const elements = (
-    <>
-      {renderOverlay()}
-      {renderTransition()}
-    </>
-  )
+  const elements = () => {
+    const el = (
+      <>
+        {renderOverlay()}
+        {renderTransition()}
+      </>
+    )
+    if (render) {
+      return render(el)
+    }
+    if (wrapper) return cloneElement(wrapper, {}, el)
+    return (
+      <>
+        {renderOverlay()}
+        {renderTransition()}
+      </>
+    )
+  }
 
-  return renderToContainer(
-    teleport,
-    <PopupContext.Provider value={{ visible }}>
-      {wrapper ? cloneElement(wrapper, {}, elements) : elements}
-    </PopupContext.Provider>,
-  )
+  return renderToContainer(teleport, <PopupContext.Provider value={{ visible }}>{elements()}</PopupContext.Provider>)
 })
 
 export { Popup }

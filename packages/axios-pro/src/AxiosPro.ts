@@ -131,8 +131,8 @@ export const DEFAULT_TRANSFORM: AxiosTransform = {
 
     if (config.method) {
       config.headers = {
-        ...config.headers,
         ...options[config.method?.toLowerCase()]?.headers,
+        ...config.headers,
       }
     }
 

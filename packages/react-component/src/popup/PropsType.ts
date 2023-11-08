@@ -1,3 +1,4 @@
+import type React from 'react'
 import { type BaseTypeProps, type TeleportType } from '../utils/interface'
 
 export type PopupPosition = 'top' | 'left' | 'bottom' | 'right' | 'center' | ''
@@ -7,8 +8,12 @@ export type PopupCloseIconPosition = 'top-left' | 'top-right' | 'bottom-left' | 
 export type Position = 'center' | 'top' | 'bottom' | 'right' | 'left'
 
 export interface SharedPopupProps {
-  /** 包装组件 */
+  /**
+   * @description 包装组建
+   * @deprecated 使用 render 替代
+   */
   wrapper?: React.ReactElement
+  render?: (children: React.ReactNode) => React.ReactNode
   /** 是否支持键盘 */
   keyboard?: boolean
   /** css z-index值 */
