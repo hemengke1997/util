@@ -45,7 +45,7 @@ export interface DialogInstanceReturnType {
 }
 
 export interface DialogStatic {
-  (props: DialogProps): React.ReactElement
+  (props: DialogProps): React.JSX.Element
   show: (props: DialogProps) => DialogInstanceReturnType | null
   /**
    * 修改默认配置，对所有 Dialog 生效。

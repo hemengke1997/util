@@ -25,6 +25,18 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
+    },
+    "./useUrlState": {
+      "types": "./dist/useUrlState.d.ts",
+      "require": "./dist/useUrlState.cjs",
+      "import": "./dist/useUrlState.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "useUrlState": [
+        "./dist/useUrlState.d.ts"
+      ]
     }
   },
   "scripts": {
