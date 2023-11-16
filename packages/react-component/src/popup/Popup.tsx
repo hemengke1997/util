@@ -280,12 +280,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
       return render(el)
     }
     if (wrapper) return cloneElement(wrapper, {}, el)
-    return (
-      <>
-        {renderOverlay()}
-        {renderTransition()}
-      </>
-    )
+    return el
   }
 
   return renderToContainer(teleport, <PopupContext.Provider value={{ visible }}>{elements()}</PopupContext.Provider>)

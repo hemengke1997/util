@@ -59,6 +59,7 @@ const defaultOptions: PluginOptions = {
     polyfills: true,
     modernPolyfills: true,
     ignoreBrowserslistConfig: false,
+    additionalLegacyPolyfills: ['core-js/proposals/global-this'],
   },
   publicTypescript: {
     esbuildOptions: { target: esbuildTarget },

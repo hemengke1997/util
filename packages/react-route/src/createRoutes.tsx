@@ -44,7 +44,11 @@ interface RouterPropsType {
   onRouteMount?: OnRouteMountType
   onRouteUnMount?: OnRouteUnMountType
   suspense?: ReactElementType
+  /**
+   * @deprecated
+   */
   provider?: ReactElement
+  render?: (children: ReactElement | null) => ReactElement
 }
 
 interface RouterType {
@@ -68,7 +72,7 @@ export type {
 
 export { RouterUtil }
 
-export function CreateRoutes({ routes, onRouteBefore, onRouteMount, suspense, provider }: RouterPropsType) {
+export function CreateRoutes({ routes, onRouteBefore, onRouteMount, suspense, provider, render }: RouterPropsType) {
   const util = new RouterUtil({
     routes,
     onRouteBefore,
@@ -79,6 +83,10 @@ export function CreateRoutes({ routes, onRouteBefore, onRouteMount, suspense, pr
   const reactRoutes = util.createClientRoutes(routes)
 
   const elements = useRoutes(reactRoutes)
+
+  if (render) {
+    return render(elements)
+  }
 
   return provider ? cloneElement(provider, {}, elements) : elements
 }
