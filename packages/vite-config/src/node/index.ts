@@ -1,14 +1,17 @@
 import { deepMerge } from '@minko-fe/lodash-pro'
 import createDebug from 'debug'
+import glob from 'tiny-glob'
 import {
   type ConfigEnv,
   type PluginOption,
   type UserConfig,
   loadEnv,
+  normalizePath,
   splitVendorChunkPlugin,
   mergeConfig as viteMergeConfig,
 } from 'vite'
 import { type VPPTPluginOptions } from 'vite-plugin-public-typescript'
+import { type viteVConsoleOptions } from 'vite-plugin-vconsole'
 import { type CompressOptions } from './plugins/compress'
 import { type LegacyOptions } from './plugins/legacy'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
@@ -46,6 +49,10 @@ interface PluginOptions {
    * @default true
    */
   logAppInfo?: boolean
+  /**
+   * @default false
+   */
+  vConsole?: viteVConsoleOptions
 }
 
 // https://github.com/evanw/esbuild/issues/121#issuecomment-646956379
@@ -66,16 +73,17 @@ const defaultOptions: PluginOptions = {
   },
   splitVendorChunk: undefined,
   logAppInfo: true,
+  vConsole: undefined,
 }
 
-async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
+async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: string) {
   options = deepMerge(defaultOptions, options)
 
   debug('options:', options)
 
   const { ssrBuild } = configEnv
 
-  const { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo } = options
+  const { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo, vConsole } = options
 
   const vitePlugins: PluginOption = [visualizerPlugin()]
 
@@ -111,6 +119,19 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv) {
     vitePlugins.push(logAppInfoPlugin(configEnv))
   }
 
+  if (vConsole) {
+    const { vConsole: vConsolePlugin } = await import('./plugins/vconsole')
+
+    const entries = await glob(normalizePath(`${root}/src/main.ts{,x}`))
+
+    vitePlugins.push(
+      vConsolePlugin({
+        ...vConsole,
+        entry: vConsole?.entry || normalizePath(`${root}/${entries[0]}`),
+      }),
+    )
+  }
+
   debug('plugins:', vitePlugins)
 
   return vitePlugins
@@ -126,7 +147,7 @@ const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: 
     resolve: {
       alias,
     },
-    plugins: await setupPlugins(options || {}, configEnv),
+    plugins: await setupPlugins(options || {}, configEnv, root),
     css: {
       modules: {
         localsConvention: 'camelCase',

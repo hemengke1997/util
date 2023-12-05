@@ -13,7 +13,7 @@ importers:
         version: 2.0.5(eslint@8.52.0)
       '@minko-fe/lodash-pro':
         specifier: latest
-        version: 0.1.13
+        version: 0.1.14
       '@minko-fe/tsconfig':
         specifier: ^2.0.5
         version: 2.0.5(typescript@5.2.2)
@@ -329,18 +329,30 @@ importers:
       rollup-plugin-visualizer:
         specifier: ^5.9.2
         version: 5.9.2(rollup@3.29.1)
+      std-env:
+        specifier: ^3.6.0
+        version: 3.6.0
       terser:
         specifier: ^5.22.0
         version: 5.22.0
+      tiny-glob:
+        specifier: ^0.2.9
+        version: 0.2.9
+      vconsole:
+        specifier: '>=3.0.0'
+        version: 3.0.0
       vite-plugin-compression:
         specifier: ^0.5.1
         version: 0.5.1(vite@4.4.9)
       vite-plugin-public-typescript:
-        specifier: ^2.2.2
-        version: 2.2.2(vite@4.4.9)
+        specifier: ^2.2.3
+        version: 2.2.3(vite@4.4.9)
       vite-plugin-svgr:
         specifier: ^2.4.0
         version: 2.4.0(rollup@3.29.1)(vite@4.4.9)
+      vite-plugin-vconsole:
+        specifier: ^2.0.1
+        version: 2.0.1
     devDependencies:
       '@types/debug':
         specifier: ^4.1.10
@@ -415,6 +427,9 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
+      vconsole:
+        specifier: ^3.15.1
+        version: 3.15.1
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@18.17.15)(terser@5.22.0)
@@ -4051,8 +4066,8 @@ packages:
       - vue-eslint-parser
     dev: true
 
-  /@minko-fe/lodash-pro@0.1.13:
-    resolution: {integrity: sha512-JIhUCM63sQtfTxnQRcn6K0sozws3/Z6+7/kGPO+aNYZCdiny1JknzR54JHkjm7JsdhXkarhp0mkj1Hoql7k+Ew==}
+  /@minko-fe/lodash-pro@0.1.14:
+    resolution: {integrity: sha512-hFuSzYR+773bz0jdVmYVb5d92bDLHG5ommneA/SsGJQJU7JegU3KRb+BAxdyfiMG63Kf7fL2Das5NwGwEToGlQ==}
     dependencies:
       '@types/lodash-es': 4.17.9
       deepmerge: 4.3.1
@@ -5838,6 +5853,11 @@ packages:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
     dev: false
 
+  /copy-text-to-clipboard@3.2.0:
+    resolution: {integrity: sha512-RnJFp1XR/LOBDckxTib5Qjr/PMfkatD0MUCQgdpqS8MdKiNUzBjAQBEN6oUy+jW7LI93BBG3DtMB2KOOKpGs2Q==}
+    engines: {node: '>=12'}
+    dev: true
+
   /copy-to-clipboard@3.3.3:
     resolution: {integrity: sha512-2KV8NhB5JqC3ky0r9PMCAZKbUHSwtEo4CwCs0KXgruG43gX5PMqDEBbVU4OUzw2MuAWUfsuFmWvEKG5QRfSnJA==}
     dependencies:
@@ -5864,7 +5884,6 @@ packages:
   /core-js@3.33.2:
     resolution: {integrity: sha512-XeBzWI6QL3nJQiHmdzbAOiMYqjrb7hwU7A39Qhvd/POSa/t9E1AeZyEZx3fNvp/vtM8zXwhoL0FsiS0hD0pruQ==}
     requiresBuild: true
-    dev: false
 
   /core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -8574,6 +8593,10 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: true
 
+  /mutation-observer@1.0.3:
+    resolution: {integrity: sha512-M/O/4rF2h776hV7qGMZUH3utZLO/jK7p8rnNgGkjKUw8zCGjRQPxB8z6+5l8+VjRUQ3dNYu4vjqXYLr+U8ZVNA==}
+    dev: true
+
   /mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
     dependencies:
@@ -10548,13 +10571,8 @@ packages:
       stacktrace-gps: 3.1.2
     dev: false
 
-  /std-env@3.3.2:
-    resolution: {integrity: sha512-uUZI65yrV2Qva5gqE0+A7uVAvO40iPo6jGhs7s8keRfHCmtg+uB2X6EiLGCI9IgL1J17xGhvoOqSz79lzICPTA==}
-    dev: true
-
-  /std-env@3.5.0:
-    resolution: {integrity: sha512-JGUEaALvL0Mf6JCfYnJOTcobY+Nc7sG/TemDRBqCA0wEr4DER7zDchaaixTlmOxAjG1uRJmX82EQcxwTQTkqVA==}
-    dev: false
+  /std-env@3.6.0:
+    resolution: {integrity: sha512-aFZ19IgVmhdB2uX599ve2kE6BIE3YMnQ6Gp6BURhW/oIzpXGKr878TQfAQZn1+i0Flcc/UKUy1gOlcfaUBCryg==}
 
   /stop-iteration-iterator@1.0.0:
     resolution: {integrity: sha512-iCGQj+0l0HOdZ2AEeBADlsRC+vsnDsZsbdSiH1yNSjcfKM7fdpCMfqAL/dwF5BLiw/XhRft/Wax6zQbhq2BcjQ==}
@@ -11311,6 +11329,19 @@ packages:
       builtins: 5.0.1
     dev: true
 
+  /vconsole@3.0.0:
+    resolution: {integrity: sha512-jquIdMK6OMEA60VY/79/IEuHv4KhRpLezJBB7oYfSY/haDRhggwGyFZyWk7F02757ceIu7g55aMt79iiVjGalQ==}
+    dev: false
+
+  /vconsole@3.15.1:
+    resolution: {integrity: sha512-KH8XLdrq9T5YHJO/ixrjivHfmF2PC2CdVoK6RWZB4yftMykYIaXY1mxZYAic70vADM54kpMQF+dYmvl5NRNy1g==}
+    dependencies:
+      '@babel/runtime': 7.21.0
+      copy-text-to-clipboard: 3.2.0
+      core-js: 3.33.2
+      mutation-observer: 1.0.3
+    dev: true
+
   /vite-node@0.29.8(@types/node@18.17.15):
     resolution: {integrity: sha512-b6OtCXfk65L6SElVM20q5G546yu10/kNrhg08afEoWlFRJXFq9/6glsvSVY+aI6YeC1tu2TtAqI2jHEQmOmsFw==}
     engines: {node: '>=v14.16.0'}
@@ -11367,8 +11398,8 @@ packages:
       - supports-color
     dev: false
 
-  /vite-plugin-public-typescript@2.2.2(vite@4.4.9):
-    resolution: {integrity: sha512-6QPoDTLgxDrgnucIM/BCjeQSRR97HpQjTzRHFfUhFfuS168fTKQ2oNpllfgnwgXND5vowf2kz/d72OTSjpO3jQ==}
+  /vite-plugin-public-typescript@2.2.3(vite@4.4.9):
+    resolution: {integrity: sha512-LIdzMcwIqmWQKWXT2VFjhSwuibDF7jNPwynnyzK/QCfLGdIIBy+jb6U/H2iN5F/gJfN8esgct4hWyy/zPo0Kig==}
     engines: {node: '>=16.0.0'}
     requiresBuild: true
     peerDependencies:
@@ -11390,7 +11421,7 @@ packages:
       parse5: 7.1.2
       picocolors: 1.0.0
       prompts: 2.4.2
-      std-env: 3.5.0
+      std-env: 3.6.0
       tiny-glob: 0.2.9
       vite: 4.4.9(@types/node@18.17.15)(terser@5.22.0)
       watcher: 2.3.0
@@ -11409,6 +11440,10 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
+    dev: false
+
+  /vite-plugin-vconsole@2.0.1:
+    resolution: {integrity: sha512-9rrr4obWyAVtvvlDJH16es9vMY+BPq1lALCRfD2h9vakLaDZsR2csRlqvAMbPCZYglIqlIAUSke7O7LAJHTDgw==}
     dev: false
 
   /vite@4.4.9(@types/node@18.17.15)(terser@5.22.0):
@@ -11495,7 +11530,7 @@ packages:
       pathe: 1.1.0
       picocolors: 1.0.0
       source-map: 0.6.1
-      std-env: 3.3.2
+      std-env: 3.6.0
       strip-literal: 1.0.1
       tinybench: 2.4.0
       tinypool: 0.4.0
