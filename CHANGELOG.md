@@ -1,3 +1,13 @@
+## [0.1.15](https://github.com/hemengke1997/util/compare/v0.1.14...v0.1.15) (2023-12-14)
+
+
+### Features
+
+* upgrade vite-plugin-i18n-detector ([0446762](https://github.com/hemengke1997/util/commit/044676216f05e8877f1dc4c15344f8b55fd06509))
+* **vite-config:** add vconsole plugin ([efec979](https://github.com/hemengke1997/util/commit/efec979d9745b8067386db244fe34866c3c0ebd0))
+
+
+
 ## [0.1.14](https://github.com/hemengke1997/util/compare/v0.1.13...v0.1.14) (2023-11-16)
 
 
