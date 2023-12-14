@@ -67,7 +67,7 @@
     "i18next": "^22.5.1",
     "i18next-browser-languagedetector": "^7.1.0",
     "react-i18next": "^12.3.1",
-    "vite-plugin-i18n-detector": "^2.0.1"
+    "vite-plugin-i18n-detector": "^2.1.0"
   },
   "devDependencies": {
     "react": "^18.2.0",

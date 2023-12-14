@@ -8,12 +8,12 @@ type SetupOptions = InitOptions & {
   fallbackLng?: string
   lookupTarget?: string
   debug?: boolean
-  query?: I18nSetupOptions['query']
+  cache?: I18nSetupOptions['cache']
   onInited?: I18nSetupOptions['onInited']
 }
 
 function setupI18n(options: SetupOptions) {
-  const { fallbackLng = 'en', lookupTarget = 'lang', debug = isDev(), query, onInited, ...rest } = options || {}
+  const { fallbackLng = 'en', lookupTarget = 'lang', debug = isDev(), cache, onInited, ...rest } = options || {}
 
   i18next
     .use(LanguageDetector)
@@ -55,7 +55,7 @@ function setupI18n(options: SetupOptions) {
         i18next.addResourceBundle(currentLang, ns, langs[ns])
       })
     },
-    query,
+    cache,
     fallbackLng,
   })
 

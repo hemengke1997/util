@@ -18,7 +18,7 @@ setupI18n({
     )
   },
   lookupTarget: 'lang',
-  query: {
-    url: 'lang',
+  cache: {
+    queryString: 'lang',
   },
 })
