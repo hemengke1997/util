@@ -17,7 +17,7 @@ export default defineConfig((env) => {
       plugins: [
         react(),
         i18nDetector({
-          localesPaths: [path.join(__dirname, './src/locale')],
+          localesPaths: ['./src/locales'],
           pathMatcher: '{locale}/{namespace}.{ext}',
         }),
       ],

@@ -28,9 +28,9 @@
     "bump": "bumpp package.json packages/*/package.json package.json -c --all -p -t -x \"pnpm run changelog\""
   },
   "devDependencies": {
-    "@minko-fe/eslint-config": "^2.0.5",
+    "@minko-fe/eslint-config": "latest",
     "@minko-fe/lodash-pro": "latest",
-    "@minko-fe/tsconfig": "^2.0.5",
+    "@minko-fe/tsconfig": "latest",
     "@testing-library/react": "^14.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.17.15",
