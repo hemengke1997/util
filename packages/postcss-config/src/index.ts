@@ -38,7 +38,7 @@ export type PostcssConfig =
        * @default true
        * @description default built-in
        */
-      'tailwindcss'?: Config | boolean
+      'tailwindcss'?: string | Config | { config: string | Config } | boolean
       /**
        * @default true
        * @description default built-in
