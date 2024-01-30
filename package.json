@@ -1,8 +1,7 @@
 {
   "name": "@minko-fe/util-monorepo",
-  "version": "0.1.16",
+  "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@8.7.5",
   "description": "util monorepo",
   "type": "module",
   "keywords": [
@@ -19,15 +18,17 @@
     "build": "pnpm -r --filter \"./packages/*\" build",
     "create": "tsx scripts/createLib",
     "test": "pnpm -r --filter \"./packages/*\" run test --run",
-    "preinstall": "npx only-allow pnpm",
+    "prepare": "npx only-allow pnpm",
     "lint": "eslint --ignore-pattern \"/playground/\" . --fix",
     "clean": "rimraf node_modules & pnpm -r --parallel --filter \"./packages/*\"clean",
     "taze": "taze -I -r -w",
     "up": "pnpm update --i --L",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "bump": "bumpp package.json packages/*/package.json package.json -c --all -p -t -x \"pnpm run changelog\""
+    "bump": "changeset",
+    "version": "changeset version"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.1",
     "@minko-fe/eslint-config": "latest",
     "@minko-fe/lodash-pro": "latest",
     "@minko-fe/tsconfig": "latest",
@@ -38,7 +39,6 @@
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@types/validate-npm-package-name": "^4.0.0",
-    "bumpp": "^9.2.0",
     "chokidar": "^3.5.3",
     "conventional-changelog-cli": "^2.2.2",
     "esbuild": "^0.17.19",
@@ -62,5 +62,8 @@
     "typescript": "^5.2.2",
     "validate-npm-package-name": "^5.0.0",
     "vitest": "^0.29.8"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

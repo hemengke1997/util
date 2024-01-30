@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-locale",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "react-locale",
   "type": "module",
   "keywords": [
@@ -50,12 +50,10 @@
     "dev": "rimraf dist && tsx scripts/dev",
     "build": "rimraf dist && tsx scripts/build",
     "release": "pnpm run build && pnpm publish --access public",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "vitest",
     "lint": "eslint .",
     "clean": "rimraf node_modules",
-    "up": "taze -I -w",
-    "bump": "bumpp package.json -c --all -p -t -x \"pnpm run changelog\""
+    "up": "taze -I -w"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -67,7 +65,7 @@
     "i18next": "^22.5.1",
     "i18next-browser-languagedetector": "^7.1.0",
     "react-i18next": "^12.3.1",
-    "vite-plugin-i18n-detector": "latest"
+    "vite-plugin-i18n-detector": "^2.2.0"
   },
   "devDependencies": {
     "react": "^18.2.0",

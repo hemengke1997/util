@@ -1,9 +1,5 @@
-import svgrPlugin from 'vite-plugin-svgr'
+import svgrPlugin, { type ViteSvgrOptions } from 'vite-plugin-svgr'
 
-export function svgr() {
-  return svgrPlugin({
-    svgrOptions: {
-      icon: true,
-    },
-  })
+export function svgr(options: ViteSvgrOptions) {
+  return svgrPlugin(options)
 }

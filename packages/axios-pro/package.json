@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/axios-pro",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "axios-pro",
   "type": "module",
   "keywords": [
@@ -31,12 +31,10 @@
     "dev": "rimraf dist && tsx scripts/dev",
     "build": "rimraf dist && tsx scripts/build",
     "release": "pnpm run build && pnpm publish --access public",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "vitest",
     "lint": "eslint .",
     "clean": "rimraf node_modules",
-    "up": "taze -I -w",
-    "bump": "bumpp package.json -c --all -p -t -x \"pnpm run changelog\""
+    "up": "taze -I -w"
   },
   "peerDependencies": {
     "axios": ">=1.0.0"

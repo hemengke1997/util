@@ -11,6 +11,7 @@ import {
   mergeConfig as viteMergeConfig,
 } from 'vite'
 import { type VPPTPluginOptions } from 'vite-plugin-public-typescript'
+import { type ViteSvgrOptions } from 'vite-plugin-svgr'
 import { type viteVConsoleOptions } from 'vite-plugin-vconsole'
 import { type CompressOptions } from './plugins/compress'
 import { type LegacyOptions } from './plugins/legacy'
@@ -21,9 +22,10 @@ const debug = createDebug('vite-config')
 
 interface PluginOptions {
   /**
-   * @default true
+   * @default
+   * { svgrOptions: { icon: true } }
    */
-  svgr?: boolean
+  svgr?: ViteSvgrOptions | false
   /**
    * @default false
    */
@@ -59,7 +61,7 @@ interface PluginOptions {
 const esbuildTarget = ['es2015']
 
 const defaultOptions: PluginOptions = {
-  svgr: true,
+  svgr: { svgrOptions: { icon: true } },
   compress: false,
   legacy: {
     renderLegacyChunks: true,
@@ -83,13 +85,14 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: 
 
   const { ssrBuild } = configEnv
 
-  const { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo, vConsole } = options
+  const { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo, vConsole } =
+    options as Required<PluginOptions>
 
   const vitePlugins: PluginOption = [visualizerPlugin()]
 
   if (svgr !== false) {
     const { svgr: svgrPlugin } = await import('./plugins/svgr')
-    vitePlugins.push(svgrPlugin())
+    vitePlugins.push(svgrPlugin(svgr))
   }
 
   if (splitVendorChunk !== false) {

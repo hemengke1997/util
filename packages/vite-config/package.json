@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/vite-config",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "vite-config",
   "type": "module",
   "keywords": [
@@ -16,7 +16,7 @@
     "CHANGELOG.md",
     "README.md",
     "dist",
-    "svgr.d.ts"
+    "plugin-client.d.ts"
   ],
   "main": "./dist/node/index.cjs",
   "module": "./dist/node/index.js",
@@ -34,6 +34,9 @@
     "./client": {
       "types": "./dist/client/index.d.ts",
       "import": "./dist/client/index.js"
+    },
+    "./plugin-client": {
+      "types": "./dist/plugin-client.d.ts"
     }
   },
   "typesVersions": {
@@ -50,12 +53,10 @@
     "dev": "rimraf dist && tsx scripts/dev",
     "build": "rimraf dist && tsx scripts/build",
     "release": "pnpm run build && pnpm publish --access public",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "vitest",
     "lint": "eslint .",
     "clean": "rimraf node_modules",
-    "up": "taze -I -w",
-    "bump": "bumpp package.json -c --all -p -t -x \"pnpm run changelog\""
+    "up": "taze -I -w"
   },
   "peerDependencies": {
     "vconsole": ">=3.0.0",
@@ -77,10 +78,10 @@
     "picologger": "^0.0.1",
     "rollup-plugin-visualizer": "^5.9.2",
     "std-env": "^3.6.0",
-    "terser": "^5.22.0",
+    "terser": "^5.26.0",
     "tiny-glob": "^0.2.9",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-public-typescript": "latest",
+    "vite-plugin-public-typescript": "^2.2.5",
     "vite-plugin-svgr": "^2.4.0",
     "vite-plugin-vconsole": "^2.0.1"
   },
