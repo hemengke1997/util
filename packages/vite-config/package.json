@@ -53,7 +53,7 @@
     "dev": "rimraf dist && tsx scripts/dev",
     "build": "rimraf dist && tsx scripts/build",
     "release": "pnpm run build && pnpm publish --access public",
-    "test": "vitest",
+    "test": "vitest --run",
     "lint": "eslint .",
     "clean": "rimraf node_modules",
     "up": "taze -I -w"
