@@ -7,4 +7,7 @@ export default {
     index: 'src/index.ts',
     useUrlState: 'src/useUrlState.ts',
   },
+  dts: {
+    resolve: true,
+  },
 } as Options

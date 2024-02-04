@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-locale",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "react-locale",
   "type": "module",
   "keywords": [
@@ -62,10 +62,10 @@
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
     "@minko-fe/vite-config": "workspace:*",
-    "i18next": "^22.5.1",
-    "i18next-browser-languagedetector": "^7.1.0",
-    "react-i18next": "^12.3.1",
-    "vite-plugin-i18n-detector": "^2.2.0"
+    "i18next": "^23.8.0",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "react-i18next": "^14.0.0",
+    "vite-plugin-i18n-detector": "^2.2.2"
   },
   "devDependencies": {
     "react": "^18.2.0",

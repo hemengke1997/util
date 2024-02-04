@@ -1,5 +1,5 @@
 import nock from 'nock'
-import { AxiosPro, ContentTypeEnum, type CreateAxiosOptions, type RequestOptions, type Result } from '../src'
+import { AxiosPro, CONTENT_TYPE, type CreateAxiosOptions, type RequestOptions, type Result } from '../src'
 
 const API_URL = 'http://api.example.com'
 
@@ -12,7 +12,7 @@ describe('AxiosPro', () => {
   beforeEach(() => {
     axiosOptions = {
       timeout: 30 * 1000,
-      headers: { 'Content-Type': ContentTypeEnum.JSON },
+      headers: { 'Content-Type': CONTENT_TYPE.JSON },
     }
 
     requestOptions = {

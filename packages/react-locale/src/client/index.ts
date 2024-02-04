@@ -28,7 +28,7 @@ function setupI18n(options: SetupOptions) {
       nsSeparator: '.',
       keySeparator: false,
       interpolation: {
-        escapeValue: false,
+        escapeValue: true,
       },
       fallbackLng,
       detection: {

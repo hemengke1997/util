@@ -1,15 +1,9 @@
 // @vitest-environment jsdom
 
 import { act, renderHook } from '@testing-library/react'
-import { describe, expect, test } from 'vitest'
+import { describe, expect } from 'vitest'
 import { useControlledState } from '../src/useControlledState'
 import { useStrictInput } from '../src/useStrictInput'
-
-describe('condition', () => {
-  test('test', () => {
-    expect(1).toBe(1)
-  })
-})
 
 describe('useControlledState', () => {
   it('should be return default value', () => {
@@ -58,7 +52,7 @@ describe('useControlledState', () => {
     expect(val).toBe('controlled')
   })
 
-  it('should not be callback onchange that is not controlled state', () => {
+  it('should change', () => {
     let val = ''
     const { result } = renderHook(() =>
       useControlledState({
@@ -72,10 +66,10 @@ describe('useControlledState', () => {
     const [, setValue] = result.current
 
     act(() => {
-      setValue('controlled')
+      setValue('changed')
     })
 
-    expect(val).toBe('')
+    expect(val).toBe('changed')
   })
 })
 

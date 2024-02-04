@@ -51,14 +51,11 @@ export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
 
   async function bundle(opts?: Options) {
     try {
-      await build(
-        {
-          dts: false,
-          ...tsup,
-          ...opts,
-        },
-        true,
-      )
+      await build({
+        dts: true,
+        ...tsup,
+        ...opts,
+      })
     } catch {}
   }
 
@@ -73,7 +70,7 @@ export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
           logger.info(
             new Date().toLocaleTimeString(),
             `✅ Update success: ${f}`,
-            previousFile === f ? `(✖️  ${++n})` : (n = 0) || '',
+            previousFile === f ? `(✖️ ${++n})` : (n = 0) || '',
           )
           previousFile = f
         },
@@ -83,26 +80,21 @@ export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
 
   const debouncedBundle = debouncePromise((filePath: string) => {
     return onBundle(filePath)
-  }, 100)
+  }, 60)
 
-  const startWatcher = async () => {
+  const startWatcher = () => {
     const watcher = watch('.', resolvedWatchOptions)
-
     watcher.on('all', async (_, file) => {
       file = slash(file)
-
       let shouldSkipChange = false
-
       if (file === 'package.json') {
         const currentHash = await getAllDepsHash(process.cwd())
         shouldSkipChange = currentHash === depsHash
         depsHash = currentHash
       }
-
       if (shouldSkipChange) {
         return
       }
-
       debouncedBundle(path.join(process.cwd(), file))
     })
   }
@@ -112,6 +104,10 @@ export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
       clearScreen()
       logger.info(process.cwd(), 'Watching for changes...')
     },
+  })
+
+  process.on('SIGINT', () => {
+    process.exit(0)
   })
 
   startWatcher()
