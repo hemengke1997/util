@@ -1,5 +1,11 @@
 # @minko-fe/lodash-pro
 
+## 0.2.0
+
+### Minor Changes
+
+- refactor deps
+
 ## 0.1.17
 
 ### Patch Changes

@@ -4,7 +4,7 @@ import { type Options, build as tsupBuild } from 'tsup'
 import { defaultConfig } from './utils/config'
 
 async function build(options: Options = {}, watchMode = false) {
-  let { dts } = options
+  let { dts, esbuildOptions, external, ...rest } = options
 
   const tsconfig = getTsconfig()
 
@@ -21,7 +21,6 @@ async function build(options: Options = {}, watchMode = false) {
 
   await tsupBuild({
     ...defaultConfig,
-    ...options,
     esbuildOptions(opt, { format }) {
       if (!watchMode) {
         opt.drop = ['debugger']
@@ -30,11 +29,13 @@ async function build(options: Options = {}, watchMode = false) {
       opt.logOverride = {
         'empty-import-meta': 'silent',
       }
-      options.esbuildOptions?.(opt, { format })
+      esbuildOptions?.(opt, { format })
     },
-    external: [...(defaultConfig.external || []), ...(options.external || [])],
+    external: [...(defaultConfig.external || []), ...(external || [])],
     dts,
-    minify: true,
+    minify: watchMode ? false : true,
+    clean: true,
+    ...rest,
   })
 }
 
