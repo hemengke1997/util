@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useControlledState } from './useControlledState'
+import { useControlledState } from '../useControlledState'
 
 function useStrictInput(
   v: string,

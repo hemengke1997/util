@@ -1,7 +1,7 @@
 import { isBrowser } from '@minko-fe/lodash-pro'
 import { type RefObject, useEffect } from 'react'
-import { getScrollParent } from './useScrollParent'
-import { useTouch } from './useTouch'
+import { getScrollParent } from '../useScrollParent'
+import { useTouch } from '../useTouch'
 
 let supportsPassive = false
 

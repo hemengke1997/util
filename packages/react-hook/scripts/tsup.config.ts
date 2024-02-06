@@ -1,13 +1,12 @@
+import { fileSuffixPlugin } from '~scripts/utils'
 import { type Options } from 'tsup'
 
 export default {
-  target: 'esnext',
-  external: ['react-router', 'react-router-dom'],
-  entry: {
-    index: 'src/index.ts',
-    useUrlState: 'src/useUrlState.ts',
-  },
-  dts: {
-    resolve: true,
-  },
+  entry: ['src/**/*.ts'],
+  bundle: true,
+  format: ['cjs', 'esm'],
+  legacyOutput: true,
+  platform: 'browser',
+  splitting: false,
+  esbuildPlugins: [fileSuffixPlugin],
 } as Options

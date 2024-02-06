@@ -33,7 +33,6 @@ async function build(options: Options = {}, watchMode = false) {
     },
     external: [...(defaultConfig.external || []), ...(external || [])],
     dts,
-    minify: watchMode ? false : true,
     clean: true,
     ...rest,
   })

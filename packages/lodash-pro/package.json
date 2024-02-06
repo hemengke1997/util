@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/lodash-pro",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "lodash-pro",
   "type": "module",
   "keywords": [
@@ -17,19 +17,19 @@
     "README.md",
     "dist"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "import": "./dist/esm/index.js"
     }
   },
   "scripts": {
-    "dev": "tsx scripts/dev",
-    "build": "tsx scripts/build",
+    "dev": "rm -rf dist && tsx scripts/dev",
+    "build": "rm -rf dist && tsx scripts/build",
     "release": "pnpm run build && pnpm publish --access public",
     "test": "vitest --run",
     "lint": "eslint .",
@@ -37,9 +37,7 @@
     "up": "taze -I -w"
   },
   "dependencies": {
-    "@types/lodash-es": "^4.17.9"
-  },
-  "devDependencies": {
+    "@types/lodash-es": "^4.17.9",
     "deepmerge": "^4.3.1",
     "lodash-es": "^4.17.21"
   }

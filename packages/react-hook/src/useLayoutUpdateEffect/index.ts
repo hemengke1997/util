@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react'
-import { useIsomorphicLayoutEffect } from '.'
+import { useIsomorphicLayoutEffect } from '..'
 
 export const useLayoutUpdateEffect: typeof React.useEffect = (callback, deps) => {
   const firstMountRef = React.useRef(true)

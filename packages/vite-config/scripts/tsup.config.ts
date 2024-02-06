@@ -6,7 +6,7 @@ export default {
     'client/index': './src/client/index.ts',
     'client/manifest': './src/client/manifest.ts',
   },
-  target: 'esnext',
+  target: 'es6',
   format: ['cjs', 'esm'],
   external: [/^virtual:.*/],
 } as Options

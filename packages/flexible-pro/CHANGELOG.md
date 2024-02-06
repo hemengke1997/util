@@ -1,5 +1,12 @@
 # @minko-fe/flexible-pro
 
+## 0.1.19
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.2.1
+
 ## 0.1.18
 
 ### Patch Changes

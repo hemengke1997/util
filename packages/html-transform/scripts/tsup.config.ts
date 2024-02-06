@@ -1,5 +1,5 @@
 import { type Options } from 'tsup'
 
 export default {
-  target: 'esnext',
+  target: 'es6',
 } as Options

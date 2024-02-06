@@ -1,7 +1,7 @@
 import { isBrowser, isFunction } from '@minko-fe/lodash-pro'
 import { useLatest, useMemoizedFn } from 'ahooks'
 import { useState } from 'react'
-import { type Options as StorageOptions, createUseStorageState } from './createUseStorageState'
+import { type Options as StorageOptions, createUseStorageState } from '../createUseStorageState'
 
 export type StateType = Record<string, any>
 
@@ -32,7 +32,7 @@ function reduceWaterfallPlugins<S extends StateType>(plugins: PluginReturn<S>[],
   return (state: S, prevState: S) => {
     return plugins.reduce((acc, p) => {
       if (p[pluginName]) {
-        acc = p[pluginName]?.(acc, prevState) ?? acc
+        acc = (p[pluginName]?.(acc, prevState) as S) ?? acc
       }
       return acc
     }, state)

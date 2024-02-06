@@ -5,6 +5,6 @@ export default {
     'client/index': 'src/client/index.ts',
     'node/plugin/index': 'src/node/plugin/index.ts',
   },
-  target: 'esnext',
+  target: 'es6',
   format: ['cjs', 'esm'],
 } as Options

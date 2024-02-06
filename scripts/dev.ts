@@ -53,6 +53,7 @@ export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
     try {
       await build({
         dts: true,
+        minify: false,
         ...tsup,
         ...opts,
       })

@@ -1,5 +1,14 @@
 # @minko-fe/react-hook
 
+## 0.2.1
+
+### Patch Changes
+
+- tree shaking
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes

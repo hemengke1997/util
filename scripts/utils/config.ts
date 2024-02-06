@@ -7,7 +7,6 @@ export const defaultConfig: Options = {
   watch: false,
   treeshake: true,
   target: 'es6',
-  minify: false,
   keepNames: true,
   shims: false,
   clean: false,

@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-component",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "react-component",
   "type": "module",
   "keywords": [
@@ -39,6 +39,9 @@
       ]
     }
   },
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "dev": "rimraf dist && tsx scripts/dev",
     "build": "rimraf dist && tsx scripts/build",

@@ -1,6 +1,6 @@
-import { type Options } from './createUseStorageState'
-import { type RequireSome } from './types'
-import { type StateType, useSetState } from './useSetState'
+import { type RequireSome } from '../@types/types'
+import { type Options } from '../createUseStorageState'
+import { type StateType, useSetState } from '../useSetState'
 
 export function useLocalStorageSetState<T extends StateType>(
   key: string,
