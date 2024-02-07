@@ -1,6 +1,6 @@
 import { deepMerge } from '@minko-fe/lodash-pro'
 import createDebug from 'debug'
-import glob from 'tiny-glob'
+import glob from 'fast-glob'
 import {
   type ConfigEnv,
   type PluginOption,

@@ -1,6 +1,6 @@
+import glob from 'fast-glob'
 import path from 'node:path'
 import stripDirs from 'strip-dirs'
-import glob from 'tiny-glob'
 import { fileSuffixPlugin } from './esbuild/file-suffix-plugin'
 
 // Taken from https://github.com/sindresorhus/slash/blob/main/index.js (MIT)
