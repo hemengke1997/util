@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-component",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "react-component",
   "type": "module",
   "keywords": [
@@ -13,6 +13,7 @@
   },
   "author": "hemengke <https://github.com/hemengke1997>",
   "files": [
+    "*.ts",
     "CHANGELOG.md",
     "README.md",
     "dist"
@@ -30,13 +31,6 @@
       "types": "./dist/es/icons/index.d.ts",
       "require": "./dist/lib/icons/index.cjs",
       "import": "./dist/es/icons/index.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "icons": [
-        "./dist/es/icons/index.d.ts"
-      ]
     }
   },
   "sideEffects": [

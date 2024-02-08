@@ -1,5 +1,14 @@
 # @minko-fe/react-component
 
+## 0.1.21
+
+### Patch Changes
+
+- enhance dts exports
+
+- Updated dependencies []:
+  - @minko-fe/react-hook@0.2.3
+
 ## 0.1.20
 
 ### Patch Changes

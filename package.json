@@ -21,7 +21,7 @@
     "create": "tsx scripts/createLib",
     "taze": "taze -I -w",
     "up": "pnpm update --i --L",
-    "bump": "changeset",
+    "changeset": "changeset",
     "version": "changeset version && changeset tag"
   },
   "devDependencies": {

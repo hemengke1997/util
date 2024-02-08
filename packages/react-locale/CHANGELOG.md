@@ -1,5 +1,14 @@
 # @minko-fe/react-locale
 
+## 0.1.21
+
+### Patch Changes
+
+- enhance dts exports
+
+- Updated dependencies []:
+  - @minko-fe/vite-config@0.2.1
+
 ## 0.1.20
 
 ### Patch Changes

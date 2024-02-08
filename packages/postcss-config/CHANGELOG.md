@@ -1,5 +1,11 @@
 # @minko-fe/postcss-config
 
+## 0.1.21
+
+### Patch Changes
+
+- enhance dts exports
+
 ## 0.1.20
 
 ### Patch Changes

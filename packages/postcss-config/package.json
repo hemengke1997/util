@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/postcss-config",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "postcss-config",
   "type": "module",
   "keywords": [
@@ -13,6 +13,7 @@
   },
   "author": "hemengke <https://github.com/hemengke1997>",
   "files": [
+    "*.d.ts",
     "CHANGELOG.md",
     "README.md",
     "dist"
@@ -26,17 +27,11 @@
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
     },
+    "./*": "./*",
     "./tailwindcss/plugin": {
       "types": "./dist/tailwindcss/plugin/index.d.ts",
       "require": "./dist/tailwindcss/plugin/index.cjs",
       "import": "./dist/tailwindcss/plugin/index.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "tailwindcss/plugin": [
-        "./dist/tailwindcss/plugin/index.d.ts"
-      ]
     }
   },
   "scripts": {

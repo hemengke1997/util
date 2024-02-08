@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-hook",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "react-hook",
   "type": "module",
   "keywords": [
@@ -13,6 +13,8 @@
   },
   "author": "hemengke <https://github.com/hemengke1997>",
   "files": [
+    "*.d.cts",
+    "*.d.ts",
     "CHANGELOG.md",
     "README.md",
     "dist"
@@ -26,17 +28,11 @@
       "require": "./dist/lib/index.cjs",
       "import": "./dist/es/index.js"
     },
+    "./*": "./*",
     "./useUrlState": {
       "types": "./dist/es/useUrlState.d.ts",
       "require": "./dist/lib/useUrlState.cjs",
       "import": "./dist/es/useUrlState.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "useUrlState": [
-        "./dist/es/useUrlState.d.ts"
-      ]
     }
   },
   "sideEffects": false,

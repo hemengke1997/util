@@ -1,5 +1,13 @@
 # @minko-fe/vite-config
 
+## 0.2.1
+
+### Patch Changes
+
+- fix plugin-client.d.ts export path
+
+- enhance dts exports
+
 ## 0.2.0
 
 ### Minor Changes

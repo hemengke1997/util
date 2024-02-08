@@ -1,4 +1,5 @@
 import { add } from '@minko-fe/lodash-pro'
+import { AccountBookFilled } from '@minko-fe/react-component/icons'
 import { useUrlState } from '@minko-fe/react-hook/useUrlState'
 import { useTranslation } from '@minko-fe/react-locale'
 import { manifest } from '@minko-fe/vite-config/client/manifest'
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <Suspense fallback={<div />}>
+      <AccountBookFilled />
       <div>
         <input placeholder={t('test.AgreementUse')} />
         <button

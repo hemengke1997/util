@@ -1,5 +1,11 @@
 # @minko-fe/react-hook
 
+## 0.2.3
+
+### Patch Changes
+
+- enhance dts exports
+
 ## 0.2.2
 
 ### Patch Changes

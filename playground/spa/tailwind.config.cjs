@@ -1,3 +1,5 @@
+const { center } = require('@minko-fe/postcss-config/tailwindcss/plugin')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -11,4 +13,5 @@ module.exports = {
     ringOpacity: false,
     textOpacity: false,
   },
+  plugins: [center],
 }

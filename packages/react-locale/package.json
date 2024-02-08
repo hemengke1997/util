@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-locale",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "react-locale",
   "type": "module",
   "keywords": [
@@ -13,11 +13,10 @@
   },
   "author": "hemengke <https://github.com/hemengke1997>",
   "files": [
+    "*.d.ts",
     "CHANGELOG.md",
     "README.md",
-    "dist",
-    "i18n.d.ts",
-    "virtual.d.ts"
+    "dist"
   ],
   "main": "./dist/client/index.js",
   "module": "./dist/client/index.js",
@@ -27,6 +26,7 @@
       "types": "./dist/client/index.d.ts",
       "import": "./dist/client/index.js"
     },
+    "./*": "./*",
     "./plugin": {
       "types": "./dist/node/plugin/index.d.ts",
       "require": "./dist/node/plugin/index.cjs",
@@ -37,13 +37,6 @@
     },
     "./virtual": {
       "types": "./virtual.d.ts"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "plugin": [
-        "./dist/node/plugin/index.d.ts"
-      ]
     }
   },
   "scripts": {

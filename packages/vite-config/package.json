@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/vite-config",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "vite-config",
   "type": "module",
   "keywords": [
@@ -13,10 +13,11 @@
   },
   "author": "hemengke <https://github.com/hemengke1997>",
   "files": [
+    "*.d.ts",
     "CHANGELOG.md",
     "README.md",
-    "dist",
-    "plugin-client.d.ts"
+    "client",
+    "dist"
   ],
   "main": "./dist/node/index.cjs",
   "module": "./dist/node/index.js",
@@ -27,6 +28,7 @@
       "require": "./dist/node/index.cjs",
       "import": "./dist/node/index.js"
     },
+    "./*": "./*",
     "./client/manifest": {
       "types": "./dist/client/manifest.d.ts",
       "import": "./dist/client/manifest.js"
@@ -36,17 +38,7 @@
       "import": "./dist/client/index.js"
     },
     "./plugin-client": {
-      "types": "./dist/plugin-client.d.ts"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "client/manifest": [
-        "./dist/client/manifest.d.ts"
-      ],
-      "client": [
-        "./dist/client/index.d.ts"
-      ]
+      "types": "./plugin-client.d.ts"
     }
   },
   "scripts": {

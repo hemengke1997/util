@@ -31,7 +31,7 @@ export default defineConfig((env) => {
 ```json
 {
   "baseUrl": ".",
-  "types": ["vite/client", "@minko-fe/vite-config/plugin-client"], // svgr is on demand
+  "types": ["vite/client"],
   "paths": {
     "#/*": ["src/*"] // whatever prefix you like
   }
