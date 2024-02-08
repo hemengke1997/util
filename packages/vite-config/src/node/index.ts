@@ -11,7 +11,7 @@ import {
   mergeConfig as viteMergeConfig,
 } from 'vite'
 import { type VPPTPluginOptions } from 'vite-plugin-public-typescript'
-import { type ViteSvgrOptions } from 'vite-plugin-svgr'
+import { type VitePluginSvgrOptions } from 'vite-plugin-svgr'
 import { type viteVConsoleOptions } from 'vite-plugin-vconsole'
 import { type CompressOptions } from './plugins/compress'
 import { type LegacyOptions } from './plugins/legacy'
@@ -25,14 +25,14 @@ interface PluginOptions {
    * @default
    * { svgrOptions: { icon: true } }
    */
-  svgr?: ViteSvgrOptions | false
+  svgr?: VitePluginSvgrOptions | false
   /**
    * @default false
    */
   compress?: CompressOptions | false
   /**
    * @default
-   * { renderLegacyChunks: true, polyfills: true, modernPolyfills: true, ignoreBrowserslistConfig: false }
+   * { renderLegacyChunks: true, polyfills: true, modernPolyfills: true, renderModernChunks: true }
    */
   legacy?: LegacyOptions | false
   /**
@@ -65,9 +65,9 @@ const defaultOptions: PluginOptions = {
   compress: false,
   legacy: {
     renderLegacyChunks: true,
+    renderModernChunks: true,
     polyfills: true,
     modernPolyfills: true,
-    ignoreBrowserslistConfig: false,
     additionalLegacyPolyfills: ['core-js/proposals/global-this'],
   },
   publicTypescript: {
@@ -83,7 +83,7 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: 
 
   debug('options:', options)
 
-  const { ssrBuild } = configEnv
+  const { isSsrBuild } = configEnv
 
   const { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo, vConsole } =
     options as Required<PluginOptions>
@@ -99,7 +99,7 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: 
     // splitVendorChunk brings inline css which make style order
     // and css weights wrong in legacy render
     // https://github.com/vitejs/vite/issues/2062
-    !ssrBuild && !legacy && vitePlugins.push(splitVendorChunkPlugin())
+    !isSsrBuild && !legacy && vitePlugins.push(splitVendorChunkPlugin())
   }
 
   if (compress !== false) {
@@ -167,7 +167,7 @@ const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: 
         treeshake: true,
       },
       cssCodeSplit: true,
-      ssrManifest: configEnv.ssrBuild,
+      ssrManifest: configEnv.isSsrBuild,
     },
   }
 }

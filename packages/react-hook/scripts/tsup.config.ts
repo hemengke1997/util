@@ -1,12 +1,26 @@
 import { fileSuffixPlugin } from '~scripts/utils'
 import { type Options } from 'tsup'
 
-export default {
+const tsupConfig: Options = {
   entry: ['src/**/*.ts'],
   bundle: true,
-  format: ['cjs', 'esm'],
-  legacyOutput: true,
   platform: 'browser',
   splitting: false,
-  esbuildPlugins: [fileSuffixPlugin],
-} as Options
+  outExtension: () => ({ js: '.js' }),
+}
+
+export const esm: Options = {
+  ...tsupConfig,
+  format: ['esm'],
+  outDir: 'dist/es',
+  outExtension: () => ({ js: '.js' }),
+  esbuildPlugins: [fileSuffixPlugin('esm')],
+}
+
+export const cjs: Options = {
+  ...tsupConfig,
+  format: ['cjs'],
+  outDir: 'dist/lib',
+  outExtension: () => ({ js: '.cjs' }),
+  esbuildPlugins: [fileSuffixPlugin('cjs')],
+}

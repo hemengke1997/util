@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-hook",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "react-hook",
   "type": "module",
   "keywords": [
@@ -17,25 +17,25 @@
     "README.md",
     "dist"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/lib/index.cjs",
+  "module": "./dist/es/index.js",
+  "types": "./dist/es/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/esm/index.js"
+      "types": "./dist/es/index.d.ts",
+      "require": "./dist/lib/index.cjs",
+      "import": "./dist/es/index.js"
     },
     "./useUrlState": {
-      "types": "./dist/useUrlState.d.ts",
-      "require": "./dist/useUrlState.cjs",
-      "import": "./dist/esm/useUrlState.js"
+      "types": "./dist/es/useUrlState.d.ts",
+      "require": "./dist/lib/useUrlState.cjs",
+      "import": "./dist/es/useUrlState.js"
     }
   },
   "typesVersions": {
     "*": {
       "useUrlState": [
-        "./dist/useUrlState.d.ts"
+        "./dist/es/useUrlState.d.ts"
       ]
     }
   },

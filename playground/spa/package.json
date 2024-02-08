@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "DEBUG=vite-plugin-i18n* vite",
+    "dev": "vite",
     "build": "vite build",
     "preview": "npm run build && vite preview",
     "report": "cross-env REPORT=true npm run build"
@@ -27,12 +27,12 @@
     "@minko-fe/vite-config": "workspace:*",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.4",
+    "@vitejs/plugin-react": "^4.2.1",
     "cross-env": "^7.0.3",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.2.7",
     "typescript": "^5.2.2",
     "vconsole": "^3.15.1",
-    "vite": "^4.4.9"
+    "vite": "^5.0.12"
   }
 }

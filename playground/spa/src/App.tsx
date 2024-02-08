@@ -1,9 +1,17 @@
+import { add } from '@minko-fe/lodash-pro'
+import { useUrlState } from '@minko-fe/react-hook/useUrlState'
 import { useTranslation } from '@minko-fe/react-locale'
 import { manifest } from '@minko-fe/vite-config/client/manifest'
 import { Suspense } from 'react'
 
+console.log(add(1, 2))
+
 function App() {
   const { t, i18n } = useTranslation()
+
+  const [url] = useUrlState()
+
+  console.log(url, 'url')
 
   return (
     <Suspense fallback={<div />}>

@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-component",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "react-component",
   "type": "module",
   "keywords": [
@@ -17,25 +17,25 @@
     "README.md",
     "dist"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/lib/index.cjs",
+  "module": "./dist/es/index.js",
+  "types": "./dist/es/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/esm/index.js"
+      "types": "./dist/es/index.d.ts",
+      "require": "./dist/lib/index.cjs",
+      "import": "./dist/es/index.js"
     },
     "./icons": {
-      "types": "./dist/icons/index.d.ts",
-      "require": "./dist/icons/index.js",
-      "import": "./dist/esm/icons/index.js"
+      "types": "./dist/es/icons/index.d.ts",
+      "require": "./dist/lib/icons/index.cjs",
+      "import": "./dist/es/icons/index.js"
     }
   },
   "typesVersions": {
     "*": {
       "icons": [
-        "./dist/icons/index.d.ts"
+        "./dist/es/icons/index.d.ts"
       ]
     }
   },

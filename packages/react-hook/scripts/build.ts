@@ -1,4 +1,6 @@
 import { build } from '~scripts/build'
-import tsupConfig from './tsup.config'
+import { cjs, esm } from './tsup.config'
 
-build(tsupConfig)
+build(cjs)
+
+build(esm)

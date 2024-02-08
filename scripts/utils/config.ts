@@ -2,7 +2,7 @@ import { type Options } from 'tsup'
 import { getEntry } from '.'
 
 export const defaultConfig: Options = {
-  entry: await getEntry(),
+  entry: getEntry(),
   splitting: false,
   watch: false,
   treeshake: true,

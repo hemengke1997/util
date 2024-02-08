@@ -11,7 +11,7 @@
       "@/*": ["src/*"],
       "#/*": ["src/*"]
     },
-    "types": ["vite/client", "@minko-fe/vite-config/svgr", "@minko-fe/react-locale/i18n"],
+    "types": ["vite/client", "@minko-fe/vite-config/plugin-client", "@minko-fe/react-locale/i18n"],
     "resolveJsonModule": true,
     "allowJs": false,
     "noEmit": true,

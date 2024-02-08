@@ -1,6 +1,6 @@
 import { dev } from '~scripts/dev'
-import tsupConfig from './tsup.config'
+import { cjs, esm } from './tsup.config'
 
-dev(tsupConfig('cjs'))
+dev(esm)
 
-dev(tsupConfig('esm'))
+dev(cjs)

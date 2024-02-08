@@ -31,7 +31,7 @@ export default defineConfig((env) => {
 ```json
 {
   "baseUrl": ".",
-  "types": ["vite/client", "@minko-fe/vite-config/svgr"], // svgr is on demand
+  "types": ["vite/client", "@minko-fe/vite-config/plugin-client"], // svgr is on demand
   "paths": {
     "#/*": ["src/*"] // whatever prefix you like
   }
@@ -48,7 +48,7 @@ export default defineConfig((env) => {
 
 ### env
 
-```tsx
+```ts
 import { isDev } from '@minko-fe/vite-config/client'
 console.log(isDev())
 ```

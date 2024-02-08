@@ -3,9 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~scripts/dev": ["./scripts/dev.ts"],
-      "~scripts/build": ["./scripts/build.ts"],
-      "~scripts/utils": ["./scripts/utils/index.ts"]
+      "~scripts/dev": ["scripts/dev.ts"],
+      "~scripts/build": ["scripts/build.ts"],
+      "~scripts/utils": ["scripts/utils/index.ts"]
     }
   }
 }

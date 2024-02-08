@@ -1,15 +1,28 @@
 import { fileSuffixPlugin } from '~scripts/utils'
 import { type Options } from 'tsup'
 
-export default (format: 'cjs' | 'esm'): Options => ({
+const tsupConfig: Options = {
   entry: ['src/**/*.ts'],
-  bundle: true,
-  legacyOutput: true,
-  format,
-  dts: format === 'esm' ? { banner: '/// <reference types="lodash-es" />\n' } : false,
-  noExternal: format === 'cjs' ? ['lodash-es'] : [],
-  target: 'es6',
   splitting: false,
-  platform: 'neutral',
-  esbuildPlugins: format === 'esm' ? [fileSuffixPlugin] : undefined,
-})
+  dts: { banner: '/// <reference types="lodash-es" />\n' },
+}
+
+export const esm: Options = {
+  ...tsupConfig,
+  format: ['esm'],
+  target: 'es6',
+  outDir: 'dist/es',
+  outExtension: () => ({ js: '.js' }),
+  esbuildPlugins: [fileSuffixPlugin('esm')],
+}
+
+export const cjs: Options = {
+  ...tsupConfig,
+  format: ['cjs'],
+  outDir: 'dist/lib',
+  target: 'es2020',
+  noExternal: ['lodash-es'],
+  platform: 'node',
+  outExtension: () => ({ js: '.cjs' }),
+  esbuildPlugins: [fileSuffixPlugin('cjs')],
+}

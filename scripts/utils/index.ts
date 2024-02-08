@@ -49,8 +49,8 @@ function rmExt(filePath: string) {
   return filePath.split(path.extname(filePath))[0]
 }
 
-export async function getEntry(entryGlob = 'src/index.ts{,x}') {
-  const entries = await glob(entryGlob)
+export function getEntry(entryGlob = 'src/index.ts{,x}') {
+  const entries = glob.sync(entryGlob)
   const entry: Record<string, string> = {}
   entries.forEach((e) => {
     entry[rmExt(stripDirs(e, 1))] = e

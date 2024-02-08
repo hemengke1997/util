@@ -1,5 +1,13 @@
 # @minko-fe/react-route
 
+## 0.1.20
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.2.2
+  - @minko-fe/react-hook@0.2.2
+
 ## 0.1.19
 
 ### Patch Changes
