@@ -12,12 +12,12 @@ export const fileSuffixPlugin = (format: 'cjs' | 'esm'): Plugin => ({
 
       // is external module
       if (importeePath[0] !== '.' && !path.isAbsolute(importeePath)) {
-        return {}
+        return { external: true }
       }
 
       const suffix = format === 'cjs' ? '.cjs' : '.js'
 
-      if (!importeePath.endsWith('.js')) {
+      if (!path.extname(importeePath) && !importeePath.endsWith('.js')) {
         // is path dir?
         const filePath = path.join(args.resolveDir, importeePath)
 
@@ -30,7 +30,10 @@ export const fileSuffixPlugin = (format: 'cjs' | 'esm'): Plugin => ({
         }
         return { path: importeePath, external: true }
       }
-      return {}
+      return {
+        path: importeePath,
+        external: true,
+      }
     })
   },
 })

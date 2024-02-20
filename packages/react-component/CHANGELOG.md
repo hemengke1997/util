@@ -1,5 +1,11 @@
 # @minko-fe/react-component
 
+## 0.1.22
+
+### Patch Changes
+
+- fix css file suffix
+
 ## 0.1.21
 
 ### Patch Changes

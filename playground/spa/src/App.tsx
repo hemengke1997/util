@@ -1,11 +1,14 @@
 import { add } from '@minko-fe/lodash-pro'
+import { toast } from '@minko-fe/react-component'
 import { AccountBookFilled } from '@minko-fe/react-component/icons'
 import { useUrlState } from '@minko-fe/react-hook/useUrlState'
 import { useTranslation } from '@minko-fe/react-locale'
 import { manifest } from '@minko-fe/vite-config/client/manifest'
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 
 console.log(add(1, 2))
+
+toast.show({ content: 'hello' })
 
 function App() {
   const { t, i18n } = useTranslation()
