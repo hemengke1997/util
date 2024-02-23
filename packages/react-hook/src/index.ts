@@ -138,6 +138,7 @@ export {
   useWindowSize,
 } from 'react-use'
 
+export { createUseStorageState } from './createUseStorageState'
 export { useControlledState } from './useControlledState'
 export { useEffectOnce } from './useEffectOnce'
 export { useStrictInput } from './useStrictInput'

@@ -1,5 +1,12 @@
 # @minko-fe/react-locale
 
+## 0.1.22
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @minko-fe/vite-config@0.2.2
+
 ## 0.1.21
 
 ### Patch Changes

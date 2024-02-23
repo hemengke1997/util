@@ -57,6 +57,7 @@ function useSetStateImpl<S extends StateType>(
     const newState = isFunction(patch) ? patch(prevState) : patch
     const currentState = newState ? { ...prevState, ...newState } : prevState
     const value = reduceWaterfallPlugins(pluginImpls, 'onSetState')(currentState, prevState)
+    stateRef.current = value
     setState(value)
   })
 

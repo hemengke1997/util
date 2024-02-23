@@ -1,5 +1,11 @@
 # @minko-fe/vite-config
 
+## 0.2.2
+
+### Patch Changes
+
+- awayls apply vconsole
+
 ## 0.2.1
 
 ### Patch Changes

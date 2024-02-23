@@ -51,12 +51,15 @@ export async function dev(tsup: Options = {}, chokidar?: WatchOptions) {
 
   async function bundle(opts?: Options) {
     try {
-      await build({
-        dts: true,
-        minify: false,
-        ...tsup,
-        ...opts,
-      })
+      await build(
+        {
+          dts: true,
+          minify: false,
+          ...tsup,
+          ...opts,
+        },
+        true,
+      )
     } catch {}
   }
 

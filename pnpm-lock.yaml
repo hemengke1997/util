@@ -387,6 +387,9 @@ importers:
       '@minko-fe/react-route':
         specifier: workspace:*
         version: link:../../packages/react-route
+      ahooks:
+        specifier: ^3.7.8
+        version: 3.7.8(react@18.2.0)
       picocolors:
         specifier: ^1.0.0
         version: 1.0.0
@@ -4131,7 +4134,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.23.9
       '@types/js-cookie': 2.2.7
       ahooks-v3-count: 1.0.0
       dayjs: 1.11.7
@@ -4141,7 +4144,7 @@ packages:
       react: 18.2.0
       resize-observer-polyfill: 1.5.1
       screenfull: 5.2.0
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: false
 
   /ajv@6.12.6:

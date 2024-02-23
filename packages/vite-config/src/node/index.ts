@@ -1,4 +1,4 @@
-import { deepMerge } from '@minko-fe/lodash-pro'
+import { deepMerge, isBoolean } from '@minko-fe/lodash-pro'
 import createDebug from 'debug'
 import glob from 'fast-glob'
 import {
@@ -52,9 +52,9 @@ interface PluginOptions {
    */
   logAppInfo?: boolean
   /**
-   * @default false
+   * @default true
    */
-  vConsole?: viteVConsoleOptions
+  vConsole?: boolean | viteVConsoleOptions
 }
 
 // https://github.com/evanw/esbuild/issues/121#issuecomment-646956379
@@ -75,7 +75,7 @@ const defaultOptions: PluginOptions = {
   },
   splitVendorChunk: undefined,
   logAppInfo: true,
-  vConsole: undefined,
+  vConsole: true,
 }
 
 async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: string) {
@@ -124,13 +124,14 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: 
 
   if (vConsole) {
     const { vConsole: vConsolePlugin } = await import('./plugins/vconsole')
-
     const entries = await glob(normalizePath(`${root}/src/main.ts{,x}`))
+
+    const consoleConfig = isBoolean(vConsole) ? ({} as viteVConsoleOptions) : vConsole
 
     vitePlugins.push(
       vConsolePlugin({
-        ...vConsole,
-        entry: vConsole?.entry || normalizePath(`${root}/${entries[0]}`),
+        ...consoleConfig,
+        entry: consoleConfig?.entry || normalizePath(`${root}/${entries[0]}`),
       }),
     )
   }

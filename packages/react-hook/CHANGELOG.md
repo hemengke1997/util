@@ -1,5 +1,11 @@
 # @minko-fe/react-hook
 
+## 0.2.4
+
+### Patch Changes
+
+- useSetState patch can't get latest value
+
 ## 0.2.3
 
 ### Patch Changes

@@ -17,6 +17,7 @@
     "@minko-fe/react-hook": "workspace:*",
     "@minko-fe/react-locale": "workspace:*",
     "@minko-fe/react-route": "workspace:*",
+    "ahooks": "^3.7.8",
     "picocolors": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
