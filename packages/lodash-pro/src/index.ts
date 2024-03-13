@@ -75,9 +75,7 @@ THE SOFTWARE.
  */
 
 /* eslint-disable import/export */
-import isPromise from 'is-promise'
-export { isPromise }
-
+export { isPromise } from './isPromise'
 export * from 'lodash-es'
 export { deepMerge } from './deepMerge'
 export { isBrowser } from './isBrowser'

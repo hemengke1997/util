@@ -4,13 +4,13 @@ import { type Options } from 'tsup'
 const tsupConfig: Options = {
   entry: ['src/**/*.ts'],
   splitting: false,
-  dts: { banner: '/// <reference types="lodash-es" />\n' },
+  dts: true,
 }
 
 export const esm: Options = {
   ...tsupConfig,
   format: ['esm'],
-  target: 'es6',
+  target: 'es2020',
   outDir: 'dist/es',
   outExtension: () => ({ js: '.js' }),
   esbuildPlugins: [fileSuffixPlugin('esm')],
