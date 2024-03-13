@@ -1,5 +1,14 @@
 # @minko-fe/axios-pro
 
+## 0.1.21
+
+### Patch Changes
+
+- patch update
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.2.3
+
 ## 0.1.20
 
 ### Patch Changes

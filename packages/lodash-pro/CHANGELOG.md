@@ -1,5 +1,11 @@
 # @minko-fe/lodash-pro
 
+## 0.2.3
+
+### Patch Changes
+
+- patch update
+
 ## 0.2.2
 
 ### Patch Changes

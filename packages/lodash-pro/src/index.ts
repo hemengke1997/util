@@ -75,23 +75,12 @@ THE SOFTWARE.
  */
 
 /* eslint-disable import/export */
+import isPromise from 'is-promise'
+export { isPromise }
+
 export * from 'lodash-es'
 export { deepMerge } from './deepMerge'
-export { is } from './is'
-export { isArray } from './isArray'
-export { isBoolean } from './isBoolean'
 export { isBrowser } from './isBrowser'
-export { isDef } from './isDef'
-export { isFunction } from './isFunction'
-export { isNil } from './isNil'
-export { isNull } from './isNull'
-export { isNumber } from './isNumber'
-export { isObject } from './isObject'
-export { isPromise } from './isPromise'
-export { isRegExp } from './isRegExp'
-export { isString } from './isString'
-export { isUndefined } from './isUndefined'
-export { noop } from './noop'
 export { strategyPattern } from './strategyPattern'
 export { timeRange } from './timeRange'
 // eslint-disable-next-line perfectionist/sort-exports

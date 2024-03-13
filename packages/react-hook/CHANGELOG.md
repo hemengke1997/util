@@ -1,5 +1,14 @@
 # @minko-fe/react-hook
 
+## 0.2.5
+
+### Patch Changes
+
+- patch update
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.2.3
+
 ## 0.2.4
 
 ### Patch Changes

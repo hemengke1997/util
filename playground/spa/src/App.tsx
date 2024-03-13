@@ -10,7 +10,7 @@ import { Suspense, useEffect } from 'react'
 
 console.log(add(1, 2))
 
-toast.show({ content: 'hello' })
+toast.allowMultiple(true)
 
 function App() {
   const { t, i18n } = useTranslation()
@@ -35,7 +35,12 @@ function App() {
   return (
     <Suspense fallback={<div />}>
       <AccountBookFilled />
-      <div onClick={() => setState((t) => ({ count: t.count + 1, list: Array(t.count + 1).fill(Math.random()) }))}>
+      <div
+        onClick={() => {
+          setState((t) => ({ count: t.count + 1, list: Array(t.count + 1).fill(Math.random()) }))
+          toast.show({ content: Math.random() })
+        }}
+      >
         count: {state.count}
       </div>
       <div>

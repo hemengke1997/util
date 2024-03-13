@@ -145,8 +145,6 @@ export const DEFAULT_TRANSFORM: AxiosTransform = {
       }
     } else {
       if (config.method?.toUpperCase() === REQUEST_METHOD.POST) {
-        // I forgot why FORM_URLENCODED by default
-        // But I have to be compatible with it
         if (!config.headers?.['Content-Type']) {
           config.headers = {
             ...config.headers,
