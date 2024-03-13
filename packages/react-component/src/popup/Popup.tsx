@@ -1,4 +1,4 @@
-import { KeyCode, isBrowser, isDef } from '@minko-fe/lodash-pro'
+import { KeyCode, isBrowser, isUndefined } from '@minko-fe/lodash-pro'
 import {
   useEventListener,
   useIsomorphicLayoutEffect,
@@ -70,7 +70,7 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
       ...propStyle,
     }
 
-    if (isDef(propDuration)) {
+    if (!isUndefined(propDuration)) {
       const _duration = propDuration
       initStyle.animationDuration = `${_duration}ms`
       initStyle.transitionDuration = `${_duration}ms`

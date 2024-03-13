@@ -1,4 +1,4 @@
-import { isDef, isUndefined } from '@minko-fe/lodash-pro'
+import { isUndefined } from '@minko-fe/lodash-pro'
 import classNames from 'classnames'
 import React, { type FC, useEffect, useRef } from 'react'
 import { CheckCircleFilled, CloseCircleFilled, ExclamationCircleFilled } from '../icons'
@@ -81,7 +81,7 @@ const Toast: FC<ToastProps & ToastPrivateProps> = (props) => {
 
   const renderContent = () => {
     const { content } = props
-    if (isDef(content) && content !== '') {
+    if (!isUndefined(content) && content !== '') {
       return <div className={classNames(bem('info'))}>{content}</div>
     }
     return null

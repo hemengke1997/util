@@ -1,7 +1,7 @@
-import { isDef, isNumber } from '@minko-fe/lodash-pro'
+import { isNumber, isUndefined } from '@minko-fe/lodash-pro'
 
 export function addUnit(value?: string | number): string | undefined {
-  if (!isDef(value)) {
+  if (isUndefined(value)) {
     return undefined
   }
 

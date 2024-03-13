@@ -1,4 +1,4 @@
-import { isDef } from '@minko-fe/lodash-pro'
+import { isUndefined } from '@minko-fe/lodash-pro'
 import { useEventListener } from '@minko-fe/react-hook'
 import classNames from 'classnames'
 import React, { type CSSProperties, useRef } from 'react'
@@ -26,7 +26,7 @@ const Overlay: React.FC<OverlayProps> = (props) => {
       ...props.customStyle,
     }
 
-    if (isDef(duration)) {
+    if (!isUndefined(duration)) {
       style.animationDuration = `${duration}ms`
     }
 
