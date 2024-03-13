@@ -20,7 +20,7 @@
     "test": "turbo test --concurrency=12 --filter=\"./packages/*\" --ignore=\"playground/**\" ",
     "create": "tsx scripts/createLib",
     "taze": "taze -I -w",
-    "up": "pnpm update --i --L",
+    "up": "taze",
     "changeset": "changeset",
     "version": "changeset version && changeset tag"
   },
