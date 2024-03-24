@@ -1,5 +1,11 @@
 # @minko-fe/vite-config
 
+## 0.2.4
+
+### Patch Changes
+
+- update
+
 ## 0.2.3
 
 ### Patch Changes

@@ -1,1 +1,1 @@
-import 'vite-plugin-i18n-detector/virtual'
+import 'vite-plugin-i18n-ally/virtual'

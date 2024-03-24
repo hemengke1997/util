@@ -138,7 +138,7 @@ export {
   useWindowSize,
 } from 'react-use'
 
-export { EventEmitter } from 'ahooks/es/useEventEmitter'
+export { EventEmitter } from './useEventEmitter'
 export { createUseStorageState } from './createUseStorageState'
 export { useControlledState } from './useControlledState'
 export { useEffectOnce } from './useEffectOnce'

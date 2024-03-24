@@ -282,9 +282,9 @@ importers:
       react-i18next:
         specifier: ^14.0.0
         version: 14.0.2(i18next@23.8.2)(react-dom@18.2.0)(react@18.2.0)
-      vite-plugin-i18n-detector:
-        specifier: ^2.2.2
-        version: 2.2.2(vite@5.0.12)
+      vite-plugin-i18n-ally:
+        specifier: ^3.2.0
+        version: 3.2.0(vite@5.0.12)
     devDependencies:
       react:
         specifier: ^18.2.0
@@ -6173,6 +6173,7 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
+    dev: true
 
   /fast-glob@3.3.2:
     resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
@@ -10816,15 +10817,15 @@ packages:
       - supports-color
     dev: false
 
-  /vite-plugin-i18n-detector@2.2.2(vite@5.0.12):
-    resolution: {integrity: sha512-qSG2Gcpn5kRDj5oAcR13Z5Km3WrUkcO8lnJc7itoQQYOi0Zl8O35L7UBiauUuwIfe/2NFWZSL2HKZGMyXPgidA==}
+  /vite-plugin-i18n-ally@3.2.0(vite@5.0.12):
+    resolution: {integrity: sha512-C2Zha/UVwv9KI8cEQ42KikBXHAV0od1MCf542LLvVuXAvMbdxTEtEVM8g31aeX8JOLRSgmALYn/BPYWeChyDBg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       vite: '>=4.0.0'
     dependencies:
       clone-deep: 4.0.1
       debug: 4.3.4
-      fast-glob: 3.3.1
+      fast-glob: 3.3.2
       find-up: 7.0.0
       js-yaml: 4.1.0
       json5: 2.2.3

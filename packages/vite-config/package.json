@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/vite-config",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "vite-config",
   "type": "module",
   "keywords": [
@@ -31,10 +31,12 @@
     "./*": "./*",
     "./client": {
       "types": "./client.d.ts",
+      "require": "./dist/client/index.cjs",
       "import": "./dist/client/index.js"
     },
     "./client/manifest": {
       "types": "./dist/client/manifest.d.ts",
+      "require": "./dist/client/manifest.cjs",
       "import": "./dist/client/manifest.js"
     },
     "./plugin-client": {

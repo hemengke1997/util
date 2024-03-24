@@ -1,1 +1,1 @@
-export * from 'vite-plugin-i18n-detector'
+export * from 'vite-plugin-i18n-ally'
