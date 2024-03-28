@@ -1,15 +1,24 @@
+import { match } from 'bundle-require'
 import { type Plugin } from 'esbuild'
 import fs from 'node:fs'
 import path from 'node:path'
+import { type Options } from 'tsup'
 
 // To aviod nodejs error: ERR_UNSUPPORTED_DIR_IMPORT
-export const fileSuffixPlugin = (format: 'cjs' | 'esm'): Plugin => ({
+export const fileSuffixPlugin = (format: 'cjs' | 'esm', tsupOptions?: Options): Plugin => ({
   name: 'add-file-suffix',
   setup(build) {
     build.onResolve({ filter: /.*/ }, (args) => {
       if (args.kind === 'entry-point') return
       let importeePath = args.path
 
+      const { external, noExternal } = tsupOptions ?? {}
+      if (match(importeePath, noExternal)) {
+        return
+      }
+      if (match(importeePath, external)) {
+        return { external: true }
+      }
       // is external module
       if (importeePath[0] !== '.' && !path.isAbsolute(importeePath)) {
         return { external: true }

@@ -21,8 +21,12 @@ export const cjs: Options = {
   format: ['cjs'],
   outDir: 'dist/lib',
   target: 'es2020',
-  noExternal: ['lodash-es'],
   platform: 'node',
   outExtension: () => ({ js: '.cjs' }),
-  esbuildPlugins: [fileSuffixPlugin('cjs')],
+  noExternal: ['lodash-es', 'p-is-promise'],
+  esbuildPlugins: [
+    fileSuffixPlugin('cjs', {
+      noExternal: ['lodash-es', 'p-is-promise'],
+    }),
+  ],
 }
