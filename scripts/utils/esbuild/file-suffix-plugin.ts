@@ -19,6 +19,14 @@ export const fileSuffixPlugin = (format: 'cjs' | 'esm', tsupOptions?: Options): 
       if (match(importeePath, external)) {
         return { external: true }
       }
+
+      if (match(args.importer, noExternal)) {
+        return
+      }
+      if (match(args.importer, external)) {
+        return { external: true }
+      }
+
       // is external module
       if (importeePath[0] !== '.' && !path.isAbsolute(importeePath)) {
         return { external: true }
@@ -39,10 +47,7 @@ export const fileSuffixPlugin = (format: 'cjs' | 'esm', tsupOptions?: Options): 
         }
         return { path: importeePath, external: true }
       }
-      return {
-        path: importeePath,
-        external: true,
-      }
+      return {}
     })
   },
 })
