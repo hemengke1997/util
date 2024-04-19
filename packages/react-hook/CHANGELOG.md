@@ -1,5 +1,11 @@
 # @minko-fe/react-hook
 
+## 0.3.1
+
+### Patch Changes
+
+- fix: export
+
 ## 0.3.0
 
 ### Minor Changes
