@@ -12,6 +12,10 @@ export const fileSuffixPlugin = (format: 'cjs' | 'esm', tsupOptions?: Options): 
       if (args.kind === 'entry-point') return
       let importeePath = args.path
 
+      if (importeePath.endsWith('.css')) {
+        return { external: true }
+      }
+
       const { external, noExternal } = tsupOptions ?? {}
       if (match(importeePath, noExternal)) {
         return
@@ -47,7 +51,6 @@ export const fileSuffixPlugin = (format: 'cjs' | 'esm', tsupOptions?: Options): 
         }
         return { path: importeePath, external: true }
       }
-      return {}
     })
   },
 })

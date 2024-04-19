@@ -1,5 +1,11 @@
 # @minko-fe/react-component
 
+## 0.2.2
+
+### Patch Changes
+
+- fix: css import not working
+
 ## 0.2.1
 
 ### Patch Changes

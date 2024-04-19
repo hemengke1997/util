@@ -1,4 +1,3 @@
-import { i18nDetector } from '@minko-fe/react-locale/plugin'
 import { injectScripts, overrideConfig } from '@minko-fe/vite-config'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
@@ -10,10 +9,6 @@ export default defineConfig(async (env) => {
     {
       plugins: [
         react(),
-        i18nDetector({
-          root: __dirname,
-          autoDetectI18nConfig: true,
-        }),
         injectScripts((manifest) => [
           {
             attrs: {
@@ -23,6 +18,9 @@ export default defineConfig(async (env) => {
           },
         ]),
       ],
+      optimizeDeps: {
+        force: true,
+      },
     },
     {
       compress: false,
