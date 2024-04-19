@@ -1,5 +1,5 @@
 import { extend, isBrowser } from '@minko-fe/lodash-pro'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CloseOutlined } from '../icons'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'

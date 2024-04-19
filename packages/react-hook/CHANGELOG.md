@@ -1,5 +1,16 @@
 # @minko-fe/react-hook
 
+## 0.3.0
+
+### Minor Changes
+
+- add use-global-style for spa css modules solution
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.3.0
+
 ## 0.2.7
 
 ### Patch Changes

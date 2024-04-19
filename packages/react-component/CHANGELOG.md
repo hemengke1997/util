@@ -1,5 +1,17 @@
 # @minko-fe/react-component
 
+## 0.2.0
+
+### Minor Changes
+
+- feat: support umd
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.3.0
+  - @minko-fe/react-hook@0.3.0
+
 ## 0.1.26
 
 ### Patch Changes

@@ -78,6 +78,8 @@ THE SOFTWARE.
 export { isPromise } from './isPromise'
 export * from 'lodash-es'
 export { deepMerge } from './deepMerge'
+export { defuUtil } from './defu'
+export { destrUtil } from './destr'
 export { isBrowser } from './isBrowser'
 export { strategyPattern } from './strategyPattern'
 export { timeRange } from './timeRange'

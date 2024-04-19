@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/lodash-pro",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "lodash-pro",
   "type": "module",
   "keywords": [
@@ -40,6 +40,8 @@
   "dependencies": {
     "@types/lodash-es": "^4.17.9",
     "deepmerge": "^4.3.1",
+    "defu": "^6.1.4",
+    "destr": "^2.0.3",
     "lodash-es": "^4.17.21",
     "p-is-promise": "^4.0.0"
   }
