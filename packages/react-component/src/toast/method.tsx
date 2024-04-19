@@ -1,6 +1,6 @@
 import { extend, isBrowser } from '@minko-fe/lodash-pro'
 import { useLatest } from '@minko-fe/react-hook'
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { resolveContainer } from '../utils/dom/getContainer'
 import { render as ReactRender, unmount as ReactUnmount } from '../utils/dom/render'
 import { type ConfigUpdate, type ToastInstance, type ToastProps, type ToastType } from './PropsType'

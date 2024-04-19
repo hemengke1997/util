@@ -7,7 +7,7 @@ import {
   useUpdateEffect,
 } from '@minko-fe/react-hook'
 import classNames from 'classnames'
-import { type Ref, cloneElement, forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import React, { type Ref, cloneElement, forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CloseOutlined } from '../icons'
 import Overlay from '../overlay'
