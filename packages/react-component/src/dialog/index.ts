@@ -1,5 +1,4 @@
 import { Dialog } from './method'
-import './style/index.css'
 
 export default Dialog
 export { Dialog }

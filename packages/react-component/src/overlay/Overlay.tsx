@@ -6,6 +6,7 @@ import { CSSTransition } from 'react-transition-group'
 import { createNamespace } from '../utils/createNamespace'
 import { preventDefault, withStopPropagation } from '../utils/dom/event'
 import { type OverlayProps } from './PropsType'
+import './style/index.css'
 
 const [bem] = createNamespace('overlay')
 

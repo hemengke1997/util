@@ -1,5 +1,4 @@
 import { Popup } from './Popup'
-import './style/index.css'
 
 export default Popup
 export { Popup }

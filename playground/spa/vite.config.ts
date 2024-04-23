@@ -21,9 +21,13 @@ export default defineConfig(async (env) => {
       optimizeDeps: {
         force: true,
       },
+      build: {
+        minify: false,
+      },
     },
     {
       compress: false,
+      legacy: false,
     },
   )
 })

@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-component",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "react-component",
   "type": "module",
   "keywords": [
@@ -13,8 +13,6 @@
   },
   "author": "hemengke <https://github.com/hemengke1997>",
   "files": [
-    "*.ts",
-    "CHANGELOG.md",
     "README.md",
     "dist"
   ],
@@ -31,10 +29,15 @@
       "types": "./dist/es/icons/index.d.ts",
       "require": "./dist/lib/icons/index.cjs",
       "import": "./dist/es/icons/index.js"
-    }
+    },
+    "./package.json": "./package.json",
+    "./*": "./*"
   },
   "sideEffects": [
-    "*.css"
+    "**/*.css",
+    "**/*.less",
+    "./dist/es/index.js",
+    "./dist/es/style/index.js"
   ],
   "scripts": {
     "dev": "rimraf dist && tsx scripts/dev",

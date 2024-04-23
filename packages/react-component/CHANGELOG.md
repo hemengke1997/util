@@ -1,5 +1,11 @@
 # @minko-fe/react-component
 
+## 0.2.3
+
+### Patch Changes
+
+- fix: hack css import
+
 ## 0.2.2
 
 ### Patch Changes

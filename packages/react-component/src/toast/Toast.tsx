@@ -7,6 +7,8 @@ import { type PopupInstanceType } from '../popup/PropsType'
 import { createNamespace } from '../utils/createNamespace'
 import { type ToastPrivateProps, type ToastProps, type ToastType } from './PropsType'
 import { lockClick } from './lock-click'
+// hack fix tree-shaking
+import './style/index.css'
 
 const [bem] = createNamespace('toast')
 

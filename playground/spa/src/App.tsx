@@ -34,7 +34,7 @@ function App() {
       <AccountBookFilled />
       <div
         onClick={() => {
-          toast.show({ content: Math.random() })
+          toast.show({ content: Math.random(), duration: 0 })
         }}
       >
         count: {state.count}

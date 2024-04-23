@@ -17,6 +17,7 @@ import { renderToContainer } from '../utils/dom/renderToContainer'
 import { callInterceptor } from '../utils/interceptor'
 import { PopupContext } from './PopupContext'
 import { type PopupInstanceType, type PopupProps } from './PropsType'
+import './style/index.css'
 
 const [bem] = createNamespace('popup')
 

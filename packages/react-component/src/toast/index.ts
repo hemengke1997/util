@@ -1,5 +1,4 @@
 import { toast } from './method'
-import './style/index.css'
 
 export default toast
 export { toast }

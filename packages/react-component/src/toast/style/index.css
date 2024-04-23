@@ -121,11 +121,13 @@
     }
 
     &-enter-active {
-      animation: var(--rc-animation-duration-fast) rc-toast-bounce-in both var(--rc-animation-timing-function-ease-out-circ);
+      animation: var(--rc-animation-duration-fast) rc-toast-bounce-in both
+        var(--rc-animation-timing-function-ease-out-circ);
     }
 
     &-exit-active {
-      animation: var(--rc-animation-duration-fast) rc-toast-bounce-out both var(--rc-animation-timing-function-ease-in-out-circ);
+      animation: var(--rc-animation-duration-fast) rc-toast-bounce-out both
+        var(--rc-animation-timing-function-ease-in-out-circ);
     }
   }
 }
