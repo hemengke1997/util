@@ -23,7 +23,11 @@
 
   &-popup {
     &__wrap {
-      @apply fixed top-0 bottom-0 left-0 right-0 overflow-auto outline-0;
+      @apply fixed overflow-auto outline-0;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       inset-inline-start: 0;
       inset-inline-end: 0;
       -webkit-overflow-scrolling: touch;
@@ -37,7 +41,7 @@
           width: 0;
           height: 100%;
           vertical-align: middle;
-          content: "";
+          content: '';
         }
         .rc-popup {
           @apply inline-block text-center align-middle;

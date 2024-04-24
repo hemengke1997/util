@@ -7,6 +7,8 @@ const tsupConfig: Options = {
   dts: {
     entry: getEntry('src/**/*.{ts,tsx}'),
   },
+  platform: 'browser',
+  minify: 'terser',
 }
 
 export const esm: Options = {

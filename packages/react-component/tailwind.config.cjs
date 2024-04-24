@@ -1,7 +1,6 @@
 const { isObject, difference } = require('@minko-fe/lodash-pro')
 const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
-const { center } = require('@minko-fe/postcss-config/tailwindcss/plugin')
 
 function extendsColors() {
   let keys = Object.keys(colors)
@@ -55,5 +54,4 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
-  plugins: [center],
 }

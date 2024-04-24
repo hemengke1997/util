@@ -1,5 +1,11 @@
 # @minko-fe/react-component
 
+## 0.2.4
+
+### Patch Changes
+
+- fix: css position transformed to inset after esbuild minify
+
 ## 0.2.3
 
 ### Patch Changes
