@@ -104,6 +104,12 @@ importers:
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(@swc/core@1.5.0)(typescript@5.3.3)
+      tsup-plugin-bundleless:
+        specifier: ^0.1.2
+        version: 0.1.2
+      tsup-plugin-css-legacy:
+        specifier: ^0.0.1
+        version: 0.0.1
       tsx:
         specifier: ^4.7.0
         version: 4.7.0
@@ -10648,6 +10654,14 @@ packages:
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
+
+  /tsup-plugin-bundleless@0.1.2:
+    resolution: {integrity: sha512-3ZZsgWU9k7L1VqpdhvQwg/u6Lu6RIhbOfFCCmH1RNeWlpw73aYKxNCf/rFJiIgTfRHgk7XU4WB8UcpFqdK8b6A==}
+    dev: true
+
+  /tsup-plugin-css-legacy@0.0.1:
+    resolution: {integrity: sha512-pZNSotQJ4+v+prBYtNVqnhoUuDc3nqlS3wlm29584gfRGR9LR/je/ugp+pTcClEr03YFXNTO6l47czHhzBe4Tg==}
+    dev: true
 
   /tsup@8.0.2(@swc/core@1.5.0)(typescript@5.3.3):
     resolution: {integrity: sha512-NY8xtQXdH7hDUAZwcQdY/Vzlw9johQsaqf7iwZ6g1DOUlFYQ5/AtVAjTvihhEyeRlGo4dLRVHtrRaL35M1daqQ==}

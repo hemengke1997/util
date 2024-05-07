@@ -1,5 +1,5 @@
-import { fileSuffixPlugin } from '~scripts/utils'
 import { type Options } from 'tsup'
+import { bundleless } from 'tsup-plugin-bundleless'
 
 const tsupConfig: Options = {
   entry: ['src/**/*.ts'],
@@ -14,7 +14,7 @@ export const esm: Options = {
   format: ['esm'],
   outDir: 'dist/es',
   outExtension: () => ({ js: '.js' }),
-  esbuildPlugins: [fileSuffixPlugin('esm')],
+  plugins: [bundleless({ ext: '.js' })],
 }
 
 export const cjs: Options = {
@@ -22,5 +22,5 @@ export const cjs: Options = {
   format: ['cjs'],
   outDir: 'dist/lib',
   outExtension: () => ({ js: '.cjs' }),
-  esbuildPlugins: [fileSuffixPlugin('cjs')],
+  plugins: [bundleless({ ext: '.cjs' })],
 }

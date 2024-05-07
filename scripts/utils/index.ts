@@ -1,7 +1,6 @@
 import glob from 'fast-glob'
 import path from 'node:path'
 import stripDirs from 'strip-dirs'
-import { fileSuffixPlugin } from './esbuild/file-suffix-plugin'
 
 // Taken from https://github.com/sindresorhus/slash/blob/main/index.js (MIT)
 export function slash(path: string) {
@@ -58,5 +57,3 @@ export function getEntry(entryGlob = 'src/index.ts{,x}') {
 
   return entry
 }
-
-export { fileSuffixPlugin }

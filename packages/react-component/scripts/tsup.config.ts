@@ -1,5 +1,6 @@
-import { fileSuffixPlugin, getEntry } from '~scripts/utils'
+import { getEntry } from '~scripts/utils'
 import { type Options } from 'tsup'
+import { bundleless } from 'tsup-plugin-bundleless'
 
 const tsupConfig: Options = {
   // tree-shaking
@@ -8,7 +9,6 @@ const tsupConfig: Options = {
     entry: getEntry('src/**/*.{ts,tsx}'),
   },
   platform: 'browser',
-  minify: 'terser',
 }
 
 export const esm: Options = {
@@ -16,7 +16,7 @@ export const esm: Options = {
   format: ['esm'],
   outDir: 'dist/es',
   outExtension: () => ({ js: '.js' }),
-  esbuildPlugins: [fileSuffixPlugin('esm')],
+  plugins: [bundleless({ ext: '.js' })],
 }
 
 export const cjs: Options = {
@@ -24,5 +24,5 @@ export const cjs: Options = {
   format: ['cjs'],
   outDir: 'dist/lib',
   outExtension: () => ({ js: '.cjs' }),
-  esbuildPlugins: [fileSuffixPlugin('cjs')],
+  plugins: [bundleless({ ext: '.cjs' })],
 }
