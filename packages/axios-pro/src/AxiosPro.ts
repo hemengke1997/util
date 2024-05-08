@@ -153,7 +153,11 @@ export const DEFAULT_TRANSFORM: AxiosTransform = {
         }
       }
       if (!isString(params)) {
-        if (Reflect.has(config, 'data') && config.data && Object.keys(config.data).length > 0) {
+        if (
+          Reflect.has(config, 'data') &&
+          config.data &&
+          (Object.keys(config.data).length > 0 || config.data instanceof FormData)
+        ) {
           config.data = data
           config.params = params
         } else {
@@ -349,6 +353,7 @@ export class AxiosPro {
 
   async request<T = Result>(config: AxiosRequestConfig, options?: RequestOptions) {
     let conf: CreateAxiosOptions = cloneDeep(config)
+
     const transform = this.getTransform()
 
     const { requestOptions } = this.options

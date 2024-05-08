@@ -1,5 +1,11 @@
 # @minko-fe/axios-pro
 
+## 0.1.24
+
+### Patch Changes
+
+- fix: file upload formdata empty
+
 ## 0.1.23
 
 ### Patch Changes
