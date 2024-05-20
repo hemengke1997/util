@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-hook",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "react-hook",
   "type": "module",
   "keywords": [
@@ -26,13 +26,17 @@
     ".": {
       "types": "./dist/es/index.d.ts",
       "require": "./dist/lib/index.cjs",
-      "import": "./dist/es/index.js"
+      "import": "./dist/es/index.js",
+      "default": "./dist/lib/index.cjs",
+      "node": "./dist/lib/index.cjs"
     },
     "./*": "./*",
     "./useUrlState": {
       "types": "./dist/es/useUrlState.d.ts",
       "require": "./dist/lib/useUrlState.cjs",
-      "import": "./dist/es/useUrlState.js"
+      "import": "./dist/es/useUrlState.js",
+      "default": "./dist/lib/useUrlState.cjs",
+      "node": "./dist/lib/useUrlState.cjs"
     }
   },
   "sideEffects": false,

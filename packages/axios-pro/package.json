@@ -1,10 +1,10 @@
 {
   "name": "@minko-fe/axios-pro",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "description": "axios-pro",
   "type": "module",
   "keywords": [
-    "axios-pro"
+    "axios"
   ],
   "license": "MIT",
   "repository": {

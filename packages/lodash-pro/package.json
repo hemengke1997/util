@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/lodash-pro",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "lodash-pro",
   "type": "module",
   "keywords": [
@@ -24,7 +24,9 @@
     ".": {
       "types": "./dist/es/index.d.ts",
       "require": "./dist/lib/index.cjs",
-      "import": "./dist/es/index.js"
+      "import": "./dist/es/index.js",
+      "default": "./dist/lib/index.cjs",
+      "node": "./dist/lib/index.cjs"
     }
   },
   "sideEffects": false,

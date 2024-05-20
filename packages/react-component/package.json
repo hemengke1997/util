@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-component",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "react-component",
   "type": "module",
   "keywords": [
@@ -23,12 +23,16 @@
     ".": {
       "types": "./dist/es/index.d.ts",
       "require": "./dist/lib/index.cjs",
-      "import": "./dist/es/index.js"
+      "import": "./dist/es/index.js",
+      "default": "./dist/lib/index.cjs",
+      "node": "./dist/lib/index.cjs"
     },
     "./icons": {
       "types": "./dist/es/icons/index.d.ts",
       "require": "./dist/lib/icons/index.cjs",
-      "import": "./dist/es/icons/index.js"
+      "import": "./dist/es/icons/index.js",
+      "default": "./dist/lib/icons/index.cjs",
+      "node": "./dist/lib/icons/index.cjs"
     },
     "./package.json": "./package.json",
     "./*": "./*"

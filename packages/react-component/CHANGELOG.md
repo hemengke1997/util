@@ -1,5 +1,15 @@
 # @minko-fe/react-component
 
+## 0.2.5
+
+### Patch Changes
+
+- ssr support
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.3.1
+  - @minko-fe/react-hook@0.3.2
+
 ## 0.2.4
 
 ### Patch Changes
