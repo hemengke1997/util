@@ -23,6 +23,8 @@
  SOFTWARE.
  */
 
+import * as ReactUse from 'react-use'
+
 export {
   clearCache,
   configResponsive,
@@ -102,6 +104,41 @@ export {
   useWebSocket,
   useWhyDidYouUpdate,
 } from 'ahooks'
+const {
+  useAsync,
+  useAsyncFn,
+  useAsyncRetry,
+  useBeforeUnload,
+  useCopyToClipboard,
+  useCss,
+  useCustomCompareEffect,
+  useDefault,
+  useError,
+  useEvent,
+  useFirstMountState,
+  useGetSet,
+  useGetSetState,
+  useHash,
+  useHoverDirty,
+  useIntersection,
+  useLockBodyScroll,
+  useMeasure,
+  usePageLeave,
+  usePermission,
+  usePinchZoom,
+  usePreviousDistinct,
+  useQueue,
+  useRaf,
+  useRafLoop,
+  useScrollbarWidth,
+  useScrolling,
+  useSearchParam,
+  useSlider,
+  useSpeech,
+  useStartTyping,
+  useWindowScroll,
+  useWindowSize,
+} = ReactUse
 export {
   useAsync,
   useAsyncFn,
@@ -136,7 +173,7 @@ export {
   useStartTyping,
   useWindowScroll,
   useWindowSize,
-} from 'react-use'
+}
 
 export { EventEmitter } from './useEventEmitter'
 export { createUseStorageState } from './createUseStorageState'
