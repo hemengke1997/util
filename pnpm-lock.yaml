@@ -96,8 +96,8 @@ importers:
         specifier: ^8.0.2
         version: 8.0.2(@swc/core@1.5.0)(typescript@5.3.3)
       tsup-plugin-bundleless:
-        specifier: ^0.1.2
-        version: 0.1.2
+        specifier: ^0.2.0
+        version: 0.2.0
       tsup-plugin-css-legacy:
         specifier: ^0.0.1
         version: 0.0.1
@@ -9881,8 +9881,8 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /tsup-plugin-bundleless@0.1.2:
-    resolution: {integrity: sha512-3ZZsgWU9k7L1VqpdhvQwg/u6Lu6RIhbOfFCCmH1RNeWlpw73aYKxNCf/rFJiIgTfRHgk7XU4WB8UcpFqdK8b6A==}
+  /tsup-plugin-bundleless@0.2.0:
+    resolution: {integrity: sha512-2C5KI17NXqLHnm7BgmMrlYp24b/AWvTbWw3zq373iWqcPf5szZBNWz/EBWyfRJBfIm0WiewlcRfZncvxpJ3ZkQ==}
     dev: true
 
   /tsup-plugin-css-legacy@0.0.1:

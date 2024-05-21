@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/vite-config",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "vite-config",
   "type": "module",
   "keywords": [

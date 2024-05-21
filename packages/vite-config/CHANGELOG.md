@@ -1,5 +1,12 @@
 # @minko-fe/vite-config
 
+## 0.2.8
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.3.2
+
 ## 0.2.7
 
 ### Patch Changes

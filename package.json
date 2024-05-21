@@ -54,7 +54,7 @@
     "strip-dirs": "^3.0.0",
     "taze": "^0.13.3",
     "tsup": "^8.0.2",
-    "tsup-plugin-bundleless": "^0.1.2",
+    "tsup-plugin-bundleless": "^0.2.0",
     "tsup-plugin-css-legacy": "^0.0.1",
     "tsx": "^4.7.0",
     "turbo": "^1.12.3",

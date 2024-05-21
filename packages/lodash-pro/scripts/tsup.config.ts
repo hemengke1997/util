@@ -24,5 +24,5 @@ export const cjs: Options = {
   platform: 'node',
   noExternal: ['lodash-es', 'p-is-promise'],
   outExtension: () => ({ js: '.cjs' }),
-  plugins: [bundleless({ ext: '.cjs' })],
+  plugins: [bundleless({ ext: '.cjs', bundle: true })],
 }

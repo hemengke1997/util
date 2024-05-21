@@ -1,5 +1,11 @@
 # @minko-fe/lodash-pro
 
+## 0.3.2
+
+### Patch Changes
+
+- fix: nodejs support
+
 ## 0.3.1
 
 ### Patch Changes

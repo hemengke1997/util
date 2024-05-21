@@ -1,5 +1,15 @@
 # @minko-fe/react-component
 
+## 0.2.7
+
+### Patch Changes
+
+- fix: nodejs support
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.3.2
+  - @minko-fe/react-hook@0.3.4
+
 ## 0.2.6
 
 ### Patch Changes
