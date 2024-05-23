@@ -36,7 +36,7 @@ async function build(options: Options = {}, watchMode = false) {
     external: [...(defaultConfig.external || []), ...(external || [])],
     dts,
     clean: true,
-    plugins: [...(plugins || []), cssLegacy()],
+    plugins: [cssLegacy(), ...(plugins || [])],
     ...rest,
   })
 }

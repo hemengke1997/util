@@ -1,5 +1,14 @@
 # @minko-fe/react-hook
 
+## 0.3.5
+
+### Patch Changes
+
+- fix: tsc alias
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.3.3
+
 ## 0.3.4
 
 ### Patch Changes

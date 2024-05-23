@@ -1,5 +1,12 @@
 # @minko-fe/postcss-config
 
+## 0.1.27
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.3.3
+
 ## 0.1.26
 
 ### Patch Changes

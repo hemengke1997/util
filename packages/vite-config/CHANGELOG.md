@@ -1,5 +1,14 @@
 # @minko-fe/vite-config
 
+## 0.2.9
+
+### Patch Changes
+
+- fix: tsc alias
+
+- Updated dependencies []:
+  - @minko-fe/lodash-pro@0.3.3
+
 ## 0.2.8
 
 ### Patch Changes

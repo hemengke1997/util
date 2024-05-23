@@ -74,7 +74,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  */
 
-/* eslint-disable import/export */
 export { isPromise } from './isPromise'
 export * from 'lodash-es'
 export { deepMerge } from './deepMerge'
@@ -82,7 +81,6 @@ export { defuUtil } from './defu'
 export { destrUtil } from './destr'
 export { ensureArray } from './ensureArray'
 export { isBrowser } from './isBrowser'
-// eslint-disable-next-line perfectionist/sort-exports
 export { KeyCode } from './keycode'
 export { strategyPattern } from './strategyPattern'
 export { timeRange } from './timeRange'

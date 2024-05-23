@@ -1,5 +1,11 @@
 # @minko-fe/lodash-pro
 
+## 0.3.3
+
+### Patch Changes
+
+- fix: tsc alias
+
 ## 0.3.2
 
 ### Patch Changes

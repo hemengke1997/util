@@ -1,5 +1,13 @@
 # @minko-fe/react-locale
 
+## 0.1.29
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @minko-fe/vite-config@0.2.9
+  - @minko-fe/lodash-pro@0.3.3
+
 ## 0.1.28
 
 ### Patch Changes

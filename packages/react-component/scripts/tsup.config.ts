@@ -24,5 +24,5 @@ export const cjs: Options = {
   format: ['cjs'],
   outDir: 'dist/lib',
   outExtension: () => ({ js: '.cjs' }),
-  plugins: [bundleless({ ext: '.cjs', bundle: true })],
+  plugins: [bundleless({ ext: '.cjs' })],
 }
