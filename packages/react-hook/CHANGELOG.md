@@ -1,5 +1,11 @@
 # @minko-fe/react-hook
 
+## 0.3.6
+
+### Patch Changes
+
+- fix: react-use cjs support
+
 ## 0.3.5
 
 ### Patch Changes
