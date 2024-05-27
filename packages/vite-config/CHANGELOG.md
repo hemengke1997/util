@@ -1,5 +1,11 @@
 # @minko-fe/vite-config
 
+## 0.2.10
+
+### Patch Changes
+
+- fix `vconsole` not working
+
 ## 0.2.9
 
 ### Patch Changes

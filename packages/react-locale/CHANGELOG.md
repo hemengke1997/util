@@ -1,5 +1,11 @@
 # @minko-fe/react-locale
 
+## 0.1.30
+
+### Patch Changes
+
+- remove `@minko-fe/vite-config` dep
+
 ## 0.1.29
 
 ### Patch Changes

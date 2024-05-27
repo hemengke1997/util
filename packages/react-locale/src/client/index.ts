@@ -1,4 +1,5 @@
-import { isDev } from '@minko-fe/vite-config/client'
+/// <reference types="vite/client" />
+
 import i18next, { type InitOptions } from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
@@ -12,8 +13,12 @@ type SetupOptions = InitOptions & {
   onInited?: I18nSetupOptions['onInited']
 }
 
+const isDebugMode = () => {
+  return import.meta?.env?.MODE === 'development'
+}
+
 function setupI18n(options: SetupOptions) {
-  const { fallbackLng = 'en', lookupTarget = 'lang', debug = isDev(), cache, onInited, ...rest } = options || {}
+  const { fallbackLng = 'en', lookupTarget = 'lang', debug = isDebugMode(), cache, onInited, ...rest } = options || {}
 
   i18next
     .use(LanguageDetector)

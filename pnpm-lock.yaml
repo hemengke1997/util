@@ -279,9 +279,6 @@ importers:
       '@minko-fe/lodash-pro':
         specifier: workspace:*
         version: link:../lodash-pro
-      '@minko-fe/vite-config':
-        specifier: workspace:*
-        version: link:../vite-config
       i18next:
         specifier: ^23.8.0
         version: 23.8.2
@@ -3156,8 +3153,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@react-vant/icons@0.0.11(react@18.2.0):
-    resolution: {integrity: sha512-ZVYpyNUjdO1tlMKwIWVCdrOgfrSdp2XjHpjQAZxDyMwJfiv1k7dvsBMAXHnUrcJRwnvJ1CU2GMYFP6m7GWBeow==}
+  /@react-vant/icons@0.1.0(react@18.2.0):
+    resolution: {integrity: sha512-slDFBZPN0QIQHDAMoWXE7nilbo3XXFi4p/2IjSSRH4HRm9BxocJ6Y/LIaI+bRX8nru+RzZ49PM26blrNuyxj2A==}
     peerDependencies:
       react: '>=16.14.0'
     dependencies:
@@ -8827,7 +8824,7 @@ packages:
       react-dom: '>=16.14.0'
     dependencies:
       '@react-spring/web': 9.7.3(react-dom@18.2.0)(react@18.2.0)
-      '@react-vant/icons': 0.0.11(react@18.2.0)
+      '@react-vant/icons': 0.1.0(react@18.2.0)
       '@use-gesture/react': 10.2.17(react@18.2.0)
       '@vant/popperjs': 1.3.0
       clsx: 1.2.1

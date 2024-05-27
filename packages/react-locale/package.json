@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-locale",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "description": "react-locale",
   "type": "module",
   "keywords": [
@@ -54,7 +54,6 @@
   },
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
-    "@minko-fe/vite-config": "workspace:*",
     "i18next": "^23.8.0",
     "i18next-browser-languagedetector": "^7.2.0",
     "react-i18next": "^14.0.0",

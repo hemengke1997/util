@@ -1,4 +1,4 @@
-import { deepMerge, isBoolean } from '@minko-fe/lodash-pro'
+import { deepMerge, isBoolean, isUndefined } from '@minko-fe/lodash-pro'
 import createDebug from 'debug'
 import glob from 'fast-glob'
 import {
@@ -52,7 +52,7 @@ interface PluginOptions {
    */
   logAppInfo?: boolean
   /**
-   * @default true
+   * @default true when process.env.NODE_ENV === 'development' or 'test'
    */
   vConsole?: boolean | viteVConsoleOptions
 }
@@ -75,18 +75,21 @@ const defaultOptions: PluginOptions = {
   },
   splitVendorChunk: undefined,
   logAppInfo: true,
-  vConsole: true,
 }
 
 async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: string) {
-  options = deepMerge(defaultOptions, options)
+  options = deepMerge(defaultOptions, options, { arrayMerge: (_, source) => source })
 
   debug('options:', options)
 
-  const { isSsrBuild } = configEnv
+  const { isSsrBuild, mode } = configEnv
 
-  const { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo, vConsole } =
+  let { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo, vConsole } =
     options as Required<PluginOptions>
+
+  if (isUndefined(vConsole)) {
+    vConsole = ['development', 'test'].includes(mode || process.env.NODE_ENV || '')
+  }
 
   const vitePlugins: PluginOption = [visualizerPlugin()]
 
@@ -131,7 +134,7 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: 
     vitePlugins.push(
       vConsolePlugin({
         ...consoleConfig,
-        entry: consoleConfig?.entry || normalizePath(`${root}/${entries[0]}`),
+        entry: consoleConfig?.entry || normalizePath(`${entries[0]}`),
       }),
     )
   }
