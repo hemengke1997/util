@@ -73,7 +73,7 @@
     "rollup-plugin-visualizer": "^5.12.0",
     "std-env": "^3.6.0",
     "terser": "^5.26.0",
-    "vconsole": ">=3.0.0",
+    "vconsole": "^3.0.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-public-typescript": "^3.1.1",
     "vite-plugin-svgr": "^4.2.0",
