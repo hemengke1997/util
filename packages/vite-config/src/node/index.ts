@@ -1,3 +1,4 @@
+import type tsconfigPaths from 'vite-tsconfig-paths'
 import { deepMerge, isBoolean, isUndefined } from '@minko-fe/lodash-pro'
 import createDebug from 'debug'
 import glob from 'fast-glob'
@@ -10,13 +11,13 @@ import {
   splitVendorChunkPlugin,
   mergeConfig as viteMergeConfig,
 } from 'vite'
-import { type VPPTPluginOptions } from 'vite-plugin-public-typescript'
+import { type VitePublicTypescriptOptions } from 'vite-plugin-public-typescript'
 import { type VitePluginSvgrOptions } from 'vite-plugin-svgr'
 import { type viteVConsoleOptions } from 'vite-plugin-vconsole'
 import { type CompressOptions } from './plugins/compress'
 import { type LegacyOptions } from './plugins/legacy'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
-import { injectEnv, pathsMapToAlias } from './utils'
+import { injectEnv } from './utils'
 
 const debug = createDebug('vite-config')
 
@@ -32,14 +33,21 @@ interface PluginOptions {
   compress?: CompressOptions | false
   /**
    * @default
-   * { renderLegacyChunks: true, polyfills: true, modernPolyfills: true, renderModernChunks: true }
+   * ```
+   * {
+        renderLegacyChunks: true,
+        renderModernChunks: true,
+        polyfills: true,
+        modernPolyfills: true,
+        additionalLegacyPolyfills: ['core-js/proposals/global-this'],
+     }
+   * ```
    */
   legacy?: LegacyOptions | false
   /**
-   * @default
-   * { esbuildOptions: { target: ['es2015'] } }
+   * @default false
    */
-  publicTypescript?: VPPTPluginOptions | false
+  publicTypescript?: VitePublicTypescriptOptions | false
   /**
    * @default
    * when csr and not legacy render
@@ -55,6 +63,11 @@ interface PluginOptions {
    * @default true when process.env.NODE_ENV === 'development' or 'test'
    */
   vConsole?: boolean | viteVConsoleOptions
+  /**
+   * tsconfig alias
+   * @default true
+   */
+  tsconfigPaths?: boolean | Parameters<typeof tsconfigPaths>[0]
 }
 
 // https://github.com/evanw/esbuild/issues/121#issuecomment-646956379
@@ -70,11 +83,11 @@ const defaultOptions: PluginOptions = {
     modernPolyfills: true,
     additionalLegacyPolyfills: ['core-js/proposals/global-this'],
   },
-  publicTypescript: {
-    esbuildOptions: { target: esbuildTarget },
-  },
+  publicTypescript: false,
   splitVendorChunk: undefined,
   logAppInfo: true,
+  vConsole: true,
+  tsconfigPaths: true,
 }
 
 async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: string) {
@@ -84,7 +97,7 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: 
 
   const { isSsrBuild, mode } = configEnv
 
-  let { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo, vConsole } =
+  let { svgr, compress, legacy, publicTypescript, splitVendorChunk, logAppInfo, vConsole, tsconfigPaths } =
     options as Required<PluginOptions>
 
   if (isUndefined(vConsole)) {
@@ -135,8 +148,13 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: 
       vConsolePlugin({
         ...consoleConfig,
         entry: consoleConfig?.entry || normalizePath(`${entries[0]}`),
-      }),
+      }) as PluginOption,
     )
+  }
+
+  if (tsconfigPaths) {
+    const { tsconfigPathsPlugin } = await import('./plugins/tsconfig-paths')
+    vitePlugins.push(tsconfigPathsPlugin(isBoolean(tsconfigPaths) ? {} : tsconfigPaths))
   }
 
   debug('plugins:', vitePlugins)
@@ -146,14 +164,10 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: 
 
 const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: PluginOptions): Promise<UserConfig> => {
   const { root, ...configEnv } = config
-  const alias = pathsMapToAlias(root)
 
   return {
     root,
     mode: configEnv.mode,
-    resolve: {
-      alias,
-    },
     plugins: await setupPlugins(options || {}, configEnv, root),
     css: {
       modules: {
@@ -176,17 +190,22 @@ const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: 
   }
 }
 
-const overrideConfig = async (configEnv: ConfigEnv, userConfig: UserConfig, options?: PluginOptions) => {
-  const { mode } = configEnv
-  const root = userConfig.root || process.cwd()
-  const config = viteMergeConfig(await getDefaultConfig({ root, ...configEnv }, options), userConfig)
+const enhanceViteConfig = async (
+  userConfig: UserConfig & {
+    env: ConfigEnv
+  },
+  options?: PluginOptions,
+) => {
+  const { env, ...viteConfig } = userConfig
+  const { mode } = env
+  const root = viteConfig.root || process.cwd()
+  const config = viteMergeConfig(await getDefaultConfig({ root, ...env }, options), viteConfig)
   debug('config:', config)
-  const env = loadEnv(mode, root)
-  debug('env:', env)
-  injectEnv(env)
+  const envVars = loadEnv(mode, root)
+  debug('envVars:', envVars)
+  injectEnv(envVars)
   return config
 }
 
-export * from './utils/rollupOptions'
-export { getDefaultConfig, injectEnv, overrideConfig }
-export * from 'vite-plugin-public-typescript'
+export { enhanceViteConfig }
+export default enhanceViteConfig

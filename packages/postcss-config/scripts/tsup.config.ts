@@ -1,7 +1,8 @@
 import { getEntry } from '~scripts/utils'
 import { type Options } from 'tsup'
+import { bundleless } from 'tsup-plugin-bundleless'
 
 export default {
   entry: getEntry('src/**/index.ts'),
-  target: 'esnext',
+  plugins: [bundleless()],
 } as Options

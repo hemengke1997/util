@@ -37,6 +37,7 @@ async function build(options: Options = {}, watchMode = false) {
     dts,
     clean: true,
     plugins: [cssLegacy(), ...(plugins || [])],
+    minify: false,
     ...rest,
   })
 }

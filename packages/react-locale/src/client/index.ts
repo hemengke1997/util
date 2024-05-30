@@ -3,7 +3,7 @@
 import i18next, { type InitOptions } from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
-import { setupI18n as _setupI18n, type I18nSetupOptions } from 'vite-plugin-i18n-ally/client'
+import { i18nAlly as _i18nAlly, type I18nSetupOptions } from 'vite-plugin-i18n-ally/client'
 
 type SetupOptions = InitOptions & {
   fallbackLng?: string
@@ -11,14 +11,19 @@ type SetupOptions = InitOptions & {
   debug?: boolean
   cache?: I18nSetupOptions['cache']
   onInited?: I18nSetupOptions['onInited']
+  namespace?: boolean
 }
 
-const isDebugMode = () => {
-  return import.meta?.env?.MODE === 'development'
-}
-
-function setupI18n(options: SetupOptions) {
-  const { fallbackLng = 'en', lookupTarget = 'lang', debug = isDebugMode(), cache, onInited, ...rest } = options || {}
+function i18nAlly(options: SetupOptions) {
+  const {
+    fallbackLng = 'en',
+    lookupTarget = 'lang',
+    debug = false,
+    cache,
+    onInited,
+    namespace = true,
+    ...rest
+  } = options || {}
 
   i18next
     .use(LanguageDetector)
@@ -30,8 +35,8 @@ function setupI18n(options: SetupOptions) {
       },
       debug,
       resources: {},
-      nsSeparator: '.',
-      keySeparator: false,
+      nsSeparator: namespace ? '.' : false,
+      keySeparator: !namespace ? '.' : false,
       interpolation: {
         escapeValue: true,
       },
@@ -47,7 +52,7 @@ function setupI18n(options: SetupOptions) {
       ...rest,
     })
 
-  const { loadResourceByLang } = _setupI18n({
+  const { beforeLanguageChange } = _i18nAlly({
     language: i18next.language,
     onInited(langs, currentLang) {
       if (!langs.includes(i18next.language)) {
@@ -55,10 +60,14 @@ function setupI18n(options: SetupOptions) {
       }
       onInited?.(langs, currentLang)
     },
-    onResourceLoaded: (langs, currentLang) => {
-      Object.keys(langs).forEach((ns) => {
-        i18next.addResourceBundle(currentLang, ns, langs[ns])
-      })
+    onResourceLoaded: (resource, currentLang) => {
+      if (namespace) {
+        Object.keys(resource).forEach((ns) => {
+          i18next.addResourceBundle(currentLang, ns, resource[ns])
+        })
+      } else {
+        i18next.addResourceBundle(currentLang, i18next.options.defaultNS?.[0], resource)
+      }
     },
     cache,
     fallbackLng,
@@ -70,11 +79,10 @@ function setupI18n(options: SetupOptions) {
     // If language did't change, return
     if (currentLng === lang) return undefined as any
     currentLng = lang || currentLng
-    await loadResourceByLang(currentLng)
+    await beforeLanguageChange(currentLng)
     return _changeLanguage(currentLng, ...args)
   }
 }
 
-export { setupI18n }
+export { i18nAlly }
 export { i18next }
-export * from 'react-i18next'

@@ -1,5 +1,15 @@
 # @minko-fe/vite-config
 
+## 1.0.0
+
+### Major Changes
+
+- feat!: introduce `vite-tsconfig-paths`
+
+  Remove `alias` logic from `vite.config.ts` and use `vite-tsconfig-paths` to handle it
+
+  `publicTypescript` is false by default now
+
 ## 0.2.10
 
 ### Patch Changes

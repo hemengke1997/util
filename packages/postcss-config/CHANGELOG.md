@@ -1,5 +1,13 @@
 # @minko-fe/postcss-config
 
+## 1.0.0
+
+### Major Changes
+
+- feat!: split vite/nextjs postcss config
+
+  Now you need to import config from `@minko-fe/postcss-config/vite` for vite and `@minko-fe/postcss-config/nextjs` for nextjs.
+
 ## 0.1.27
 
 ### Patch Changes

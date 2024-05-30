@@ -1,5 +1,11 @@
 # @minko-fe/react-route
 
+## 1.0.0
+
+### Major Changes
+
+- deprecate `provider` option, please use `render` instead
+
 ## 0.1.32
 
 ### Patch Changes

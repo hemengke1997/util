@@ -1,5 +1,14 @@
 # @minko-fe/react-locale
 
+## 1.0.0
+
+### Major Changes
+
+- feat!: sync vite-plugin-i18n-ally
+
+  Now you should install `i18next`, `react-i18next` by yourself
+  And use `i18nAlly` from `@minko-fe/react-locale` to init i18n
+
 ## 0.1.30
 
 ### Patch Changes

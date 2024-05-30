@@ -1,1 +1,0 @@
-export { center } from './center'
