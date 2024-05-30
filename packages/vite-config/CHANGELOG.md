@@ -10,6 +10,9 @@
 
   `publicTypescript` is false by default now
 
+  rename `overrideConfig` to `enhanceConfig`, and the first parameter is `vite config`, you can pass `env` to it
+
+
 ## 0.2.10
 
 ### Patch Changes

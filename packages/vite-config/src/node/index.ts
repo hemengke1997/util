@@ -148,7 +148,7 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: 
       vConsolePlugin({
         ...consoleConfig,
         entry: consoleConfig?.entry || normalizePath(`${entries[0]}`),
-      }) as PluginOption,
+      }),
     )
   }
 

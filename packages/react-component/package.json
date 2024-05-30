@@ -41,7 +41,8 @@
     "**/*.css",
     "**/*.less",
     "./dist/es/index.js",
-    "./dist/es/style/index.js"
+    "./dist/es/style/index.js",
+    "./src/style/index.ts"
   ],
   "scripts": {
     "dev": "rimraf dist && tsx scripts/dev",
