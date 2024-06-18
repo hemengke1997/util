@@ -17,7 +17,7 @@ import { type viteVConsoleOptions } from 'vite-plugin-vconsole'
 import { type CompressOptions } from './plugins/compress'
 import { type LegacyOptions } from './plugins/legacy'
 import { visualizer as visualizerPlugin } from './plugins/visualizer'
-import { injectEnv } from './utils'
+import { injectEnv, pathsMapToAlias } from './utils'
 
 const debug = createDebug('vite-config')
 
@@ -168,6 +168,9 @@ const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: 
   return {
     root,
     mode: configEnv.mode,
+    resolve: {
+      alias: pathsMapToAlias(root),
+    },
     plugins: await setupPlugins(options || {}, configEnv, root),
     css: {
       modules: {
