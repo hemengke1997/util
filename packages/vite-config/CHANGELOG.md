@@ -1,5 +1,11 @@
 # @minko-fe/vite-config
 
+## 1.0.1
+
+### Patch Changes
+
+- vite css alias
+
 ## 1.0.0
 
 ### Major Changes
@@ -11,7 +17,6 @@
   `publicTypescript` is false by default now
 
   rename `overrideConfig` to `enhanceConfig`, and the first parameter is `vite config`, you can pass `env` to it
-
 
 ## 0.2.10
 
