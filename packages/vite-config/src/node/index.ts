@@ -86,7 +86,7 @@ const defaultOptions: PluginOptions = {
   publicTypescript: false,
   splitVendorChunk: undefined,
   logAppInfo: true,
-  vConsole: true,
+  vConsole: undefined,
   tsconfigPaths: true,
 }
 
