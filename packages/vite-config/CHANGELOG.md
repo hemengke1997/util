@@ -1,5 +1,11 @@
 # @minko-fe/vite-config
 
+## 1.0.2
+
+### Patch Changes
+
+- fix: vconsole在正式环境中启用的问题
+
 ## 1.0.1
 
 ### Patch Changes

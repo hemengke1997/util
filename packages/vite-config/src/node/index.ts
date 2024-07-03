@@ -101,7 +101,7 @@ async function setupPlugins(options: PluginOptions, configEnv: ConfigEnv, root: 
     options as Required<PluginOptions>
 
   if (isUndefined(vConsole)) {
-    vConsole = ['development', 'test'].includes(mode || process.env.NODE_ENV || '')
+    vConsole = !['production'].includes(mode || process.env.NODE_ENV || '')
   }
 
   const vitePlugins: PluginOption = [visualizerPlugin()]

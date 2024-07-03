@@ -1,5 +1,11 @@
 # @minko-fe/react-hook
 
+## 0.3.7
+
+### Patch Changes
+
+- chore: upgrade deps
+
 ## 0.3.6
 
 ### Patch Changes

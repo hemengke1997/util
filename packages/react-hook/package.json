@@ -1,6 +1,6 @@
 {
   "name": "@minko-fe/react-hook",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "react-hook",
   "type": "module",
   "keywords": [
@@ -61,8 +61,8 @@
   },
   "dependencies": {
     "@minko-fe/lodash-pro": "workspace:*",
-    "ahooks": "^3.7.8",
-    "react-use": "^17.4.0",
+    "ahooks": "^3.8.0",
+    "react-use": "^17.5.0",
     "use-global-style": "^1.0.1"
   },
   "devDependencies": {
