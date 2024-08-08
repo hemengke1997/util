@@ -1,4 +1,4 @@
-import { type UseGlobalStyleOptions, useGlobalStyle } from 'use-global-style'
+import { useGlobalStyle, type UseGlobalStyleOptions } from 'use-global-style'
 
 export { useGlobalStyle }
 export type { UseGlobalStyleOptions }

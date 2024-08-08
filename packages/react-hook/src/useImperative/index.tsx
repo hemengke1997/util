@@ -69,7 +69,7 @@ function imperative<T>(config: Config<T>) {
       [visibleKey]: false,
       [onClosedKey]: () => {
         if (typeof props[onClosedKey] === 'function') {
-          ;(props[onClosedKey] as Function)()
+          props[onClosedKey]()
         }
         // @ts-expect-error
         destroy.apply(this, args)

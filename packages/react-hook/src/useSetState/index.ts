@@ -1,7 +1,7 @@
 import { isBrowser, isFunction } from '@minko-fe/lodash-pro'
 import { useLatest, useMemoizedFn } from 'ahooks'
 import { useState } from 'react'
-import { type Options as StorageOptions, createUseStorageState } from '../createUseStorageState'
+import { createUseStorageState, type Options as StorageOptions } from '../createUseStorageState'
 
 export type StateType = Record<string, any>
 

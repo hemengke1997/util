@@ -1,4 +1,3 @@
-/* eslint-disable perfectionist/sort-exports */
 /**
  * MIT License
 
