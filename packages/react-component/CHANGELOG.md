@@ -1,5 +1,12 @@
 # @minko-fe/react-component
 
+## 0.2.11
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @minko-fe/react-hook@0.4.0
+
 ## 0.2.10
 
 ### Patch Changes

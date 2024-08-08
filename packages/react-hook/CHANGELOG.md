@@ -1,5 +1,11 @@
 # @minko-fe/react-hook
 
+## 0.4.0
+
+### Minor Changes
+
+- feat: add more hook
+
 ## 0.3.7
 
 ### Patch Changes

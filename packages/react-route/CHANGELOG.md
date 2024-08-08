@@ -1,5 +1,14 @@
 # @minko-fe/react-route
 
+## 1.0.2
+
+### Patch Changes
+
+- update
+
+- Updated dependencies []:
+  - @minko-fe/react-hook@0.4.0
+
 ## 1.0.1
 
 ### Patch Changes

@@ -4,11 +4,11 @@ import createDebug from 'debug'
 import glob from 'fast-glob'
 import {
   type ConfigEnv,
-  type PluginOption,
-  type UserConfig,
   loadEnv,
   normalizePath,
+  type PluginOption,
   splitVendorChunkPlugin,
+  type UserConfig,
   mergeConfig as viteMergeConfig,
 } from 'vite'
 import { type VitePublicTypescriptOptions } from 'vite-plugin-public-typescript'
@@ -186,6 +186,12 @@ const getDefaultConfig = async (config: { root: string } & ConfigEnv, options?: 
       reportCompressedSize: false,
       rollupOptions: {
         treeshake: true,
+        onwarn(warning, warn) {
+          if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes(`"use client"`)) {
+            return
+          }
+          warn(warning)
+        },
       },
       cssCodeSplit: true,
       ssrManifest: configEnv.isSsrBuild,
@@ -202,11 +208,14 @@ const enhanceViteConfig = async (
   const { env, ...viteConfig } = userConfig
   const { mode } = env
   const root = viteConfig.root || process.cwd()
-  const config = viteMergeConfig(await getDefaultConfig({ root, ...env }, options), viteConfig)
-  debug('config:', config)
+
   const envVars = loadEnv(mode, root)
   debug('envVars:', envVars)
   injectEnv(envVars)
+
+  const config = viteMergeConfig(await getDefaultConfig({ root, ...env }, options), viteConfig)
+  debug('config:', config)
+
   return config
 }
 

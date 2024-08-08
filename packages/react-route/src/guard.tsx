@@ -1,5 +1,6 @@
 import { useEffectOnce } from '@minko-fe/react-hook'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { Nav } from './Navigator'
 import {
   type MetaType,
   type OnRouteBeforeResType,
@@ -53,7 +54,7 @@ function Guard({
         }
       })
     } else if (pathRes && pathRes !== pathname) {
-      element = <Navigate to={pathRes as string} replace />
+      element = <Nav to={pathRes as string} replace />
     }
   }
 

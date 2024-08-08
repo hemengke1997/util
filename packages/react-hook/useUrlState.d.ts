@@ -1,1 +1,1 @@
-export * from './dist/es/useUrlState.js'
+export * from './dist/es/useUrlState'

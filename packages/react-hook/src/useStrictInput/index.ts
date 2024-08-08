@@ -1,3 +1,4 @@
+import { useMemoizedFn } from 'ahooks'
 import { useRef } from 'react'
 import { useControlledState } from '../useControlledState'
 
@@ -15,16 +16,16 @@ function useStrictInput(
 
   const composedRef = useRef(false)
 
-  const onCompositionStart: React.CompositionEventHandler<HTMLInputElement> = () => {
+  const onCompositionStart: React.CompositionEventHandler<HTMLInputElement> = useMemoizedFn(() => {
     composedRef.current = true
-  }
+  })
 
-  const onCompositionEnd: React.CompositionEventHandler<HTMLInputElement> = () => {
+  const onCompositionEnd: React.CompositionEventHandler<HTMLInputElement> = useMemoizedFn(() => {
     composedRef.current = false
     setValue(value?.replace(strictRegExp, ''))
-  }
+  })
 
-  const onChange = (value: string) => {
+  const onChange = useMemoizedFn((value: string) => {
     let v = value
 
     if (!v) {
@@ -38,7 +39,7 @@ function useStrictInput(
 
     setValue(v)
     return v?.replace(strictRegExp, '')
-  }
+  })
 
   return {
     onCompositionStart,
