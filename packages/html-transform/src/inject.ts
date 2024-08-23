@@ -60,7 +60,7 @@ export function injectToBody(html: string, tags: HtmlTagDescriptor[], prepend = 
   }
 }
 
-export function prependInjectFallback(html: string, tags: HtmlTagDescriptor[]) {
+function prependInjectFallback(html: string, tags: HtmlTagDescriptor[]) {
   // prepend to the html tag, append after doctype, or the document start
   if (htmlPrependInjectRE.test(html)) {
     return html.replace(htmlPrependInjectRE, `$&\n${serializeTags(tags)}`)
@@ -73,7 +73,7 @@ export function prependInjectFallback(html: string, tags: HtmlTagDescriptor[]) {
 
 const unaryTags = new Set(['link', 'meta', 'base'])
 
-export function serializeTag({ tag, attrs, children }: HtmlTagDescriptor, indent = ''): string {
+function serializeTag({ tag, attrs, children }: HtmlTagDescriptor, indent: string = ''): string {
   if (unaryTags.has(tag)) {
     return `<${tag}${serializeAttrs(attrs)}>`
   } else {
@@ -81,7 +81,7 @@ export function serializeTag({ tag, attrs, children }: HtmlTagDescriptor, indent
   }
 }
 
-export function serializeTags(tags: HtmlTagDescriptor['children'], indent = ''): string {
+function serializeTags(tags: HtmlTagDescriptor['children'], indent: string = ''): string {
   if (typeof tags === 'string') {
     return tags
   } else if (tags && tags.length) {
@@ -90,18 +90,37 @@ export function serializeTags(tags: HtmlTagDescriptor['children'], indent = ''):
   return ''
 }
 
-export function serializeAttrs(attrs: HtmlTagDescriptor['attrs']): string {
-  return Object.entries(attrs || [])
-    .map(([key, value]) => {
-      if (typeof value === 'boolean') {
-        return value ? ` ${key}` : ''
-      } else {
-        return ` ${key}=${JSON.stringify(value)}`
-      }
-    })
-    .join('')
+function serializeAttrs(attrs: HtmlTagDescriptor['attrs']): string {
+  let res = ''
+  for (const key in attrs) {
+    if (typeof attrs[key] === 'boolean') {
+      res += attrs[key] ? ` ${key}` : ``
+    } else {
+      res += ` ${key}=${JSON.stringify(attrs[key])}`
+    }
+  }
+  return res
 }
 
-export function incrementIndent(indent = '') {
+function incrementIndent(indent = '') {
   return `${indent}${indent[0] === '\t' ? '\t' : '  '}`
+}
+
+function unique<T>(arr: T[]): T[] {
+  return Array.from(new Set(arr))
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head#see_also
+const elementsAllowedInHead = new Set(['title', 'base', 'link', 'style', 'meta', 'script', 'noscript', 'template'])
+
+export function headTagInsertCheck(tags: HtmlTagDescriptor[]) {
+  if (!tags.length) return
+  const disallowedTags = tags.filter((tagDescriptor) => !elementsAllowedInHead.has(tagDescriptor.tag))
+
+  if (disallowedTags.length) {
+    const dedupedTags = unique(disallowedTags.map((tagDescriptor) => `<${tagDescriptor.tag}>`))
+    console.warn(
+      `[${dedupedTags.join(',')}] can not be used inside the <head> Element, please check the 'injectTo' value`,
+    )
+  }
 }
